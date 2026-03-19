@@ -86,7 +86,7 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .moon-mini-nav{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:clamp(2rem,4vw,3.5rem) 0;gap:clamp(.6rem,1vw,.9rem)}
 .moon-mini-label{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--cream);opacity:.7;transition:opacity .4s;text-shadow:0 0 20px rgba(8,8,7,.6)}
 .moon-mini-nav:hover .moon-mini-label{opacity:.9}
-.moon-mini-row{display:flex;align-items:center;gap:clamp(.6rem,1.2vw,1rem)}
+.moon-mini-row{display:flex;align-items:center;justify-content:center;gap:clamp(.6rem,1.2vw,1rem)}
 .moon-mini{display:block;opacity:.4;transition:all .5s ease;-webkit-tap-highlight-color:transparent}
 .moon-mini svg{width:clamp(24px,3.2vw,34px);height:clamp(24px,3.2vw,34px);transition:all .4s}
 .moon-mini:hover{opacity:1;transform:scale(1.2)}
@@ -101,14 +101,14 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 /* === MOON PHASE NAVIGATOR === */
 .moon-nav{position:relative;z-index:2;padding:clamp(2.5rem,6vw,5rem) var(--section-px);display:flex;flex-direction:column;align-items:center;gap:clamp(1.2rem,2.5vw,2rem)}
 .moon-nav-label{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.45rem);font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--cream);opacity:.75;margin-bottom:clamp(.5rem,1vw,.8rem);text-shadow:0 0 20px rgba(8,8,7,.6);text-align:center;max-width:90%;margin-left:auto;margin-right:auto}
-.moon-scroll-wrapper{position:relative;width:100%;max-width:100%}
+.moon-scroll-wrapper{position:relative;width:100%;max-width:100%;display:flex;justify-content:center}
 .moon-scroll-arrow{display:none}
 .moon-scroll-arrow svg{width:16px;height:16px}
 .moon-scroll-arrow.visible{opacity:.8;pointer-events:auto}
 .moon-scroll-arrow.visible:hover{opacity:1;background:rgba(201,169,110,.15)}
 .moon-scroll-arrow.left{left:-2px}
 .moon-scroll-arrow.right{right:-2px}
-.moon-phases-row{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,2.5vw,2rem) clamp(1.2rem,3vw,2.5rem);flex-wrap:wrap;max-width:700px;padding:clamp(1rem,2vw,1.5rem) 1rem}
+.moon-phases-row{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,2.5vw,2rem) clamp(1.2rem,3vw,2.5rem);flex-wrap:wrap;max-width:700px;margin:0 auto;padding:clamp(1rem,2vw,1.5rem) 1rem}
 .moon-phases-row::-webkit-scrollbar{display:none}
 .moon-phase{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.2vw,12px);cursor:pointer;padding:clamp(12px,1.8vw,20px);border-radius:20px;transition:all .5s ease;text-decoration:none;-webkit-tap-highlight-color:transparent;position:relative;min-width:clamp(65px,9vw,85px)}
 .moon-phase:hover{background:rgba(201,169,110,.07);transform:translateY(-3px)}
