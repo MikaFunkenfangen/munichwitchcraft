@@ -154,12 +154,9 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 /* === FAQ CRANE === */
 .faq{overflow:visible}
 .faq-inner{position:relative;overflow:visible}
-.faq-crane{position:absolute;width:clamp(220px,32vw,420px);pointer-events:none;z-index:3;right:clamp(-14rem,-10vw,-6rem);top:clamp(-3rem,-1vw,1rem);mix-blend-mode:screen;opacity:.9;filter:drop-shadow(0 0 30px rgba(201,169,110,.35)) drop-shadow(0 0 60px rgba(201,169,110,.15)) drop-shadow(0 0 100px rgba(201,169,110,.08));animation:craneFloat 10s ease-in-out infinite,craneDrift 16s ease-in-out infinite}
-@keyframes craneFloat{0%,100%{transform:translateY(0) rotate(-1.5deg) scale(1)}20%{transform:translateY(-14px) rotate(0.5deg) scale(1.01)}45%{transform:translateY(-24px) rotate(1.5deg) scale(1.02)}65%{transform:translateY(-10px) rotate(-0.5deg) scale(1.005)}85%{transform:translateY(-20px) rotate(-1deg) scale(1.015)}}
-@keyframes craneDrift{0%,100%{margin-right:0;margin-top:0}20%{margin-right:-20px;margin-top:-12px}45%{margin-right:12px;margin-top:-6px}70%{margin-right:-8px;margin-top:-18px}90%{margin-right:6px;margin-top:-4px}}
-.faq-crane-glow{position:absolute;width:clamp(280px,38vw,500px);height:clamp(280px,38vw,500px);right:clamp(-16rem,-12vw,-8rem);top:clamp(-5rem,-3vw,-1rem);background:radial-gradient(ellipse at center,rgba(201,169,110,.12) 0%,rgba(201,169,110,.05) 35%,rgba(120,100,60,.02) 60%,transparent 75%);border-radius:50%;pointer-events:none;z-index:2;animation:craneGlowPulse 8s ease-in-out infinite}
-@keyframes craneGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
-@media(max-width:768px){.faq-crane{width:clamp(140px,40vw,200px);right:-3rem;top:-2rem;opacity:.7}.faq-crane-glow{width:200px;height:200px;right:-4rem;top:-3rem}}
+.faq-crane{position:absolute;width:clamp(220px,32vw,420px);pointer-events:none;z-index:3;right:clamp(-8rem,-4vw,-2rem);top:clamp(-3rem,-1vw,1rem);mix-blend-mode:screen;opacity:.9;filter:drop-shadow(0 0 30px rgba(201,169,110,.35)) drop-shadow(0 0 60px rgba(201,169,110,.15));transform:rotate(-1.5deg)}
+.faq-crane-glow{position:absolute;width:clamp(280px,38vw,500px);height:clamp(280px,38vw,500px);right:clamp(-10rem,-6vw,-4rem);top:clamp(-5rem,-3vw,-1rem);background:radial-gradient(ellipse at center,rgba(201,169,110,.12) 0%,rgba(201,169,110,.05) 35%,rgba(120,100,60,.02) 60%,transparent 75%);border-radius:50%;pointer-events:none;z-index:2;opacity:.7}
+@media(max-width:768px){.faq-crane{width:clamp(140px,40vw,200px);right:-1rem;top:-2rem;opacity:.7}.faq-crane-glow{width:200px;height:200px;right:-2rem;top:-3rem}}
 
 /* === HERO === */
 .hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;padding:calc(var(--nav-h) + 3rem) var(--section-px) 4rem;overflow:hidden;text-align:center}
@@ -1712,11 +1709,6 @@ window.onerror=function(msg,src,line,col,err){
       </div>
     </div>
 
-    <div class="reveal" style="margin-top:clamp(1.5rem,3vw,2.5rem)">
-      <div class="about-photo-wrap">
-        <img class="about-photo" loading="lazy" src="img/about_photo.webp" alt="Mika Schöberl — Munich Witchcraft" width="900" height="467">
-      </div>
-    </div>
 
     </div>
   </div>
@@ -1858,7 +1850,7 @@ window.onerror=function(msg,src,line,col,err){
 <!-- BOOKS -->
 <section class="books" id="books">
   <div class="books-inner">
-    <div class="reveal"><div class="label">Veröffentlichungen</div><h2>Geschriebenes.<br><em>Gewachsenes.</em></h2></div>
+    <div class="reveal"><div class="label">Veröffentlichungen</div><div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" loading="lazy" src="img/about_photo.webp" alt="" style="object-position:center 30%"><h2>Geschriebenes.<br><em>Gewachsenes.</em></h2></div></div>
 
     <div class="book-item book-gruen reveal">
       <div class="book-cover">
