@@ -131,7 +131,7 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 }
 
 /* === FAQ SECTION === */
-.faq{padding:clamp(4rem,10vw,9rem) var(--section-px);position:relative;z-index:2}
+.faq{padding:clamp(4rem,10vw,9rem) var(--section-px);position:relative;z-index:2;background:linear-gradient(180deg,rgba(25,15,28,.5) 0%,rgba(30,18,32,.45) 100%)}
 .faq-inner{max-width:780px;margin:0 auto;background:rgba(120,50,100,.18);border:1px solid rgba(160,70,130,.2);border-radius:16px;padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3vw,2.5rem);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 0 40px rgba(120,50,100,.08),inset 0 0 60px rgba(120,50,100,.05)}
 .faq-item{border-bottom:1px solid rgba(180,100,160,.15);overflow:hidden}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:clamp(1.2rem,2.5vw,2rem) 0;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .3s}
@@ -393,7 +393,7 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .values .val:nth-child(4){background:linear-gradient(145deg,#060818,#0a1028,#080c22,#040610)}
 
 /* === PROCESS === */
-.process{padding:clamp(4rem,8vw,7.5rem) var(--section-px);position:relative;z-index:2;background:transparent;overflow:hidden}
+.process{padding:clamp(4rem,8vw,7.5rem) var(--section-px);position:relative;z-index:2;background:linear-gradient(180deg,transparent 0%,rgba(15,18,35,.4) 100%);overflow:hidden}
 .process-leaves{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .process-leaves .folklore-leaf{position:absolute;opacity:0;will-change:transform,opacity}
 .process-leaves .folklore-leaf.active{opacity:1;transition:none}
@@ -418,7 +418,7 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .step-d{font-family:var(--sans);font-size:clamp(.85rem,1vw,.92rem);font-weight:300;line-height:1.9;color:var(--cream-dim);text-shadow:0 0 20px rgba(8,8,7,.85),0 0 40px rgba(8,8,7,.5)}
 
 /* === CONTACT === */
-.contact{padding:clamp(4rem,8vw,8.5rem) var(--section-px);text-align:center;position:relative;z-index:2;overflow:hidden;background:transparent}
+.contact{padding:clamp(4rem,8vw,8.5rem) var(--section-px);text-align:center;position:relative;z-index:2;overflow:hidden;background:linear-gradient(180deg,rgba(30,18,32,.45) 0%,rgba(35,20,35,.5) 100%)}
 .contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(37,51,35,.25) 0%,transparent 65%);pointer-events:none}
 .contact-portrait{width:clamp(200px,35vw,320px);height:clamp(200px,35vw,320px);border-radius:50%;object-fit:cover;object-position:center 20%;margin:0 auto clamp(2rem,4vw,3rem);display:block;opacity:.85;
   filter:grayscale(10%) contrast(1.05) brightness(.95);
@@ -456,7 +456,7 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 @media(max-width:768px){.collab-row{flex-direction:column}.collab-item{border-left:none;border-right:none}}
 
 /* === LEGAL === */
-.legal{background:rgba(6,6,5,.85);position:relative;z-index:2;padding:clamp(3rem,6vw,6rem) var(--section-px)}
+.legal{background:linear-gradient(180deg,rgba(35,20,35,.5) 0%,rgba(20,12,22,.85) 100%);position:relative;z-index:2;padding:clamp(3rem,6vw,6rem) var(--section-px)}
 .legal-inner{max-width:800px;margin:0 auto}
 .legal-tabs{display:flex;margin-bottom:3rem;border-bottom:1px solid rgba(201,169,110,.1);gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .legal-tab{font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);padding:.8rem 1.5rem .8rem 0;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .3s,border-color .3s;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
@@ -468,7 +468,9 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .legal-content a{color:var(--gold);text-decoration:none}
 
 /* === FOOTER === */
-footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;position:relative;z-index:2}
+.alps-silhouette{position:relative;z-index:2;width:100%;overflow:hidden;line-height:0;margin-bottom:-1px}
+.alps-silhouette svg{width:100%;height:auto;display:block;filter:drop-shadow(0 -2px 8px rgba(60,40,70,.3))}
+footer{border-top:none;padding:clamp(2rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;position:relative;z-index:2;background:linear-gradient(180deg,rgba(12,8,18,1) 0%,rgba(8,6,12,1) 100%)}
 @media(min-width:769px){footer{flex-direction:row;justify-content:space-between;text-align:left}}
 .footer-brand{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--cream-dim);letter-spacing:.08em}
 .footer-brand span{color:var(--gold)}
@@ -632,7 +634,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .manifest-heading.flash-bg::before{animation:lightningGlow 7s ease-in-out 2s infinite}
 
 /* === MANIFEST / ESSAY === */
-.manifest{position:relative;z-index:2;overflow:hidden}
+.manifest{position:relative;z-index:2;overflow:hidden;background:linear-gradient(180deg,rgba(15,18,35,.4) 0%,rgba(20,15,30,.5) 100%)}
 .manifest-leaves{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .manifest-leaves .folklore-leaf{position:absolute;opacity:0;will-change:transform,opacity}
 .manifest-leaves .folklore-leaf.active{opacity:1;transition:none}
@@ -1054,7 +1056,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 
 /* === MUSIC SECTION === */
-.music-section{position:relative;z-index:2;padding:clamp(4rem,10vw,8rem) var(--section-px);overflow:hidden}
+.music-section{position:relative;z-index:2;padding:clamp(4rem,10vw,8rem) var(--section-px);overflow:hidden;background:linear-gradient(180deg,rgba(20,15,30,.5) 0%,rgba(25,15,28,.5) 100%)}
 .music-inner{display:flex;align-items:center;justify-content:center;gap:clamp(2rem,5vw,4rem);max-width:900px;margin:0 auto;position:relative}
 .music-creature{flex:0 0 auto;width:clamp(180px,28vw,280px);position:relative;animation:creatureFloat 8s ease-in-out infinite}
 .music-creature img{width:100%;height:auto;filter:drop-shadow(0 0 30px rgba(201,169,110,.2)) drop-shadow(0 0 60px rgba(8,8,7,.4));mix-blend-mode:screen}
@@ -2532,6 +2534,20 @@ window.onerror=function(msg,src,line,col,err){
     </div>
   </div>
 </section>
+
+<!-- ALPS SILHOUETTE -->
+<div class="alps-silhouette">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="alpsGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(45,30,50,.6)"/>
+        <stop offset="100%" stop-color="rgba(12,8,18,1)"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 120 L0 85 Q20 82,40 78 L80 65 L110 72 L145 48 L170 55 L200 38 L225 52 L260 30 L285 42 L310 25 L340 45 L365 32 L390 50 L420 22 L445 35 L470 18 L495 28 L520 15 L540 25 L565 42 L585 35 L610 48 L640 28 L665 40 L690 20 L710 32 L735 12 L755 22 L780 35 L800 28 L825 45 L850 18 L870 30 L895 42 L920 25 L945 38 L970 48 L990 35 L1015 55 L1040 40 L1065 52 L1090 32 L1115 45 L1140 58 L1160 48 L1185 62 L1210 52 L1240 65 L1270 55 L1300 68 L1330 60 L1360 72 L1390 65 L1420 75 L1440 80 L1440 120 Z" fill="url(#alpsGrad)"/>
+    <path d="M0 120 L0 95 Q30 92,60 88 L100 80 L140 72 L170 78 L210 62 L240 70 L275 55 L300 65 L330 50 L360 60 L390 45 L415 55 L445 40 L475 50 L505 35 L530 48 L560 55 L590 48 L620 60 L650 45 L680 55 L710 42 L740 52 L770 60 L800 50 L830 62 L860 48 L890 58 L920 45 L950 55 L980 62 L1010 52 L1040 65 L1070 55 L1100 68 L1130 60 L1160 70 L1190 62 L1220 75 L1250 68 L1280 78 L1310 72 L1340 82 L1370 78 L1400 85 L1440 90 L1440 120 Z" fill="rgba(12,8,18,1)"/>
+  </svg>
+</div>
 
 <!-- FOOTER -->
 <footer>
