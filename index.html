@@ -351,6 +351,10 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .about-right p{font-family:var(--sans);font-size:clamp(.92rem,1.1vw,1rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:1.2rem}
 .about-right a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.3);transition:border-color .3s}
 .about-right a:hover{border-color:var(--gold)}
+.about-bio-block{max-width:640px;margin:clamp(1.5rem,3vw,2.5rem) auto;padding:clamp(1.5rem,3vw,2.5rem) clamp(1.8rem,4vw,3rem);border-left:2px solid rgba(201,169,110,.2);border-right:2px solid rgba(201,169,110,.2);background:linear-gradient(135deg,rgba(201,169,110,.03),rgba(37,51,35,.06));border-radius:4px}
+.about-bio-block p{font-family:var(--serif);font-size:clamp(1rem,1.3vw,1.12rem);font-weight:300;line-height:2;color:var(--cream);letter-spacing:.01em;margin-bottom:0;text-align:center;font-style:italic}
+.about-bio-closing{margin-top:clamp(1rem,2vw,1.5rem)!important;color:var(--white)!important;font-style:normal!important;font-size:clamp(1.05rem,1.4vw,1.18rem)!important;letter-spacing:.03em}
+.about-bio-link{margin-top:clamp(.8rem,1.5vw,1.2rem)!important;font-family:var(--sans)!important;font-size:clamp(.78rem,.95vw,.88rem)!important;font-style:normal!important;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim)!important;opacity:.5}
 .about-gallery{margin-top:clamp(2rem,4vw,3rem)}
 .about-gallery .gallery-more{max-height:0;overflow:hidden;opacity:0;transition:max-height 1.2s cubic-bezier(.25,.46,.45,.94),opacity .8s ease}
 .about-gallery .gallery-more.open{max-height:400px;opacity:1}
@@ -1698,9 +1702,11 @@ window.onerror=function(msg,src,line,col,err){
     <div class="about-right reveal">
       <div class="label">Über mich</div>
       <div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" src="img/img_14.png" alt="" loading="lazy"><h2>Verwurzelt.<br><em>Aufmerksam. Ehrlich.</em></h2></div>
-      <p>Ich bin Mika Schöberl — Buchautor*in, Kräuterpädagog*in, Theolog*in. Meine Arbeit verbindet Natur, Spiritualität, Psychologie und Kreativität. Mehr über mich findest du auf <a href="https://funkenfangen.com/elementor-2841/" target="_blank" rel="noopener">funkenfangen.com</a>.</p>
-      <p>Für Munich Witchcraft bringe ich all das zusammen: symbolisches Denken, tiefes Zuhören und die stille Intelligenz der Natur — in einem Raum ohne Klischees.</p>
-      <p>Meine Haltung ist klar: Ich gebe dir keine Antworten, die nicht schon in dir sind. Ich helfe dir nur, den Weg dorthin zu finden.</p>
+      <div class="about-bio-block">
+        <p>Ich bin Mika Schöberl — Buchautor*in, Kräuterpädagog*in, Theolog*in. Meine Arbeit verbindet Natur, Spiritualität, Psychologie und Kreativität. Für Munich Witchcraft bringe ich all das zusammen: symbolisches Denken, tiefes Zuhören und die stille Intelligenz der Natur — in einem Raum ohne Klischees.</p>
+        <p class="about-bio-closing">Meine Haltung ist klar: Ich gebe dir keine Antworten, die nicht schon in dir sind. Ich helfe dir nur, den Weg dorthin zu finden.</p>
+        <p class="about-bio-link">Mehr über mich auf <a href="https://funkenfangen.com/elementor-2841/" target="_blank" rel="noopener">funkenfangen.com</a></p>
+      </div>
       <div class="values">
         <div class="val"><span class="val-glyph">⌁</span><h4>Tiefenanalytisch</h4><p>Arbeit mit Symbolen, Träumen und inneren Bildern — stets verbunden mit deiner gelebten Realität.</p></div>
         <div class="val"><span class="val-glyph">≀</span><h4>Naturverbundenheit</h4><p>Jahreszeiten, Pflanzen und Garten als Spiegel innerer Prozesse — die Natur als stille Lehrer*in.</p></div>
