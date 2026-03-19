@@ -834,7 +834,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .portrait-circle{width:clamp(80px,12vw,120px);height:clamp(80px,12vw,120px);border-radius:50%;border:2px solid rgba(201,169,110,.45);box-shadow:0 0 15px rgba(201,169,110,.25),0 0 30px rgba(201,169,110,.1);object-fit:cover;flex-shrink:0;opacity:1;transition:opacity .4s}
 .portrait-circle:hover{opacity:1}
 .intro-pull-wrap{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);justify-content:center}
-.about-portrait-wrap{display:flex;align-items:flex-start;gap:clamp(1.2rem,2vw,1.8rem)}
+.about-portrait-wrap{display:flex;align-items:flex-start;gap:clamp(1.2rem,2vw,1.8rem);justify-content:center}
 .about-portrait-wrap .portrait-circle{width:clamp(160px,24vw,240px);height:clamp(160px,24vw,240px)}
 .about-portrait-wrap h2{margin:0}
 .manifest-closing-inner{display:flex;align-items:center;gap:clamp(1rem,2vw,1.5rem);justify-content:center;margin-bottom:1.5rem}
@@ -1694,10 +1694,10 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 <section class="about" id="about">
-  <div class="about-grid">
+  <div class="about-grid" style="grid-template-columns:1fr;max-width:800px;text-align:center">
     <div class="about-right reveal">
       <div class="label">Über mich</div>
-      <div class="about-portrait-wrap"><img class="portrait-circle" src="img/img_14.png" alt="" loading="lazy"><h2>Verwurzelt.<br><em>Aufmerksam. Ehrlich.</em></h2></div>
+      <div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" src="img/img_14.png" alt="" loading="lazy"><h2>Verwurzelt.<br><em>Aufmerksam. Ehrlich.</em></h2></div>
       <p>Ich bin Mika Schöberl — Buchautor*in, Kräuterpädagog*in, Theolog*in. Meine Arbeit verbindet Natur, Spiritualität, Psychologie und Kreativität. Mehr über mich findest du auf <a href="https://funkenfangen.com/elementor-2841/" target="_blank" rel="noopener">funkenfangen.com</a>.</p>
       <p>Für Munich Witchcraft bringe ich all das zusammen: symbolisches Denken, tiefes Zuhören und die stille Intelligenz der Natur — in einem Raum ohne Klischees.</p>
       <p>Meine Haltung ist klar: Ich gebe dir keine Antworten, die nicht schon in dir sind. Ich helfe dir nur, den Weg dorthin zu finden.</p>
