@@ -404,39 +404,108 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .pw-shake{animation:pwShake .5s ease}
 .pw-gate-field input.pw-error{border-color:#a03030;box-shadow:0 2px 20px rgba(160,48,48,.3)}
 
-/* === LYRIC INTRO OVERLAY === */
-.lyric-intro{position:fixed;inset:0;z-index:9998;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.5s ease;overflow:hidden}
+/* === LYRIC INTRO OVERLAY — EYE OPENING === */
+.lyric-intro{position:fixed;inset:0;z-index:9998;background:var(--ink);transition:opacity 1.5s ease;overflow:hidden}
 .lyric-intro.hidden{opacity:0;pointer-events:none}
-.lyric-line{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:900px;opacity:0;transition:opacity 1s ease;pointer-events:none}
-.lyric-line.active{opacity:1}
-.lyric-line.lyric-serif{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream)}
-.lyric-line.lyric-sans{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.25em;color:var(--cream-dim)}
-.lyric-line.lyric-gold{color:var(--gold);text-shadow:0 0 40px rgba(201,169,110,.5),0 0 80px rgba(201,169,110,.2)}
-.lyric-line.lyric-huge{font-size:clamp(3rem,8vw,7rem)}
-.lyric-line.lyric-large{font-size:clamp(2rem,5vw,4rem)}
-.lyric-line.lyric-med{font-size:clamp(1.4rem,3vw,2.5rem)}
-.lyric-line.lyric-small{font-size:clamp(.8rem,1.2vw,1rem)}
-.lyric-line.lyric-glow{text-shadow:0 0 30px rgba(201,169,110,.6),0 0 60px rgba(201,169,110,.3),0 0 120px rgba(201,169,110,.1)}
 
-/* Info cards (Schritt) */
-.lyric-line.lyric-card{display:flex;flex-direction:column;align-items:center;gap:.8rem}
-.lyric-card-step{font-family:var(--sans);font-size:clamp(.65rem,.9vw,.78rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8}
-.lyric-card-text{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dim);line-height:1.7;max-width:550px}
+/* Eye container & slit — dramatic redesign */
+.eye-container{position:fixed;inset:0;z-index:1;overflow:hidden}
+
+/* The eye opening — layered for glow */
+.eye-slit{position:absolute;inset:0;background:#080807;transition:clip-path 2s cubic-bezier(.4,0,.2,1)}
+.eye-slit::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.25) 0%,rgba(201,169,110,.08) 30%,transparent 60%);opacity:0;transition:opacity 2s}
+.eye-slit::after{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg at 50% 50%,transparent 0%,rgba(201,169,110,.06) 25%,transparent 50%,rgba(201,169,110,.06) 75%,transparent 100%);animation:eyeRays 8s linear infinite;opacity:0;transition:opacity 3s}
+@keyframes eyeRays{to{transform:rotate(360deg)}}
+
+/* Phase classes — applied directly to .eye-slit */
+.eye-slit.phase-dot{clip-path:ellipse(1% 1% at 50% 50%)}
+.eye-slit.phase-dot::before{opacity:1}
+.eye-slit.phase-slit{clip-path:ellipse(1.5% 20% at 50% 50%)}
+.eye-slit.phase-slit::before{opacity:1}
+.eye-slit.phase-opening{clip-path:ellipse(12% 30% at 50% 50%)}
+.eye-slit.phase-opening::before,.eye-slit.phase-opening::after{opacity:1}
+.eye-slit.phase-wide{clip-path:ellipse(25% 40% at 50% 50%)}
+.eye-slit.phase-wide::before,.eye-slit.phase-wide::after{opacity:1}
+.eye-slit.phase-full{clip-path:ellipse(60% 55% at 50% 50%)}
+.eye-slit.phase-full::before,.eye-slit.phase-full::after{opacity:1}
+.eye-slit.phase-bright{clip-path:ellipse(70% 65% at 50% 50%)}
+
+/* Bright rim around the eye opening */
+.eye-rim{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80vmin;height:80vmin;border-radius:50%;pointer-events:none;opacity:0;transition:opacity 1.5s}
+.eye-rim-inner{width:100%;height:100%;border-radius:50%;border:2px solid rgba(201,169,110,.6);box-shadow:0 0 30px rgba(201,169,110,.4),0 0 60px rgba(201,169,110,.2),0 0 120px rgba(201,169,110,.1),inset 0 0 30px rgba(201,169,110,.15);animation:rimPulse 3s ease-in-out infinite}
+@keyframes rimPulse{0%,100%{box-shadow:0 0 30px rgba(201,169,110,.4),0 0 60px rgba(201,169,110,.2),0 0 120px rgba(201,169,110,.1),inset 0 0 30px rgba(201,169,110,.15)}50%{box-shadow:0 0 50px rgba(201,169,110,.6),0 0 100px rgba(201,169,110,.3),0 0 180px rgba(201,169,110,.15),inset 0 0 50px rgba(201,169,110,.25)}}
+
+/* Golden seed — brighter */
+.eye-seed{position:absolute;top:50%;left:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--gold);box-shadow:0 0 20px rgba(201,169,110,.8),0 0 40px rgba(201,169,110,.4),0 0 80px rgba(201,169,110,.2);opacity:0;transition:all 1.5s;z-index:5}
+.eye-seed.visible{opacity:1}
+.eye-seed.stretch{width:4px;height:40vh;border-radius:2px;box-shadow:0 0 30px rgba(201,169,110,.9),0 0 60px rgba(201,169,110,.5),0 0 120px rgba(201,169,110,.2)}
+
+/* Storm vortex — much more visible */
+.eye-vortex{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(80vw,80vh);height:min(80vw,80vh);pointer-events:none}
+.eye-vortex svg{width:100%;height:100%;overflow:visible}
+.eye-vortex .v-ring{fill:none;transform-origin:center;filter:drop-shadow(0 0 4px rgba(201,169,110,.3))}
+.eye-vortex .v-ring-1{stroke:rgba(201,169,110,.15);stroke-width:1;animation:vortexSpin 20s linear infinite}
+.eye-vortex .v-ring-2{stroke:rgba(201,169,110,.2);stroke-width:1.5;animation:vortexSpinR 15s linear infinite}
+.eye-vortex .v-ring-3{stroke:rgba(201,169,110,.3);stroke-width:1;animation:vortexSpin 11s linear infinite}
+.eye-vortex .v-ring-4{stroke:rgba(201,169,110,.35);stroke-width:1.5;animation:vortexSpinR 8s linear infinite}
+.eye-vortex .v-ring-5{stroke:rgba(201,169,110,.25);stroke-width:.8;animation:vortexSpin 14s linear infinite}
+.eye-vortex .v-ring-6{stroke:rgba(201,169,110,.4);stroke-width:1;animation:vortexSpinR 6s linear infinite}
+/* Core glow */
+.eye-vortex .v-core{fill:none;stroke:rgba(201,169,110,.5);stroke-width:2;animation:vortexSpin 4s linear infinite;filter:drop-shadow(0 0 15px rgba(201,169,110,.6))}
+.eye-vortex .v-glow{fill:rgba(201,169,110,.08);animation:vortexPulse 3s ease-in-out infinite}
+
+/* Particles — brighter, more visible */
+.eye-particles{position:absolute;inset:0;pointer-events:none;z-index:3}
+.eye-particle{position:absolute;border-radius:50%;background:var(--gold);opacity:0}
+@keyframes particleDrift{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:.8}80%{opacity:.4}100%{opacity:0;transform:translate(var(--px,100px),var(--py,-80px)) scale(0)}}
+
+/* Central text display */
+.eye-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:900px;z-index:10;pointer-events:none}
+.eye-text-inner{opacity:0;transition:opacity .8s ease,transform .8s ease;transform:scale(.92)}
+.eye-text-inner.active{opacity:1;transform:scale(1)}
+
+/* Text style variants */
+.eye-text-inner.t-serif{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream)}
+.eye-text-inner.t-sans{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.25em;color:var(--cream-dim)}
+.eye-text-inner.t-gold{color:var(--gold);text-shadow:0 0 40px rgba(201,169,110,.5),0 0 80px rgba(201,169,110,.2)}
+.eye-text-inner.t-glow{text-shadow:0 0 30px rgba(201,169,110,.6),0 0 60px rgba(201,169,110,.3),0 0 120px rgba(201,169,110,.1)}
+.eye-text-inner.t-huge{font-size:clamp(3rem,8vw,7rem)}
+.eye-text-inner.t-large{font-size:clamp(2rem,5vw,4rem)}
+.eye-text-inner.t-med{font-size:clamp(1.4rem,3vw,2.5rem)}
+
+/* Step cards */
+.eye-text-inner.t-card{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.eye-card-step{font-family:var(--sans);font-size:clamp(.65rem,.9vw,.78rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.eye-card-text{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dim);line-height:1.7;max-width:550px}
+
+/* Lightning — brighter */
+.eye-lightning{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .5s}
+.eye-lightning.active{opacity:1}
+@keyframes eyeLightningFlash{0%{opacity:0}5%{opacity:1}10%{opacity:.1}15%{opacity:.7}20%{opacity:0}100%{opacity:0}}
+
+/* Background flash */
+.eye-flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.15) 0%,transparent 70%);opacity:0;pointer-events:none;z-index:0}
+@keyframes bgFlash{0%{opacity:0}10%{opacity:1}30%{opacity:.2}50%{opacity:.6}100%{opacity:0}}
 
 /* Bottom lyric bar */
-.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;padding:1rem 2rem;text-align:center;font-family:var(--serif);font-size:clamp(.8rem,1.1vw,.95rem);font-style:italic;font-weight:300;color:var(--cream-dim);opacity:.4;background:linear-gradient(to top,rgba(8,8,7,.8),transparent);pointer-events:none;transition:opacity .6s}
+.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:1rem 2rem;text-align:center;font-family:var(--serif);font-size:clamp(.8rem,1.1vw,.95rem);font-style:italic;font-weight:300;color:var(--cream-dim);opacity:.4;background:linear-gradient(to top,rgba(8,8,7,.8),transparent);pointer-events:none;transition:opacity .6s}
 .lyric-bar.hidden{opacity:0}
 
 /* Spotify link */
-.lyric-spotify{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.8rem;font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;color:var(--gold-dim);text-decoration:none;opacity:0;transition:opacity 1s ease;letter-spacing:.06em}
+.lyric-spotify{display:flex;align-items:center;justify-content:center;gap:.8rem;font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;color:var(--gold-dim);text-decoration:none;opacity:0;transition:opacity 1s ease;letter-spacing:.06em;margin-top:1rem}
 .lyric-spotify.active{opacity:1}
 .lyric-spotify:hover{color:var(--gold)}
 .lyric-spotify svg{width:20px;height:20px;fill:var(--gold-dim);transition:fill .3s}
 .lyric-spotify:hover svg{fill:var(--gold)}
 
 /* Skip button */
-.lyric-skip{position:fixed;bottom:2.5rem;right:2rem;z-index:9998;font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.5rem}
+.lyric-skip{position:fixed;bottom:2.5rem;right:2rem;z-index:9999;font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.5rem}
 .lyric-skip:hover{opacity:.8;color:var(--gold)}
+
+/* perf-lite fallback: simpler eye, no particles */
+.perf-lite .eye-particles{display:none}
+.perf-lite .eye-slit::after{display:none}
+.perf-lite .eye-vortex .v-ring{animation-duration:30s}
 
 /* Main content hidden during intro */
 .main-hidden{opacity:0!important;pointer-events:none!important}
@@ -455,36 +524,34 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
 </div>
 
-<!-- LYRIC INTRO OVERLAY -->
+<!-- LYRIC INTRO OVERLAY — EYE OPENING -->
 <div class="lyric-intro hidden" id="lyricIntro">
-  <div class="lyric-line lyric-serif lyric-large" data-lyric="0">City pulls, beating heart</div>
-  <div class="lyric-line lyric-sans lyric-med" data-lyric="1">casting spells, work of art</div>
-  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="2">breaking chains, shattering norms</div>
-  <div class="lyric-line lyric-serif lyric-huge lyric-glow" data-lyric="3">I am the magic, eye of the storm</div>
-  <div class="lyric-line lyric-card" data-lyric="4">
-    <span class="lyric-card-step">Schritt 1</span>
-    <span class="lyric-card-text">F&uuml;lle den Pers&ouml;nlichkeitstest aus &mdash; 115 S&auml;tze, vor unserer Begegnung</span>
+  <!-- Eye structure -->
+  <div class="eye-container">
+    <div class="eye-slit" id="eyeSlit">
+      <div class="eye-flash" id="eyeFlash"></div>
+      <div class="eye-vortex" id="eyeVortex">
+        <svg viewBox="0 0 400 400">
+          <circle class="v-ring v-ring-1" cx="200" cy="200" r="190"/>
+          <circle class="v-ring v-ring-2" cx="200" cy="200" r="165"/>
+          <circle class="v-ring v-ring-3" cx="200" cy="200" r="140"/>
+          <circle class="v-ring v-ring-4" cx="200" cy="200" r="115"/>
+          <circle class="v-ring v-ring-5" cx="200" cy="200" r="90"/>
+          <circle class="v-ring v-ring-6" cx="200" cy="200" r="65"/>
+          <circle class="v-core" cx="200" cy="200" r="35"/>
+          <circle class="v-glow" cx="200" cy="200" r="25"/>
+        </svg>
+      </div>
+      <div class="eye-rim" id="eyeRim"><div class="eye-rim-inner"></div></div>
+      <div class="eye-seed" id="eyeSeed"></div>
+      <div class="eye-particles" id="eyeParticles"></div>
+      <div class="eye-lightning" id="eyeLightning"></div>
+    </div>
   </div>
-  <div class="lyric-line lyric-serif lyric-huge lyric-gold lyric-glow" data-lyric="5">Waking the witch</div>
-  <div class="lyric-line lyric-sans lyric-med" data-lyric="6">Rise before the tide</div>
-  <div class="lyric-line lyric-serif lyric-large" data-lyric="7">before I rise, before I fall</div>
-  <div class="lyric-line lyric-card" data-lyric="8">
-    <span class="lyric-card-step">Schritt 2</span>
-    <span class="lyric-card-text">&Uuml;bermittle deine Geburtsdaten und 1&ndash;3 Fragen per E-Mail oder WhatsApp</span>
+  <!-- Central text display (replaced at each timestamp) -->
+  <div class="eye-text" id="eyeText">
+    <div class="eye-text-inner" id="eyeTextInner"></div>
   </div>
-  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="9">Flowers blooming, change my name</div>
-  <div class="lyric-line lyric-sans lyric-med" data-lyric="10">the witch remains, yet not the same</div>
-  <div class="lyric-line lyric-card" data-lyric="11">
-    <span class="lyric-card-step">Schritt 3</span>
-    <span class="lyric-card-text">Lies die Homepage aufmerksam &mdash; je tiefer du einsteigst, desto tiefer k&ouml;nnen wir arbeiten</span>
-  </div>
-  <div class="lyric-line lyric-serif lyric-med" data-lyric="12">The magic courses through each vein</div>
-  <div class="lyric-line lyric-serif lyric-huge lyric-gold lyric-glow" data-lyric="13">Waking the witch</div>
-  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="14">Dein Termin wartet.</div>
-  <a class="lyric-spotify" id="lyricSpotify" data-lyric="15" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-    Waking the Witch &middot; Summerchild &middot; auf Spotify
-  </a>
 </div>
 <div class="lyric-bar hidden" id="lyricBar"></div>
 <button class="lyric-skip hidden" id="lyricSkip">&Uuml;berspringen &rarr;</button>
@@ -1293,8 +1360,18 @@ function tCopy(){
   var lyricBar=document.getElementById('lyricBar');
   var lyricSkip=document.getElementById('lyricSkip');
   var introAudio=document.getElementById('introAudio');
-  var lyricSpotify=document.getElementById('lyricSpotify');
   var PASSWORD='wakingthewitch';
+
+  /* Eye elements */
+  var eyeSlit=document.getElementById('eyeSlit');
+  var eyeSeed=document.getElementById('eyeSeed');
+  var eyeVortex=document.getElementById('eyeVortex');
+  var eyeParticles=document.getElementById('eyeParticles');
+  var eyeLightning=document.getElementById('eyeLightning');
+  var eyeRim=document.getElementById('eyeRim');
+  var eyeFlash=document.getElementById('eyeFlash');
+  var eyeTextInner=document.getElementById('eyeTextInner');
+  var isPerfLite=document.documentElement.classList.contains('perf-lite');
 
   /* Hide main page content */
   var mainEls=document.querySelectorAll('.starfield-bg,.moon,.isar,.session-hero,nav,.moon-nav,.sep-constellation,section,footer,.session-portrait-wrap');
@@ -1304,7 +1381,6 @@ function tCopy(){
       el.classList.remove('main-hidden');
       el.classList.add('main-revealed');
     });
-    /* Re-trigger reveal observer for elements that may have been missed */
     if(window._revealObs){
       document.querySelectorAll('.reveal:not(.visible)').forEach(function(e){window._revealObs.observe(e)});
     }
@@ -1313,7 +1389,7 @@ function tCopy(){
   /* Check sessionStorage */
   if(sessionStorage.getItem('mw-session-auth')==='1'){
     gate.style.display='none';
-    return; /* skip gate and intro, show page normally */
+    return;
   }
 
   hideMain();
@@ -1338,65 +1414,140 @@ function tCopy(){
   pwBtn.addEventListener('click',checkPassword);
   pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword()});
 
-  /* === LYRIC INTRO SEQUENCE === */
+  /* === EYE OPENING INTRO SEQUENCE === */
   function startIntro(){
     lyricIntro.classList.remove('hidden');
     lyricBar.classList.remove('hidden');
     lyricSkip.classList.remove('hidden');
 
-    /* Try to play audio */
-    var audioPlaying=false;
-    try{
-      var playPromise=introAudio.play();
-      if(playPromise&&playPromise.then){
-        playPromise.then(function(){audioPlaying=true}).catch(function(){audioPlaying=false});
-      }
-    }catch(e){audioPlaying=false}
-
-    var lines=lyricIntro.querySelectorAll('[data-lyric]');
-    var totalLines=lines.length; /* 16 items: 0-15 */
-    var songDur=180; /* fallback */
-    var currentLine=-1;
-    var introTimer=null;
     var introRunning=true;
+    var audioPlaying=false;
+    var lastShownIdx=-1;
+    var particleInterval=null;
+    var fallbackTimers=[];
 
-    /* Lyric text for bottom bar */
-    var barTexts=[
-      'City pulls, beating heart',
-      'casting spells, work of art',
-      'breaking chains, shattering norms',
-      'I am the magic, eye of the storm',
-      '',
-      'Waking the witch',
-      'Rise before the tide',
-      'before I rise, before I fall',
-      '',
-      'Flowers blooming, change my name',
-      'the witch remains, yet not the same',
-      '',
-      'The magic courses through each vein',
-      'Waking the witch',
-      '',
-      ''
+    /* Exact timestamps from sync tool */
+    var lyricTimestamps=[23.7,28.9,34.0,42.5,54.1,73.0,79.2,107.1,112.4,119.3,127.4];
+
+    /* Step card timestamps (between lyric groups) */
+    var stepTimestamps=[
+      {t:62,html:'<span class="eye-card-step">Schritt 1</span><span class="eye-card-text">F\u00fclle den Pers\u00f6nlichkeitstest aus \u2014 115 S\u00e4tze, vor unserer Begegnung</span>',cls:'t-card'},
+      {t:88,html:'<span class="eye-card-step">Schritt 2</span><span class="eye-card-text">\u00dcbermittle deine Geburtsdaten und 1\u20133 Fragen per E-Mail oder WhatsApp</span>',cls:'t-card'},
+      {t:98,html:'<span class="eye-card-step">Schritt 3</span><span class="eye-card-text">Deine 1\u20133 Fragen, die dich zur Hexe f\u00fchren \u2014 kurz und knapp per E-Mail</span>',cls:'t-card'}
     ];
 
-    function showLine(idx){
-      if(!introRunning)return;
-      /* Hide all */
-      for(var i=0;i<lines.length;i++){
-        lines[i].classList.remove('active');
-      }
-      if(idx>=0&&idx<lines.length){
-        lines[idx].classList.add('active');
-        currentLine=idx;
-        lyricBar.textContent=barTexts[idx]||'';
+    /* Lyric display configs: text, CSS classes, bar text */
+    var lyricConfigs=[
+      {text:'City pulls, beating heart',cls:'t-serif t-large',bar:'City pulls, beating heart'},
+      {text:'casting spells, work of art',cls:'t-sans t-med',bar:'casting spells, work of art'},
+      {text:'breaking chains, shattering norms',cls:'t-serif t-large t-gold',bar:'breaking chains, shattering norms'},
+      {text:'I am the magic, eye of the storm',cls:'t-serif t-huge t-glow',bar:'I am the magic, eye of the storm'},
+      {text:'Waking the witch\u2026',cls:'t-serif t-huge t-gold t-glow',bar:'Waking the witch'},
+      {text:'Rise before the tide',cls:'t-sans t-med',bar:'Rise before the tide'},
+      {text:'before I rise, before I fall',cls:'t-serif t-large',bar:'before I rise, before I fall'},
+      {text:'Flowers blooming, change my name',cls:'t-serif t-large t-gold',bar:'Flowers blooming, change my name'},
+      {text:'the witch remains, yet not the same',cls:'t-sans t-med',bar:'the witch remains, yet not the same'},
+      {text:'The magic courses through each vein',cls:'t-serif t-large',bar:'The magic courses through each vein'},
+      {text:'waking the witch\u2026',cls:'t-serif t-huge t-gold t-glow',bar:'waking the witch\u2026'}
+    ];
+
+    /* Eye phase mapping: which eye phase for each lyric index */
+    var eyePhases=['phase-opening','phase-opening','phase-wide','phase-full','phase-full','phase-full','phase-full','phase-full','phase-full','phase-full','phase-bright'];
+
+    /* --- Particle spawning — more dramatic spiral outward --- */
+    function spawnParticle(){
+      if(isPerfLite||!introRunning)return;
+      var p=document.createElement('div');
+      p.className='eye-particle';
+      var cx=window.innerWidth/2;
+      var cy=window.innerHeight/2;
+      var angle=Math.random()*Math.PI*2;
+      var dist=15+Math.random()*40;
+      var size=2+Math.random()*3;
+      p.style.width=size+'px';
+      p.style.height=size+'px';
+      p.style.left=(cx+Math.cos(angle)*dist)+'px';
+      p.style.top=(cy+Math.sin(angle)*dist)+'px';
+      p.style.setProperty('--px',(Math.cos(angle)*(80+Math.random()*120))+'px');
+      p.style.setProperty('--py',(Math.sin(angle)*(80+Math.random()*120))+'px');
+      p.style.animation='particleDrift '+(2+Math.random()*3)+'s ease-out forwards';
+      eyeParticles.appendChild(p);
+      setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p)},5500);
+    }
+    /* Spawn a burst of particles */
+    function spawnParticleBurst(count){
+      for(var i=0;i<count;i++){
+        setTimeout(spawnParticle,i*50);
       }
     }
 
+    /* --- Show text in center --- */
+    function showText(html,cls){
+      if(!introRunning)return;
+      eyeTextInner.classList.remove('active');
+      setTimeout(function(){
+        if(!introRunning)return;
+        eyeTextInner.className='eye-text-inner '+cls;
+        eyeTextInner.innerHTML=html;
+        /* Force reflow */
+        void eyeTextInner.offsetWidth;
+        eyeTextInner.classList.add('active');
+      },150);
+    }
+
+    /* --- Lightning flash — dramatic with SVG bolts + background flash --- */
+    function flashLightning(){
+      if(!introRunning)return;
+      /* Background flash */
+      eyeFlash.style.animation='none';
+      void eyeFlash.offsetWidth;
+      eyeFlash.style.animation='bgFlash 1.5s ease-out forwards';
+      /* Generate SVG lightning bolts around the eye */
+      var cx=200,cy=200;
+      var boltCount=4+Math.floor(Math.random()*3);
+      var svgNS='http://www.w3.org/2000/svg';
+      var svg=document.createElementNS(svgNS,'svg');
+      svg.setAttribute('viewBox','0 0 400 400');
+      svg.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4';
+      for(var b=0;b<boltCount;b++){
+        var angle=Math.random()*Math.PI*2;
+        var sx=cx+Math.cos(angle)*40;
+        var sy=cy+Math.sin(angle)*40;
+        var d='M'+sx+' '+sy;
+        var x=sx,y=sy;
+        var segments=5+Math.floor(Math.random()*4);
+        for(var s=0;s<segments;s++){
+          x+=Math.cos(angle)*(15+Math.random()*25)+(Math.random()-.5)*30;
+          y+=Math.sin(angle)*(15+Math.random()*25)+(Math.random()-.5)*30;
+          d+=' L'+x.toFixed(1)+' '+y.toFixed(1);
+        }
+        var path=document.createElementNS(svgNS,'path');
+        path.setAttribute('d',d);
+        path.setAttribute('fill','none');
+        path.setAttribute('stroke','rgba(201,169,110,.8)');
+        path.setAttribute('stroke-width','1.5');
+        path.setAttribute('filter','drop-shadow(0 0 6px rgba(201,169,110,.9))');
+        path.style.animation='eyeLightningFlash 1.2s ease-out forwards';
+        path.style.animationDelay=(b*0.08)+'s';
+        svg.appendChild(path);
+      }
+      eyeLightning.innerHTML='';
+      eyeLightning.appendChild(svg);
+      eyeLightning.classList.add('active');
+      setTimeout(function(){eyeLightning.classList.remove('active');eyeLightning.innerHTML=''},2000);
+    }
+
+    /* --- Set eye phase --- */
+    function setEyePhase(cls){
+      eyeSlit.className='eye-slit '+cls;
+    }
+
+    /* --- End intro --- */
     function endIntro(){
       if(!introRunning)return;
       introRunning=false;
-      if(introTimer)clearTimeout(introTimer);
+      if(particleInterval)clearInterval(particleInterval);
+      fallbackTimers.forEach(function(t){clearTimeout(t)});
       try{introAudio.pause();introAudio.currentTime=0}catch(e){}
       lyricIntro.classList.add('hidden');
       lyricBar.classList.add('hidden');
@@ -1411,45 +1562,161 @@ function tCopy(){
 
     lyricSkip.addEventListener('click',endIntro);
 
-    function runSequence(dur){
-      /* Divide duration across 16 segments (0-15), last one is spotify + fade */
-      var segTime=dur/totalLines;
-      /* Minimum segment time: 3s */
-      if(segTime<3)segTime=3;
-
-      function schedLine(idx,delay){
-        introTimer=setTimeout(function(){
-          if(!introRunning)return;
-          if(idx<totalLines){
-            showLine(idx);
-            schedLine(idx+1,segTime*1000);
-          } else {
-            /* End: wait 2s then fade out */
-            setTimeout(endIntro,2500);
-          }
-        },delay);
+    /* --- Try to play audio --- */
+    try{
+      var playPromise=introAudio.play();
+      if(playPromise&&playPromise.then){
+        playPromise.then(function(){audioPlaying=true}).catch(function(){audioPlaying=false;runFallback()});
       }
-      schedLine(0,800); /* small initial delay */
+    }catch(e){audioPlaying=false;runFallback()}
+
+    /* --- Phase 1: Darkness (0s - 23.7s) --- */
+    /* 3s: golden dot appears — bigger and brighter */
+    setTimeout(function(){
+      if(!introRunning)return;
+      eyeSeed.classList.add('visible');
+    },3000);
+    /* 8s: dot stretches to bright vertical beam */
+    setTimeout(function(){
+      if(!introRunning)return;
+      eyeSeed.classList.add('stretch');
+      setEyePhase('phase-dot');
+    },8000);
+    /* 12s: slit shape, seed fades */
+    setTimeout(function(){
+      if(!introRunning)return;
+      setEyePhase('phase-slit');
+      eyeSeed.style.opacity='0';
+    },12000);
+    /* 15s: widen slightly, particles begin, show rim */
+    setTimeout(function(){
+      if(!introRunning)return;
+      setEyePhase('phase-opening');
+      eyeRim.style.opacity='1';
+      if(!isPerfLite){
+        spawnParticleBurst(20);
+        particleInterval=setInterval(spawnParticle,200);
+      }
+    },15000);
+    /* 20s: vortex visible — already always rendered, no opacity transition needed */
+    setTimeout(function(){
+      if(!introRunning)return;
+    },20000);
+
+    /* --- Audio timeupdate handler (primary sync) --- */
+    var stepShown=[false,false,false];
+    var endingStarted=false;
+
+    introAudio.addEventListener('timeupdate',function onTimeUpdate(){
+      if(!introRunning){introAudio.removeEventListener('timeupdate',onTimeUpdate);return}
+      var t=introAudio.currentTime;
+
+      /* Check lyric timestamps */
+      for(var i=lyricTimestamps.length-1;i>=0;i--){
+        if(t>=lyricTimestamps[i]&&lastShownIdx<i){
+          lastShownIdx=i;
+          var cfg=lyricConfigs[i];
+          showText(cfg.text,cfg.cls);
+          lyricBar.textContent=cfg.bar;
+          if(eyePhases[i])setEyePhase(eyePhases[i]);
+
+          /* Special: line 3 (42.5s) "eye of the storm" — dramatic lightning + flash + particle burst */
+          if(i===3){
+            flashLightning();
+            if(!isPerfLite)spawnParticleBurst(25);
+            setTimeout(function(){if(introRunning)flashLightning()},800);
+            setTimeout(function(){if(introRunning)flashLightning()},1600);
+          }
+          /* Special: line 4 (54.1s) — vortex spins faster */
+          if(i===4){
+            var rings=eyeVortex.querySelectorAll('.v-ring');
+            for(var r=0;r<rings.length;r++){
+              var dur=parseFloat(window.getComputedStyle(rings[r]).animationDuration)||6;
+              rings[r].style.animationDuration=(dur*.6)+'s';
+            }
+          }
+          break;
+        }
+      }
+
+      /* Check step card timestamps */
+      for(var s=0;s<stepTimestamps.length;s++){
+        if(!stepShown[s]&&t>=stepTimestamps[s].t&&(s===stepTimestamps.length-1||t<stepTimestamps[s].t+8)){
+          /* Only show if we're not currently showing a lyric that came after this step */
+          var nextLyricAfterStep=-1;
+          for(var li=0;li<lyricTimestamps.length;li++){
+            if(lyricTimestamps[li]>stepTimestamps[s].t){nextLyricAfterStep=li;break}
+          }
+          if(nextLyricAfterStep<0||t<lyricTimestamps[nextLyricAfterStep]){
+            stepShown[s]=true;
+            showText(stepTimestamps[s].html,stepTimestamps[s].cls);
+            lyricBar.textContent='';
+          }
+        }
+      }
+
+      /* Ending sequence (after last lyric at 127.4s) */
+      if(t>=135&&!endingStarted){
+        endingStarted=true;
+        showText('Dein Termin beginnt jetzt.','t-serif t-large t-gold');
+        lyricBar.textContent='Was es nun zu tun gilt\u2026';
+      }
+      if(t>=140&&endingStarted){
+        showText('<span style="display:flex;flex-direction:column;align-items:center;gap:.5rem">Dein Termin beginnt jetzt.<a class="lyric-spotify active" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener" style="pointer-events:auto"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:var(--gold-dim)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Waking the Witch \u00b7 Summerchild</a></span>','t-serif t-large t-gold');
+        endingStarted=999; /* prevent re-trigger */
+      }
+      if(t>=147){
+        endIntro();
+      }
+    });
+
+    /* --- Fallback: timer-based if audio won't play --- */
+    function runFallback(){
+      if(audioPlaying)return;
+      /* Use setTimeout for each timestamp */
+      var allEvents=[];
+      /* Phase 1 darkness is already handled above */
+      /* Lyric events */
+      for(var i=0;i<lyricTimestamps.length;i++){
+        (function(idx){
+          allEvents.push({t:lyricTimestamps[idx]*1000,fn:function(){
+            if(!introRunning)return;
+            lastShownIdx=idx;
+            var cfg=lyricConfigs[idx];
+            showText(cfg.text,cfg.cls);
+            lyricBar.textContent=cfg.bar;
+            if(eyePhases[idx])setEyePhase(eyePhases[idx]);
+            if(idx===3)flashLightning();
+          }});
+        })(i);
+      }
+      /* Step cards */
+      for(var s=0;s<stepTimestamps.length;s++){
+        (function(si){
+          allEvents.push({t:stepTimestamps[si].t*1000,fn:function(){
+            if(!introRunning)return;
+            showText(stepTimestamps[si].html,stepTimestamps[si].cls);
+            lyricBar.textContent='';
+          }});
+        })(s);
+      }
+      /* Ending */
+      allEvents.push({t:135000,fn:function(){
+        if(!introRunning)return;
+        showText('Dein Termin beginnt jetzt.','t-serif t-large t-gold');
+        lyricBar.textContent='Was es nun zu tun gilt\u2026';
+      }});
+      allEvents.push({t:147000,fn:function(){endIntro()}});
+
+      for(var e=0;e<allEvents.length;e++){
+        fallbackTimers.push(setTimeout(allEvents[e].fn,allEvents[e].t));
+      }
     }
 
-    /* Wait for audio metadata or fallback */
-    if(introAudio.readyState>=1&&introAudio.duration&&isFinite(introAudio.duration)){
-      songDur=introAudio.duration;
-      runSequence(songDur);
-    } else {
-      introAudio.addEventListener('loadedmetadata',function(){
-        if(introAudio.duration&&isFinite(introAudio.duration)){
-          songDur=introAudio.duration;
-        }
-        runSequence(songDur);
-      });
-      /* Fallback if metadata never loads */
-      setTimeout(function(){
-        if(introRunning&&currentLine<0){
-          runSequence(songDur);
-        }
-      },2000);
-    }
+    /* If audio doesn't start within 2s, run fallback */
+    setTimeout(function(){
+      if(!audioPlaying&&introRunning)runFallback();
+    },2000);
   }
 })();
 </script>
