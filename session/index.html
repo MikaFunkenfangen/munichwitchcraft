@@ -27,13 +27,15 @@
   --ink:#080807;--moss:#1e2a1c;--moss2:#253323;
   --cream:#e8e2d4;--cream-dim:#a8a090;
   --gold:#c9a96e;--gold-dim:#7a6035;--white:#f0ebe0;
+  --copper:#b8734a;--copper-dim:#7a4e2e;
+  --indigo:#1a1535;--dawn:#2a1f3a;
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Jost",sans-serif;
   --nav-h:64px;
   --section-px:clamp(1rem,5vw,3.5rem);
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;overscroll-behavior-x:none}
-body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
+body{background:linear-gradient(180deg,var(--ink) 0%,var(--indigo) 40%,var(--dawn) 85%,#2d1a28 100%);background-attachment:fixed;color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
 
 /* === NAV === */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 var(--section-px);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(8,8,7,.95) 0%,rgba(8,8,7,.6) 60%,transparent 100%);transition:background .4s}
@@ -75,7 +77,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 @keyframes twinkle{0%,100%{opacity:var(--tw-lo,.15);transform:scale(1)}35%{opacity:var(--tw-hi,.7);transform:scale(1.4)}65%{opacity:calc(var(--tw-hi) * .6);transform:scale(1.15)}}
 
 /* === MOON === */
-.moon{position:fixed;top:5vh;right:5vw;width:clamp(270px,48vw,750px);height:clamp(270px,48vw,750px);z-index:1;pointer-events:none;opacity:.75;background:none;border:none;box-shadow:none}
+.moon{position:fixed;top:12vh;right:5vw;width:clamp(270px,48vw,750px);height:clamp(270px,48vw,750px);z-index:1;pointer-events:none;opacity:.65;background:none;border:none;box-shadow:none;filter:sepia(15%) saturate(1.2) hue-rotate(-5deg)}
 .moon svg{width:100%;height:100%;overflow:visible}
 
 /* === ISAR RIVER === */
@@ -86,7 +88,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 @keyframes isarFlow{0%,100%{opacity:var(--if-lo,.1)}50%{opacity:var(--if-hi,.4)}}
 .isar-shimmer{fill:none;stroke-linecap:round;opacity:0;animation:isarShimmer var(--is-d,8s) ease-in-out var(--is-del,0s) infinite;will-change:opacity}
 @keyframes isarShimmer{0%,100%{opacity:.05}50%{opacity:.5}}
-.isar-glow{filter:drop-shadow(0 0 15px rgba(90,190,210,.3)) drop-shadow(0 0 50px rgba(70,170,200,.15)) drop-shadow(0 0 100px rgba(60,150,190,.08))}
+.isar-glow{filter:drop-shadow(0 0 15px rgba(90,190,210,.2)) drop-shadow(0 0 50px rgba(184,117,74,.12)) drop-shadow(0 0 100px rgba(60,150,190,.06))}
 
 /* === LIGHTNING === */
 .lightning-bolt{position:absolute;opacity:0;will-change:opacity}
@@ -206,7 +208,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .session-section p strong{font-weight:400;color:var(--cream)}
 
 /* === ABLAUF === */
-.session-ablauf{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.3) 50%,transparent 100%)}
+.session-ablauf{background:linear-gradient(180deg,rgba(30,42,28,.35) 0%,rgba(30,42,28,.45) 50%,rgba(30,42,28,.3) 100%)}
 .ablauf-block{margin-bottom:clamp(2.5rem,5vw,4rem);padding:clamp(1.5rem,3vw,2.5rem);border-left:2px solid rgba(201,169,110,.15);position:relative}
 .ablauf-block::before{content:"";position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:var(--gold);opacity:.5}
 .ablauf-price{font-family:var(--sans);font-size:clamp(.8rem,1vw,.9rem);letter-spacing:.15em;color:var(--gold);margin-bottom:.5rem}
@@ -215,7 +217,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .ablauf-gesamt p{margin-bottom:0}
 
 /* === VORBEREITUNG === */
-.session-vorbereitung{background:linear-gradient(180deg,transparent 0%,rgba(25,15,28,.2) 50%,transparent 100%)}
+.session-vorbereitung{background:linear-gradient(180deg,rgba(42,31,58,.25) 0%,rgba(35,20,40,.35) 50%,rgba(42,31,58,.2) 100%)}
 .vorb-item{margin-bottom:1.5rem;padding-left:1.5rem;border-left:1px solid rgba(201,169,110,.1)}
 .vorb-item strong{display:block;font-family:var(--serif);font-size:clamp(1rem,1.3vw,1.1rem);font-weight:400;font-style:italic;color:var(--cream);margin-bottom:.3rem}
 .klarstellung{margin-top:clamp(2.5rem,5vw,4rem);padding:clamp(1.5rem,3vw,2.5rem);border:1px solid rgba(201,169,110,.12);border-radius:8px;background:rgba(201,169,110,.02)}
@@ -226,13 +228,17 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .klar-col p{font-size:clamp(.88rem,1vw,.95rem)!important;line-height:1.85!important}
 
 /* === WERKZEUGE === */
-.session-werkzeuge{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.25) 50%,transparent 100%)}
+.session-werkzeuge{background:linear-gradient(180deg,rgba(30,42,28,.3) 0%,rgba(25,35,22,.4) 50%,rgba(30,42,28,.25) 100%)}
 .werkzeug{margin-bottom:clamp(2rem,4vw,3rem)}
 .werkzeug h3{margin-top:0!important}
 .haltung{margin-top:clamp(3rem,6vw,5rem);padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(201,169,110,.1)}
 
 /* === ESSAY === */
-.session-essay{background:linear-gradient(180deg,transparent 0%,rgba(25,15,28,.15) 50%,transparent 100%)}
+.session-essay{background:linear-gradient(180deg,rgba(42,31,58,.4) 0%,rgba(42,31,58,.5) 50%,rgba(42,31,58,.3) 100%)}
+.essay-hidden{animation:fadeUp .6s ease}
+.essay-toggle-wrap{text-align:center;margin:2rem 0}
+.btn-read-essay{font-family:var(--serif);font-size:clamp(.9rem,1.2vw,1.05rem);font-style:italic;color:var(--gold);background:none;border:1px solid rgba(201,169,110,.25);padding:.8rem 2.5rem;cursor:pointer;transition:all .4s;letter-spacing:.08em;border-radius:4px}
+.btn-read-essay:hover{background:rgba(201,169,110,.08);border-color:var(--gold)}
 .essay-text{max-width:680px;margin:0 auto}
 .essay-text p{font-family:var(--sans);font-size:clamp(.92rem,1.08vw,.98rem);font-weight:300;line-height:2.1;color:var(--cream-dim);margin-bottom:1.8rem;text-indent:0}
 .essay-text p:first-of-type{font-size:clamp(.95rem,1.15vw,1.02rem)}
@@ -240,7 +246,10 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .essay-credit{font-family:var(--serif);font-size:clamp(.82rem,1vw,.9rem);font-style:italic;color:var(--cream-dim);opacity:.6;text-align:center;margin-top:clamp(2rem,4vw,3rem)}
 
 /* === TEST === */
-.session-test{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.2) 50%,transparent 100%)}
+.session-test{background:linear-gradient(180deg,rgba(201,169,110,.06) 0%,rgba(201,169,110,.1) 30%,rgba(201,169,110,.12) 50%,rgba(201,169,110,.1) 70%,rgba(201,169,110,.04) 100%);border-top:1px solid rgba(201,169,110,.15);border-bottom:1px solid rgba(201,169,110,.15)}
+.test-card{max-width:520px;margin:0 auto;padding:clamp(2rem,4vw,3.5rem);border:1px solid rgba(201,169,110,.2);border-radius:12px;background:rgba(201,169,110,.04);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 40px rgba(201,169,110,.06),inset 0 0 30px rgba(201,169,110,.03)}
+.session-test h2{animation:goldGlow 5s ease-in-out infinite}
+@keyframes goldGlow{0%,100%{text-shadow:0 0 10px rgba(201,169,110,.15),0 0 30px rgba(201,169,110,.05)}50%{text-shadow:0 0 25px rgba(201,169,110,.35),0 0 60px rgba(201,169,110,.15),0 0 100px rgba(201,169,110,.05)}}
 .test-wrap{max-width:580px;margin:0 auto;position:relative}
 .test-intro{text-align:center}
 .test-intro .sigil{font-family:var(--serif);font-size:2rem;color:var(--gold);letter-spacing:.15em;margin-bottom:.5rem;font-weight:300}
@@ -324,11 +333,12 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .footer-copy a{color:inherit;text-decoration:none}.footer-copy a:hover{opacity:1;color:var(--gold)}
 
 /* === HEADING GLOW === */
-@keyframes headingGlow{0%,100%{text-shadow:0 0 6px rgba(201,169,110,.08)}50%{text-shadow:0 0 16px rgba(201,169,110,.2),0 0 40px rgba(201,169,110,.08)}}
+@keyframes headingGlow{0%,100%{text-shadow:0 0 6px rgba(184,117,74,.08)}50%{text-shadow:0 0 16px rgba(201,169,110,.2),0 0 40px rgba(184,117,74,.1)}}
 
 /* === ANIMATIONS === */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes kontaktCraneFloat{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-8px) rotate(1deg)}50%{transform:translateY(-3px) rotate(-0.5deg)}75%{transform:translateY(-10px) rotate(0.5deg)}}
 
 /* === HIDDEN === */
 .hidden{display:none!important}
@@ -434,6 +444,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   <div class="hero-lightning-layer" id="heroLightning2"></div>
   <img class="storm-cloud" src="../img/img_01.png" alt="" loading="lazy">
   <div class="storm-cloud-lightning" id="stormCloudLightning"></div>
+
+  <div class="hero-logo-wrap reveal" style="position:relative;z-index:2;margin-bottom:1.5rem">
+    <img src="../img/img_02.png" alt="Munich Witchcraft" style="width:clamp(180px,35vw,400px);height:auto;opacity:0;animation:fadeUp 1.6s ease .3s forwards">
+  </div>
 
   <div class="vortex-wrap reveal" style="position:relative;z-index:2">
     <svg class="vortex-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
@@ -704,6 +718,11 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
       <p class="reveal">Das Wort verrät alles. &bdquo;Hexe&ldquo; kommt vom althochdeutschen &bdquo;Hagazussa&ldquo; &ndash; wörtlich: auf der Hecke sitzend. Die Hecke war in der bäuerlichen Kultur Europas die Grenzlinie zwischen dem Kultivierten und dem Wilden. Zwischen Dorf und Wald. Zwischen dem, was wir kontrollieren, und dem, was uns kontrolliert. Die Hexe sitzt genau auf dieser Grenze. Gehört zu keiner Seite ganz. Kennt beide.</p>
 
+      <div class="essay-toggle-wrap reveal" id="essayToggle">
+        <button class="btn-read-essay" onclick="toggleEssay()">Weiterlesen</button>
+      </div>
+
+      <div class="essay-hidden" id="essayHidden" style="display:none">
       <p class="reveal">Und an dieser Hecke wuchs, was nirgendwo sonst wachsen konnte. Bilsenkraut, dessen Alkaloide Visionen auslösten und in der richtigen Dosierung Schmerzen löschten wie Wasser eine Kerze. Tollkirsche &ndash; Atropa belladonna &ndash;, benannt nach der griechischen Schicksalsgöttin, die den Lebensfaden durchtrennt: tödlich als Beere, heilend als Tinktur gegen Krämpfe und Asthma. Eisenhut, eine der giftigsten Pflanzen Europas, dessen Aconitinsalbe in winzigen Mengen Nervenschmerz betäubte. Beifuß für Träume und Mondzyklen. Schafgarbe für Wunden und Wahrheit. Stechapfel für den Übergang zwischen den Welten &ndash; Datura stramonium, die Pflanze, die den Geist öffnet und ihn verschlingen kann, wenn die Hand nicht weiß, was sie tut. Die Heckenapotheke war kein Kräuterregal. Sie war ein pharmazeutisches Manifest: Heilung und Gift wachsen am selben Stängel. Wer das eine beherrscht, kennt das andere. Wer beides kennt, hat aufgehört, die Welt in Gut und Böse zu teilen. Und wer das getan hat, lässt sich nicht kontrollieren.</p>
 
       <p class="reveal">Genau das macht die Hexe gefährlich &ndash; nicht für Menschen, für Systeme. Für jede Ordnung, die davon lebt, dass Wissen in Zuständigkeiten zerfällt. Die Hexe war schamanisch Praktizierende mit Zugang zur geistigen Welt, zu Naturgeistern, zu einem Erfahrungswissen, das keine Universität lehrte. Wer die Heckenapotheke beherrschte &ndash; Salben, Räucherungen, Flugsalben aus Nachtschattengewächsen &ndash;, heilte nicht mit Rezepten, sondern mit Beziehung: zum Körper, zur Pflanze, zum Rhythmus der Erde.</p>
@@ -735,6 +754,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
       </div>
 
       <p class="essay-credit reveal">Dieser Text erschien als Kolumne in <em>Yoga Aktuell</em>. Autor*in: Mika Schöberl.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -751,7 +771,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
     <div class="test-wrap">
       <!-- TEST INTRO -->
-      <div id="testIntro" class="test-intro reveal">
+      <div id="testIntro" class="test-intro test-card reveal">
         <p style="max-width:480px;margin:0 auto 1.5rem;text-align:center">Dieser Test ist Teil unserer gemeinsamen Arbeit. Du füllst ihn aus, nachdem wir uns begegnet sind &mdash; als eine Art Spiegelung von einer anderen Seite her. 115 Sätze. Kein Richtig oder Falsch. Am Ende erhältst du eine Chiffre, die du mir innerhalb von drei Tagen nach unserer Session übermittelst.</p>
         <p style="text-align:center;font-size:clamp(.78rem,.95vw,.85rem);color:var(--cream-dim);opacity:.6;margin-bottom:0">Bewerte jede Aussage danach, wie sehr sie auf dich zutrifft:<br><span style="color:var(--gold)">0</span> = trifft gar nicht zu &middot; <span style="color:var(--gold)">3</span> = teilweise &middot; <span style="color:var(--gold)">6</span> = trifft voll zu</p>
         <button class="btn-start-test" onclick="startTest()">Beginnen</button>
@@ -867,6 +887,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
   },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  window._revealObs=obs;
   els.forEach(function(e){obs.observe(e)});
 })();
 
@@ -905,10 +926,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
       requestAnimationFrame(function(){
         var scrollH=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
         var pct=Math.min(window.scrollY/scrollH,1);
-        var posY=3+pct*79;
+        var posY=10+pct*75;
         var arcOffset=Math.sin(pct*Math.PI)*14;
         var posX=4+arcOffset;
-        var opa=.75-pct*0.3;
+        var opa=.65-pct*0.3;
         moon.style.top=posY+"vh";
         moon.style.right=posX+"vw";
         moon.style.opacity=opa.toFixed(2);
@@ -1043,6 +1064,23 @@ function showTab(btn,id){
     cl.appendChild(el);
   });
 })();
+
+/* === ESSAY TOGGLE === */
+function toggleEssay(){
+  var h=document.getElementById('essayHidden');
+  var t=document.getElementById('essayToggle');
+  if(h.style.display==='none'){
+    h.style.display='block';
+    t.innerHTML='<button class="btn-read-essay" onclick="toggleEssay()">Einklappen</button>';
+    h.querySelectorAll('.reveal').forEach(function(el){
+      if(window._revealObs)window._revealObs.observe(el);
+      else el.classList.add('visible');
+    });
+  } else {
+    h.style.display='none';
+    t.innerHTML='<button class="btn-read-essay" onclick="toggleEssay()">Weiterlesen</button>';
+  }
+}
 
 /* === PERSÖNLICHKEITSTEST === */
 var tQuestions=["Wer sich auf das Gute konzentriert, statt am Schwierigen h\u00e4ngenzubleiben, lebt zufriedener.","Selbst in emotional aufgeladenen Momenten gelingt es mir, einen k\u00fchlen Kopf zu bewahren.","Ich f\u00fchle mich wohl, wenn ich in einem festen organisatorischen Rahmen arbeite.","Mir imponieren Menschen, die nach au\u00dfen hin etwas hermachen.","Eigenst\u00e4ndigkeit und Freiheit sind mir sehr wichtig.","Mein gr\u00f6\u00dftes Anliegen ist es, dass andere sich in meiner Gegenwart geborgen f\u00fchlen.","Ich plane gern voraus, damit mich nichts unvorbereitet trifft.","Braucht jemand Unterst\u00fctzung, setze ich mich mit voller Energie daf\u00fcr ein.","Ich will intensiv und mit allen Sinnen leben \u2014 selbst wenn das Leid einschlie\u00dft.","M\u00e4ngel und Schw\u00e4chen \u2014 bei mir wie bei anderen \u2014 auszuhalten f\u00e4llt mir schwer.","Anerkennung, Titel und beruflicher Aufstieg haben f\u00fcr mich gro\u00dfes Gewicht.","In Liebesbeziehungen z\u00e4hlen f\u00fcr mich vor allem gute Umgangsformen und Respekt.","Ich passe mich schnell an, wenn eine Situation neue Anforderungen stellt.","Ich setze mich aktiv f\u00fcr benachteiligte und ausgegrenzte Menschen ein.","Mein Leben kommt mir manchmal vor wie eine Auff\u00fchrung, der ich gleichzeitig zusehe und in der ich mitspiele.","F\u00fcr beruflichen Erfolg stelle ich notfalls Partnerschaft, Familie oder Freundschaften zur\u00fcck.","Ein schlechtes Gewissen begleitet mich h\u00e4ufig.","Ich halte viele Autorit\u00e4ten f\u00fcr wenig kompetent, scheue mich aber meist, offen dagegen vorzugehen.","Am liebsten lasse ich die Dinge auf mich zukommen \u2014 vieles kl\u00e4rt sich von selbst.","Zu wissen, wo mein Platz ist und wohin ich geh\u00f6re, ist mir ein Grundbed\u00fcrfnis.","Ich genie\u00dfe es, wenn alle Blicke auf mich gerichtet sind.","Meinen \u00c4rger schlucke ich oft herunter, statt ihn zu zeigen.","Das Gef\u00fchl, innerlich nie wirklich ganz angekommen zu sein, begleitet mich.","H\u00e4ufig sp\u00fcre ich intuitiv, was in anderen Menschen vorgeht, noch bevor sie es aussprechen.","Was ich anpacke, tue ich in der Regel mit gro\u00dfer Begeisterung.","Bevor ich jemanden an meinem Privatleben teilhaben lasse, muss ich die Person gut kennen.","Es ist mir wichtig, dass um mich herum immer etwas passiert.","Anderen etwas abzugeben f\u00e4llt mir leicht.","Ich habe eine Begabung daf\u00fcr, komplizierte Sachverhalte in anschauliche Bilder zu fassen.","Hin und wieder \u00fcberkommt mich eine diffuse, schwer greifbare Angst.","Wenn mich ein Projekt oder eine Beziehung langweilt oder nichts mehr bringt, lasse ich davon ab.","Auch bei Spielen ist mir das Gewinnen am wichtigsten.","Neue Gedanken und originelle Ideen begeistern mich.","Viele Menschen vertrauen mir spontan ihre Sorgen an.","Ich achte darauf, nicht unangenehm aufzufallen oder aus dem Rahmen zu fallen.","Ich nehme Stimmungen und Eindr\u00fccke besonders feinfuhlig wahr.","Bei widerspr\u00fcchlichen Standpunkten kann ich oft beiden Seiten etwas abgewinnen.","Irgendetwas an mir unterscheidet mich von den meisten anderen Menschen \u2014 das sp\u00fcre ich.","Wenn das Leben mir Schwierigkeiten beschert, mache ich das Beste daraus.","Gute Einf\u00e4lle und Vorhaben bleiben bei mir oft im Ideenstadium stecken, ohne verwirklicht zu werden.","Ich neige dazu, mich kleiner zu machen, als ich bin, statt meine F\u00e4higkeiten zu zeigen.","Viel Kontakt mit Menschen \u2014 auch wenn er sch\u00f6n ist \u2014 ersch\u00f6pft mich; danach brauche ich Zeit f\u00fcr mich allein.","Bemerke ich, dass ein Freund ein Problem hat, spreche ich es offen an.","Mir wird nachgesagt, in pers\u00f6nlichen Beziehungen besonders gef\u00fchlsbetont und dramatisch zu reagieren.","Sich wirkungsvoll zu pr\u00e4sentieren halte ich f\u00fcr wichtig.","Ich habe den Eindruck, dass andere meine tieferen Gef\u00fchle nicht wirklich verstehen.","Wenn mich etwas \u00e4rgert, sage ich es sofort \u2014 danach ist die Sache f\u00fcr mich erledigt.","Ein Gef\u00fchl, nirgendwo richtig angekommen oder beheimatet zu sein, ist mir vertraut.","Ich empfinde das Leben als st\u00e4ndigen Wettbewerb.","Bevor ich handle, denke ich alle m\u00f6glichen Szenarien gr\u00fcndlich durch.","Ich \u00fcbernehme gern die F\u00fchrung und gebe die Richtung vor.","Ich neige dazu, mich mit Selbstvorw\u00fcrfen und d\u00fcsteren Gedanken herunterzuziehen.","Manchmal h\u00f6re ich, dass es anstrengend sei, mit mir zusammenzuleben, weil ich so durchsetzungsstark bin.","Zuweilen ergreift mich ein tiefes Staunen und eine Dankbarkeit f\u00fcr das Geschenk des Lebens.","Gesundheit, Wohlbefinden und die pers\u00f6nliche Entwicklung meiner Freunde besch\u00e4ftigen mich sehr.","Spannungsgeladene Situationen halte ich nur schwer aus.","Manchmal beobachte ich mich gleichsam von au\u00dfen und bewerte mein eigenes Verhalten.","In einer Gruppe einfach mitzulaufen und dazuzugeh\u00f6ren gibt mir ein gutes Gef\u00fchl.","Anderen eine Bitte abzuschlagen f\u00e4llt mir nicht schwer.","Ich telefoniere ausgiebig und gern.","Es st\u00f6rt mich wenig, wenn die Mehrheit eine andere Meinung vertritt als ich.","Halte ich ein Gesetz f\u00fcr unsinnig, habe ich kein Problem damit, es zu missachten.","Man sagt mir nach, dass ich ein hohes Sprechtempo habe.","Gesch\u00e4ftliches Verhandeln und Handeln liegt mir.","Ich kann andere gut f\u00fcr eine Idee oder ein Vorhaben begeistern.","Meine F\u00e4higkeiten stetig weiterzuentwickeln \u2014 ob fachlich, k\u00f6rperlich oder kulturell \u2014 ist mir ein gro\u00dfes Anliegen.","F\u00fcr das, was ich f\u00fcr richtig halte, nehme ich auch pers\u00f6nliche Nachteile in Kauf.","Andere sind gern mit mir zusammen.","Beim Ordnen oder Vertiefen in Einzelheiten verliere ich manchmal jedes Zeitgef\u00fchl.","Begegnet mir jemand mit aufgesetzter St\u00e4rke, bringe ich das gern auf den Boden der Tatsachen.","Mein \u00c4u\u00dferes soll nat\u00fcrlich wirken und zugleich geschmackvoll und gepflegt sein.","Berufliche Themen nehmen in meinen Gespr\u00e4chen viel Raum ein.","Schlagfertige, geistreiche Wortduelle mit anderen machen mir Freude.","Organisieren und Strukturieren geh\u00f6rt zu meinen St\u00e4rken.","Fairness und Gerechtigkeit lagen mir schon immer besonders am Herzen.","In meinem Zuhause braucht jedes Ding einen festen Platz.","Meine Gef\u00fchle setzen in der konkreten Situation oft aus und kommen erst mit Verz\u00f6gerung hoch.","Im Stillen bin ich oft mein eigener sch\u00e4rfster Kritiker.","Getroffene Entscheidungen revidiere ich h\u00e4ufig kurz darauf, weil ich merke, dass ich doch etwas anderes m\u00f6chte.","Verspannungen \u2014 besonders in Nacken, Schultern oder Kiefer \u2014 sind mir vertraut.","In Buchhandlungen und Bibliotheken zu st\u00f6bern ist etwas, das ich sehr genie\u00dfe.","In meiner Vorstellung male ich mir oft aus, wie etwas Schlimmes geschehen k\u00f6nnte.","Sind Freunde in einer Notlage, wachse ich \u00fcber mich hinaus und traue mich an Dinge, die ich sonst nicht wagen w\u00fcrde.","Einen eigenen R\u00fcckzugsort zu haben \u2014 sei es ein Zimmer oder eine Ecke \u2014 brauche ich, wenn mir alles zu viel wird.","Andere sch\u00e4tzen mich als sportlich und ansprechend ein.","F\u00fcr die Gestaltung von R\u00e4umen habe ich ein gutes Auge.","Eine angenehme Arbeitsatmosph\u00e4re ist mir beruflich besonders wichtig.","Die pers\u00f6nlichen Sorgen und Bed\u00fcrfnisse anderer besch\u00e4ftigen mich oft.","Schon immer habe ich davon getr\u00e4umt, etwas Kreatives zu machen \u2014 Malen, Schreiben, Musik, Schauspiel.","Sachverhalte m\u00f6glichst n\u00fcchtern und unvoreingenommen zu betrachten, ist mir ein zentrales Anliegen.","Reisen und neue Orte entdecken begeistern mich.","In meinem Umfeld gelte ich als jemand, der kaum aufh\u00f6ren kann zu arbeiten.","Anderen zu helfen ist f\u00fcr mich etwas ganz Selbstverst\u00e4ndliches.","Mein Freundes- und Bekanntenkreis ist gro\u00df.","Meine Interessen sind vielf\u00e4ltig und breit gestreut.","Andere empfinden mich bisweilen als kritisch oder bewertend.","Mir liegt viel daran, \u00fcbergreifende Zusammenh\u00e4nge, Muster und Strukturen zu erkennen.","Bevor es zum offenen Streit kommt, gebe ich lieber nach.","Eine verletzende Bemerkung trifft mich tief und kann mich noch tagelang besch\u00e4ftigen.","Ich mache gern Pl\u00e4ne f\u00fcr die Zukunft, um m\u00f6glichst keine Gelegenheit zu vers\u00e4umen.","Zeit allein mit mir selbst genie\u00dfe ich sehr.","Von mir aus den ersten Schritt zu machen kommt selten vor.","Ich suche h\u00e4ufig die Auseinandersetzung, einfach um Klarheit zu schaffen.","Ich g\u00f6nne mir \u00f6fter Dinge, die eigentlich \u00fcber meinem Budget liegen.","Abzuschalten, loszulassen und einfach nur zu genie\u00dfen f\u00e4llt mir schwer.","Selbstzweifel plagen mich immer wieder.","Steht eine Aufgabe an, stelle ich meine Gef\u00fchle hintan.","Mein Partner, meine Familie und meine Freunde sind der Mittelpunkt meines Lebens.","Leerlauf und M\u00fc\u00dfiggang haben in meinem Alltag keinen Platz.","Auseinandersetzungen gehe ich nach M\u00f6glichkeit aus dem Weg.","In meinen Beziehungen bin ich eher die treibende, bestimmende Kraft.","Ob andere mich wirklich m\u00f6gen oder nur nett zu mir sind, weil ich nett zu ihnen bin \u2014 da bin ich mir oft unsicher.","K\u00f6nnte ich mich nicht regelm\u00e4\u00dfig zur\u00fcckziehen, h\u00e4tte ich Angst, mich selbst zu verlieren.","Meine inneren Empfindungen bringe ich gern in einer kreativen Form zum Ausdruck \u2014 ob Musik, bildende Kunst, Schreiben oder Darstellung.","Zeitdruck ist ein h\u00e4ufiger Begleiter meines Alltags."];
