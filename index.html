@@ -117,6 +117,18 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .session-popup-body{font-family:var(--sans);font-size:clamp(.9rem,1.1vw,.97rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:2rem}
 .session-popup-cta{display:inline-block;font-family:var(--serif);font-size:clamp(.85rem,1.1vw,.95rem);font-weight:300;font-style:italic;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,.3);padding:.7rem 2rem;transition:all .4s;letter-spacing:.08em}
 .session-popup-cta:hover{background:rgba(201,169,110,.1);border-color:var(--gold)}
+/* Ghost Portal */
+.ghost-portal{position:fixed;inset:0;z-index:8500;display:flex;align-items:center;justify-content:center;background:rgba(8,8,7,.6);opacity:0;pointer-events:none;transition:opacity 3s ease;cursor:pointer}
+.ghost-portal.visible{opacity:1;pointer-events:auto}
+.ghost-portal.fading{opacity:0;transition:opacity 2s ease}
+.ghost-portal-vortex{width:clamp(220px,40vw,380px);height:clamp(220px,40vw,380px);animation:ghostFloat 6s ease-in-out infinite}
+.ghost-portal-vortex svg{width:100%;height:100%;filter:drop-shadow(0 0 30px rgba(201,169,110,.15))}
+@keyframes ghostFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-12px) scale(1.03)}}
+.ghost-portal-pw{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.5rem;z-index:2}
+.ghost-portal-pw input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;color:var(--gold);padding:.4rem .8rem;width:clamp(140px,25vw,220px);text-align:center;outline:none;letter-spacing:.08em}
+.ghost-portal-pw input::placeholder{color:var(--cream-dim);opacity:.3}
+.ghost-portal-pw button{background:none;border:1px solid var(--gold-dim);color:var(--gold);font-size:1.2rem;padding:.3rem .8rem;cursor:pointer;transition:all .3s;font-family:var(--serif)}
+.ghost-portal-pw button:hover{border-color:var(--gold);background:rgba(201,169,110,.1)}
 
 /* === MOON PHASE NAVIGATOR === */
 .moon-nav{position:relative;z-index:2;padding:clamp(1.5rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,1.2vw,1rem)}
@@ -2047,6 +2059,25 @@ window.onerror=function(msg,src,line,col,err){
     <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
     <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.<br><br>Wenn du einen Termin vereinbart hast, erhältst du das Wort, das diese Schwelle öffnet.</p>
     <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
+  </div>
+</div>
+
+<!-- GEISTER-PORTAL: erscheint alle 5 Min, verschwindet nach 10s -->
+<div class="ghost-portal" id="ghostPortal">
+  <div class="ghost-portal-vortex">
+    <svg viewBox="0 0 300 300">
+      <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(201,169,110,.1)" stroke-width=".8" style="animation:vortexSpin 20s linear infinite;transform-origin:center"/>
+      <circle cx="150" cy="150" r="110" fill="none" stroke="rgba(80,180,210,.12)" stroke-width="1.2" style="animation:vortexSpinR 14s linear infinite;transform-origin:center"/>
+      <circle cx="150" cy="150" r="80" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <circle cx="150" cy="150" r="50" fill="none" stroke="rgba(80,180,210,.1)" stroke-width="1.5" style="animation:vortexSpinR 7s linear infinite;transform-origin:center"/>
+      <circle cx="150" cy="150" r="25" fill="rgba(201,169,110,.06)"/>
+      <path d="M150 20 C170 60,180 90,175 120 S155 160,160 190 S175 230,150 280" fill="none" stroke="rgba(80,180,210,.15)" stroke-width="2" stroke-linecap="round" style="animation:vortexSpin 12s linear infinite;transform-origin:center"/>
+      <path d="M150 20 C130 60,120 90,125 120 S145 160,140 190 S125 230,150 280" fill="none" stroke="rgba(80,180,210,.1)" stroke-width="1.5" stroke-linecap="round" style="animation:vortexSpinR 10s linear infinite;transform-origin:center"/>
+    </svg>
+  </div>
+  <div class="ghost-portal-pw" id="ghostPw" style="display:none">
+    <input type="text" id="ghostPwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+    <button id="ghostPwBtn">&rarr;</button>
   </div>
 </div>
 
@@ -4117,6 +4148,63 @@ function showLetterPopup(){
   lContent.className="letter-content";
   overlay.classList.add("show");
 }
+
+/* === GHOST PORTAL — appears every 5 min === */
+(function(){
+  var ghost=document.getElementById('ghostPortal');
+  var ghostPw=document.getElementById('ghostPw');
+  var ghostPwInput=document.getElementById('ghostPwInput');
+  var ghostPwBtn=document.getElementById('ghostPwBtn');
+  if(!ghost)return;
+  var fadeTimer=null;
+  var PASSWORD='mwc';
+
+  function showGhost(){
+    ghost.classList.remove('fading');
+    ghost.classList.add('visible');
+    ghostPw.style.display='none';
+    ghostPwInput.value='';
+    /* Auto-dismiss after 10s if no interaction */
+    fadeTimer=setTimeout(dismissGhost,10000);
+  }
+
+  function dismissGhost(){
+    if(fadeTimer)clearTimeout(fadeTimer);
+    ghost.classList.add('fading');
+    setTimeout(function(){ghost.classList.remove('visible','fading')},2500);
+  }
+
+  /* Click on vortex → show password field, reset timer */
+  ghost.addEventListener('click',function(e){
+    if(e.target===ghost||e.target.closest('.ghost-portal-vortex')){
+      if(ghostPw.style.display==='none'){
+        ghostPw.style.display='flex';
+        ghostPwInput.focus();
+        if(fadeTimer)clearTimeout(fadeTimer);
+        fadeTimer=setTimeout(dismissGhost,10000);
+      }
+    }
+  });
+
+  /* Check password */
+  function checkGhostPw(){
+    if(ghostPwInput.value.trim().toLowerCase()===PASSWORD){
+      if(fadeTimer)clearTimeout(fadeTimer);
+      dismissGhost();
+      setTimeout(function(){window.open('session/','_blank')},500);
+    } else {
+      ghostPwInput.style.borderColor='rgba(180,60,60,.6)';
+      setTimeout(function(){ghostPwInput.style.borderColor=''},600);
+    }
+  }
+  ghostPwBtn.addEventListener('click',function(e){e.stopPropagation();checkGhostPw()});
+  ghostPwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkGhostPw()});
+  ghostPwInput.addEventListener('click',function(e){e.stopPropagation()});
+
+  /* Show every 5 minutes */
+  setTimeout(showGhost,300000);
+  setInterval(showGhost,300000);
+})();
 
 </script>
 
