@@ -536,10 +536,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .main-revealed{animation:mainReveal 1.5s ease forwards}
 
 /* === MULTIPLE CLOUDS === */
-.intro-cloud-2{width:clamp(200px,40vw,500px)!important;left:-50%!important;top:25%!important;opacity:0;z-index:4!important}
-.intro-cloud-2.entering{opacity:.4!important;left:15%!important;animation:introCloudFloat2 16s ease-in-out infinite 3s!important}
-.intro-cloud-3{width:clamp(150px,30vw,350px)!important;left:110%!important;top:55%!important;opacity:0;z-index:3!important}
-.intro-cloud-3.entering{opacity:.3!important;left:60%!important;animation:introCloudFloat3 20s ease-in-out infinite 5s!important}
+.intro-cloud-2{width:clamp(180px,32vw,400px)!important;left:-50%!important;top:60%!important;opacity:0;z-index:4!important}
+.intro-cloud-2.entering{opacity:.35!important;left:10%!important;animation:introCloudFloat2 16s ease-in-out infinite 3s!important}
+.intro-cloud-3{width:clamp(130px,22vw,280px)!important;left:110%!important;top:15%!important;opacity:0;z-index:3!important}
+.intro-cloud-3.entering{opacity:.25!important;left:70%!important;animation:introCloudFloat3 20s ease-in-out infinite 5s!important}
 @keyframes introCloudFloat2{0%,100%{transform:translateY(0) translateX(0)}40%{transform:translateY(-6px) translateX(-8px)}70%{transform:translateY(4px) translateX(5px)}}
 @keyframes introCloudFloat3{0%,100%{transform:translateY(0) translateX(0)}35%{transform:translateY(5px) translateX(6px)}65%{transform:translateY(-4px) translateX(-3px)}}
 
@@ -558,10 +558,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 @keyframes sparkFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--sx,20px),var(--sy,-30px)) scale(0)}}
 
 /* === SHOOTING STAR === */
-.shooting-star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;z-index:9990;pointer-events:none;box-shadow:0 0 4px #fff,0 0 10px rgba(201,169,110,.5);opacity:0}
-.shooting-star.fly{animation:shootingStar 1.5s ease-out forwards}
-@keyframes shootingStar{0%{opacity:1;transform:translate(0,0)}10%{opacity:1}100%{opacity:0;transform:translate(60vw,35vh)}}
-.shooting-star::after{content:"";position:absolute;top:0;right:100%;width:80px;height:1px;background:linear-gradient(to left,rgba(255,255,255,.6),transparent)}
+.shooting-star{position:fixed;width:4px;height:4px;background:#fff;border-radius:50%;z-index:9990;pointer-events:none;box-shadow:0 0 8px #fff,0 0 20px rgba(201,169,110,.6),0 0 40px rgba(201,169,110,.3);opacity:0}
+.shooting-star.fly{animation:shootingStar 2.5s ease-out forwards}
+@keyframes shootingStar{0%{opacity:1;transform:translate(0,0)}5%{opacity:1}80%{opacity:.6}100%{opacity:0;transform:translate(70vw,40vh)}}
+.shooting-star::after{content:"";position:absolute;top:50%;right:100%;transform:translateY(-50%);width:150px;height:2px;background:linear-gradient(to left,rgba(255,255,255,.8),rgba(201,169,110,.4) 30%,transparent);border-radius:1px;filter:blur(.5px)}
 </style>
 </head>
 <body>
@@ -583,24 +583,24 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
     <div class="intro-stars" id="introStars"></div>
     <div class="intro-constellations" id="introConstellations">
       <!-- Scorpius (Skorpion) — top left -->
-      <svg class="intro-const" viewBox="0 0 220 180" style="top:8%;left:3%;width:16vw">
-        <circle cx="20" cy="90" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="50" cy="80" r="2" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="75" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="110" cy="80" r="3" fill="var(--gold)" opacity=".8" filter="url(#stormGlow)"/><circle cx="140" cy="90" r="2" fill="var(--gold)" opacity=".5"/><circle cx="165" cy="105" r="2.2" fill="var(--gold)" opacity=".5"/><circle cx="185" cy="125" r="2" fill="var(--gold)" opacity=".4"/><circle cx="200" cy="150" r="1.8" fill="var(--gold)" opacity=".4"/><circle cx="195" cy="170" r="1.5" fill="var(--gold)" opacity=".3"/><circle cx="210" cy="160" r="1.5" fill="var(--gold)" opacity=".3"/>
-        <path d="M20 90 L50 80 L80 75 L110 80 L140 90 L165 105 L185 125 L200 150 M200 150 L195 170 M200 150 L210 160" fill="none" stroke="var(--gold)" stroke-width=".6" opacity=".18"/>
+      <svg class="intro-const" viewBox="0 0 220 180" style="top:5%;left:2%;width:28vw">
+        <circle cx="20" cy="90" r="3.5" fill="var(--gold)" opacity=".8" filter="url(#stormGlow)"/><circle cx="50" cy="80" r="3" fill="var(--gold)" opacity=".7"/><circle cx="80" cy="75" r="3" fill="var(--gold)" opacity=".7"/><circle cx="110" cy="80" r="4" fill="var(--gold)" opacity=".9" filter="url(#stormGlow)"/><circle cx="140" cy="90" r="3" fill="var(--gold)" opacity=".7"/><circle cx="165" cy="105" r="3" fill="var(--gold)" opacity=".6"/><circle cx="185" cy="125" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="200" cy="150" r="2.5" fill="var(--gold)" opacity=".5"/><circle cx="195" cy="170" r="2" fill="var(--gold)" opacity=".5"/><circle cx="210" cy="160" r="2" fill="var(--gold)" opacity=".5"/>
+        <path d="M20 90 L50 80 L80 75 L110 80 L140 90 L165 105 L185 125 L200 150 M200 150 L195 170 M200 150 L210 160" fill="none" stroke="var(--gold)" stroke-width="1.2" opacity=".35" filter="url(#stormGlow)"/>
       </svg>
       <!-- Pisces (Fische) — top right -->
-      <svg class="intro-const" viewBox="0 0 200 160" style="top:12%;right:5%;width:14vw">
-        <circle cx="30" cy="40" r="2" fill="var(--gold)" opacity=".5"/><circle cx="50" cy="25" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="75" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="100" cy="30" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="100" cy="80" r="2" fill="var(--gold)" opacity=".4"/><circle cx="100" cy="120" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="125" cy="135" r="2" fill="var(--gold)" opacity=".5"/><circle cx="155" cy="140" r="2.2" fill="var(--gold)" opacity=".5"/><circle cx="175" cy="130" r="2" fill="var(--gold)" opacity=".4"/>
-        <path d="M30 40 L50 25 L75 20 L100 30 L100 80 L100 120 L125 135 L155 140 L175 130" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      <svg class="intro-const" viewBox="0 0 200 160" style="top:8%;right:3%;width:25vw">
+        <circle cx="30" cy="40" r="3" fill="var(--gold)" opacity=".7"/><circle cx="50" cy="25" r="3" fill="var(--gold)" opacity=".7"/><circle cx="75" cy="20" r="3" fill="var(--gold)" opacity=".7"/><circle cx="100" cy="30" r="3.5" fill="var(--gold)" opacity=".8" filter="url(#stormGlow)"/><circle cx="100" cy="80" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="100" cy="120" r="3.5" fill="var(--gold)" opacity=".8" filter="url(#stormGlow)"/><circle cx="125" cy="135" r="3" fill="var(--gold)" opacity=".7"/><circle cx="155" cy="140" r="3" fill="var(--gold)" opacity=".6"/><circle cx="175" cy="130" r="2.5" fill="var(--gold)" opacity=".6"/>
+        <path d="M30 40 L50 25 L75 20 L100 30 L100 80 L100 120 L125 135 L155 140 L175 130" fill="none" stroke="var(--gold)" stroke-width="1" opacity=".3" filter="url(#stormGlow)"/>
       </svg>
       <!-- Gemini (Zwilling) — bottom left -->
-      <svg class="intro-const" viewBox="0 0 160 200" style="bottom:15%;left:8%;width:11vw">
-        <circle cx="40" cy="15" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="120" cy="15" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="50" cy="50" r="2" fill="var(--gold)" opacity=".5"/><circle cx="110" cy="50" r="2" fill="var(--gold)" opacity=".5"/><circle cx="55" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="105" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="45" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="115" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="40" cy="185" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="120" cy="185" r="2.2" fill="var(--gold)" opacity=".6"/>
-        <path d="M40 15 L50 50 L55 100 L45 150 L40 185 M120 15 L110 50 L105 100 L115 150 L120 185 M50 50 L110 50 M55 100 L105 100" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      <svg class="intro-const" viewBox="0 0 160 200" style="bottom:12%;left:5%;width:22vw">
+        <circle cx="40" cy="15" r="3" fill="var(--gold)" opacity=".8"/><circle cx="120" cy="15" r="3" fill="var(--gold)" opacity=".8"/><circle cx="50" cy="50" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="110" cy="50" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="55" cy="100" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="105" cy="100" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="45" cy="150" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="115" cy="150" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="40" cy="185" r="3" fill="var(--gold)" opacity=".8"/><circle cx="120" cy="185" r="3" fill="var(--gold)" opacity=".8"/>
+        <path d="M40 15 L50 50 L55 100 L45 150 L40 185 M120 15 L110 50 L105 100 L115 150 L120 185 M50 50 L110 50 M55 100 L105 100" fill="none" stroke="var(--gold)" stroke-width="1" opacity=".3" filter="url(#stormGlow)"/>
       </svg>
       <!-- Orion — bottom right -->
-      <svg class="intro-const" viewBox="0 0 180 220" style="bottom:10%;right:6%;width:12vw">
-        <circle cx="60" cy="15" r="2" fill="var(--gold)" opacity=".5"/><circle cx="120" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="45" cy="55" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="135" cy="60" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="70" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="90" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="110" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="50" cy="145" r="2" fill="var(--gold)" opacity=".5"/><circle cx="130" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="35" cy="200" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="145" cy="205" r="2.2" fill="var(--gold)" opacity=".6"/>
-        <path d="M60 15 L45 55 L50 145 L35 200 M120 20 L135 60 L130 150 L145 205 M70 100 L90 100 L110 100" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      <svg class="intro-const" viewBox="0 0 180 220" style="bottom:8%;right:4%;width:24vw">
+        <circle cx="60" cy="15" r="3" fill="var(--gold)" opacity=".7"/><circle cx="120" cy="20" r="3" fill="var(--gold)" opacity=".7"/><circle cx="45" cy="55" r="3" fill="var(--gold)" opacity=".7"/><circle cx="135" cy="60" r="3" fill="var(--gold)" opacity=".7"/><circle cx="70" cy="100" r="3.5" fill="var(--gold)" opacity=".9" filter="url(#stormGlow)"/><circle cx="90" cy="100" r="3.5" fill="var(--gold)" opacity=".9" filter="url(#stormGlow)"/><circle cx="110" cy="100" r="3.5" fill="var(--gold)" opacity=".9" filter="url(#stormGlow)"/><circle cx="50" cy="145" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="130" cy="150" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="35" cy="200" r="3" fill="var(--gold)" opacity=".8"/><circle cx="145" cy="205" r="3" fill="var(--gold)" opacity=".8"/>
+        <path d="M60 15 L45 55 L50 145 L35 200 M120 20 L135 60 L130 150 L145 205 M70 100 L90 100 L110 100" fill="none" stroke="var(--gold)" stroke-width="1.2" opacity=".35" filter="url(#stormGlow)"/>
       </svg>
     </div>
     <!-- The Sun -->
@@ -691,7 +691,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   <div class="intro-info" id="introInfo">
     <div class="intro-info-inner">
       <p class="intro-info-line intro-info-1">Erkunde diese Seite. Nimm dir Zeit.</p>
-      <p class="intro-info-line intro-info-2">F&uuml;lle den Pers&ouml;nlichkeitstest aus &mdash; notiere deine Chiffre.</p>
+      <p class="intro-info-line intro-info-2">F&uuml;lle deinen Seelenspiegel aus &mdash; notiere deine Chiffre.</p>
       <p class="intro-info-line intro-info-3">Sammle deine Fragen. Was bewegt dich? Was suchst du?</p>
       <p class="intro-info-line intro-info-4">Bereite dich in den Tagen davor vor &mdash; komm zur Ruhe.</p>
       <p class="intro-info-line intro-info-5">Der Besuch bei der Hexe erwartet dich.</p>
@@ -921,8 +921,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
     </div>
 
     <div class="ablauf-block reveal reveal-delay-3">
-      <div class="ablauf-price">Der Persönlichkeitstest &middot; Deine Vorbereitung</div>
-      <p>Vor unserer Begegnung füllst du den Persönlichkeitstest aus &mdash; hier auf dieser Seite, weiter unten. 115 Sätze, kein Richtig oder Falsch. Am Ende erhältst du eine Ergebnis-Chiffre. Diese behältst du zunächst für dich und teilst sie mir am Ende unserer ersten Session mit.</p>
+      <div class="ablauf-price">Dein Seelenspiegel &middot; Deine Vorbereitung</div>
+      <p>Vor unserer Begegnung füllst du den Seelenspiegel aus &mdash; hier auf dieser Seite, weiter unten. 115 Sätze, kein Richtig oder Falsch. Am Ende erhältst du eine Ergebnis-Chiffre. Diese behältst du zunächst für dich und teilst sie mir am Ende unserer ersten Session mit &mdash; zusammen mit deinem Geburtsdatum, deiner Geburtszeit und deinem Geburtsort.</p>
       <p>Drei Perspektiven kommen zusammen: das Gespräch, das Protokoll und das Testergebnis. Dieser Abgleich zeigt Muster, die eine einzelne Methode allein nicht sichtbar macht.</p>
     </div>
 
@@ -1097,12 +1097,12 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 <!-- ═══ BLOCK 6: PERSÖNLICHKEITSTEST ═══ -->
 <section class="session-section session-test" id="test">
   <div class="session-inner">
-    <div class="reveal"><div class="label label-center">Vorbereitung</div><h2 style="text-align:center">Dein<br><em>Persönlichkeitsprofil.</em></h2></div>
+    <div class="reveal"><div class="label label-center">Vorbereitung</div><h2 style="text-align:center">Dein<br><em>Seelenspiegel.</em></h2></div>
 
     <div class="test-wrap">
       <!-- TEST INTRO -->
       <div id="testIntro" class="test-intro test-card reveal">
-        <p style="max-width:480px;margin:0 auto 1.5rem;text-align:center">Dieser Test ist Teil unserer gemeinsamen Arbeit. Du füllst ihn vor unserer Begegnung aus &mdash; als eine Art Spiegelung von einer anderen Seite her. 115 Sätze. Kein Richtig oder Falsch. Am Ende erhältst du eine Chiffre, die du zunächst für dich behältst und mir am Ende unserer ersten Session mitteilst.</p>
+        <p style="max-width:480px;margin:0 auto 1.5rem;text-align:center">Dein Seelenspiegel &mdash; eine Spiegelung von einer anderen Seite her. Du füllst ihn vor unserer Begegnung aus. 115 Sätze. Kein Richtig oder Falsch. Am Ende erhältst du eine Chiffre, die du zunächst für dich behältst und mir am Ende unserer ersten Session mitteilst &mdash; zusammen mit deinen Geburtsdaten.</p>
         <p style="text-align:center;font-size:clamp(.78rem,.95vw,.85rem);color:var(--cream-dim);opacity:.6;margin-bottom:0">Bewerte jede Aussage danach, wie sehr sie auf dich zutrifft:<br><span style="color:var(--gold)">0</span> = trifft gar nicht zu &middot; <span style="color:var(--gold)">3</span> = teilweise &middot; <span style="color:var(--gold)">6</span> = trifft voll zu</p>
         <button class="btn-start-test" onclick="startTest()">Beginnen</button>
       </div>
@@ -1140,7 +1140,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
           <div class="test-chiffre-value" id="tChiffre"></div>
         </div>
         <button class="btn-copy" id="tBtnCopy" onclick="tCopy()">Ergebnis kopieren</button>
-        <p class="test-result-note">Teile diese Chiffre zusammen mit deinem Erkennungsnamen am Ende unserer ersten Session mit.<br>Sie dient als Grundlage für unsere weitere gemeinsame Arbeit.</p>
+        <p class="test-result-note">Teile diese Chiffre zusammen mit deinem Erkennungsnamen, deinem Geburtsdatum, deiner Geburtszeit und deinem Geburtsort am Ende unserer ersten Session mit.<br>Alles zusammen dient als Grundlage für unsere weitere gemeinsame Arbeit.</p>
       </div>
     </div>
   </div>
@@ -1592,7 +1592,7 @@ function tCopy(){
 
     /* Step card timestamps (between lyric groups) */
     var stepTimestamps=[
-      {t:62,html:'<span class="eye-card-step">Schritt 1</span><span class="eye-card-text">F\u00fclle den Pers\u00f6nlichkeitstest aus \u2014 115 S\u00e4tze, vor unserer Begegnung</span>',cls:'t-card'},
+      {t:62,html:'<span class="eye-card-step">Schritt 1</span><span class="eye-card-text">F\u00fclle deinen Seelenspiegel aus \u2014 115 S\u00e4tze, vor unserer Begegnung</span>',cls:'t-card'},
       {t:88,html:'<span class="eye-card-step">Schritt 2</span><span class="eye-card-text">\u00dcbermittle deine Geburtsdaten und 1\u20133 Fragen per E-Mail oder WhatsApp</span>',cls:'t-card'},
       {t:98,html:'<span class="eye-card-step">Schritt 3</span><span class="eye-card-text">Deine 1\u20133 Fragen, die dich zur Hexe f\u00fchren \u2014 kurz und knapp per E-Mail</span>',cls:'t-card'}
     ];
