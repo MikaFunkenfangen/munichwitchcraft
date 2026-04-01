@@ -196,7 +196,6 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 @keyframes wordGlow{0%,100%{filter:drop-shadow(0 0 8px rgba(201,169,110,.3))}50%{filter:drop-shadow(0 0 25px rgba(201,169,110,.6)) drop-shadow(0 0 50px rgba(201,169,110,.2))}}
 .welcome-body{opacity:0;animation:fadeUp 1.4s ease 1.4s forwards}
 .welcome-body p{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.2rem);font-style:italic;line-height:2;color:var(--cream-dim);margin-bottom:1.5rem;text-shadow:0 0 30px rgba(8,8,7,.6)}
-.welcome-body p:first-child{font-family:var(--sans);font-size:clamp(.72rem,.9vw,.8rem);font-weight:300;font-style:normal;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
 .welcome-body .welcome-closer{font-family:var(--sans);font-size:clamp(.8rem,1.1vw,.95rem);font-style:normal;font-weight:300;letter-spacing:.12em;color:var(--cream);opacity:.8;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(201,169,110,.12)}
 .session-hero .intro-text{display:none}
 
@@ -393,7 +392,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 /* === PASSWORD GATE === */
 .pw-gate{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.2s ease;overflow:hidden}
 .pw-gate.hidden{opacity:0;pointer-events:none}
-.pw-gate-brand{font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;letter-spacing:.18em;color:var(--gold-dim);margin-bottom:clamp(2rem,5vh,4rem);opacity:.5;text-shadow:0 0 20px rgba(201,169,110,.15)}
+.pw-gate-brand{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--gold);letter-spacing:.15em;margin-bottom:1rem;animation:brandPulse 3s ease-in-out infinite}
+.pw-gate-welcome{font-family:var(--serif);font-size:clamp(.9rem,1.3vw,1.1rem);font-weight:300;font-style:italic;color:var(--cream-dim);text-align:center;max-width:400px;line-height:1.9;margin-bottom:clamp(2rem,4vw,3rem);opacity:.6}
 .pw-gate-field{position:relative;margin-bottom:1.5rem}
 .pw-gate-field input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;font-weight:300;color:var(--cream);padding:.6rem 1.2rem;width:clamp(200px,40vw,320px);text-align:center;outline:none;letter-spacing:.08em;transition:border-color .4s,box-shadow .4s}
 .pw-gate-field input::placeholder{color:var(--cream-dim);opacity:.4;font-style:italic}
@@ -408,53 +408,68 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .lyric-intro{position:fixed;inset:0;z-index:9998;background:var(--ink);transition:opacity 1.5s ease;overflow:hidden}
 .lyric-intro.hidden{opacity:0;pointer-events:none}
 
-/* Eye container & slit — dramatic redesign */
-.eye-container{position:fixed;inset:0;z-index:1;overflow:hidden}
+/* === GENESIS INTRO — elements born one by one === */
 
-/* The eye opening — layered for glow */
-.eye-slit{position:absolute;inset:0;background:#080807;transition:clip-path 2s cubic-bezier(.4,0,.2,1)}
-.eye-slit::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.25) 0%,rgba(201,169,110,.08) 30%,transparent 60%);opacity:0;transition:opacity 2s}
-.eye-slit::after{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg at 50% 50%,transparent 0%,rgba(201,169,110,.06) 25%,transparent 50%,rgba(201,169,110,.06) 75%,transparent 100%);animation:eyeRays 8s linear infinite;opacity:0;transition:opacity 3s}
-@keyframes eyeRays{to{transform:rotate(360deg)}}
+/* Intro container — no clip-path, full screen */
+.intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#4a6fa5 0%,#6b8fc2 25%,#a8c4d8 50%,#d4dfe8 75%,#e8ded0 100%);transition:background 20s ease}
+.intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#2a3a55 25%,#1a2540 50%,#0f1525 75%,#080810 100%)}
+.intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#040408 30%,#050510 60%,#030305 100%);transition:background 15s ease}
+.intro-scene.sunset{background:linear-gradient(180deg,#1a1028 0%,#2d1832 15%,#6b2842 30%,#c45a3a 45%,#e8944a 55%,#f0c060 65%,#d4a050 75%,#8a5030 85%,#3a1820 100%);transition:background 15s ease}
+.intro-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
+.intro-star{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
+.intro-star.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4)}
 
-/* Phase classes — applied directly to .eye-slit */
-.eye-slit.phase-dot{clip-path:ellipse(1% 1% at 50% 50%)}
-.eye-slit.phase-dot::before{opacity:1}
-.eye-slit.phase-slit{clip-path:ellipse(1.5% 20% at 50% 50%)}
-.eye-slit.phase-slit::before{opacity:1}
-.eye-slit.phase-opening{clip-path:ellipse(12% 30% at 50% 50%)}
-.eye-slit.phase-opening::before,.eye-slit.phase-opening::after{opacity:1}
-.eye-slit.phase-wide{clip-path:ellipse(25% 40% at 50% 50%)}
-.eye-slit.phase-wide::before,.eye-slit.phase-wide::after{opacity:1}
-.eye-slit.phase-full{clip-path:ellipse(60% 55% at 50% 50%)}
-.eye-slit.phase-full::before,.eye-slit.phase-full::after{opacity:1}
-.eye-slit.phase-bright{clip-path:ellipse(70% 65% at 50% 50%)}
+/* The Sun */
+.intro-sun{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(150px,25vmin,250px);height:clamp(150px,25vmin,250px);border-radius:50%;background:radial-gradient(circle at 45% 42%,rgba(255,252,240,.95),rgba(247,242,228,.85) 50%,rgba(232,226,212,.7));box-shadow:0 0 40px rgba(232,226,212,.5),0 0 80px rgba(201,169,110,.3),0 0 150px rgba(201,169,110,.15);opacity:0;transition:opacity 3s ease;filter:drop-shadow(0 0 20px rgba(255,250,230,.4))}
+.intro-sun.visible{opacity:1;animation:sunPulse 4s ease-in-out infinite}
+@keyframes sunPulse{0%,100%{box-shadow:0 0 40px rgba(232,226,212,.5),0 0 80px rgba(201,169,110,.3),0 0 150px rgba(201,169,110,.15)}50%{box-shadow:0 0 60px rgba(232,226,212,.7),0 0 120px rgba(201,169,110,.4),0 0 200px rgba(201,169,110,.2)}}
 
-/* Bright rim around the eye opening */
-.eye-rim{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80vmin;height:80vmin;border-radius:50%;pointer-events:none;opacity:0;transition:opacity 1.5s}
-.eye-rim-inner{width:100%;height:100%;border-radius:50%;border:2px solid rgba(201,169,110,.6);box-shadow:0 0 30px rgba(201,169,110,.4),0 0 60px rgba(201,169,110,.2),0 0 120px rgba(201,169,110,.1),inset 0 0 30px rgba(201,169,110,.15);animation:rimPulse 3s ease-in-out infinite}
-@keyframes rimPulse{0%,100%{box-shadow:0 0 30px rgba(201,169,110,.4),0 0 60px rgba(201,169,110,.2),0 0 120px rgba(201,169,110,.1),inset 0 0 30px rgba(201,169,110,.15)}50%{box-shadow:0 0 50px rgba(201,169,110,.6),0 0 100px rgba(201,169,110,.3),0 0 180px rgba(201,169,110,.15),inset 0 0 50px rgba(201,169,110,.25)}}
+/* The Logo as Moon */
+.intro-logo-moon{position:absolute;top:50%;left:50%;width:clamp(155px,25.5vmin,255px);height:clamp(155px,25.5vmin,255px);border-radius:50%;overflow:hidden;transform:translate(calc(-50% + 70vw),-50%);transition:transform 58s cubic-bezier(.1,.4,.3,1);z-index:2;opacity:0}
+.intro-logo-moon.visible{opacity:1}
+.intro-logo-moon.eclipsing{transform:translate(-50%,-50%)}
+.intro-logo-moon.clearing{transform:translate(calc(-50% - 70vw),-50%);transition:transform 55s cubic-bezier(.3,.1,.7,.9)}
+.intro-logo-moon img{width:100%;height:100%;object-fit:cover;display:block}
 
-/* Golden seed — brighter */
-.eye-seed{position:absolute;top:50%;left:50%;width:8px;height:8px;transform:translate(-50%,-50%);border-radius:50%;background:var(--gold);box-shadow:0 0 20px rgba(201,169,110,.8),0 0 40px rgba(201,169,110,.4),0 0 80px rgba(201,169,110,.2);opacity:0;transition:all 1.5s;z-index:5}
-.eye-seed.visible{opacity:1}
-.eye-seed.stretch{width:4px;height:40vh;border-radius:2px;box-shadow:0 0 30px rgba(201,169,110,.9),0 0 60px rgba(201,169,110,.5),0 0 120px rgba(201,169,110,.2)}
+/* Corona — appears when eclipse forms */
+.intro-corona{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(220px,36vmin,370px);height:clamp(220px,36vmin,370px);border-radius:50%;pointer-events:none;opacity:0;transition:opacity 3s}
+.intro-corona.visible{opacity:1}
+.intro-corona-ring{width:100%;height:100%;border-radius:50%;border:3px solid rgba(201,169,110,.6);box-shadow:0 0 40px rgba(201,169,110,.5),0 0 80px rgba(201,169,110,.25),0 0 160px rgba(201,169,110,.1),inset 0 0 40px rgba(201,169,110,.15);animation:coronaPulse 4s ease-in-out infinite}
+.intro-corona-glow{position:absolute;inset:-30%;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.12) 30%,rgba(201,169,110,.04) 60%,transparent 75%);animation:coronaPulse 4s ease-in-out infinite .5s}
+@keyframes coronaPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
 
-/* Storm vortex — much more visible */
-.eye-vortex{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(80vw,80vh);height:min(80vw,80vh);pointer-events:none}
-.eye-vortex svg{width:100%;height:100%;overflow:visible}
-.eye-vortex .v-ring{fill:none;transform-origin:center;filter:drop-shadow(0 0 4px rgba(201,169,110,.3))}
-.eye-vortex .v-ring-1{stroke:rgba(201,169,110,.15);stroke-width:1;animation:vortexSpin 20s linear infinite}
-.eye-vortex .v-ring-2{stroke:rgba(201,169,110,.2);stroke-width:1.5;animation:vortexSpinR 15s linear infinite}
-.eye-vortex .v-ring-3{stroke:rgba(201,169,110,.3);stroke-width:1;animation:vortexSpin 11s linear infinite}
-.eye-vortex .v-ring-4{stroke:rgba(201,169,110,.35);stroke-width:1.5;animation:vortexSpinR 8s linear infinite}
-.eye-vortex .v-ring-5{stroke:rgba(201,169,110,.25);stroke-width:.8;animation:vortexSpin 14s linear infinite}
-.eye-vortex .v-ring-6{stroke:rgba(201,169,110,.4);stroke-width:1;animation:vortexSpinR 6s linear infinite}
-/* Core glow */
-.eye-vortex .v-core{fill:none;stroke:rgba(201,169,110,.5);stroke-width:2;animation:vortexSpin 4s linear infinite;filter:drop-shadow(0 0 15px rgba(201,169,110,.6))}
-.eye-vortex .v-glow{fill:rgba(201,169,110,.08);animation:vortexPulse 3s ease-in-out infinite}
+/* Isar streams — same gradient style as main page, wrap around eclipse */
+.intro-isar-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(350px,70vmin,700px);height:clamp(350px,70vmin,700px);pointer-events:none;z-index:1;opacity:0;transition:opacity 3s;filter:drop-shadow(0 0 15px rgba(80,180,210,.25)) drop-shadow(0 0 50px rgba(60,150,185,.1))}
+.intro-isar-wrap.visible{opacity:1}
+.eye-isar-flow{fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity 2s}
+.eye-isar-flow.flowing{opacity:1}
+.eye-isar-1{animation:isarFlowUp 20s ease-in-out infinite;--if-lo:.08;--if-hi:.25}
+.eye-isar-2{animation:isarFlowUp 15s ease-in-out infinite 1s;--if-lo:.12;--if-hi:.45}
+.eye-isar-3{animation:isarFlowUp 12s ease-in-out infinite 2s;--if-lo:.1;--if-hi:.4}
+.eye-isar-4{animation:isarFlowUp 10s ease-in-out infinite 3s;--if-lo:.08;--if-hi:.35}
+.eye-isar-5{animation:isarFlowUp 17s ease-in-out infinite .5s;--if-lo:.06;--if-hi:.3}
+@keyframes isarFlowUp{0%,100%{opacity:var(--if-lo,.1);stroke-dashoffset:0}50%{opacity:var(--if-hi,.4);stroke-dashoffset:-40px}}
+.eye-isar-shimmer{fill:none;stroke-linecap:round;opacity:0;transition:opacity 2s}
+.eye-isar-shimmer.flowing{opacity:1;animation:isarShimmerIntro var(--is-d,8s) ease-in-out var(--is-del,0s) infinite}
+@keyframes isarShimmerIntro{0%,100%{opacity:.05}50%{opacity:.5}}
 
-/* Particles — brighter, more visible */
+/* Cloud — LARGE, dramatic */
+.intro-cloud{position:absolute;width:clamp(350px,60vw,800px);pointer-events:none;z-index:5;left:-70%;top:2%;opacity:0;filter:drop-shadow(0 0 60px rgba(201,169,110,.2)) drop-shadow(0 0 120px rgba(8,8,7,.5));transition:opacity 4s ease,left 8s cubic-bezier(.25,.46,.45,.94)}
+.intro-cloud.entering{opacity:.7;left:5%;animation:introCloudFloat 14s ease-in-out infinite 2s}
+.intro-cloud.exiting{opacity:0;left:110%;transition:opacity 3s,left 6s ease-in}
+@keyframes introCloudFloat{0%,100%{transform:translateY(0) translateX(0)}30%{transform:translateY(-8px) translateX(5px)}60%{transform:translateY(-3px) translateX(-4px)}}
+@media(max-width:768px){.intro-cloud{width:clamp(200px,80vw,400px)}}
+
+/* Lightning container */
+.intro-lightning{position:absolute;inset:0;pointer-events:none;z-index:6;opacity:0;transition:opacity .3s}
+.intro-lightning.active{opacity:1}
+@keyframes eyeLightningFlash{0%{opacity:0}5%{opacity:1}10%{opacity:.1}15%{opacity:.7}20%{opacity:0}100%{opacity:0}}
+
+/* Background flash */
+.intro-flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.2) 0%,rgba(201,169,110,.05) 50%,transparent 70%);opacity:0;pointer-events:none;z-index:0}
+@keyframes bgFlash{0%{opacity:0}10%{opacity:1}30%{opacity:.2}50%{opacity:.6}100%{opacity:0}}
+
+/* Particles */
 .eye-particles{position:absolute;inset:0;pointer-events:none;z-index:3}
 .eye-particle{position:absolute;border-radius:50%;background:var(--gold);opacity:0}
 @keyframes particleDrift{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:.8}80%{opacity:.4}100%{opacity:0;transform:translate(var(--px,100px),var(--py,-80px)) scale(0)}}
@@ -478,18 +493,13 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .eye-card-step{font-family:var(--sans);font-size:clamp(.65rem,.9vw,.78rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8}
 .eye-card-text{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dim);line-height:1.7;max-width:550px}
 
-/* Lightning — brighter */
-.eye-lightning{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .5s}
-.eye-lightning.active{opacity:1}
-@keyframes eyeLightningFlash{0%{opacity:0}5%{opacity:1}10%{opacity:.1}15%{opacity:.7}20%{opacity:0}100%{opacity:0}}
-
-/* Background flash */
-.eye-flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,169,110,.15) 0%,transparent 70%);opacity:0;pointer-events:none;z-index:0}
-@keyframes bgFlash{0%{opacity:0}10%{opacity:1}30%{opacity:.2}50%{opacity:.6}100%{opacity:0}}
-
 /* Bottom lyric bar */
-.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:1rem 2rem;text-align:center;font-family:var(--serif);font-size:clamp(.8rem,1.1vw,.95rem);font-style:italic;font-weight:300;color:var(--cream-dim);opacity:.4;background:linear-gradient(to top,rgba(8,8,7,.8),transparent);pointer-events:none;transition:opacity .6s}
+.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;display:flex;flex-direction:column;align-items:center;padding:clamp(1.5rem,3vw,2.5rem) 2rem clamp(1rem,2vw,1.5rem);font-family:var(--serif);font-weight:300;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.85) 0%,rgba(8,8,7,.5) 50%,transparent 100%);pointer-events:none;transition:opacity .6s;gap:.6rem}
 .lyric-bar.hidden{opacity:0}
+.lyric-bar-text{text-align:center;font-size:clamp(1rem,1.8vw,1.3rem);font-style:italic;color:var(--cream);opacity:.7;text-shadow:0 0 20px rgba(8,8,7,.6);transition:opacity .8s;letter-spacing:.05em}
+.lyric-bar-credit{font-family:var(--sans);font-size:clamp(.6rem,.8vw,.7rem);color:var(--cream-dim);opacity:.5;letter-spacing:.08em;pointer-events:auto}
+.lyric-bar-credit a{color:var(--gold-dim);text-decoration:none;transition:color .3s}
+.lyric-bar-credit a:hover{color:var(--gold)}
 
 /* Spotify link */
 .lyric-spotify{display:flex;align-items:center;justify-content:center;gap:.8rem;font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;color:var(--gold-dim);text-decoration:none;opacity:0;transition:opacity 1s ease;letter-spacing:.06em;margin-top:1rem}
@@ -499,18 +509,59 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .lyric-spotify:hover svg{fill:var(--gold)}
 
 /* Skip button */
-.lyric-skip{position:fixed;bottom:2.5rem;right:2rem;z-index:9999;font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.5rem}
-.lyric-skip:hover{opacity:.8;color:var(--gold)}
+.lyric-skip{position:fixed;bottom:clamp(3rem,5vw,4rem);left:50%;transform:translateX(-50%);z-index:9999;font-family:var(--sans);font-size:.75rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.5;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:1px solid rgba(201,169,110,.15);padding:.6rem 2rem;border-radius:4px}
+.lyric-skip:hover{opacity:.9;color:var(--gold);border-color:rgba(201,169,110,.3)}
 
-/* perf-lite fallback: simpler eye, no particles */
+/* Intro info overlay */
+.intro-info{position:fixed;top:clamp(2rem,5vw,4rem);left:50%;transform:translateX(-50%);z-index:9999;text-align:center;pointer-events:none;width:90%;max-width:650px;opacity:0;transition:opacity 2s}
+.intro-info.visible{opacity:1}
+.intro-info-inner{display:flex;flex-direction:column;gap:clamp(.8rem,1.5vw,1.2rem)}
+.intro-info-line{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream);opacity:0;transform:translateY(10px);transition:opacity 1.5s ease,transform 1.5s ease;text-shadow:0 0 20px rgba(8,8,7,.8)}
+.intro-info-line.show{opacity:.8;transform:translateY(0)}
+.intro-info-1{font-size:clamp(1rem,1.5vw,1.2rem);letter-spacing:.1em}
+.intro-info-2{font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--gold)}
+.intro-info-3{font-size:clamp(1rem,1.5vw,1.2rem)}
+.intro-info-4{font-size:clamp(.95rem,1.4vw,1.1rem);color:var(--cream-dim)}
+.intro-info-5{font-size:clamp(1.2rem,1.8vw,1.5rem);color:var(--gold);text-shadow:0 0 20px rgba(201,169,110,.3)}
+
+/* perf-lite fallback: simpler intro, no particles */
 .perf-lite .eye-particles{display:none}
-.perf-lite .eye-slit::after{display:none}
-.perf-lite .eye-vortex .v-ring{animation-duration:30s}
+.perf-lite .eye-isar-flow{animation-duration:30s}
+.perf-lite .intro-corona-ring{animation:none}
+.perf-lite .intro-corona-glow{animation:none}
 
 /* Main content hidden during intro */
 .main-hidden{opacity:0!important;pointer-events:none!important}
 @keyframes mainReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .main-revealed{animation:mainReveal 1.5s ease forwards}
+
+/* === MULTIPLE CLOUDS === */
+.intro-cloud-2{width:clamp(200px,40vw,500px)!important;left:-50%!important;top:25%!important;opacity:0;z-index:4!important}
+.intro-cloud-2.entering{opacity:.4!important;left:15%!important;animation:introCloudFloat2 16s ease-in-out infinite 3s!important}
+.intro-cloud-3{width:clamp(150px,30vw,350px)!important;left:110%!important;top:55%!important;opacity:0;z-index:3!important}
+.intro-cloud-3.entering{opacity:.3!important;left:60%!important;animation:introCloudFloat3 20s ease-in-out infinite 5s!important}
+@keyframes introCloudFloat2{0%,100%{transform:translateY(0) translateX(0)}40%{transform:translateY(-6px) translateX(-8px)}70%{transform:translateY(4px) translateX(5px)}}
+@keyframes introCloudFloat3{0%,100%{transform:translateY(0) translateX(0)}35%{transform:translateY(5px) translateX(6px)}65%{transform:translateY(-4px) translateX(-3px)}}
+
+/* === CONSTELLATIONS === */
+.intro-constellations{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity 3s}
+.intro-constellations.visible{opacity:1}
+.intro-const{position:absolute;pointer-events:none}
+
+/* === BRAND PULSE === */
+@keyframes brandPulse{0%,100%{text-shadow:0 0 10px rgba(201,169,110,.3),0 0 30px rgba(201,169,110,.1);opacity:.7}50%{text-shadow:0 0 20px rgba(201,169,110,.6),0 0 50px rgba(201,169,110,.3),0 0 80px rgba(201,169,110,.15);opacity:1}}
+
+/* === MAGICAL PASSWORD INPUT === */
+#pwInput{font-family:var(--serif)!important;font-size:clamp(1.8rem,3vw,2.5rem)!important;font-weight:400!important;font-style:italic!important;color:var(--gold)!important;text-align:center!important;letter-spacing:.2em!important;text-shadow:0 0 10px rgba(201,169,110,.4),0 0 25px rgba(201,169,110,.2)!important;caret-color:var(--gold)}
+
+/* === SPARK FLY === */
+@keyframes sparkFly{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--sx,20px),var(--sy,-30px)) scale(0)}}
+
+/* === SHOOTING STAR === */
+.shooting-star{position:fixed;width:2px;height:2px;background:#fff;border-radius:50%;z-index:9990;pointer-events:none;box-shadow:0 0 4px #fff,0 0 10px rgba(201,169,110,.5);opacity:0}
+.shooting-star.fly{animation:shootingStar 1.5s ease-out forwards}
+@keyframes shootingStar{0%{opacity:1;transform:translate(0,0)}10%{opacity:1}100%{opacity:0;transform:translate(60vw,35vh)}}
+.shooting-star::after{content:"";position:absolute;top:0;right:100%;width:80px;height:1px;background:linear-gradient(to left,rgba(255,255,255,.6),transparent)}
 </style>
 </head>
 <body>
@@ -518,42 +569,131 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 <!-- PASSWORD GATE -->
 <div class="pw-gate" id="pwGate">
   <div class="pw-gate-brand">Munich Witchcraft</div>
+  <p class="pw-gate-welcome">Du hast einen Termin vereinbart.<br>Der Moment rückt näher.<br>Gib nun das Passwort ein, das du erhalten hast.</p>
   <div class="pw-gate-field">
-    <input type="password" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+    <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
   </div>
   <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
 </div>
 
-<!-- LYRIC INTRO OVERLAY — EYE OPENING -->
+<!-- LYRIC INTRO OVERLAY — GENESIS -->
 <div class="lyric-intro hidden" id="lyricIntro">
-  <!-- Eye structure -->
-  <div class="eye-container">
-    <div class="eye-slit" id="eyeSlit">
-      <div class="eye-flash" id="eyeFlash"></div>
-      <div class="eye-vortex" id="eyeVortex">
-        <svg viewBox="0 0 400 400">
-          <circle class="v-ring v-ring-1" cx="200" cy="200" r="190"/>
-          <circle class="v-ring v-ring-2" cx="200" cy="200" r="165"/>
-          <circle class="v-ring v-ring-3" cx="200" cy="200" r="140"/>
-          <circle class="v-ring v-ring-4" cx="200" cy="200" r="115"/>
-          <circle class="v-ring v-ring-5" cx="200" cy="200" r="90"/>
-          <circle class="v-ring v-ring-6" cx="200" cy="200" r="65"/>
-          <circle class="v-core" cx="200" cy="200" r="35"/>
-          <circle class="v-glow" cx="200" cy="200" r="25"/>
-        </svg>
-      </div>
-      <div class="eye-rim" id="eyeRim"><div class="eye-rim-inner"></div></div>
-      <div class="eye-seed" id="eyeSeed"></div>
-      <div class="eye-particles" id="eyeParticles"></div>
-      <div class="eye-lightning" id="eyeLightning"></div>
+  <div class="intro-scene" id="introScene">
+    <div class="intro-flash" id="introFlash"></div>
+    <div class="intro-stars" id="introStars"></div>
+    <div class="intro-constellations" id="introConstellations">
+      <svg class="intro-const" viewBox="0 0 200 150" style="top:10%;left:5%;width:15vw">
+        <circle cx="30" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="45" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="50" cy="90" r="2" fill="var(--gold)" opacity=".4"/><circle cx="120" cy="30" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="150" cy="80" r="2.2" fill="var(--gold)" opacity=".5"/>
+        <path d="M30 20 L80 45 L50 90 M80 45 L120 30 L150 80" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      </svg>
+      <svg class="intro-const" viewBox="0 0 180 120" style="top:15%;right:8%;width:12vw">
+        <circle cx="20" cy="60" r="2" fill="var(--gold)" opacity=".4"/><circle cx="70" cy="20" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="130" cy="40" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="160" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="90" cy="90" r="2.5" fill="var(--gold)" opacity=".5"/>
+        <path d="M20 60 L70 20 L130 40 L160 100 L90 90 L20 60" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".12"/>
+      </svg>
+      <svg class="intro-const" viewBox="0 0 160 140" style="bottom:20%;left:12%;width:10vw">
+        <circle cx="80" cy="10" r="2" fill="var(--gold)" opacity=".5"/><circle cx="30" cy="70" r="2.2" fill="var(--gold)" opacity=".4"/><circle cx="130" cy="70" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="130" r="2" fill="var(--gold)" opacity=".4"/>
+        <path d="M80 10 L30 70 L80 130 L130 70 Z" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".1"/>
+      </svg>
     </div>
+    <!-- The Sun -->
+    <div class="intro-sun" id="introSun"></div>
+    <!-- Logo as Moon -->
+    <div class="intro-logo-moon" id="introLogoMoon">
+      <img src="../img/img_02.png" alt="Munich Witchcraft">
+    </div>
+    <!-- Corona -->
+    <div class="intro-corona" id="introCorona">
+      <div class="intro-corona-glow"></div>
+      <div class="intro-corona-ring"></div>
+    </div>
+    <!-- Isar streams — exact same design as main page -->
+    <svg class="intro-isar-wrap" id="introIsarWrap" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="iiDeep" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(30,80,110,0)"/>
+          <stop offset="12%" stop-color="rgba(30,80,110,.3)"/>
+          <stop offset="50%" stop-color="rgba(40,100,130,.45)"/>
+          <stop offset="88%" stop-color="rgba(30,80,110,.3)"/>
+          <stop offset="100%" stop-color="rgba(30,80,110,0)"/>
+        </linearGradient>
+        <linearGradient id="iiMain" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(60,150,185,0)"/>
+          <stop offset="10%" stop-color="rgba(60,150,185,.35)"/>
+          <stop offset="35%" stop-color="rgba(80,185,210,.5)"/>
+          <stop offset="65%" stop-color="rgba(70,170,200,.5)"/>
+          <stop offset="90%" stop-color="rgba(60,150,185,.35)"/>
+          <stop offset="100%" stop-color="rgba(60,150,185,0)"/>
+        </linearGradient>
+        <linearGradient id="iiTurq" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(100,220,230,0)"/>
+          <stop offset="15%" stop-color="rgba(100,220,230,.25)"/>
+          <stop offset="50%" stop-color="rgba(130,235,240,.4)"/>
+          <stop offset="85%" stop-color="rgba(100,220,230,.25)"/>
+          <stop offset="100%" stop-color="rgba(100,220,230,0)"/>
+        </linearGradient>
+        <linearGradient id="iiLight" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(170,240,250,0)"/>
+          <stop offset="20%" stop-color="rgba(170,240,250,.15)"/>
+          <stop offset="50%" stop-color="rgba(200,250,255,.3)"/>
+          <stop offset="80%" stop-color="rgba(170,240,250,.15)"/>
+          <stop offset="100%" stop-color="rgba(170,240,250,0)"/>
+        </linearGradient>
+        <linearGradient id="iiMoon" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(220,240,245,0)"/>
+          <stop offset="30%" stop-color="rgba(220,240,245,.2)"/>
+          <stop offset="50%" stop-color="rgba(240,250,255,.35)"/>
+          <stop offset="70%" stop-color="rgba(220,240,245,.2)"/>
+          <stop offset="100%" stop-color="rgba(220,240,245,0)"/>
+        </linearGradient>
+      </defs>
+      <!-- LAYER 1: Deep wide undercurrent -->
+      <path class="eye-isar-flow eye-isar-1" d="M520 0 C510 50,420 90,400 180 S560 300,480 400 S350 480,400 580 S580 680,500 780 S380 860,420 940 S530 980,500 1000" fill="none" stroke="url(#iiDeep)" stroke-width="120" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- LAYER 2: Main body of water -->
+      <path class="eye-isar-flow eye-isar-2" d="M510 0 C505 55,430 100,415 190 S555 295,475 395 S360 475,405 575 S575 670,495 770 S385 855,425 935 S525 975,505 1000" fill="none" stroke="url(#iiMain)" stroke-width="70" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- LAYER 3: Turquoise mid-stream -->
+      <path class="eye-isar-flow eye-isar-3" d="M500 0 C498 60,440 110,425 200 S545 290,470 390 S370 465,410 565 S565 660,490 760 S390 845,430 930 S520 970,500 1000" fill="none" stroke="url(#iiTurq)" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- LAYER 4: Bright surface current -->
+      <path class="eye-isar-flow eye-isar-4" d="M495 0 C495 65,445 115,432 205 S540 285,468 385 S375 460,415 560 S560 655,488 755 S395 840,435 925 S518 968,498 1000" fill="none" stroke="url(#iiLight)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- LAYER 5: Secondary branch -->
+      <path class="eye-isar-flow eye-isar-5" d="M540 0 C535 45,470 85,460 160 S580 260,520 340 S440 400,460 480 S590 560,530 640 S450 720,470 800 S560 880,540 960 S510 990,520 1000" fill="none" stroke="url(#iiMain)" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- LAYER 6: Thin fast channel -->
+      <path class="eye-isar-flow" d="M460 0 C462 70,410 130,400 220 S510 320,450 420 S380 500,400 600 S520 690,465 790 S400 870,430 950 S480 985,470 1000" fill="none" stroke="url(#iiTurq)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="animation:isarFlowUp 9s ease-in-out infinite 1.5s;--if-lo:.15;--if-hi:.5"/>
+      <!-- SHIMMER: Moonlight reflections -->
+      <path class="eye-isar-shimmer" stroke="url(#iiMoon)" stroke-width="12" stroke-dasharray="8 25" fill="none" d="M490 60 C460 120,440 160,430 230" style="--is-d:7s;--is-del:0s"/>
+      <path class="eye-isar-shimmer" stroke="url(#iiMoon)" stroke-width="8" stroke-dasharray="5 18" fill="none" d="M450 300 C480 360,500 400,475 460" style="--is-d:9s;--is-del:2s"/>
+      <path class="eye-isar-shimmer" stroke="url(#iiMoon)" stroke-width="14" stroke-dasharray="10 30" fill="none" d="M420 520 C460 570,480 610,470 680" style="--is-d:6s;--is-del:4s"/>
+      <path class="eye-isar-shimmer" stroke="url(#iiMoon)" stroke-width="6" stroke-dasharray="4 20" fill="none" d="M500 700 C480 750,460 790,470 850" style="--is-d:8s;--is-del:1s"/>
+      <path class="eye-isar-shimmer" stroke="url(#iiMoon)" stroke-width="10" stroke-dasharray="6 22" fill="none" d="M440 850 C460 890,480 920,460 970" style="--is-d:7.5s;--is-del:5.5s"/>
+      <path class="eye-isar-shimmer" stroke="rgba(200,245,255,.3)" stroke-width="3" stroke-dasharray="3 15" fill="none" d="M510 150 C490 200,480 240,495 300" style="--is-d:11s;--is-del:3s"/>
+      <path class="eye-isar-shimmer" stroke="rgba(200,245,255,.3)" stroke-width="3" stroke-dasharray="3 15" fill="none" d="M465 480 C490 530,500 560,480 620" style="--is-d:10s;--is-del:6s"/>
+    </svg>
+    <!-- Cloud -->
+    <img class="intro-cloud" id="introCloud" src="../img/img_01.png" alt="">
+    <img class="intro-cloud intro-cloud-2" id="introCloud2" src="../img/img_01.png" alt="">
+    <img class="intro-cloud intro-cloud-3" id="introCloud3" src="../img/img_01.png" alt="">
+    <!-- Lightning -->
+    <div class="intro-lightning" id="introLightning"></div>
+    <!-- Particles -->
+    <div class="eye-particles" id="eyeParticles"></div>
   </div>
-  <!-- Central text display (replaced at each timestamp) -->
+  <!-- Text overlay -->
   <div class="eye-text" id="eyeText">
     <div class="eye-text-inner" id="eyeTextInner"></div>
   </div>
+  <div class="intro-info" id="introInfo">
+    <div class="intro-info-inner">
+      <p class="intro-info-line intro-info-1">Erkunde diese Seite. Nimm dir Zeit.</p>
+      <p class="intro-info-line intro-info-2">F&uuml;lle den Pers&ouml;nlichkeitstest aus &mdash; notiere deine Chiffre.</p>
+      <p class="intro-info-line intro-info-3">Sammle deine Fragen. Was bewegt dich? Was suchst du?</p>
+      <p class="intro-info-line intro-info-4">Bereite dich in den Tagen davor vor &mdash; komm zur Ruhe.</p>
+      <p class="intro-info-line intro-info-5">Der Besuch bei der Hexe erwartet dich.</p>
+    </div>
+  </div>
 </div>
-<div class="lyric-bar hidden" id="lyricBar"></div>
+<div class="lyric-bar hidden" id="lyricBar">
+  <span class="lyric-bar-text" id="lyricBarText"></span>
+  <span class="lyric-bar-credit">Waking the Witch &middot; Summerchild &middot; Mika Sch&ouml;berl &middot; <a href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener" style="color:var(--gold-dim);text-decoration:none">Spotify</a></span>
+</div>
 <button class="lyric-skip hidden" id="lyricSkip">&Uuml;berspringen &rarr;</button>
 <audio id="introAudio" src="waking-the-witch.mp3" preload="auto"></audio>
 
@@ -666,7 +806,6 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
       an dem die Dinge sichtbar werden.
     </div>
     <div class="welcome-body">
-      <p>Du hast dich auf den Weg gemacht</p>
       <p style="font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.9">Ich kann dich nicht in einen Sturm verwandeln. Aber ich kann dich für einen Moment in das Auge meines Sturmes holen &mdash; dir Perspektiven schenken, Impulse geben, dir meinen Raum zeigen. Und dich darin bestärken, du selbst zu sein.</p>
       <p>Denn wer lernt, seinen eigenen Sturm zu reiten &mdash; den Besen zu besteigen, statt vor dem Wind davonzulaufen &mdash;, der fegt Altes hinweg, das längst hätte gehen dürfen. Der hilft Dingen beim Fliegen, die nie wussten, dass sie Flügel haben. Der erneuert, gestaltet um, unterstützt. Und ist dabei frei.</p>
       <p>So findest du deine eigene <span class="glow-word">Magie</span>.</p>
@@ -1360,16 +1499,18 @@ function tCopy(){
   var lyricBar=document.getElementById('lyricBar');
   var lyricSkip=document.getElementById('lyricSkip');
   var introAudio=document.getElementById('introAudio');
-  var PASSWORD='wakingthewitch';
+  var PASSWORD='mwc';
 
-  /* Eye elements */
-  var eyeSlit=document.getElementById('eyeSlit');
-  var eyeSeed=document.getElementById('eyeSeed');
-  var eyeVortex=document.getElementById('eyeVortex');
+  /* Genesis intro elements */
+  var introScene=document.getElementById('introScene');
+  var introSun=document.getElementById('introSun');
+  var introLogoMoon=document.getElementById('introLogoMoon');
+  var introCorona=document.getElementById('introCorona');
+  var introIsarWrap=document.getElementById('introIsarWrap');
+  var introCloud=document.getElementById('introCloud');
+  var introFlash=document.getElementById('introFlash');
+  var introLightning=document.getElementById('introLightning');
   var eyeParticles=document.getElementById('eyeParticles');
-  var eyeLightning=document.getElementById('eyeLightning');
-  var eyeRim=document.getElementById('eyeRim');
-  var eyeFlash=document.getElementById('eyeFlash');
   var eyeTextInner=document.getElementById('eyeTextInner');
   var isPerfLite=document.documentElement.classList.contains('perf-lite');
 
@@ -1414,6 +1555,18 @@ function tCopy(){
   pwBtn.addEventListener('click',checkPassword);
   pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword()});
 
+  /* Spark particles on password input */
+  pwInput.addEventListener('input',function(){
+    for(var i=0;i<3;i++){
+      var spark=document.createElement('div');
+      spark.style.cssText='position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:10000;box-shadow:0 0 6px rgba(201,169,110,.8);left:'+(pwInput.getBoundingClientRect().right-20+Math.random()*30)+'px;top:'+(pwInput.getBoundingClientRect().top-5+Math.random()*30)+'px;animation:sparkFly .8s ease-out forwards';
+      spark.style.setProperty('--sx',(Math.random()*40-20)+'px');
+      spark.style.setProperty('--sy',(-10-Math.random()*30)+'px');
+      document.body.appendChild(spark);
+      setTimeout(function(){if(spark.parentNode)spark.parentNode.removeChild(spark)},900);
+    }
+  });
+
   /* === EYE OPENING INTRO SEQUENCE === */
   function startIntro(){
     lyricIntro.classList.remove('hidden');
@@ -1451,8 +1604,7 @@ function tCopy(){
       {text:'waking the witch\u2026',cls:'t-serif t-huge t-gold t-glow',bar:'waking the witch\u2026'}
     ];
 
-    /* Eye phase mapping: which eye phase for each lyric index */
-    var eyePhases=['phase-opening','phase-opening','phase-wide','phase-full','phase-full','phase-full','phase-full','phase-full','phase-full','phase-full','phase-bright'];
+    /* (eye phases removed — Genesis intro has no clip-path phases) */
 
     /* --- Particle spawning — more dramatic spiral outward --- */
     function spawnParticle(){
@@ -1499,47 +1651,41 @@ function tCopy(){
     function flashLightning(){
       if(!introRunning)return;
       /* Background flash */
-      eyeFlash.style.animation='none';
-      void eyeFlash.offsetWidth;
-      eyeFlash.style.animation='bgFlash 1.5s ease-out forwards';
-      /* Generate SVG lightning bolts around the eye */
-      var cx=200,cy=200;
-      var boltCount=4+Math.floor(Math.random()*3);
+      introFlash.style.animation='none';
+      void introFlash.offsetWidth;
+      introFlash.style.animation='bgFlash 1.5s ease-out forwards';
+      /* Generate SVG lightning bolts from cloud downward */
       var svgNS='http://www.w3.org/2000/svg';
       var svg=document.createElementNS(svgNS,'svg');
-      svg.setAttribute('viewBox','0 0 400 400');
-      svg.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4';
+      svg.setAttribute('viewBox','0 0 100 100');
+      svg.setAttribute('preserveAspectRatio','none');
+      svg.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6';
+      var boltCount=3+Math.floor(Math.random()*3);
       for(var b=0;b<boltCount;b++){
-        var angle=Math.random()*Math.PI*2;
-        var sx=cx+Math.cos(angle)*40;
-        var sy=cy+Math.sin(angle)*40;
-        var d='M'+sx+' '+sy;
+        var sx=15+Math.random()*50;
+        var sy=8+Math.random()*15;
+        var d='M'+sx.toFixed(1)+' '+sy.toFixed(1);
         var x=sx,y=sy;
-        var segments=5+Math.floor(Math.random()*4);
+        var segments=6+Math.floor(Math.random()*5);
         for(var s=0;s<segments;s++){
-          x+=Math.cos(angle)*(15+Math.random()*25)+(Math.random()-.5)*30;
-          y+=Math.sin(angle)*(15+Math.random()*25)+(Math.random()-.5)*30;
+          x+=(Math.random()-.5)*18;
+          y+=6+Math.random()*8;
           d+=' L'+x.toFixed(1)+' '+y.toFixed(1);
         }
         var path=document.createElementNS(svgNS,'path');
         path.setAttribute('d',d);
         path.setAttribute('fill','none');
         path.setAttribute('stroke','rgba(201,169,110,.8)');
-        path.setAttribute('stroke-width','1.5');
-        path.setAttribute('filter','drop-shadow(0 0 6px rgba(201,169,110,.9))');
+        path.setAttribute('stroke-width','0.6');
+        path.setAttribute('filter','drop-shadow(0 0 3px rgba(201,169,110,.9))');
         path.style.animation='eyeLightningFlash 1.2s ease-out forwards';
         path.style.animationDelay=(b*0.08)+'s';
         svg.appendChild(path);
       }
-      eyeLightning.innerHTML='';
-      eyeLightning.appendChild(svg);
-      eyeLightning.classList.add('active');
-      setTimeout(function(){eyeLightning.classList.remove('active');eyeLightning.innerHTML=''},2000);
-    }
-
-    /* --- Set eye phase --- */
-    function setEyePhase(cls){
-      eyeSlit.className='eye-slit '+cls;
+      introLightning.innerHTML='';
+      introLightning.appendChild(svg);
+      introLightning.classList.add('active');
+      setTimeout(function(){introLightning.classList.remove('active');introLightning.innerHTML=''},2000);
     }
 
     /* --- End intro --- */
@@ -1547,6 +1693,7 @@ function tCopy(){
       if(!introRunning)return;
       introRunning=false;
       if(particleInterval)clearInterval(particleInterval);
+      if(lightningInterval)clearInterval(lightningInterval);
       fallbackTimers.forEach(function(t){clearTimeout(t)});
       try{introAudio.pause();introAudio.currentTime=0}catch(e){}
       lyricIntro.classList.add('hidden');
@@ -1570,38 +1717,87 @@ function tCopy(){
       }
     }catch(e){audioPlaying=false;runFallback()}
 
-    /* --- Phase 1: Darkness (0s - 23.7s) --- */
-    /* 3s: golden dot appears — bigger and brighter */
+    var lightningInterval=null;
+
+    /* --- Generate intro stars --- */
+    (function(){
+      var starsEl=document.getElementById('introStars');
+      if(!starsEl)return;
+      for(var i=0;i<150;i++){
+        var s=document.createElement('div');
+        s.className='intro-star'+(Math.random()>.82?' bright':'');
+        var size=1+Math.random()*2;
+        s.style.width=size+'px';
+        s.style.height=size+'px';
+        s.style.left=(Math.random()*100)+'%';
+        s.style.top=(Math.random()*100)+'%';
+        s.style.setProperty('--tw-d',(3+Math.random()*6)+'s');
+        s.style.setProperty('--tw-del',(Math.random()*5)+'s');
+        s.style.setProperty('--tw-lo',(.05+Math.random()*.2).toFixed(2));
+        s.style.setProperty('--tw-hi',(.3+Math.random()*.5).toFixed(2));
+        starsEl.appendChild(s);
+      }
+    })();
+
+    /* --- Genesis sequence: Tag → Sonnenfinsternis → Nacht → Abendrot --- */
+    /* 2s: The Sun appears on a bright day sky, Moon begins its slow 60s journey */
     setTimeout(function(){
       if(!introRunning)return;
-      eyeSeed.classList.add('visible');
-    },3000);
-    /* 8s: dot stretches to bright vertical beam */
+      introSun.classList.add('visible');
+      introLogoMoon.classList.add('visible');
+      introLogoMoon.classList.add('eclipsing');
+    },2000);
+    /* 30s: Sky begins dimming as moon approaches */
     setTimeout(function(){
       if(!introRunning)return;
-      eyeSeed.classList.add('stretch');
-      setEyePhase('phase-dot');
-    },8000);
-    /* 12s: slit shape, seed fades */
+      introScene.classList.add('dimming');
+      document.getElementById('introConstellations').classList.add('visible');
+    },30000);
+    /* 45s: Corona becomes visible, sky goes dark */
     setTimeout(function(){
       if(!introRunning)return;
-      setEyePhase('phase-slit');
-      eyeSeed.style.opacity='0';
-    },12000);
-    /* 15s: widen slightly, particles begin, show rim */
+      introCorona.classList.add('visible');
+      introScene.classList.remove('dimming');
+      introScene.classList.add('eclipse-dark');
+    },45000);
+    /* 50s: Particles start */
     setTimeout(function(){
       if(!introRunning)return;
-      setEyePhase('phase-opening');
-      eyeRim.style.opacity='1';
       if(!isPerfLite){
         spawnParticleBurst(20);
         particleInterval=setInterval(spawnParticle,200);
       }
-    },15000);
-    /* 20s: vortex visible — already always rendered, no opacity transition needed */
+    },50000);
+    /* 65s: Cloud + Isar + recurring lightning together */
     setTimeout(function(){
       if(!introRunning)return;
-    },20000);
+      introIsarWrap.classList.add('visible');
+      document.querySelectorAll('.eye-isar-flow,.eye-isar-shimmer').forEach(function(f){f.classList.add('flowing')});
+      if(introCloud)introCloud.classList.add('entering');
+      var c2=document.getElementById('introCloud2');
+      var c3=document.getElementById('introCloud3');
+      if(c2)setTimeout(function(){c2.classList.add('entering')},2000);
+      if(c3)setTimeout(function(){c3.classList.add('entering')},5000);
+      /* Start recurring lightning every 5-8s */
+      lightningInterval=setInterval(function(){
+        if(!introRunning){clearInterval(lightningInterval);return}
+        flashLightning();
+      },5000+Math.random()*3000);
+    },65000);
+    /* 55s: Info text overlay appears with staggered lines */
+    setTimeout(function(){
+      if(!introRunning)return;
+      document.getElementById('introInfo').classList.add('visible');
+      var lines=document.querySelectorAll('.intro-info-line');
+      lines.forEach(function(l,i){
+        setTimeout(function(){l.classList.add('show')},i*2000);
+      });
+    },55000);
+    /* 125s: Info text fades out */
+    setTimeout(function(){
+      if(!introRunning)return;
+      document.getElementById('introInfo').classList.remove('visible');
+    },125000);
 
     /* --- Audio timeupdate handler (primary sync) --- */
     var stepShown=[false,false,false];
@@ -1617,23 +1813,27 @@ function tCopy(){
           lastShownIdx=i;
           var cfg=lyricConfigs[i];
           showText(cfg.text,cfg.cls);
-          lyricBar.textContent=cfg.bar;
-          if(eyePhases[i])setEyePhase(eyePhases[i]);
+          document.getElementById('lyricBarText').textContent=cfg.bar;
 
-          /* Special: line 3 (42.5s) "eye of the storm" — dramatic lightning + flash + particle burst */
+          /* Special: line 2 (34s) "breaking chains" — first lightning */
+          if(i===2){
+            flashLightning();
+          }
+          /* Special: line 6 (79.2s) "before I rise, before I fall" — shooting star */
+          if(i===6){
+            var star=document.createElement('div');
+            star.className='shooting-star';
+            star.style.left='10%';star.style.top='15%';
+            document.querySelector('.intro-scene').appendChild(star);
+            setTimeout(function(){star.classList.add('fly')},50);
+            setTimeout(function(){if(star.parentNode)star.parentNode.removeChild(star)},2000);
+          }
+          /* Special: line 3 (42.5s) "eye of the storm" — dramatic lightning barrage + particle burst */
           if(i===3){
             flashLightning();
             if(!isPerfLite)spawnParticleBurst(25);
             setTimeout(function(){if(introRunning)flashLightning()},800);
             setTimeout(function(){if(introRunning)flashLightning()},1600);
-          }
-          /* Special: line 4 (54.1s) — vortex spins faster */
-          if(i===4){
-            var rings=eyeVortex.querySelectorAll('.v-ring');
-            for(var r=0;r<rings.length;r++){
-              var dur=parseFloat(window.getComputedStyle(rings[r]).animationDuration)||6;
-              rings[r].style.animationDuration=(dur*.6)+'s';
-            }
           }
           break;
         }
@@ -1650,22 +1850,42 @@ function tCopy(){
           if(nextLyricAfterStep<0||t<lyricTimestamps[nextLyricAfterStep]){
             stepShown[s]=true;
             showText(stepTimestamps[s].html,stepTimestamps[s].cls);
-            lyricBar.textContent='';
+            document.getElementById('lyricBarText').textContent='';
           }
         }
       }
 
+      /* Eclipse dissolution — moon starts slow journey away at 75s */
+      if(t>=75&&!introLogoMoon.classList.contains('clearing')){
+        introLogoMoon.classList.add('clearing');
+      }
+      /* Elements dissolve at 120s — clouds, isar, lightning */
+      if(t>=120&&introCloud&&!introCloud.classList.contains('exiting')){
+        introCloud.classList.remove('entering');
+        introCloud.classList.add('exiting');
+        var rc2=document.getElementById('introCloud2');
+        var rc3=document.getElementById('introCloud3');
+        if(rc2){rc2.classList.remove('entering');rc2.classList.add('exiting')}
+        if(rc3){rc3.classList.remove('entering');rc3.classList.add('exiting')}
+        introIsarWrap.style.opacity='0';
+        if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
+      }
+      /* Sunset sky at 125s */
+      if(t>=125&&!introScene.classList.contains('sunset')){
+        introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
+        document.getElementById('introConstellations').classList.remove('visible');
+      }
       /* Ending sequence (after last lyric at 127.4s) */
       if(t>=135&&!endingStarted){
         endingStarted=true;
         showText('Dein Termin beginnt jetzt.','t-serif t-large t-gold');
-        lyricBar.textContent='Was es nun zu tun gilt\u2026';
+        document.getElementById('lyricBarText').textContent='Was es nun zu tun gilt\u2026';
       }
       if(t>=140&&endingStarted){
         showText('<span style="display:flex;flex-direction:column;align-items:center;gap:.5rem">Dein Termin beginnt jetzt.<a class="lyric-spotify active" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener" style="pointer-events:auto"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:var(--gold-dim)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Waking the Witch \u00b7 Summerchild</a></span>','t-serif t-large t-gold');
         endingStarted=999; /* prevent re-trigger */
       }
-      if(t>=147){
+      if(t>=152){
         endIntro();
       }
     });
@@ -1684,9 +1904,10 @@ function tCopy(){
             lastShownIdx=idx;
             var cfg=lyricConfigs[idx];
             showText(cfg.text,cfg.cls);
-            lyricBar.textContent=cfg.bar;
-            if(eyePhases[idx])setEyePhase(eyePhases[idx]);
-            if(idx===3)flashLightning();
+            document.getElementById('lyricBarText').textContent=cfg.bar;
+            if(idx===2)flashLightning();
+            if(idx===3){flashLightning();setTimeout(function(){if(introRunning)flashLightning()},800);setTimeout(function(){if(introRunning)flashLightning()},1600);}
+            if(idx===6){var fstar=document.createElement('div');fstar.className='shooting-star';fstar.style.left='10%';fstar.style.top='15%';document.querySelector('.intro-scene').appendChild(fstar);setTimeout(function(){fstar.classList.add('fly')},50);setTimeout(function(){if(fstar.parentNode)fstar.parentNode.removeChild(fstar)},2000);}
           }});
         })(i);
       }
@@ -1696,17 +1917,40 @@ function tCopy(){
           allEvents.push({t:stepTimestamps[si].t*1000,fn:function(){
             if(!introRunning)return;
             showText(stepTimestamps[si].html,stepTimestamps[si].cls);
-            lyricBar.textContent='';
+            document.getElementById('lyricBarText').textContent='';
           }});
         })(s);
       }
+      /* Eclipse dissolution at 75s */
+      allEvents.push({t:75000,fn:function(){
+        if(!introRunning)return;
+        introLogoMoon.classList.add('clearing');
+      }});
+      /* Elements dissolve at 120s */
+      allEvents.push({t:120000,fn:function(){
+        if(!introRunning)return;
+        introCloud.classList.remove('entering');
+        introCloud.classList.add('exiting');
+        var fc2=document.getElementById('introCloud2');
+        var fc3=document.getElementById('introCloud3');
+        if(fc2){fc2.classList.remove('entering');fc2.classList.add('exiting')}
+        if(fc3){fc3.classList.remove('entering');fc3.classList.add('exiting')}
+        introIsarWrap.style.opacity='0';
+        if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
+      }});
+      /* Sunset at 125s */
+      allEvents.push({t:125000,fn:function(){
+        if(!introRunning)return;
+        introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
+        document.getElementById('introConstellations').classList.remove('visible');
+      }});
       /* Ending */
       allEvents.push({t:135000,fn:function(){
         if(!introRunning)return;
         showText('Dein Termin beginnt jetzt.','t-serif t-large t-gold');
-        lyricBar.textContent='Was es nun zu tun gilt\u2026';
+        document.getElementById('lyricBarText').textContent='Was es nun zu tun gilt\u2026';
       }});
-      allEvents.push({t:147000,fn:function(){endIntro()}});
+      allEvents.push({t:152000,fn:function(){endIntro()}});
 
       for(var e=0;e<allEvents.length;e++){
         fallbackTimers.push(setTimeout(allEvents[e].fn,allEvents[e].t));
