@@ -390,7 +390,9 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 }
 
 /* === PASSWORD GATE === */
-.pw-gate{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#0a1225 0%,#060810 50%,#030305 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(2rem,4vh,3rem);transition:opacity 1.5s ease,background 25s ease;overflow-y:auto;overflow-x:hidden}
+.pw-gate{position:fixed;inset:0;z-index:9999;background:#050810;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:clamp(2rem,4vh,3rem);transition:opacity 1.5s ease;overflow-y:auto;overflow-x:hidden}
+.pw-gate::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,#0a1225 0%,#060810 50%,#030305 100%);z-index:-1;transition:background 25s ease}
+.pw-gate.eclipse-dark::before{background:#030305}
 .pw-gate.eclipse-dark{background:#030305}
 .pw-gate.supernova{background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.98) 0%,rgba(255,252,240,.8) 15%,rgba(240,210,120,.5) 30%,rgba(200,160,80,.2) 50%,transparent 75%),#fff;transition:background 3s ease}
 .pw-gate.supernova .pw-cloud{opacity:0!important;transition:opacity 2s!important}
