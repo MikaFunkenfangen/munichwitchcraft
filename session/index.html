@@ -411,10 +411,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 /* === GENESIS INTRO — elements born one by one === */
 
 /* Intro container — no clip-path, full screen */
-.intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#3a5a8a 0%,#5580b0 20%,#6a98c8 40%,#80b0d8 60%,#90c0e5 80%,#a0cef0 100%);transition:background 25s ease}
-.intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#253555 20%,#1a2540 40%,#121a30 60%,#0a1020 80%,#060810 100%);transition:background 25s ease}
-.intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#030306 25%,#040408 50%,#050510 75%,#030305 100%);transition:background 20s ease}
-.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 20s ease}
+.intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#3a5a8a 0%,#5580b0 20%,#6a98c8 40%,#80b0d8 60%,#90c0e5 80%,#a0cef0 100%);transition:background 30s ease}
+.intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#253555 20%,#1a2540 40%,#121a30 60%,#0a1020 80%,#060810 100%);transition:background 30s ease}
+.intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#030306 25%,#040408 50%,#050510 75%,#030305 100%);transition:background 30s ease}
+.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 30s ease}
 .intro-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
 .intro-star{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
 .intro-star.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4)}
@@ -494,9 +494,9 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .eye-card-text{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dim);line-height:1.7;max-width:550px}
 
 /* Bottom lyric bar */
-.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9999;display:flex;flex-direction:column;align-items:center;padding:clamp(1.5rem,3vw,2.5rem) 2rem clamp(1rem,2vw,1.5rem);font-family:var(--serif);font-weight:300;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.85) 0%,rgba(8,8,7,.5) 50%,transparent 100%);pointer-events:none;transition:opacity .6s;gap:.6rem}
+.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;flex-direction:column;align-items:center;padding:clamp(.8rem,1.5vw,1.2rem) 2rem;font-family:var(--serif);font-weight:300;color:var(--cream);pointer-events:none;transition:opacity .6s;gap:.3rem}
 .lyric-bar.hidden{opacity:0}
-.lyric-bar-text{text-align:center;font-size:clamp(1rem,1.8vw,1.3rem);font-style:italic;color:var(--cream);opacity:.7;text-shadow:0 0 20px rgba(8,8,7,.6);transition:opacity .8s;letter-spacing:.05em}
+.lyric-bar-text{text-align:center;font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--cream);opacity:.65;text-shadow:0 0 25px rgba(8,8,7,.7),0 0 50px rgba(8,8,7,.4);transition:opacity .8s;letter-spacing:.06em}
 .lyric-bar-credit{font-family:var(--sans);font-size:clamp(.6rem,.8vw,.7rem);color:var(--cream-dim);opacity:.5;letter-spacing:.08em;pointer-events:auto}
 .lyric-bar-credit a{color:var(--gold-dim);text-decoration:none;transition:color .3s}
 .lyric-bar-credit a:hover{color:var(--gold)}
@@ -509,7 +509,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .lyric-spotify:hover svg{fill:var(--gold)}
 
 /* Skip button */
-.lyric-skip{position:fixed;bottom:clamp(3rem,5vw,4rem);left:50%;transform:translateX(-50%);z-index:9999;font-family:var(--sans);font-size:.75rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.5;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:1px solid rgba(201,169,110,.15);padding:.6rem 2rem;border-radius:4px}
+.lyric-skip{position:fixed;bottom:clamp(.8rem,1.5vw,1.2rem);right:2rem;z-index:9999;font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.12em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.4rem .8rem}
 .lyric-skip:hover{opacity:.9;color:var(--gold);border-color:rgba(201,169,110,.3)}
 
 /* Intro info overlay */
@@ -1867,8 +1867,8 @@ function tCopy(){
       if(t>=115&&!introLogoMoon.classList.contains('clearing')){
         introLogoMoon.classList.add('clearing');
       }
-      /* Elements dissolve at 120s — clouds, isar, lightning */
-      if(t>=120&&introCloud&&!introCloud.classList.contains('exiting')){
+      /* Elements dissolve at 115s — clouds, isar, lightning exit with eclipse */
+      if(t>=115&&introCloud&&!introCloud.classList.contains('exiting')){
         introCloud.classList.remove('entering');
         introCloud.classList.add('exiting');
         var rc2=document.getElementById('introCloud2');
@@ -1878,10 +1878,14 @@ function tCopy(){
         introIsarWrap.style.opacity='0';
         if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
       }
-      /* Sunset sky at 130s — as eclipse dissolves */
+      /* Constellations fade at 118s */
+      if(t>=118){
+        var cst=document.getElementById('introConstellations');
+        if(cst&&cst.classList.contains('visible'))cst.classList.remove('visible');
+      }
+      /* Sunset sky at 130s — after eclipse dissolves */
       if(t>=130&&!introScene.classList.contains('sunset')){
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
-        document.getElementById('introConstellations').classList.remove('visible');
       }
       /* Ending sequence (after last lyric at 127.4s) */
       if(t>=135&&!endingStarted){
@@ -1935,7 +1939,7 @@ function tCopy(){
         introLogoMoon.classList.add('clearing');
       }});
       /* Elements dissolve at 120s */
-      allEvents.push({t:120000,fn:function(){
+      allEvents.push({t:115000,fn:function(){
         if(!introRunning)return;
         introCloud.classList.remove('entering');
         introCloud.classList.add('exiting');
@@ -1946,11 +1950,14 @@ function tCopy(){
         introIsarWrap.style.opacity='0';
         if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
       }});
+      allEvents.push({t:118000,fn:function(){
+        if(!introRunning)return;
+        document.getElementById('introConstellations').classList.remove('visible');
+      }});
       /* Sunset at 130s */
       allEvents.push({t:130000,fn:function(){
         if(!introRunning)return;
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
-        document.getElementById('introConstellations').classList.remove('visible');
       }});
       /* Ending */
       allEvents.push({t:135000,fn:function(){
