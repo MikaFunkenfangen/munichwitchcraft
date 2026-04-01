@@ -400,6 +400,11 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .pw-gate::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,#0a1225 0%,#060810 50%,#030305 100%);z-index:-1;transition:background 25s ease}
 .pw-gate.eclipse-dark::before{background:#030305}
 .pw-gate.eclipse-dark{background:#030305}
+/* Subtle sky shifts after each question */
+.pw-gate.sky-q1::before{background:linear-gradient(180deg,#050815 0%,#08102a 50%,#040610 100%);transition:background 8s ease}
+.pw-gate.sky-q2::before{background:linear-gradient(180deg,#0a0a1a 0%,#12102a 40%,#180e20 70%,#0a0812 100%);transition:background 8s ease}
+.pw-gate.sky-q3::before{background:linear-gradient(180deg,#0e0815 0%,#1a0e22 35%,#200e1e 55%,#150812 80%,#080508 100%);transition:background 8s ease}
+.pw-gate.sky-manifest::before{background:linear-gradient(180deg,#120810 0%,#1e0e1a 30%,#251020 50%,#1a0a15 75%,#0a0508 100%);transition:background 8s ease}
 .pw-gate.supernova{transition:background 4s ease}
 .pw-gate.supernova::before{background:radial-gradient(ellipse at 50% clamp(80px,15vh,140px),rgba(255,255,255,1) 0%,rgba(255,252,240,.95) 10%,rgba(255,248,220,.8) 20%,rgba(240,210,120,.5) 35%,rgba(200,160,80,.2) 55%,transparent 80%)!important;transition:background 3s ease!important}
 .pw-gate.supernova .pw-content{opacity:0!important;transition:opacity 2s!important}
@@ -1496,8 +1501,15 @@ function tCopy(){
   setTimeout(function(){
     lightningInterval=setInterval(function(){
       pwLightning.classList.add('flash');
-      setTimeout(function(){pwLightning.classList.remove('flash')},200);
-    },6000+Math.random()*4000);
+      setTimeout(function(){pwLightning.classList.remove('flash')},250);
+      /* Occasional double flash */
+      if(Math.random()<.3){
+        setTimeout(function(){
+          pwLightning.classList.add('flash');
+          setTimeout(function(){pwLightning.classList.remove('flash')},150);
+        },400);
+      }
+    },4000+Math.random()*3000);
   },40000);
 
   /* Info text — one line at a time, fading in then out */
@@ -1541,6 +1553,10 @@ function tCopy(){
       var inp=step.querySelector('input');
       if(inp) setTimeout(function(){inp.focus()},500);
     }
+    /* Subtle sky color shift per step */
+    var skyMap={'pwStep1':'sky-q1','pwQuote1':'sky-q1','pwStep2':'sky-q2','pwQuote2':'sky-q2','pwStep3':'sky-q3','pwQuote3':'sky-q3','pwStep4':'sky-manifest'};
+    gate.classList.remove('sky-q1','sky-q2','sky-q3','sky-manifest');
+    if(skyMap[n]) gate.classList.add(skyMap[n]);
   }
 
   /* Password check — on success show step 1 */
