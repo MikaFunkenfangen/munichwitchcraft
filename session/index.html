@@ -394,11 +394,15 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .pw-gate::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,#0a1225 0%,#060810 50%,#030305 100%);z-index:-1;transition:background 25s ease}
 .pw-gate.eclipse-dark::before{background:#030305}
 .pw-gate.eclipse-dark{background:#030305}
-.pw-gate.supernova{background:radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.98) 0%,rgba(255,252,240,.8) 15%,rgba(240,210,120,.5) 30%,rgba(200,160,80,.2) 50%,transparent 75%),#fff;transition:background 3s ease}
-.pw-gate.supernova .pw-cloud{opacity:0!important;transition:opacity 2s!important}
-.pw-gate.supernova .pw-corona{opacity:0!important;transition:opacity 2s!important}
+.pw-gate.supernova{transition:background 4s ease}
+.pw-gate.supernova::before{background:radial-gradient(ellipse at 50% clamp(80px,15vh,140px),rgba(255,255,255,1) 0%,rgba(255,252,240,.95) 10%,rgba(255,248,220,.8) 20%,rgba(240,210,120,.5) 35%,rgba(200,160,80,.2) 55%,transparent 80%)!important;transition:background 3s ease!important}
+.pw-gate.supernova .pw-content{opacity:0!important;transition:opacity 2s!important}
+.pw-gate.supernova .pw-cloud{opacity:0!important;transition:opacity 1.5s!important}
+.pw-gate.supernova .pw-corona{opacity:0!important;transition:opacity 1.5s!important}
 .pw-gate.supernova .pw-logo-moon{opacity:0!important;transition:opacity 2s!important}
-.pw-gate.supernova .pw-sun{box-shadow:0 0 100px rgba(255,255,255,.9),0 0 200px rgba(255,252,240,.7),0 0 400px rgba(240,210,120,.4)!important;transition:box-shadow 2s!important}
+.pw-gate.supernova .pw-stars{opacity:0!important;transition:opacity 2s!important}
+.pw-gate.supernova .pw-credit{opacity:0!important;transition:opacity 1s!important}
+.pw-gate.supernova .pw-sun{width:200vmax!important;height:200vmax!important;box-shadow:0 0 200px rgba(255,255,255,1),0 0 400px rgba(255,252,240,.8),0 0 800px rgba(240,210,120,.5)!important;transition:all 3s ease!important;opacity:1!important}
 .pw-gate.hidden{opacity:0;pointer-events:none}
 
 /* Stars */
@@ -569,7 +573,6 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
     <div class="pw-step" id="pwQuote1">
       <p class="pw-quote-text">&bdquo;Die Scham ist nicht das Ende der W&uuml;rde &mdash;<br>sie ist ihre heimliche Geburtsstunde.&ldquo;</p>
       <p class="pw-quote-author">&mdash; Mika Sch&ouml;berl</p>
-      <p class="pw-quote-sub">Hexen sind Geburtshelfer*innen.</p>
       <button class="pw-gate-btn pw-quote-skip">Weiter</button>
     </div>
 
@@ -1598,17 +1601,19 @@ function tCopy(){
     },lines.length*2500+2000);
   }
 
-  /* Speak it — supernova + enter */
+  /* So sei es — supernova from the sun, then enter */
   document.getElementById('pwSpeak').addEventListener('click',function(){
     if(lightningInterval) clearInterval(lightningInterval);
+    /* 1s pause to let words sink in */
     setTimeout(function(){
       gate.classList.add('supernova');
+      /* 4s for the supernova to fill the screen */
       setTimeout(function(){
         gate.classList.add('hidden');
         setTimeout(function(){gate.style.display='none'},1500);
         try{audio.pause()}catch(e){}
-      },2500);
-    },2000);
+      },4000);
+    },1000);
   });
 })();
 </script>
