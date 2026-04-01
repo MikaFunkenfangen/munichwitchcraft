@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lyric Sync Tool — Waking The Witch</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#080807;color:#e8e2d4;font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem}
+h1{font-size:1.4rem;font-weight:300;color:#c9a96e;margin-bottom:.5rem;letter-spacing:.1em}
+.info{font-size:.85rem;color:#a8a090;margin-bottom:2rem;text-align:center;line-height:1.8;max-width:500px}
+.info strong{color:#c9a96e}
+audio{margin-bottom:2rem;width:100%;max-width:400px}
+.current-line{font-size:1.8rem;font-style:italic;color:#e8e2d4;text-align:center;margin:2rem 0;min-height:3rem;transition:all .3s}
+.current-line.flash{color:#c9a96e;text-shadow:0 0 20px rgba(201,169,110,.5)}
+.lines{width:100%;max-width:600px}
+.line{display:flex;align-items:center;gap:1rem;padding:.6rem .8rem;border-bottom:1px solid rgba(201,169,110,.08);transition:background .3s}
+.line.done{background:rgba(201,169,110,.06)}
+.line.active{background:rgba(201,169,110,.12);border-left:3px solid #c9a96e}
+.line-num{font-size:.7rem;color:#a8a090;width:2rem;text-align:right;flex-shrink:0}
+.line-text{font-size:.95rem;font-style:italic;flex:1}
+.line-time{font-size:.8rem;color:#c9a96e;width:4rem;text-align:right;font-family:'Jost',sans-serif;letter-spacing:.05em}
+.btn{display:inline-block;padding:.8rem 2rem;font-family:inherit;font-size:1rem;color:#c9a96e;background:none;border:1px solid rgba(201,169,110,.3);cursor:pointer;margin:.5rem;transition:all .3s;letter-spacing:.08em}
+.btn:hover{background:rgba(201,169,110,.08);border-color:#c9a96e}
+.btn.primary{background:rgba(201,169,110,.15)}
+.controls{margin:2rem 0;text-align:center}
+.result{margin-top:2rem;width:100%;max-width:600px}
+.result textarea{width:100%;height:200px;background:rgba(201,169,110,.04);border:1px solid rgba(201,169,110,.15);color:#e8e2d4;font-family:'Jost',sans-serif;font-size:.8rem;padding:1rem;resize:vertical}
+.result p{font-size:.75rem;color:#a8a090;margin-top:.5rem}
+.status{font-family:'Jost',sans-serif;font-size:.85rem;color:#a8a090;margin:1rem 0;letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<h1>Lyric Sync Tool</h1>
+<p class="info">
+  <strong>So geht's:</strong><br>
+  1. Drücke "Start" — der Song beginnt<br>
+  2. Drücke <strong>Leertaste</strong> genau wenn jede neue Zeile im Song beginnt<br>
+  3. Die aktuelle Zeile wird dir groß angezeigt<br>
+  4. Am Ende kopierst du das Ergebnis und schickst es mir
+</p>
+
+<audio id="audio" src="waking-the-witch.mp3" preload="auto"></audio>
+
+<div class="status" id="status">Bereit. Drücke Start.</div>
+<div class="current-line" id="currentLine">—</div>
+
+<div class="controls">
+  <button class="btn primary" id="startBtn" onclick="startSync()">Start</button>
+  <button class="btn" id="resetBtn" onclick="resetSync()">Reset</button>
+</div>
+
+<div class="lines" id="linesList"></div>
+
+<div class="result" id="resultBox" style="display:none">
+  <textarea id="resultText" readonly></textarea>
+  <p>Kopiere diesen Text und schicke ihn mir.</p>
+  <button class="btn" onclick="copyResult()">Kopieren</button>
+</div>
+
+<script>
+var lyrics = [
+  "City pulls, beating heart",
+  "casting spells, work of art",
+  "breaking chains, shattering norms",
+  "I am the magic, eye of the storm",
+  "Waking the witch, waking, waking, waking, waking the witch",
+  "Rise before the tide",
+  "before I rise, before I fall",
+  "Flowers blooming, change my name",
+  "the witch remains, yet not the same",
+  "The magic courses through each vein",
+  "waking the witch, waking the witch, waking the witch"
+];
+
+var timestamps = [];
+var currentIdx = 0;
+var running = false;
+var audio = document.getElementById('audio');
+
+// Render lines
+var list = document.getElementById('linesList');
+lyrics.forEach(function(l, i) {
+  var div = document.createElement('div');
+  div.className = 'line';
+  div.id = 'line-' + i;
+  div.innerHTML = '<span class="line-num">' + (i+1) + '</span><span class="line-text">' + l + '</span><span class="line-time" id="time-' + i + '">—</span>';
+  list.appendChild(div);
+});
+
+function startSync() {
+  if (running) return;
+  running = true;
+  currentIdx = 0;
+  timestamps = [];
+  document.getElementById('status').textContent = 'Läuft — drücke LEERTASTE bei jeder neuen Zeile';
+  document.getElementById('currentLine').textContent = lyrics[0];
+  document.getElementById('line-0').classList.add('active');
+  document.getElementById('startBtn').textContent = 'Läuft...';
+  document.getElementById('startBtn').style.opacity = '.4';
+  audio.currentTime = 0;
+  audio.play();
+}
+
+function resetSync() {
+  running = false;
+  currentIdx = 0;
+  timestamps = [];
+  audio.pause();
+  audio.currentTime = 0;
+  document.getElementById('status').textContent = 'Bereit. Drücke Start.';
+  document.getElementById('currentLine').textContent = '—';
+  document.getElementById('startBtn').textContent = 'Start';
+  document.getElementById('startBtn').style.opacity = '1';
+  document.getElementById('resultBox').style.display = 'none';
+  lyrics.forEach(function(l, i) {
+    document.getElementById('line-' + i).className = 'line';
+    document.getElementById('time-' + i).textContent = '—';
+  });
+}
+
+function formatTime(s) {
+  var m = Math.floor(s / 60);
+  var sec = (s % 60).toFixed(1);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function markLine() {
+  if (!running || currentIdx >= lyrics.length) return;
+
+  var t = audio.currentTime;
+  timestamps.push(t);
+
+  // Update UI
+  document.getElementById('time-' + currentIdx).textContent = formatTime(t);
+  document.getElementById('line-' + currentIdx).classList.remove('active');
+  document.getElementById('line-' + currentIdx).classList.add('done');
+
+  var cl = document.getElementById('currentLine');
+  cl.classList.add('flash');
+  setTimeout(function() { cl.classList.remove('flash'); }, 300);
+
+  currentIdx++;
+
+  if (currentIdx < lyrics.length) {
+    document.getElementById('currentLine').textContent = lyrics[currentIdx];
+    document.getElementById('line-' + currentIdx).classList.add('active');
+    document.getElementById('status').textContent = 'Zeile ' + (currentIdx + 1) + ' von ' + lyrics.length + ' — LEERTASTE drücken';
+  } else {
+    // Done!
+    running = false;
+    document.getElementById('status').textContent = 'Fertig! Alle Zeilen gesynct.';
+    document.getElementById('currentLine').textContent = '✓ Fertig';
+    document.getElementById('startBtn').textContent = 'Start';
+    document.getElementById('startBtn').style.opacity = '1';
+    showResult();
+  }
+}
+
+function showResult() {
+  var result = 'LYRIC TIMESTAMPS — Waking The Witch\n';
+  result += '====================================\n\n';
+  timestamps.forEach(function(t, i) {
+    result += formatTime(t) + '  →  ' + lyrics[i] + '\n';
+  });
+  result += '\n\nAls Array:\n[' + timestamps.map(function(t) { return t.toFixed(1); }).join(', ') + ']';
+
+  document.getElementById('resultText').value = result;
+  document.getElementById('resultBox').style.display = 'block';
+}
+
+function copyResult() {
+  var ta = document.getElementById('resultText');
+  ta.select();
+  document.execCommand('copy');
+  alert('Kopiert!');
+}
+
+// Keyboard listener
+document.addEventListener('keydown', function(e) {
+  if (e.code === 'Space' || e.key === ' ') {
+    e.preventDefault();
+    markLine();
+  }
+});
+
+// Auto-finish when song ends
+audio.addEventListener('ended', function() {
+  if (running && currentIdx < lyrics.length) {
+    document.getElementById('status').textContent = 'Song zu Ende — ' + (lyrics.length - currentIdx) + ' Zeilen fehlen noch. Nutze Reset und versuch es nochmal.';
+    running = false;
+  }
+});
+</script>
+</body>
+</html>

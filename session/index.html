@@ -389,9 +389,106 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   .star-dot{opacity:.9!important;animation:none!important}
   .star-path{opacity:.25!important;animation:none!important;stroke-dashoffset:0!important}
 }
+
+/* === PASSWORD GATE === */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.2s ease;overflow:hidden}
+.pw-gate.hidden{opacity:0;pointer-events:none}
+.pw-gate-brand{font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;letter-spacing:.18em;color:var(--gold-dim);margin-bottom:clamp(2rem,5vh,4rem);opacity:.5;text-shadow:0 0 20px rgba(201,169,110,.15)}
+.pw-gate-field{position:relative;margin-bottom:1.5rem}
+.pw-gate-field input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;font-weight:300;color:var(--cream);padding:.6rem 1.2rem;width:clamp(200px,40vw,320px);text-align:center;outline:none;letter-spacing:.08em;transition:border-color .4s,box-shadow .4s}
+.pw-gate-field input::placeholder{color:var(--cream-dim);opacity:.4;font-style:italic}
+.pw-gate-field input:focus{border-color:var(--gold);box-shadow:0 2px 20px rgba(201,169,110,.15)}
+.pw-gate-btn{background:transparent;border:1px solid var(--gold-dim);font-family:var(--serif);font-size:.8rem;font-weight:300;font-style:italic;letter-spacing:.18em;color:var(--cream-dim);padding:.6rem 2rem;cursor:pointer;transition:all .4s;text-transform:none}
+.pw-gate-btn:hover{color:var(--gold);border-color:var(--gold);box-shadow:0 0 20px rgba(201,169,110,.1)}
+@keyframes pwShake{0%,100%{transform:translateX(0)}15%{transform:translateX(-8px)}30%{transform:translateX(8px)}45%{transform:translateX(-6px)}60%{transform:translateX(6px)}75%{transform:translateX(-3px)}90%{transform:translateX(3px)}}
+.pw-shake{animation:pwShake .5s ease}
+.pw-gate-field input.pw-error{border-color:#a03030;box-shadow:0 2px 20px rgba(160,48,48,.3)}
+
+/* === LYRIC INTRO OVERLAY === */
+.lyric-intro{position:fixed;inset:0;z-index:9998;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.5s ease;overflow:hidden}
+.lyric-intro.hidden{opacity:0;pointer-events:none}
+.lyric-line{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:900px;opacity:0;transition:opacity 1s ease;pointer-events:none}
+.lyric-line.active{opacity:1}
+.lyric-line.lyric-serif{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream)}
+.lyric-line.lyric-sans{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.25em;color:var(--cream-dim)}
+.lyric-line.lyric-gold{color:var(--gold);text-shadow:0 0 40px rgba(201,169,110,.5),0 0 80px rgba(201,169,110,.2)}
+.lyric-line.lyric-huge{font-size:clamp(3rem,8vw,7rem)}
+.lyric-line.lyric-large{font-size:clamp(2rem,5vw,4rem)}
+.lyric-line.lyric-med{font-size:clamp(1.4rem,3vw,2.5rem)}
+.lyric-line.lyric-small{font-size:clamp(.8rem,1.2vw,1rem)}
+.lyric-line.lyric-glow{text-shadow:0 0 30px rgba(201,169,110,.6),0 0 60px rgba(201,169,110,.3),0 0 120px rgba(201,169,110,.1)}
+
+/* Info cards (Schritt) */
+.lyric-line.lyric-card{display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.lyric-card-step{font-family:var(--sans);font-size:clamp(.65rem,.9vw,.78rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.lyric-card-text{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dim);line-height:1.7;max-width:550px}
+
+/* Bottom lyric bar */
+.lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;padding:1rem 2rem;text-align:center;font-family:var(--serif);font-size:clamp(.8rem,1.1vw,.95rem);font-style:italic;font-weight:300;color:var(--cream-dim);opacity:.4;background:linear-gradient(to top,rgba(8,8,7,.8),transparent);pointer-events:none;transition:opacity .6s}
+.lyric-bar.hidden{opacity:0}
+
+/* Spotify link */
+.lyric-spotify{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.8rem;font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:300;font-style:italic;color:var(--gold-dim);text-decoration:none;opacity:0;transition:opacity 1s ease;letter-spacing:.06em}
+.lyric-spotify.active{opacity:1}
+.lyric-spotify:hover{color:var(--gold)}
+.lyric-spotify svg{width:20px;height:20px;fill:var(--gold-dim);transition:fill .3s}
+.lyric-spotify:hover svg{fill:var(--gold)}
+
+/* Skip button */
+.lyric-skip{position:fixed;bottom:2.5rem;right:2rem;z-index:9998;font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.15em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.5rem}
+.lyric-skip:hover{opacity:.8;color:var(--gold)}
+
+/* Main content hidden during intro */
+.main-hidden{opacity:0!important;pointer-events:none!important}
+@keyframes mainReveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.main-revealed{animation:mainReveal 1.5s ease forwards}
 </style>
 </head>
 <body>
+
+<!-- PASSWORD GATE -->
+<div class="pw-gate" id="pwGate">
+  <div class="pw-gate-brand">Munich Witchcraft</div>
+  <div class="pw-gate-field">
+    <input type="password" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+  </div>
+  <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
+</div>
+
+<!-- LYRIC INTRO OVERLAY -->
+<div class="lyric-intro hidden" id="lyricIntro">
+  <div class="lyric-line lyric-serif lyric-large" data-lyric="0">City pulls, beating heart</div>
+  <div class="lyric-line lyric-sans lyric-med" data-lyric="1">casting spells, work of art</div>
+  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="2">breaking chains, shattering norms</div>
+  <div class="lyric-line lyric-serif lyric-huge lyric-glow" data-lyric="3">I am the magic, eye of the storm</div>
+  <div class="lyric-line lyric-card" data-lyric="4">
+    <span class="lyric-card-step">Schritt 1</span>
+    <span class="lyric-card-text">F&uuml;lle den Pers&ouml;nlichkeitstest aus &mdash; 115 S&auml;tze, vor unserer Begegnung</span>
+  </div>
+  <div class="lyric-line lyric-serif lyric-huge lyric-gold lyric-glow" data-lyric="5">Waking the witch</div>
+  <div class="lyric-line lyric-sans lyric-med" data-lyric="6">Rise before the tide</div>
+  <div class="lyric-line lyric-serif lyric-large" data-lyric="7">before I rise, before I fall</div>
+  <div class="lyric-line lyric-card" data-lyric="8">
+    <span class="lyric-card-step">Schritt 2</span>
+    <span class="lyric-card-text">&Uuml;bermittle deine Geburtsdaten und 1&ndash;3 Fragen per E-Mail oder WhatsApp</span>
+  </div>
+  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="9">Flowers blooming, change my name</div>
+  <div class="lyric-line lyric-sans lyric-med" data-lyric="10">the witch remains, yet not the same</div>
+  <div class="lyric-line lyric-card" data-lyric="11">
+    <span class="lyric-card-step">Schritt 3</span>
+    <span class="lyric-card-text">Lies die Homepage aufmerksam &mdash; je tiefer du einsteigst, desto tiefer k&ouml;nnen wir arbeiten</span>
+  </div>
+  <div class="lyric-line lyric-serif lyric-med" data-lyric="12">The magic courses through each vein</div>
+  <div class="lyric-line lyric-serif lyric-huge lyric-gold lyric-glow" data-lyric="13">Waking the witch</div>
+  <div class="lyric-line lyric-serif lyric-large lyric-gold" data-lyric="14">Dein Termin wartet.</div>
+  <a class="lyric-spotify" id="lyricSpotify" data-lyric="15" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+    Waking the Witch &middot; Summerchild &middot; auf Spotify
+  </a>
+</div>
+<div class="lyric-bar hidden" id="lyricBar"></div>
+<button class="lyric-skip hidden" id="lyricSkip">&Uuml;berspringen &rarr;</button>
+<audio id="introAudio" src="waking-the-witch.mp3" preload="auto"></audio>
 
 <!-- STARFIELD -->
 <div class="starfield-bg" id="starBg"></div>
@@ -1186,6 +1283,175 @@ function tCopy(){
     setTimeout(function(){btn.textContent='Ergebnis kopieren';btn.classList.remove('copied')},2000);
   }
 }
+
+/* === PASSWORD GATE & LYRIC INTRO === */
+(function(){
+  var gate=document.getElementById('pwGate');
+  var pwInput=document.getElementById('pwInput');
+  var pwBtn=document.getElementById('pwBtn');
+  var lyricIntro=document.getElementById('lyricIntro');
+  var lyricBar=document.getElementById('lyricBar');
+  var lyricSkip=document.getElementById('lyricSkip');
+  var introAudio=document.getElementById('introAudio');
+  var lyricSpotify=document.getElementById('lyricSpotify');
+  var PASSWORD='wakingthewitch';
+
+  /* Hide main page content */
+  var mainEls=document.querySelectorAll('.starfield-bg,.moon,.isar,.session-hero,nav,.moon-nav,.sep-constellation,section,footer,.session-portrait-wrap');
+  function hideMain(){mainEls.forEach(function(el){el.classList.add('main-hidden')})}
+  function showMain(){
+    mainEls.forEach(function(el){
+      el.classList.remove('main-hidden');
+      el.classList.add('main-revealed');
+    });
+    /* Re-trigger reveal observer for elements that may have been missed */
+    if(window._revealObs){
+      document.querySelectorAll('.reveal:not(.visible)').forEach(function(e){window._revealObs.observe(e)});
+    }
+  }
+
+  /* Check sessionStorage */
+  if(sessionStorage.getItem('mw-session-auth')==='1'){
+    gate.style.display='none';
+    return; /* skip gate and intro, show page normally */
+  }
+
+  hideMain();
+
+  function checkPassword(){
+    var val=pwInput.value.trim().toLowerCase();
+    if(val===PASSWORD){
+      sessionStorage.setItem('mw-session-auth','1');
+      gate.classList.add('hidden');
+      setTimeout(function(){gate.style.display='none'},1300);
+      startIntro();
+    } else {
+      pwInput.classList.add('pw-error');
+      pwInput.parentElement.classList.add('pw-shake');
+      setTimeout(function(){
+        pwInput.classList.remove('pw-error');
+        pwInput.parentElement.classList.remove('pw-shake');
+      },600);
+    }
+  }
+
+  pwBtn.addEventListener('click',checkPassword);
+  pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword()});
+
+  /* === LYRIC INTRO SEQUENCE === */
+  function startIntro(){
+    lyricIntro.classList.remove('hidden');
+    lyricBar.classList.remove('hidden');
+    lyricSkip.classList.remove('hidden');
+
+    /* Try to play audio */
+    var audioPlaying=false;
+    try{
+      var playPromise=introAudio.play();
+      if(playPromise&&playPromise.then){
+        playPromise.then(function(){audioPlaying=true}).catch(function(){audioPlaying=false});
+      }
+    }catch(e){audioPlaying=false}
+
+    var lines=lyricIntro.querySelectorAll('[data-lyric]');
+    var totalLines=lines.length; /* 16 items: 0-15 */
+    var songDur=180; /* fallback */
+    var currentLine=-1;
+    var introTimer=null;
+    var introRunning=true;
+
+    /* Lyric text for bottom bar */
+    var barTexts=[
+      'City pulls, beating heart',
+      'casting spells, work of art',
+      'breaking chains, shattering norms',
+      'I am the magic, eye of the storm',
+      '',
+      'Waking the witch',
+      'Rise before the tide',
+      'before I rise, before I fall',
+      '',
+      'Flowers blooming, change my name',
+      'the witch remains, yet not the same',
+      '',
+      'The magic courses through each vein',
+      'Waking the witch',
+      '',
+      ''
+    ];
+
+    function showLine(idx){
+      if(!introRunning)return;
+      /* Hide all */
+      for(var i=0;i<lines.length;i++){
+        lines[i].classList.remove('active');
+      }
+      if(idx>=0&&idx<lines.length){
+        lines[idx].classList.add('active');
+        currentLine=idx;
+        lyricBar.textContent=barTexts[idx]||'';
+      }
+    }
+
+    function endIntro(){
+      if(!introRunning)return;
+      introRunning=false;
+      if(introTimer)clearTimeout(introTimer);
+      try{introAudio.pause();introAudio.currentTime=0}catch(e){}
+      lyricIntro.classList.add('hidden');
+      lyricBar.classList.add('hidden');
+      lyricSkip.classList.add('hidden');
+      setTimeout(function(){
+        lyricIntro.style.display='none';
+        lyricBar.style.display='none';
+        lyricSkip.style.display='none';
+        showMain();
+      },1600);
+    }
+
+    lyricSkip.addEventListener('click',endIntro);
+
+    function runSequence(dur){
+      /* Divide duration across 16 segments (0-15), last one is spotify + fade */
+      var segTime=dur/totalLines;
+      /* Minimum segment time: 3s */
+      if(segTime<3)segTime=3;
+
+      function schedLine(idx,delay){
+        introTimer=setTimeout(function(){
+          if(!introRunning)return;
+          if(idx<totalLines){
+            showLine(idx);
+            schedLine(idx+1,segTime*1000);
+          } else {
+            /* End: wait 2s then fade out */
+            setTimeout(endIntro,2500);
+          }
+        },delay);
+      }
+      schedLine(0,800); /* small initial delay */
+    }
+
+    /* Wait for audio metadata or fallback */
+    if(introAudio.readyState>=1&&introAudio.duration&&isFinite(introAudio.duration)){
+      songDur=introAudio.duration;
+      runSequence(songDur);
+    } else {
+      introAudio.addEventListener('loadedmetadata',function(){
+        if(introAudio.duration&&isFinite(introAudio.duration)){
+          songDur=introAudio.duration;
+        }
+        runSequence(songDur);
+      });
+      /* Fallback if metadata never loads */
+      setTimeout(function(){
+        if(introRunning&&currentLine<0){
+          runSequence(songDur);
+        }
+      },2000);
+    }
+  }
+})();
 </script>
 </body>
 </html>
