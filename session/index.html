@@ -407,18 +407,18 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 /* Constellations */
 
 /* Sun */
-.pw-sun{position:absolute;top:clamp(80px,15vh,140px);left:50%;transform:translateX(-50%);width:clamp(80px,14vmin,140px);height:clamp(80px,14vmin,140px);border-radius:50%;background:radial-gradient(circle at 45% 42%,rgba(255,252,240,.95),rgba(247,242,228,.85) 50%,rgba(232,226,212,.7));box-shadow:0 0 40px rgba(232,226,212,.5),0 0 80px rgba(201,169,110,.3),0 0 150px rgba(201,169,110,.15);opacity:0;transition:opacity 3s;z-index:1}
+.pw-sun{position:absolute;top:clamp(80px,15vh,140px);left:50%;transform:translate(-50%,-50%);width:clamp(80px,14vmin,140px);height:clamp(80px,14vmin,140px);border-radius:50%;background:radial-gradient(circle at 45% 42%,rgba(255,252,240,.95),rgba(247,242,228,.85) 50%,rgba(232,226,212,.7));box-shadow:0 0 40px rgba(232,226,212,.5),0 0 80px rgba(201,169,110,.3),0 0 150px rgba(201,169,110,.15);opacity:0;transition:opacity 3s;z-index:1}
 .pw-sun.visible{opacity:1;animation:sunPulse 4s ease-in-out infinite}
 @keyframes sunPulse{0%,100%{box-shadow:0 0 40px rgba(232,226,212,.5),0 0 80px rgba(201,169,110,.3),0 0 150px rgba(201,169,110,.15)}50%{box-shadow:0 0 60px rgba(232,226,212,.7),0 0 120px rgba(201,169,110,.4),0 0 200px rgba(201,169,110,.2)}}
 
 /* Logo Moon */
-.pw-logo-moon{position:absolute;top:clamp(78px,15vh,138px);left:50%;width:clamp(84px,14.5vmin,144px);height:clamp(84px,14.5vmin,144px);border-radius:50%;overflow:hidden;transform:translate(calc(-50% + 50vw),-50%);transition:transform 40s cubic-bezier(.15,.5,.35,1);z-index:2;opacity:0}
+.pw-logo-moon{position:absolute;top:clamp(80px,15vh,140px);left:50%;width:clamp(84px,14.5vmin,144px);height:clamp(84px,14.5vmin,144px);border-radius:50%;overflow:hidden;transform:translate(calc(-50% + 50vw),-50%);transition:transform 40s cubic-bezier(.15,.5,.35,1);z-index:2;opacity:0}
 .pw-logo-moon.visible{opacity:1}
 .pw-logo-moon.eclipsing{transform:translate(-50%,-50%)}
 .pw-logo-moon img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* Corona */
-.pw-corona{position:absolute;top:clamp(80px,15vh,140px);left:50%;transform:translateX(-50%);width:clamp(130px,22vmin,210px);height:clamp(130px,22vmin,210px);border-radius:50%;pointer-events:none;opacity:0;transition:opacity 3s;z-index:1}
+.pw-corona{position:absolute;top:clamp(80px,15vh,140px);left:50%;transform:translate(-50%,-50%);width:clamp(130px,22vmin,210px);height:clamp(130px,22vmin,210px);border-radius:50%;pointer-events:none;opacity:0;transition:opacity 3s;z-index:1}
 .pw-corona.visible{opacity:1}
 .pw-corona-ring{width:100%;height:100%;border-radius:50%;border:2px solid rgba(201,169,110,.5);box-shadow:0 0 30px rgba(201,169,110,.4),0 0 60px rgba(201,169,110,.2),0 0 120px rgba(201,169,110,.1),inset 0 0 30px rgba(201,169,110,.15);animation:coronaPulse 4s ease-in-out infinite}
 .pw-corona-glow{position:absolute;inset:-25%;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.1) 30%,transparent 70%);animation:coronaPulse 4s ease-in-out infinite .5s}
@@ -431,8 +431,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 @media(max-width:768px){.pw-cloud{width:clamp(180px,60vw,300px)}}
 
 /* Lightning */
-.pw-lightning{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .15s}
-.pw-lightning.flash{opacity:1;background:radial-gradient(ellipse at 50% 30%,rgba(201,169,110,.15) 0%,rgba(232,226,212,.08) 40%,transparent 70%)}
+.pw-lightning{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .1s}
+.pw-lightning.flash{opacity:1;background:radial-gradient(ellipse at 30% 15%,rgba(232,226,212,.35) 0%,rgba(201,169,110,.2) 25%,rgba(201,169,110,.08) 50%,transparent 75%)}
 
 /* Content (centered) */
 .pw-content{position:relative;z-index:10;text-align:center;max-width:500px;padding:0 1.5rem;margin-top:clamp(180px,30vh,280px)}
