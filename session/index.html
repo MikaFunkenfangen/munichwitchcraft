@@ -306,6 +306,12 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .btn-copy{display:inline-block;padding:12px 36px;font-family:var(--sans);font-size:.85rem;font-weight:400;letter-spacing:.08em;color:var(--gold);background:#1a1510;border:none;cursor:pointer;transition:all .25s;margin-top:1rem}
 .btn-copy:hover{background:#2a2418}
 .btn-copy.copied{background:#3a2f20;color:var(--gold)}
+.test-magic{position:relative;margin:clamp(1.5rem,3vw,2.5rem) auto;opacity:0;transform:scale(.95);transition:opacity 2.5s ease,transform 2.5s ease}
+.test-magic.show{opacity:1;transform:scale(1)}
+.test-magic-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(250px,50vw,400px);height:clamp(80px,15vw,120px);background:radial-gradient(ellipse at center,rgba(201,169,110,.2) 0%,rgba(201,169,110,.08) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:magicGlow 3s ease-in-out infinite}
+@keyframes magicGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+.test-magic-text{position:relative;font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:#2a1f15;line-height:1.7;text-align:center}
+.test-magic-text em{color:#6a3520;font-size:clamp(1.3rem,2.5vw,1.8rem)}
 .test-result-note{margin-top:2rem;font-family:var(--sans);font-weight:300;font-size:.78rem;color:#8a4558;line-height:1.7;max-width:360px;margin-left:auto;margin-right:auto}
 
 /* === CONTACT === */
@@ -1064,6 +1070,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
           <div class="test-chiffre-value" id="tChiffre"></div>
         </div>
         <button class="btn-copy" id="tBtnCopy" onclick="tCopy()">Ergebnis kopieren</button>
+        <div class="test-magic" id="testMagic">
+          <div class="test-magic-glow"></div>
+          <p class="test-magic-text">Was verborgen war, wird sichtbar.<br><em>Die Magie beginnt.</em></p>
+        </div>
         <p class="test-result-note">Teile diese Chiffre zusammen mit deinem Erkennungsnamen, deinem Geburtsdatum, deiner Geburtszeit und deinem Geburtsort am Ende unserer ersten Session mit.<br>Alles zusammen dient als Grundlage für unsere weitere gemeinsame Arbeit.</p>
       </div>
     </div>
@@ -1404,6 +1414,11 @@ function tEval(){
     grid.appendChild(card);
   }
   document.getElementById('tChiffre').textContent=stValues.join(' \u00b7 ');
+  /* Magic reveal */
+  var magicEl=document.getElementById('testMagic');
+  if(magicEl){
+    setTimeout(function(){magicEl.classList.add('show')},1500);
+  }
 }
 
 function tCopy(){
