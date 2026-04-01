@@ -98,6 +98,26 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .moon-mini::after{content:attr(title);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(4px);font-family:var(--serif);font-size:.7rem;font-style:italic;color:var(--gold);white-space:nowrap;opacity:0;pointer-events:none;transition:all .3s ease;background:rgba(8,8,7,.85);padding:.3rem .7rem;border-radius:4px;border:1px solid rgba(201,169,110,.15)}
 .moon-mini:hover::after{opacity:1;transform:translateX(-50%) translateY(0)}
 
+/* === SESSION PORTAL === */
+.session-portal{text-align:center;padding:clamp(3rem,6vw,5rem) var(--section-px);position:relative;z-index:2}
+.session-portal-link{display:inline-block;text-decoration:none;transition:transform .5s;-webkit-tap-highlight-color:transparent}
+.session-portal-link:hover{transform:scale(1.05)}
+.session-portal-svg{width:clamp(140px,22vw,220px);height:clamp(140px,22vw,220px);filter:drop-shadow(0 0 20px rgba(201,169,110,.15));transition:filter .5s}
+.session-portal-link:hover .session-portal-svg{filter:drop-shadow(0 0 35px rgba(201,169,110,.3))}
+.session-portal-text{display:block;font-family:var(--serif);font-size:clamp(.9rem,1.4vw,1.15rem);font-weight:300;font-style:italic;color:var(--gold);letter-spacing:.08em;margin-top:clamp(.5rem,1vw,.8rem);opacity:.7;transition:opacity .4s}
+.session-portal-link:hover .session-portal-text{opacity:1}
+/* Popup */
+.session-popup{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;background:rgba(8,8,7,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .5s}
+.session-popup.active{opacity:1;pointer-events:auto}
+.session-popup-inner{max-width:480px;text-align:center;padding:clamp(2rem,4vw,3rem);position:relative}
+.session-popup-close{position:absolute;top:-1rem;right:-1rem;font-size:1.5rem;color:var(--cream-dim);background:none;border:none;cursor:pointer;opacity:.4;transition:opacity .3s}
+.session-popup-close:hover{opacity:1}
+.session-popup-moon{font-size:clamp(2rem,4vw,3rem);color:var(--gold);margin-bottom:1rem;opacity:.6}
+.session-popup-title{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:300;font-style:italic;color:var(--white);margin-bottom:1.5rem}
+.session-popup-body{font-family:var(--sans);font-size:clamp(.9rem,1.1vw,.97rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:2rem}
+.session-popup-cta{display:inline-block;font-family:var(--serif);font-size:clamp(.85rem,1.1vw,.95rem);font-weight:300;font-style:italic;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,.3);padding:.7rem 2rem;transition:all .4s;letter-spacing:.08em}
+.session-popup-cta:hover{background:rgba(201,169,110,.1);border-color:var(--gold)}
+
 /* === MOON PHASE NAVIGATOR === */
 .moon-nav{position:relative;z-index:2;padding:clamp(1.5rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,1.2vw,1rem)}
 .moon-nav-label{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--cream);opacity:.75;margin-bottom:clamp(.5rem,1vw,.8rem);text-shadow:0 0 20px rgba(8,8,7,.6);text-align:center;max-width:90%;margin-left:auto;margin-right:auto}
@@ -1368,7 +1388,6 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 
-
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
@@ -2006,6 +2025,30 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 
+<!-- SESSION PORTAL -->
+<div class="session-portal reveal" id="sessionPortal">
+  <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
+    <svg class="session-portal-svg" viewBox="0 0 200 200">
+      <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,110,.12)" stroke-width=".6"/>
+      <circle cx="100" cy="100" r="42" fill="url(#portalGrad)"/>
+      <circle cx="100" cy="100" r="42" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1.5" filter="url(#portalGlow)"/>
+      <path d="M100 12 C118 42,128 62,122 82 S106 108,110 132 S122 162,100 188" fill="none" stroke="rgba(80,180,210,.3)" stroke-width="2.5" stroke-linecap="round" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <path d="M100 12 C82 42,72 62,78 82 S94 108,90 132 S78 162,100 188" fill="none" stroke="rgba(80,180,210,.2)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpinR 8s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,110,.07)" stroke-width=".5" stroke-dasharray="2 5" style="animation:vortexSpin 18s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,.05)" stroke-width=".4" stroke-dasharray="1.5 6" style="animation:vortexSpinR 25s linear infinite;transform-origin:center"/>
+    </svg>
+  </a>
+</div>
+<div class="session-popup" id="sessionPopup">
+  <div class="session-popup-inner">
+    <button class="session-popup-close" onclick="document.getElementById('sessionPopup').classList.remove('active')">&times;</button>
+    <p class="session-popup-moon">&#9790;</p>
+    <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
+    <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.<br><br>Wenn du einen Termin vereinbart hast, erhältst du das Wort, das diese Schwelle öffnet.</p>
+    <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
+  </div>
+</div>
 
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
