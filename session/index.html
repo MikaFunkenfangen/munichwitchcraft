@@ -1638,6 +1638,7 @@ function tCopy(){
       gate.classList.add('supernova');
       /* 4s for the supernova to fill the screen */
       setTimeout(function(){
+        window.scrollTo(0,0);
         gate.classList.add('hidden');
         setTimeout(function(){gate.style.display='none'},1500);
         try{audio.pause()}catch(e){}
