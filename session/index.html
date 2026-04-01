@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script>
+(function(){try{
+  var isWeakDevice=false;
+  if(typeof IntersectionObserver==='undefined')isWeakDevice=true;
+  if(navigator.deviceMemory&&navigator.deviceMemory<3)isWeakDevice=true;
+  if(isWeakDevice){document.documentElement.classList.add('perf-lite');window._perfLite=true}
+}catch(e){}})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Im Auge des Sturms — Session mit Mika Schöberl. Kartenlegen, Traumarbeit & spirituelle Begleitung.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#080807">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Im Auge des Sturms — Munich Witchcraft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* === RESET & VARIABLES === */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#080807;--moss:#1e2a1c;--moss2:#253323;
+  --cream:#e8e2d4;--cream-dim:#a8a090;
+  --gold:#c9a96e;--gold-dim:#7a6035;--white:#f0ebe0;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Jost",sans-serif;
+  --nav-h:64px;
+  --section-px:clamp(1rem,5vw,3.5rem);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;overscroll-behavior-x:none}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
+
+/* === NAV === */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 var(--section-px);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(8,8,7,.95) 0%,rgba(8,8,7,.6) 60%,transparent 100%);transition:background .4s}
+nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:.5rem;-webkit-tap-highlight-color:transparent}
+.nav-logo-circle{display:block;width:36px;height:36px;border-radius:50%;overflow:hidden;-webkit-transform:translateZ(0);transform:translateZ(0)}
+.nav-logo-img{display:block;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
+.nav-logo:hover .nav-logo-img{opacity:1}
+.nav-logo-text{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.08em;transition:color .3s}
+.nav-logo:hover .nav-logo-text{color:var(--gold)}
+
+/* === SHARED === */
+.label{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(1.5rem,4vw,3.5rem);display:flex;align-items:center;gap:1rem}
+.label::after{content:"";display:block;width:40px;height:1px;background:var(--gold-dim);flex-shrink:0}
+.label-center{justify-content:center}
+.label-center::before{content:"";display:block;width:40px;height:1px;background:var(--gold-dim);flex-shrink:0}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+.reveal-delay-3{transition-delay:.45s}
+
+/* === BUTTONS === */
+.btn-ghost{display:inline-block;font-family:var(--sans);font-size:.75rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--cream);text-decoration:none;border:1px solid rgba(201,169,110,.28);padding:1rem 2.5rem;transition:all .4s;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.btn-ghost::before{content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform .4s;z-index:-1}
+.btn-ghost:hover{color:var(--ink);border-color:var(--gold)}
+.btn-ghost:hover::before{transform:translateX(0)}
+.btn-text{font-family:var(--sans);font-size:.75rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color .3s;border-bottom:1px solid rgba(201,169,110,.2);padding-bottom:3px;-webkit-tap-highlight-color:transparent}
+.btn-text:hover{color:var(--gold);border-color:var(--gold)}
+.btn-whatsapp,.btn-instagram{display:inline-flex;align-items:center;gap:clamp(.5rem,.8vw,.7rem);font-family:var(--sans);font-size:clamp(.82rem,1vw,.92rem);font-weight:300;letter-spacing:.12em;color:var(--cream-dim);text-decoration:none;border:1px solid rgba(201,169,110,.2);border-radius:60px;padding:clamp(.6rem,1vw,.8rem) clamp(1.2rem,2vw,1.8rem);margin-top:clamp(1rem,2vw,1.5rem);transition:all .5s ease;background:rgba(201,169,110,.03)}
+.btn-whatsapp:hover,.btn-instagram:hover{color:var(--gold);border-color:var(--gold);background:rgba(201,169,110,.08);transform:translateY(-2px);box-shadow:0 4px 20px rgba(201,169,110,.12)}
+.btn-whatsapp svg,.btn-instagram svg{opacity:.6;transition:opacity .4s}
+.btn-whatsapp:hover svg,.btn-instagram:hover svg{opacity:1}
+
+/* === STARFIELD === */
+.starfield-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
+.star-bg{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
+.star-bg.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4),0 0 10px rgba(201,169,110,.15)}
+@keyframes twinkle{0%,100%{opacity:var(--tw-lo,.15);transform:scale(1)}35%{opacity:var(--tw-hi,.7);transform:scale(1.4)}65%{opacity:calc(var(--tw-hi) * .6);transform:scale(1.15)}}
+
+/* === MOON === */
+.moon{position:fixed;top:5vh;right:5vw;width:clamp(270px,48vw,750px);height:clamp(270px,48vw,750px);z-index:1;pointer-events:none;opacity:.75;background:none;border:none;box-shadow:none}
+.moon svg{width:100%;height:100%;overflow:visible}
+
+/* === ISAR RIVER === */
+.isar{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.5s ease;will-change:transform}
+.isar.visible{opacity:1}
+.isar svg{width:100%;height:100%;overflow:visible;shape-rendering:geometricPrecision}
+.isar-flow{fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:var(--if-hi,.4);animation:isarFlow var(--if-d,12s) ease-in-out var(--if-del,0s) infinite;will-change:opacity}
+@keyframes isarFlow{0%,100%{opacity:var(--if-lo,.1)}50%{opacity:var(--if-hi,.4)}}
+.isar-shimmer{fill:none;stroke-linecap:round;opacity:0;animation:isarShimmer var(--is-d,8s) ease-in-out var(--is-del,0s) infinite;will-change:opacity}
+@keyframes isarShimmer{0%,100%{opacity:.05}50%{opacity:.5}}
+.isar-glow{filter:drop-shadow(0 0 15px rgba(90,190,210,.3)) drop-shadow(0 0 50px rgba(70,170,200,.15)) drop-shadow(0 0 100px rgba(60,150,190,.08))}
+
+/* === LIGHTNING === */
+.lightning-bolt{position:absolute;opacity:0;will-change:opacity}
+.lightning-bolt svg{width:100%;height:100%}
+@keyframes lightningFlash{0%{opacity:0}4%{opacity:.9}6%{opacity:.15}8%{opacity:.7}10%{opacity:0}100%{opacity:0}}
+@keyframes lightningGlow{0%{opacity:0}4%{opacity:.4}8%{opacity:.15}10%{opacity:0}100%{opacity:0}}
+.hero-lightning-layer{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
+.hero-lightning-layer .lightning-bolt{position:absolute;opacity:0;will-change:opacity;filter:drop-shadow(0 0 8px rgba(201,169,110,.4)) drop-shadow(0 0 20px rgba(232,226,212,.15))}
+@keyframes heroFlash{0%{opacity:0}2%{opacity:.9}4%{opacity:.15}5.5%{opacity:.85}7%{opacity:.1}9%{opacity:.7}11%{opacity:.2}13%{opacity:.6}15%{opacity:0}100%{opacity:0}}
+.hero-lightning-layer .lightning-bolt.flash{animation:heroFlash var(--lt-dur,8s) ease-in-out var(--lt-del,0s) infinite}
+.hero-cloud-lightning{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+.hero-cloud-lightning .cloud-bolt{position:absolute;opacity:0;will-change:opacity;filter:drop-shadow(0 0 12px rgba(201,169,110,.5)) drop-shadow(0 0 25px rgba(232,226,212,.2))}
+.hero-cloud-lightning .cloud-bolt.flash{animation:cloudBoltFlash var(--lt-dur,7s) ease-in-out var(--lt-del,0s) infinite}
+@keyframes cloudBoltFlash{0%{opacity:0}2%{opacity:.95}3.5%{opacity:.1}5%{opacity:.8}6.5%{opacity:.05}8%{opacity:.65}9.5%{opacity:.15}11%{opacity:.5}13%{opacity:0}100%{opacity:0}}
+
+/* === CONSTELLATION DIVIDERS === */
+.sep-constellation{position:relative;z-index:2;height:clamp(140px,30vw,240px);display:flex;align-items:center;justify-content:center;margin:0 var(--section-px);overflow:hidden}
+.constellation-line{width:clamp(200px,50vw,360px);height:clamp(140px,30vw,240px);pointer-events:none;opacity:0;transition:opacity 1s ease}
+.constellation-line.visible{opacity:1}
+.constellation-line svg{width:100%;height:100%;overflow:visible}
+.star-dot{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(201,169,110,.6)) drop-shadow(0 0 8px rgba(201,169,110,.25));opacity:0;animation:starPulse var(--sp-d,2.8s) ease-in-out var(--sp-del,0s) infinite}
+@keyframes starPulse{0%,100%{opacity:.25;r:1.5}20%{opacity:1;r:2.8}50%{opacity:.5;r:2}80%{opacity:.9;r:2.5}}
+.star-path{stroke:var(--gold);stroke-width:.7;fill:none;opacity:0;stroke-dasharray:200;stroke-dashoffset:200;filter:drop-shadow(0 0 2px rgba(201,169,110,.3))}
+.constellation-line.visible .star-path{animation:drawConstellation 3.5s ease forwards}
+.constellation-line.visible .star-path:nth-of-type(2){animation-delay:.4s}
+.constellation-line.visible .star-path:nth-of-type(3){animation-delay:.8s}
+@keyframes drawConstellation{0%{opacity:0;stroke-dashoffset:200}20%{opacity:.4}100%{opacity:.25;stroke-dashoffset:0}}
+
+/* === MOON PHASE NAVIGATOR === */
+.moon-nav{position:relative;z-index:2;padding:clamp(1.5rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,1.2vw,1rem)}
+.moon-nav-label{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--cream);opacity:.75;margin-bottom:clamp(.5rem,1vw,.8rem);text-shadow:0 0 20px rgba(8,8,7,.6);text-align:center;max-width:90%;margin-left:auto;margin-right:auto}
+.moon-scroll-wrapper{position:relative;width:100%;max-width:100%;display:flex;justify-content:center}
+.moon-scroll-arrow{display:none}
+.moon-scroll-arrow svg{width:16px;height:16px}
+.moon-scroll-arrow.visible{opacity:.8;pointer-events:auto}
+.moon-scroll-arrow.visible:hover{opacity:1;background:rgba(201,169,110,.15)}
+.moon-phases-row{display:flex;align-items:center;justify-content:center;gap:clamp(.4rem,1vw,.8rem) clamp(.6rem,1.5vw,1.2rem);flex-wrap:wrap;max-width:700px;margin:0 auto;padding:clamp(.5rem,1vw,.8rem) .5rem}
+.moon-phases-row::-webkit-scrollbar{display:none}
+.moon-phase{display:flex;flex-direction:column;align-items:center;gap:clamp(4px,.8vw,8px);cursor:pointer;padding:clamp(8px,1.2vw,14px);border-radius:20px;transition:all .5s ease;text-decoration:none;-webkit-tap-highlight-color:transparent;position:relative;min-width:clamp(65px,9vw,85px)}
+.moon-phase:hover{background:rgba(201,169,110,.07);transform:translateY(-3px)}
+.moon-phase.active{background:rgba(201,169,110,.1);transform:translateY(-6px)}
+.moon-phase.active::after{content:"";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(201,169,110,.7)}
+.moon-phase svg{width:clamp(30px,5vw,42px);height:clamp(30px,5vw,42px);filter:drop-shadow(0 0 6px rgba(201,169,110,.15));transition:all .5s ease}
+.moon-phase:hover svg{filter:drop-shadow(0 0 14px rgba(201,169,110,.5));transform:scale(1.12)}
+.moon-phase.active svg{filter:drop-shadow(0 0 22px rgba(201,169,110,.7));transform:scale(1.35)}
+.moon-phase-name{font-family:var(--sans);font-size:clamp(.72rem,1vw,.88rem);font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:all .5s;text-align:center;white-space:nowrap}
+.moon-phase:hover .moon-phase-name,.moon-phase.active .moon-phase-name{opacity:1;color:var(--gold)}
+.moon-phase-desc{font-family:var(--serif);font-size:clamp(.58rem,.75vw,.66rem);font-style:italic;color:rgba(201,169,110,.4);opacity:1;transition:opacity .4s;text-align:center;white-space:nowrap;margin-top:-2px}
+.moon-phase:hover .moon-phase-desc,.moon-phase.active .moon-phase-desc{opacity:.6}
+.moon-nav-line{width:clamp(200px,50vw,500px);height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,.12),transparent);margin-top:.5rem}
+
+/* === VORTEX HERO === */
+.vortex-wrap{position:relative;width:clamp(320px,60vw,600px);height:clamp(320px,60vw,600px);margin:0 auto clamp(2rem,4vw,3rem)}
+.vortex-svg{width:100%;height:100%;filter:drop-shadow(0 0 40px rgba(201,169,110,.15))}
+.vortex-ring{transform-origin:center;fill:none}
+.vortex-ring-1{animation:vortexSpin 18s linear infinite;stroke:rgba(201,169,110,.2);stroke-width:2;stroke-dasharray:12 8}
+.vortex-ring-2{animation:vortexSpinR 13s linear infinite;stroke:rgba(201,169,110,.25);stroke-width:1.5;stroke-dasharray:8 12}
+.vortex-ring-3{animation:vortexSpin 9s linear infinite;stroke:rgba(201,169,110,.3);stroke-width:1.2;stroke-dasharray:5 10}
+.vortex-ring-4{animation:vortexSpinR 6s linear infinite;stroke:rgba(201,169,110,.35);stroke-width:1;stroke-dasharray:3 8}
+.vortex-spiral{fill:none;stroke:rgba(201,169,110,.2);stroke-width:1;stroke-dasharray:4 6}
+.vortex-spiral-1{animation:vortexFlow 10s linear infinite,vortexSpin 20s linear infinite}
+.vortex-spiral-2{animation:vortexFlow 8s linear infinite,vortexSpinR 16s linear infinite}
+.vortex-core{animation:vortexPulse 4s ease-in-out infinite}
+/* Storm cloud */
+.storm-cloud{position:absolute;width:clamp(220px,38vw,450px);pointer-events:none;z-index:1;left:clamp(-2rem,5vw,8rem);top:clamp(1rem,6vw,4rem);opacity:.55;filter:drop-shadow(0 0 50px rgba(201,169,110,.25)) drop-shadow(0 0 100px rgba(8,8,7,.5));animation:stormCloudFloat 18s ease-in-out infinite,stormCloudPulse 10s ease-in-out infinite}
+@keyframes stormCloudFloat{0%,100%{transform:translateY(0) translateX(0)}25%{transform:translateY(-12px) translateX(8px)}50%{transform:translateY(-5px) translateX(-6px)}75%{transform:translateY(-15px) translateX(4px)}}
+@keyframes stormCloudPulse{0%,100%{opacity:.45}50%{opacity:.65}}
+.storm-cloud-lightning{position:absolute;left:0;top:clamp(1rem,6vw,4rem);width:clamp(280px,45vw,500px);height:clamp(400px,65vh,700px);pointer-events:none;z-index:1;overflow:visible}
+.storm-cloud-lightning .cloud-bolt{position:absolute;opacity:0;will-change:opacity;filter:drop-shadow(0 0 12px rgba(201,169,110,.5)) drop-shadow(0 0 25px rgba(232,226,212,.2))}
+.storm-cloud-lightning .cloud-bolt.flash{animation:cloudBoltFlash var(--lt-dur,7s) ease-in-out var(--lt-del,0s) infinite}
+@keyframes cloudBoltFlash{0%{opacity:0}2%{opacity:.95}3.5%{opacity:.1}5%{opacity:.8}6.5%{opacity:.05}8%{opacity:.65}9.5%{opacity:.15}11%{opacity:.5}13%{opacity:0}100%{opacity:0}}
+@media(max-width:768px){.storm-cloud{width:clamp(160px,55vw,260px);left:-1rem;top:clamp(2rem,10vw,4rem);opacity:.4}}
+/* Portrait divider */
+.session-portrait-wrap{position:relative;width:100%;max-height:70vh;overflow:hidden;margin:0}
+.session-portrait-img{width:100%;max-height:70vh;object-fit:cover;object-position:center 30%;opacity:.5;filter:contrast(1.1) brightness(.85) saturate(1.1);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.6) 15%,rgba(0,0,0,.6) 85%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.6) 15%,rgba(0,0,0,.6) 85%,transparent 100%);display:block}
+@keyframes vortexSpin{to{transform:rotate(360deg)}}
+@keyframes vortexSpinR{to{transform:rotate(-360deg)}}
+@keyframes vortexFlow{to{stroke-dashoffset:-20}}
+@keyframes vortexPulse{0%,100%{opacity:.3}50%{opacity:.7}}
+.vortex-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2;pointer-events:none}
+.vortex-center h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;color:var(--white);line-height:1.1;text-shadow:0 0 40px rgba(8,8,7,.9),0 0 80px rgba(8,8,7,.6);animation:headingGlow 6s ease-in-out infinite}
+.vortex-center h1 em{font-style:italic;color:var(--cream-dim)}
+
+/* === HERO === */
+.session-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 4rem) var(--section-px) 4rem;position:relative;z-index:2}
+.session-hero .hero-bg{position:absolute;inset:0;pointer-events:none}
+.session-hero .hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 50% 52%,rgba(37,51,35,.7) 0%,transparent 70%)}
+.session-hero .hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 40%,rgba(8,8,7,.7) 100%)}
+.session-hero .hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 35% 35% at 50% 48%,rgba(201,169,110,.055) 0%,transparent 65%);pointer-events:none;animation:pulseglow 8s ease-in-out infinite}
+@keyframes pulseglow{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.session-hero .label-center{margin-bottom:1.5rem;opacity:0;animation:fadeUp 1.2s ease .3s forwards;position:relative;z-index:3}
+.session-hero h1{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:clamp(2.5rem,5vw,4rem);opacity:0;animation:fadeUp 1.4s ease .5s forwards;text-shadow:0 0 50px rgba(8,8,7,.9),0 0 100px rgba(8,8,7,.6);position:relative;z-index:1}
+.session-hero h1 em{font-style:italic;color:var(--cream-dim)}
+
+/* Poem */
+.poem{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:300;font-style:italic;line-height:1.9;color:var(--cream);max-width:520px;margin:0 auto clamp(3rem,6vw,5rem);text-align:left;opacity:0;animation:fadeUp 1.4s ease .8s forwards;position:relative;z-index:1}
+.poem strong{font-weight:400;color:var(--gold)}
+.poem .poem-break{display:block;height:1.2em}
+
+/* Intro text */
+.session-hero .intro-text{max-width:580px;margin:0 auto;text-align:left;opacity:0;animation:fadeUp 1.4s ease 1.1s forwards;position:relative;z-index:1}
+.session-hero .intro-text p{font-family:var(--serif);font-size:clamp(1rem,1.4vw,1.15rem);font-style:italic;line-height:1.85;color:var(--cream-dim);margin-bottom:1.2rem}
+
+/* Scroll hint */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeIn 1.5s ease 2s forwards}
+.scroll-hint svg{width:24px;height:24px;color:var(--gold-dim);animation:scrollBounce 2s ease-in-out infinite}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* === SECTIONS === */
+.session-section{padding:clamp(4rem,10vw,9rem) var(--section-px);position:relative;z-index:2;overflow:hidden}
+.session-inner{max-width:720px;margin:0 auto}
+.session-section h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:clamp(2rem,4vw,3rem);text-shadow:0 0 40px rgba(8,8,7,.9);animation:headingGlow 6s ease-in-out infinite}
+.session-section h2 em{font-style:italic;color:var(--cream-dim)}
+.session-section h3{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:300;font-style:italic;color:var(--gold);margin:clamp(2rem,4vw,3rem) 0 1rem}
+.session-section p{font-family:var(--sans);font-size:clamp(.92rem,1.1vw,1rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:1.5rem}
+.session-section p em{font-style:italic;color:var(--cream)}
+.session-section p strong{font-weight:400;color:var(--cream)}
+
+/* === ABLAUF === */
+.session-ablauf{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.3) 50%,transparent 100%)}
+.ablauf-block{margin-bottom:clamp(2.5rem,5vw,4rem);padding:clamp(1.5rem,3vw,2.5rem);border-left:2px solid rgba(201,169,110,.15);position:relative}
+.ablauf-block::before{content:"";position:absolute;left:-6px;top:0;width:10px;height:10px;border-radius:50%;background:var(--gold);opacity:.5}
+.ablauf-price{font-family:var(--sans);font-size:clamp(.8rem,1vw,.9rem);letter-spacing:.15em;color:var(--gold);margin-bottom:.5rem}
+.ablauf-gesamt{text-align:center;padding:clamp(1.5rem,3vw,2.5rem);border:1px solid rgba(201,169,110,.15);border-radius:8px;background:rgba(201,169,110,.03);margin-top:clamp(2rem,4vw,3rem)}
+.ablauf-gesamt .price{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--gold);margin-bottom:.5rem}
+.ablauf-gesamt p{margin-bottom:0}
+
+/* === VORBEREITUNG === */
+.session-vorbereitung{background:linear-gradient(180deg,transparent 0%,rgba(25,15,28,.2) 50%,transparent 100%)}
+.vorb-item{margin-bottom:1.5rem;padding-left:1.5rem;border-left:1px solid rgba(201,169,110,.1)}
+.vorb-item strong{display:block;font-family:var(--serif);font-size:clamp(1rem,1.3vw,1.1rem);font-weight:400;font-style:italic;color:var(--cream);margin-bottom:.3rem}
+.klarstellung{margin-top:clamp(2.5rem,5vw,4rem);padding:clamp(1.5rem,3vw,2.5rem);border:1px solid rgba(201,169,110,.12);border-radius:8px;background:rgba(201,169,110,.02)}
+.klarstellung h3{font-size:clamp(1.2rem,2vw,1.5rem)!important;margin-top:0!important;margin-bottom:1.5rem!important}
+.klar-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,2.5rem)}
+@media(max-width:600px){.klar-grid{grid-template-columns:1fr}}
+.klar-col h4{font-family:var(--sans);font-size:clamp(.75rem,.9vw,.82rem);font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.klar-col p{font-size:clamp(.88rem,1vw,.95rem)!important;line-height:1.85!important}
+
+/* === WERKZEUGE === */
+.session-werkzeuge{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.25) 50%,transparent 100%)}
+.werkzeug{margin-bottom:clamp(2rem,4vw,3rem)}
+.werkzeug h3{margin-top:0!important}
+.haltung{margin-top:clamp(3rem,6vw,5rem);padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(201,169,110,.1)}
+
+/* === ESSAY === */
+.session-essay{background:linear-gradient(180deg,transparent 0%,rgba(25,15,28,.15) 50%,transparent 100%)}
+.essay-text{max-width:680px;margin:0 auto}
+.essay-text p{font-family:var(--sans);font-size:clamp(.92rem,1.08vw,.98rem);font-weight:300;line-height:2.1;color:var(--cream-dim);margin-bottom:1.8rem;text-indent:0}
+.essay-text p:first-of-type{font-size:clamp(.95rem,1.15vw,1.02rem)}
+.essay-poem{font-family:var(--serif);font-size:clamp(1rem,1.4vw,1.15rem);font-weight:300;font-style:italic;line-height:1.85;color:var(--cream);padding:clamp(1.5rem,3vw,2.5rem);border-left:2px solid rgba(201,169,110,.2);margin:clamp(2rem,4vw,3rem) 0;background:rgba(201,169,110,.02)}
+.essay-credit{font-family:var(--serif);font-size:clamp(.82rem,1vw,.9rem);font-style:italic;color:var(--cream-dim);opacity:.6;text-align:center;margin-top:clamp(2rem,4vw,3rem)}
+
+/* === TEST === */
+.session-test{background:linear-gradient(180deg,transparent 0%,rgba(30,42,28,.2) 50%,transparent 100%)}
+.test-wrap{max-width:580px;margin:0 auto;position:relative}
+.test-intro{text-align:center}
+.test-intro .sigil{font-family:var(--serif);font-size:2rem;color:var(--gold);letter-spacing:.15em;margin-bottom:.5rem;font-weight:300}
+.test-intro .sigil span{font-style:italic}
+.btn-start-test{display:inline-block;padding:1rem 3rem;font-family:var(--serif);font-size:1.1rem;font-weight:400;letter-spacing:.1em;color:var(--cream);background:transparent;border:1px solid rgba(201,169,110,.3);cursor:pointer;transition:all .4s;margin-top:1.5rem}
+.btn-start-test:hover{color:var(--gold);border-color:var(--gold);background:rgba(201,169,110,.06)}
+.test-progress{position:sticky;top:var(--nav-h);z-index:10;background:rgba(8,8,7,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 0 8px;border-bottom:1px solid rgba(201,169,110,.08)}
+.test-progress-bar{height:2px;background:rgba(201,169,110,.1);border-radius:1px;overflow:hidden}
+.test-progress-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width .4s;width:0%}
+.test-progress-text{font-family:var(--sans);font-weight:300;font-size:.72rem;color:var(--cream-dim);text-align:center;margin-top:6px;letter-spacing:.06em;opacity:.6}
+.test-question{padding:2rem 0;animation:fadeUp .3s ease}
+.test-q-num{font-family:var(--serif);font-size:.85rem;color:var(--cream-dim);letter-spacing:.15em;margin-bottom:1rem;opacity:.5}
+.test-q-text{font-family:var(--serif);font-size:clamp(1.1rem,1.6vw,1.3rem);font-weight:400;font-style:italic;line-height:1.55;color:var(--cream);margin-bottom:2rem}
+.test-scale{display:flex;justify-content:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.test-scale-btn{width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(201,169,110,.2);background:transparent;color:var(--cream-dim);font-family:var(--serif);font-size:1.15rem;font-weight:400;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+.test-scale-btn:hover{border-color:var(--gold);color:var(--gold)}
+.test-scale-btn.selected{background:var(--gold);color:var(--ink);border-color:var(--gold);box-shadow:0 2px 12px rgba(201,169,110,.25)}
+.test-scale-labels{display:flex;justify-content:space-between;font-size:.68rem;color:var(--cream-dim);font-family:var(--sans);font-weight:300;letter-spacing:.03em;padding:0 4px;opacity:.5}
+.test-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem;gap:12px}
+.test-nav-btn{padding:10px 28px;font-family:var(--sans);font-size:.82rem;font-weight:400;letter-spacing:.08em;border:1px solid rgba(201,169,110,.2);background:transparent;color:var(--cream-dim);cursor:pointer;transition:all .25s}
+.test-nav-btn:hover{border-color:var(--gold);color:var(--gold)}
+.test-nav-btn.primary{background:rgba(201,169,110,.15);color:var(--gold);border-color:rgba(201,169,110,.3)}
+.test-nav-btn.primary:hover{background:rgba(201,169,110,.25)}
+.test-nav-btn:disabled{opacity:.2;cursor:default}
+.test-result{text-align:center;padding:2rem 0;animation:fadeUp .6s ease}
+.test-result h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,2.5vw,1.8rem);color:var(--white);margin-bottom:.5rem}
+.test-result-sub{font-family:var(--sans);font-weight:300;font-size:.85rem;color:var(--cream-dim);margin-bottom:2rem}
+.test-nickname{text-align:center;margin-bottom:1.5rem}
+.test-nickname-label{font-family:var(--sans);font-size:.75rem;color:var(--cream-dim);margin-bottom:.5rem;letter-spacing:.06em;opacity:.6}
+.test-nickname-input{font-family:var(--serif);font-size:1.1rem;color:var(--cream);background:transparent;border:none;border-bottom:1px solid var(--gold-dim);padding:8px 16px;text-align:center;outline:none;width:240px;font-style:italic}
+.test-nickname-input::placeholder{color:var(--cream-dim);font-style:italic;opacity:.4}
+.test-profile-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:2rem}
+.test-profile-card{padding:16px 8px;border:1px solid rgba(201,169,110,.12);background:rgba(201,169,110,.03);text-align:center}
+.test-profile-card .p-num{font-family:var(--serif);font-size:1.8rem;font-weight:400;color:var(--gold);line-height:1}
+.test-profile-card .p-bar{height:3px;background:rgba(201,169,110,.08);margin:8px auto;width:80%;border-radius:2px;overflow:hidden}
+.test-profile-card .p-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width .6s}
+.test-profile-card .p-label{font-family:var(--sans);font-size:.65rem;color:var(--cream-dim);letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+.test-profile-card.dominant{border-color:var(--gold);background:rgba(201,169,110,.08)}
+.test-profile-card.dominant .p-num{color:var(--white)}
+.test-chiffre{margin:2rem auto;padding:1.5rem;border:1px solid var(--gold-dim);background:rgba(201,169,110,.04);max-width:380px}
+.test-chiffre-label{font-family:var(--sans);font-size:.7rem;color:var(--cream-dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;opacity:.6}
+.test-chiffre-value{font-family:var(--serif);font-size:1.8rem;color:var(--gold);letter-spacing:.12em;font-weight:400;word-break:break-all}
+.btn-copy{display:inline-block;padding:12px 36px;font-family:var(--sans);font-size:.85rem;font-weight:400;letter-spacing:.08em;color:var(--ink);background:var(--gold);border:none;cursor:pointer;transition:all .25s;margin-top:1rem}
+.btn-copy:hover{background:var(--white)}
+.btn-copy.copied{background:var(--gold-dim);color:var(--cream)}
+.test-result-note{margin-top:2rem;font-family:var(--sans);font-weight:300;font-size:.78rem;color:var(--cream-dim);line-height:1.7;max-width:360px;margin-left:auto;margin-right:auto;opacity:.6}
+
+/* === CONTACT === */
+.contact{padding:clamp(4rem,8vw,8.5rem) var(--section-px);text-align:center;position:relative;z-index:2;overflow:hidden;background:linear-gradient(180deg,rgba(30,18,32,.45) 0%,rgba(35,20,35,.5) 100%)}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(37,51,35,.25) 0%,transparent 65%);pointer-events:none}
+.contact-portrait{width:clamp(200px,35vw,320px);height:clamp(200px,35vw,320px);border-radius:50%;object-fit:cover;object-position:center 20%;margin:0 auto clamp(2rem,4vw,3rem);display:block;opacity:.85;filter:grayscale(10%) contrast(1.05) brightness(.95);box-shadow:0 0 40px rgba(201,169,110,.12),0 0 80px rgba(8,8,7,.3);border:1px solid rgba(201,169,110,.15)}
+.contact-inner{max-width:580px;margin:0 auto;position:relative;z-index:1}
+.contact h2{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:300;color:var(--white);line-height:1.02;margin-bottom:2rem;text-shadow:0 0 40px rgba(8,8,7,.9),0 0 80px rgba(8,8,7,.5);animation:headingGlow 6s ease-in-out infinite}
+.contact h2 em{font-style:italic;color:var(--cream-dim)}
+.contact-body{font-family:var(--sans);font-size:clamp(.92rem,1.1vw,.97rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:3rem}
+.mail-link{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:300;font-style:italic;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.28);padding-bottom:4px;transition:color .3s,border-color .3s;word-break:break-all}
+.mail-link:hover{color:var(--white);border-color:var(--white)}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(.6rem,1.2vw,1rem);margin-top:clamp(1rem,2vw,1.5rem)}
+.contact-links .btn-instagram,.contact-links .btn-whatsapp{margin-top:0}
+.contact-note{font-family:var(--sans);font-size:clamp(.72rem,.85vw,.78rem);font-weight:300;letter-spacing:.12em;color:var(--cream-dim);opacity:.5;margin-top:2rem}
+
+/* === LEGAL === */
+.legal{background:linear-gradient(180deg,rgba(35,20,35,.5) 0%,rgba(20,12,22,.85) 100%);position:relative;z-index:2;padding:clamp(3rem,6vw,6rem) var(--section-px)}
+.legal-inner{max-width:800px;margin:0 auto}
+.legal-tabs{display:flex;margin-bottom:3rem;border-bottom:1px solid rgba(201,169,110,.1);gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.legal-tab{font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);padding:.8rem 1.5rem .8rem 0;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .3s,border-color .3s;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.legal-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.legal-content{display:none}.legal-content.active{display:block}
+.legal-content h2{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--white);margin:2rem 0 .8rem}
+.legal-content h3{font-family:var(--serif);font-size:1rem;font-weight:300;font-style:italic;color:var(--cream);margin:1.5rem 0 .5rem}
+.legal-content p{font-family:var(--sans);font-size:clamp(.85rem,1vw,.92rem);font-weight:300;line-height:1.9;color:var(--cream-dim);margin-bottom:.8rem}
+.legal-content a{color:var(--gold);text-decoration:none}
+
+/* === FOOTER === */
+footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) var(--section-px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;position:relative;z-index:2;background:linear-gradient(180deg,rgba(12,8,18,1) 0%,rgba(8,6,12,1) 100%)}
+@media(min-width:769px){footer{flex-direction:row;justify-content:space-between;text-align:left}}
+.footer-brand{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--cream-dim);letter-spacing:.08em}
+.footer-brand span{color:var(--gold)}
+.footer-slogan{font-family:var(--serif);font-size:.82rem;font-weight:300;font-style:italic;color:var(--cream-dim);opacity:.32;margin-top:.3rem}
+.footer-copy{font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.08em;color:var(--cream-dim);opacity:.35;line-height:1.9}
+.footer-copy a{color:inherit;text-decoration:none}.footer-copy a:hover{opacity:1;color:var(--gold)}
+
+/* === HEADING GLOW === */
+@keyframes headingGlow{0%,100%{text-shadow:0 0 6px rgba(201,169,110,.08)}50%{text-shadow:0 0 16px rgba(201,169,110,.2),0 0 40px rgba(201,169,110,.08)}}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* === HIDDEN === */
+.hidden{display:none!important}
+
+/* === PERF-LITE OVERRIDES === */
+.perf-lite .moon{opacity:.4!important;width:clamp(180px,30vw,300px)!important;height:clamp(180px,30vw,300px)!important}
+.perf-lite .isar-shimmer{display:none}
+.perf-lite .isar-flow{animation-duration:16s!important}
+.perf-lite .star-bg{animation-duration:6s!important}
+.perf-lite .star-bg.bright{box-shadow:0 0 3px rgba(201,169,110,.3)!important}
+.perf-lite .vortex-spiral{display:none}
+.perf-lite .vortex-ring{animation-duration:30s}
+.perf-lite .storm-cloud{filter:drop-shadow(0 0 10px rgba(180,180,180,.2))!important;animation:none!important}
+.perf-lite .storm-cloud-lightning{display:none}
+.perf-lite .star-dot{filter:drop-shadow(0 0 4px rgba(201,169,110,.7)) drop-shadow(0 0 10px rgba(201,169,110,.3))!important;animation:none!important;opacity:.85!important}
+.perf-lite .star-path{animation:none!important;stroke-dashoffset:0!important;opacity:.25!important}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .moon{opacity:.5!important;width:clamp(215px,40vw,375px)!important;height:clamp(215px,40vw,375px)!important}
+  .moon-phases-row{gap:.3rem;justify-content:center}
+  .moon-phase{padding:6px}
+  .moon-phase-desc{display:none}
+  .isar svg{transform:scaleX(1.3)}
+  .star-bg.bright{box-shadow:0 0 3px rgba(201,169,110,.3)!important}
+  .test-scale-btn{width:44px;height:44px;font-size:1rem}
+  .test-profile-grid{gap:8px}
+  .sep-constellation{height:clamp(100px,22vw,160px)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}
+  .isar{opacity:1!important}
+  .moon{opacity:.4!important}
+  .star-bg{opacity:.3!important}
+  .star-dot{opacity:.9!important;animation:none!important}
+  .star-path{opacity:.25!important;animation:none!important;stroke-dashoffset:0!important}
+}
+</style>
+</head>
+<body>
+
+<!-- STARFIELD -->
+<div class="starfield-bg" id="starBg"></div>
+
+<!-- MOON -->
+<div class="moon" id="moon">
+  <svg viewBox="-100 -100 600 600" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+    <defs>
+      <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(247,242,228,.15)"/><stop offset="70%" stop-color="rgba(247,242,228,.04)"/><stop offset="100%" stop-color="rgba(247,242,228,0)"/></radialGradient>
+      <radialGradient id="moonGlow2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.06)"/><stop offset="50%" stop-color="rgba(201,169,110,.02)"/><stop offset="100%" stop-color="rgba(201,169,110,0)"/></radialGradient>
+      <radialGradient id="moonBase" cx="42%" cy="38%" r="50%"><stop offset="0%" stop-color="#fffcf0"/><stop offset="30%" stop-color="#f7f2e4"/><stop offset="70%" stop-color="#e8dfc8"/><stop offset="100%" stop-color="#c9b88a"/></radialGradient>
+      <radialGradient id="moonHighlight" cx="38%" cy="35%" r="35%"><stop offset="0%" stop-color="rgba(255,255,248,.5)"/><stop offset="100%" stop-color="rgba(255,255,248,0)"/></radialGradient>
+    </defs>
+    <circle cx="200" cy="200" r="380" fill="url(#moonGlow2)"/>
+    <circle cx="200" cy="200" r="280" fill="url(#moonGlow)"/>
+    <circle cx="200" cy="200" r="180" fill="url(#moonBase)"/>
+    <circle cx="200" cy="200" r="180" fill="url(#moonHighlight)"/>
+    <circle cx="155" cy="145" r="32" fill="rgba(190,180,150,.22)"/>
+    <circle cx="235" cy="215" r="18" fill="rgba(190,180,150,.18)"/>
+    <circle cx="175" cy="248" r="13" fill="rgba(190,180,150,.15)"/>
+    <circle cx="120" cy="200" r="9" fill="rgba(190,180,150,.1)"/>
+    <circle cx="250" cy="155" r="11" fill="rgba(190,180,150,.12)"/>
+    <ellipse cx="160" cy="150" rx="55" ry="50" fill="rgba(255,252,240,.08)"/>
+  </svg>
+</div>
+
+<!-- ISAR -->
+<div class="isar" id="isar">
+  <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" class="isar-glow" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="isarDeep" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(30,80,110,0)"/><stop offset="12%" stop-color="rgba(30,80,110,.3)"/><stop offset="50%" stop-color="rgba(40,100,130,.45)"/><stop offset="88%" stop-color="rgba(30,80,110,.3)"/><stop offset="100%" stop-color="rgba(30,80,110,0)"/></linearGradient>
+      <linearGradient id="isarMain" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(60,150,185,0)"/><stop offset="10%" stop-color="rgba(60,150,185,.35)"/><stop offset="35%" stop-color="rgba(80,185,210,.5)"/><stop offset="65%" stop-color="rgba(70,170,200,.5)"/><stop offset="90%" stop-color="rgba(60,150,185,.35)"/><stop offset="100%" stop-color="rgba(60,150,185,0)"/></linearGradient>
+      <linearGradient id="isarTurq" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(100,220,230,0)"/><stop offset="15%" stop-color="rgba(100,220,230,.25)"/><stop offset="50%" stop-color="rgba(130,235,240,.4)"/><stop offset="85%" stop-color="rgba(100,220,230,.25)"/><stop offset="100%" stop-color="rgba(100,220,230,0)"/></linearGradient>
+      <linearGradient id="isarLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(170,240,250,0)"/><stop offset="20%" stop-color="rgba(170,240,250,.15)"/><stop offset="50%" stop-color="rgba(200,250,255,.3)"/><stop offset="80%" stop-color="rgba(170,240,250,.15)"/><stop offset="100%" stop-color="rgba(170,240,250,0)"/></linearGradient>
+      <linearGradient id="isarMoon" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(220,240,245,0)"/><stop offset="30%" stop-color="rgba(220,240,245,.2)"/><stop offset="50%" stop-color="rgba(240,250,255,.35)"/><stop offset="70%" stop-color="rgba(220,240,245,.2)"/><stop offset="100%" stop-color="rgba(220,240,245,0)"/></linearGradient>
+    </defs>
+    <path class="isar-flow" d="M520 0 C510 50,420 90,400 180 S560 300,480 400 S350 480,400 580 S580 680,500 780 S380 860,420 940 S530 980,500 1000" stroke="url(#isarDeep)" stroke-width="120" style="--if-d:20s;--if-del:0s;--if-lo:.08;--if-hi:.25"/>
+    <path class="isar-flow" d="M510 0 C505 55,430 100,415 190 S555 295,475 395 S360 475,405 575 S575 670,495 770 S385 855,425 935 S525 975,505 1000" stroke="url(#isarMain)" stroke-width="70" style="--if-d:15s;--if-del:1s;--if-lo:.12;--if-hi:.45"/>
+    <path class="isar-flow" d="M500 0 C498 60,440 110,425 200 S545 290,470 390 S370 465,410 565 S565 660,490 760 S390 845,430 930 S520 970,500 1000" stroke="url(#isarTurq)" stroke-width="40" style="--if-d:12s;--if-del:2s;--if-lo:.1;--if-hi:.4"/>
+    <path class="isar-flow" d="M495 0 C495 65,445 115,432 205 S540 285,468 385 S375 460,415 560 S560 655,488 755 S395 840,435 925 S518 968,498 1000" stroke="url(#isarLight)" stroke-width="18" style="--if-d:10s;--if-del:3s;--if-lo:.08;--if-hi:.35"/>
+    <path class="isar-flow" d="M540 0 C535 45,470 85,460 160 S580 260,520 340 S440 400,460 480 S590 560,530 640 S450 720,470 800 S560 880,540 960 S510 990,520 1000" stroke="url(#isarMain)" stroke-width="25" style="--if-d:17s;--if-del:0.5s;--if-lo:.06;--if-hi:.3"/>
+    <path class="isar-flow" d="M460 0 C462 70,410 130,400 220 S510 320,450 420 S380 500,400 600 S520 690,465 790 S400 870,430 950 S480 985,470 1000" stroke="url(#isarTurq)" stroke-width="8" style="--if-d:9s;--if-del:1.5s;--if-lo:.15;--if-hi:.5"/>
+    <path class="isar-shimmer" stroke="url(#isarMoon)" stroke-width="12" stroke-dasharray="8 25" d="M490 60 C460 120,440 160,430 230" style="--is-d:7s;--is-del:0s"/>
+    <path class="isar-shimmer" stroke="url(#isarMoon)" stroke-width="8" stroke-dasharray="5 18" d="M450 300 C480 360,500 400,475 460" style="--is-d:9s;--is-del:2s"/>
+    <path class="isar-shimmer" stroke="url(#isarMoon)" stroke-width="14" stroke-dasharray="10 30" d="M420 520 C460 570,480 610,470 680" style="--is-d:6s;--is-del:4s"/>
+    <path class="isar-shimmer" stroke="url(#isarMoon)" stroke-width="6" stroke-dasharray="4 20" d="M500 700 C480 750,460 790,470 850" style="--is-d:8s;--is-del:1s"/>
+  </svg>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="../" class="nav-logo">
+    <span class="nav-logo-circle"><img class="nav-logo-img" src="../img/img_r13.webp" alt="MW" loading="lazy"></span>
+    <span class="nav-logo-text">Munich Witchcraft</span>
+  </a>
+</nav>
+
+<!-- ═══ HERO with VORTEX ═══ -->
+<section class="session-hero" id="ankommen">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-lightning-layer" id="heroLightning2"></div>
+  <img class="storm-cloud" src="../img/img_01.png" alt="" loading="lazy">
+  <div class="storm-cloud-lightning" id="stormCloudLightning"></div>
+
+  <div class="vortex-wrap reveal" style="position:relative;z-index:2">
+    <svg class="vortex-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ring 1: outermost -->
+      <circle class="vortex-ring vortex-ring-1" cx="200" cy="200" r="180"/>
+      <!-- Ring 2 -->
+      <circle class="vortex-ring vortex-ring-2" cx="200" cy="200" r="140"/>
+      <!-- Ring 3 -->
+      <circle class="vortex-ring vortex-ring-3" cx="200" cy="200" r="100"/>
+      <!-- Ring 4: innermost -->
+      <circle class="vortex-ring vortex-ring-4" cx="200" cy="200" r="60"/>
+      <!-- Spiral 1: outward arc -->
+      <path class="vortex-spiral vortex-spiral-1" d="M200 200 C220 180,260 170,270 140 S250 80,200 60 S120 80,100 130 S120 200,160 230 S220 250,260 230 S300 190,300 140 S270 60,200 30"/>
+      <!-- Spiral 2: counter arc -->
+      <path class="vortex-spiral vortex-spiral-2" d="M200 200 C180 220,140 230,130 260 S150 320,200 340 S280 320,300 270 S280 200,240 170 S180 150,140 170 S100 210,100 260 S130 340,200 370"/>
+      <!-- Core glow -->
+      <circle class="vortex-core" cx="200" cy="200" r="18" fill="rgba(201,169,110,.15)" stroke="rgba(201,169,110,.2)" stroke-width=".5"/>
+      <circle class="vortex-core" cx="200" cy="200" r="8" fill="rgba(201,169,110,.25)" style="animation-delay:1s"/>
+    </svg>
+    <div class="vortex-center">
+      <h1>Im Auge<br><em>des Sturms.</em></h1>
+    </div>
+  </div>
+
+  <div class="label label-center" style="position:relative;z-index:3">Session</div>
+
+  <div class="poem">
+    &hellip;Früher lebten die <strong>Dämonen</strong> unter meinem Bett,<br>
+    später schliefen sie neben mir auf dem Kissen &ndash;<br>
+    heute kenne ich ihre <strong>Namen</strong>.<br>
+    <span class="poem-break"></span>
+    Doch jetzt weiß ich:<br>
+    <strong>Erwachsenwerden</strong> bedeutet nicht, seine Dämonen zu verbannen,<br>
+    sondern sie anzusehen, bis sie zuerst <strong>blinzeln</strong>.
+  </div>
+
+  <div class="intro-text">
+    <p>Du hast dich auf den Weg gemacht.</p>
+    <p>Was hier folgt, ist kein Programm und kein Versprechen. Jeder Sturm hat eine Mitte &mdash; einen Ort der Stille, an dem die Dinge sichtbar werden, die der Wind sonst verweht.</p>
+    <p>Ich kann dir keinen Raum geben. Aber ich kann mit dir einen schaffen &mdash; für die Dauer unserer Begegnung. Einen Ort, an dem Schutz ist, Wissen geteilt wird, und du darin bestärkt wirst, dir den Raum zu nehmen, der dir gehört.</p>
+    <p>Hier findest du, was dich erwartet.</p>
+  </div>
+
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 240 120"><circle class="star-dot" cx="20" cy="40" r="2.2" style="--sp-d:2.4s;--sp-del:0s"/><circle class="star-dot" cx="65" cy="18" r="2.5" style="--sp-d:3.1s;--sp-del:.3s"/><circle class="star-dot" cx="110" cy="55" r="2" style="--sp-d:2.7s;--sp-del:.7s"/><circle class="star-dot" cx="155" cy="15" r="2.8" style="--sp-d:3.5s;--sp-del:.2s"/><circle class="star-dot" cx="200" cy="50" r="2.2" style="--sp-d:2.2s;--sp-del:.9s"/>
+<path class="star-path" d="M20 40 L65 18 L110 55 L155 15 L200 50"/></svg></div></div>
+
+<!-- MOON NAV -->
+<div class="moon-nav reveal">
+  <div class="moon-nav-label">Folge dem Mond durch die Session</div>
+  <div class="moon-scroll-wrapper">
+  <div class="moon-phases-row">
+
+    <a class="moon-phase" href="#ankommen" data-section="ankommen">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/></svg>
+      <span class="moon-phase-name">Ankommen</span>
+      <span class="moon-phase-desc">Neumond</span>
+    </a>
+
+    <a class="moon-phase" href="#ablauf" data-section="ablauf">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A7 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Ablauf</span>
+      <span class="moon-phase-desc">Zunehmende Sichel</span>
+    </a>
+
+    <a class="moon-phase" href="#vorbereitung" data-section="vorbereitung">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A0 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Vorbereitung</span>
+      <span class="moon-phase-desc">Erstes Viertel</span>
+    </a>
+
+    <a class="moon-phase" href="#werkzeuge" data-section="werkzeuge">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A-7 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Methoden</span>
+      <span class="moon-phase-desc">Zunehmender Mond</span>
+    </a>
+
+    <a class="moon-phase" href="#heckensitzende" data-section="heckensitzende">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="rgba(232,226,212,.8)" stroke="rgba(201,169,110,.3)" stroke-width="1"/></svg>
+      <span class="moon-phase-name">Essay</span>
+      <span class="moon-phase-desc">Vollmond</span>
+    </a>
+
+    <a class="moon-phase" href="#test" data-section="test">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A-7 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Test</span>
+      <span class="moon-phase-desc">Abnehmender Mond</span>
+    </a>
+
+    <a class="moon-phase" href="#contact" data-section="contact">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A0 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Kontakt</span>
+      <span class="moon-phase-desc">Letztes Viertel</span>
+    </a>
+
+    <a class="moon-phase" href="https://funkenfangen.de/zirkel/#newsletter" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><defs><radialGradient id="pl" cx="40%" cy="35%" r="50%"><stop offset="0%" stop-color="rgba(160,200,220,.7)"/><stop offset="50%" stop-color="rgba(120,170,200,.55)"/><stop offset="100%" stop-color="rgba(80,140,180,.4)"/></radialGradient></defs><ellipse cx="24" cy="24" rx="23" ry="8" fill="none" stroke="rgba(150,195,215,.35)" stroke-width="1" transform="rotate(-25 24 24)"/><circle cx="24" cy="24" r="14" fill="url(#pl)"/></svg>
+      <span class="moon-phase-name">Newsletter</span>
+      <span class="moon-phase-desc">Saturn</span>
+    </a>
+
+    <a class="moon-phase" href="../">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.35)" stroke-width="1"/><circle cx="24" cy="24" r="10" fill="rgba(201,169,110,.6)"/><line x1="24" y1="2" x2="24" y2="12" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="24" y1="36" x2="24" y2="46" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="2" y1="24" x2="12" y2="24" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="36" y1="24" x2="46" y2="24" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/></svg>
+      <span class="moon-phase-name">Hauptseite</span>
+      <span class="moon-phase-desc">Stern</span>
+    </a>
+
+  </div>
+  </div>
+  <div class="moon-nav-line"></div>
+</div>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 200 120"><circle class="star-dot" cx="100" cy="8" r="3" style="--sp-d:2s;--sp-del:0s"/><circle class="star-dot" cx="55" cy="50" r="2" style="--sp-d:3.4s;--sp-del:.5s"/><circle class="star-dot" cx="145" cy="50" r="2" style="--sp-d:2.6s;--sp-del:.8s"/><circle class="star-dot" cx="70" cy="100" r="1.8" style="--sp-d:3.8s;--sp-del:.2s"/><circle class="star-dot" cx="130" cy="100" r="1.8" style="--sp-d:2.9s;--sp-del:1.1s"/>
+<path class="star-path" d="M100 8 L55 50 L70 100"/><path class="star-path" d="M100 8 L145 50 L130 100"/><path class="star-path" d="M70 100 L130 100"/></svg></div></div>
+
+<!-- ═══ BLOCK 2: ABLAUF ═══ -->
+<section class="session-section session-ablauf" id="ablauf">
+  <div class="session-inner">
+    <div class="reveal"><div class="label">Ablauf</div><h2>Was in einer<br><em>Session passiert.</em></h2></div>
+
+    <div class="ablauf-block reveal reveal-delay-1">
+      <div class="ablauf-price">Live-Session &middot; 45&ndash;60 Minuten &middot; 60 &euro;</div>
+      <p>Wir treffen uns &mdash; überwiegend bei mir zu Hause in München, auf Wunsch auch online über Zoom. Was hier geschieht, ist kein biografisches Gespräch, keine Therapie, kein Coaching. Du bist bei der Hexe.</p>
+      <p>Du bringst ein bis drei Fragen mit. Fragen, die dich bewegen, die sich nicht lösen lassen, die vielleicht noch gar keine Worte haben. Die Hauptarbeit besteht darin, diese Fragen gemeinsam umzuformulieren &mdash; auf den spirituellen, energetischen Kontext hin. Ich erkläre dabei, warum bestimmte Fragen aus spiritueller Sicht anders gestellt werden müssen. Denn wer anders fragt, sieht anders.</p>
+      <p>Dann legen wir gemeinsam ein großes Tarot-Kartenbild zu deinen Fragen. Ich gebe erste Impulse, wir fotografieren das Bild. Du bekommst Gedanken zum Weiterdenken &mdash; Samen, keine Antworten.</p>
+    </div>
+
+    <div class="ablauf-block reveal reveal-delay-2">
+      <div class="ablauf-price">Traumarbeit + Protokoll &middot; 45 &euro;</div>
+      <p>Nach unserer Begegnung gehe ich in einen Klartraum mit dir &mdash; so, wie ich dich energetisch kennengelernt habe, ohne biografischen Hintergrund, nur über Energie und deinen Ist-Zustand. Ich befrage in der Traumwelt deinen Energiekörper zu den offenen Fragen.</p>
+      <p>Das funktioniert meistens. Wenn nicht, sage ich das ehrlich.</p>
+      <p>Am nächsten Tag schreibe ich dein Protokoll &mdash; eine Art persönliches Workbook: das Foto des Kartenbildes, die Deutung und Auslegung des Tarotbildes, Auszüge aus der Traumarbeit, die umformulierten Fragen und ihre Beantwortung, energetische Pflanzenempfehlungen, Impulse zu Entwicklungsthemen, magische Ratschläge, Lesetipps, Lebensführungstipps. Nicht alles aus der Traumarbeit wird preisgegeben &mdash; zum Schutz beider Seiten.</p>
+    </div>
+
+    <div class="ablauf-block reveal reveal-delay-3">
+      <div class="ablauf-price">Der Persönlichkeitstest &middot; Deine Hausaufgabe</div>
+      <p>Während ich das Protokoll erstelle, füllst du den Persönlichkeitstest aus &mdash; hier auf dieser Seite, weiter unten. 115 Sätze, kein Richtig oder Falsch. Am Ende erhältst du eine Ergebnis-Chiffre, die du mir innerhalb von drei Tagen nach unserer Session sendest.</p>
+      <p>Drei Perspektiven kommen zusammen: das Gespräch, das Protokoll und das Testergebnis. Dieser Abgleich zeigt Muster, die eine einzelne Methode allein nicht sichtbar macht.</p>
+    </div>
+
+    <div class="ablauf-gesamt reveal">
+      <div class="price">Gesamt: 105 &euro; netto</div>
+      <p>Session + Traumarbeit + Protokoll + Testauswertung</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 260 120"><circle class="star-dot" cx="30" cy="75" r="2" style="--sp-d:3s;--sp-del:0s"/><circle class="star-dot" cx="65" cy="35" r="2.5" style="--sp-d:2.5s;--sp-del:.4s"/><circle class="star-dot" cx="110" cy="18" r="2.8" style="--sp-d:3.2s;--sp-del:.7s"/><circle class="star-dot" cx="155" cy="30" r="2" style="--sp-d:2.8s;--sp-del:.2s"/><circle class="star-dot" cx="195" cy="65" r="2.2" style="--sp-d:3.5s;--sp-del:.9s"/><circle class="star-dot" cx="110" cy="95" r="1.8" style="--sp-d:2.2s;--sp-del:1.2s"/>
+<path class="star-path" d="M30 75 L65 35 L110 18 L155 30 L195 65"/><path class="star-path" d="M110 18 L110 95"/></svg></div></div>
+
+<!-- ═══ BLOCK 3: VORBEREITUNG ═══ -->
+<section class="session-section session-vorbereitung" id="vorbereitung">
+  <div class="session-inner">
+    <div class="reveal"><div class="label">Vorbereitung</div><h2>Bevor wir uns<br><em>begegnen.</em></h2></div>
+
+    <div class="vorb-item reveal reveal-delay-1">
+      <strong>Offenheit und Unvoreingenommenheit</strong>
+      <p>Komm ohne feste Erwartung, was passieren soll. Was geschieht, zeigt sich im Moment &mdash; nicht im Plan.</p>
+    </div>
+    <div class="vorb-item reveal reveal-delay-1">
+      <strong>Fragen und Geburtsdaten vorab übermitteln</strong>
+      <p>Schicke mir vor unserem Treffen deine 1&ndash;3 Fragen sowie deine vollständigen Geburtsdaten &mdash; Datum, Ort und, wenn möglich, die exakte Uhrzeit &mdash; per <a href="mailto:kontakt@funkenfangen.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">E-Mail</a> oder <a href="https://wa.me/491759023137" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)">WhatsApp</a>. Die Fragen müssen nicht perfekt formuliert sein, wir arbeiten gemeinsam daran. Die Geburtsdaten sind Grundlage für die astrologische Einordnung.</p>
+      <p>Diese Vorbereitung ist keine Formalität. Sie ist der erste Schritt. Wer sich vorab mit den eigenen Fragen auseinandersetzt, kommt anders an &mdash; aufmerksamer, ehrlicher, bereiter. Und genau das braucht diese Arbeit.</p>
+    </div>
+    <div class="vorb-item reveal reveal-delay-2">
+      <strong>Die Homepage aufmerksam lesen</strong>
+      <p>Arbeite dich in die Themen ein. Verstehe den Hintergrund. Je tiefer du einsteigst, desto tiefer können wir arbeiten.</p>
+    </div>
+    <div class="vorb-item reveal reveal-delay-2">
+      <strong>1&ndash;2 Tage vorher: Runterkommen</strong>
+      <p>Natur, Sauna, Yoga, Entspannung. Zentriere dich, komm energetisch zu dir. Trink Kräutertees, schlaf gut.</p>
+    </div>
+    <div class="vorb-item reveal reveal-delay-3">
+      <strong>Fragen zur Methode sind willkommen</strong>
+      <p>Wenn du Fragen hast &mdash; zur Arbeitsweise, zum Glauben, zur spirituellen Welt &mdash;, stell sie. Vorher per Nachricht oder während unserer Begegnung. Ich antworte gern und offen darauf. Skepsis ist kein Hindernis, sondern ein guter Anfang.</p>
+    </div>
+
+    <div class="klarstellung reveal">
+      <h3>Was es ist &mdash; und was es nicht ist</h3>
+      <div class="klar-grid">
+        <div class="klar-col">
+          <h4>Was es ist</h4>
+          <p>Eine tiefe, reflektierte spirituelle Begegnung, die die großen Fragen an Sinn und Sein stellt. Arbeit mit Symbolen, Energie, Traum und Pflanzenwissen. Ehrliches, konstruktives Feedback auf Augenhöhe. Ein Raum für das, was sonst keinen Platz hat.</p>
+        </div>
+        <div class="klar-col">
+          <h4>Was es nicht ist</h4>
+          <p>Kein Freizeitvergnügen, kein Jahrmarkt, keine oberflächliche Horoskopspalte. Keine Therapie, kein Coaching, keine konkreten Zukunftsvorhersagen. Der Besuch bei einer Hexe verlangt Ernsthaftigkeit &mdash; von beiden Seiten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 220 120"><circle class="star-dot" cx="40" cy="60" r="2.5" style="--sp-d:2.6s;--sp-del:0s"/><circle class="star-dot" cx="90" cy="20" r="2" style="--sp-d:3.2s;--sp-del:.6s"/><circle class="star-dot" cx="140" cy="80" r="2.3" style="--sp-d:2.9s;--sp-del:.3s"/><circle class="star-dot" cx="190" cy="35" r="2.8" style="--sp-d:3.6s;--sp-del:.8s"/>
+<path class="star-path" d="M40 60 L90 20 L140 80 L190 35"/></svg></div></div>
+
+<!-- ═══ BLOCK 4: WERKZEUGE ═══ -->
+<section class="session-section session-werkzeuge" id="werkzeuge">
+  <div class="session-inner">
+    <div class="reveal"><div class="label">Methoden</div><h2>Wie ich<br><em>arbeite.</em></h2></div>
+
+    <div class="werkzeug reveal">
+      <h3>Tarot &mdash; Der Spiegel</h3>
+      <p>Nicht als Wahrsagerei, sondern als Spiegel. Die Karten zeigen, was schon da ist &mdash; Muster, Dynamiken, blinde Flecken. Was du in den Bildern siehst, sagt mehr über dich als über die Zukunft.</p>
+    </div>
+    <div class="werkzeug reveal">
+      <h3>Klartraumarbeit &mdash; Die Traumreise</h3>
+      <p>Ich gehe in einen Klartraum und treffe dort deinen Energiekörper. Ich befrage ihn zu den offenen Fragen &mdash; ohne biografischen Hintergrund, nur über das, was energetisch da ist. Zwei Nächte pro Woche, etwa fünfzehn Minuten im Klartraum. Es funktioniert meistens. Wenn nicht, sage ich das.</p>
+    </div>
+    <div class="werkzeug reveal">
+      <h3>Energetische Wahrnehmung</h3>
+      <p>Ich lerne dich nicht über deine Biografie kennen, sondern über deine Energie und deinen Ist-Zustand. Was ich wahrnehme, ist kein Urteil &mdash; es ist ein Abdruck dessen, was gerade ist.</p>
+    </div>
+    <div class="werkzeug reveal">
+      <h3>Archetypen &mdash; Jungs Schatten</h3>
+      <p>C.G. Jungs Konzept des Schattens und der Archetypen bildet den intellektuellen Rahmen. Schattenarbeit heißt: sich dem stellen, was verdrängt wurde. Nicht um es loszuwerden, sondern um es zu integrieren. Das Fremde ist meistens das ganz Vertraute.</p>
+    </div>
+    <div class="werkzeug reveal">
+      <h3>Pflanzen- und Kräuterwissen</h3>
+      <p>Energetische Pflanzenempfehlungen, die zur jeweiligen Situation passen. Die Heckenapotheke: Heilung und Gift wachsen am selben Stängel. Wer das eine beherrscht, kennt das andere.</p>
+    </div>
+    <div class="werkzeug reveal">
+      <h3>Poetische Arbeit &mdash; Sprache formt Bewusstsein</h3>
+      <p>Die Fragen umformulieren ist die Hauptarbeit. Sprache formt Bewusstsein. Wer anders fragt, sieht anders. Die richtigen Worte öffnen Räume, die vorher verschlossen waren.</p>
+    </div>
+
+    <div class="haltung reveal">
+      <h3>Haltung</h3>
+      <p><em>Ehrlichkeit als Grundprinzip</em> &mdash; ich sage auch, wenn etwas nicht funktioniert. <em>Kein Guru-Verhältnis</em> &mdash; wir arbeiten auf Augenhöhe. <em>Schutz</em> &mdash; nicht alles aus der Traumarbeit wird preisgegeben, zum Wohl beider Seiten.</p>
+      <p>Was ich biete, ist konstruktives Feedback. Man muss nicht alles annehmen. Aber: Gerade das, was überrascht, lohnt die Auseinandersetzung.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 240 120"><circle class="star-dot" cx="25" cy="90" r="2" style="--sp-d:2.8s;--sp-del:0s"/><circle class="star-dot" cx="80" cy="30" r="2.5" style="--sp-d:3.1s;--sp-del:.5s"/><circle class="star-dot" cx="130" cy="70" r="2.2" style="--sp-d:2.4s;--sp-del:.9s"/><circle class="star-dot" cx="180" cy="15" r="2.8" style="--sp-d:3.5s;--sp-del:.2s"/><circle class="star-dot" cx="220" cy="85" r="2" style="--sp-d:2.6s;--sp-del:1s"/>
+<path class="star-path" d="M25 90 L80 30 L130 70 L180 15 L220 85"/></svg></div></div>
+
+<!-- ═══ PORTRAIT DIVIDER ═══ -->
+<div class="session-portrait-wrap reveal">
+  <img class="session-portrait-img" src="../img/portrait-kerze.png" alt="Mika Schöberl" loading="lazy" decoding="async">
+</div>
+
+<!-- ═══ BLOCK 5: HECKENSITZENDE ═══ -->
+<section class="session-section session-essay" id="heckensitzende">
+  <div class="session-inner">
+    <div class="reveal"><div class="label label-center">Hintergrund</div><h2 style="text-align:center">Die Heckensitzende</h2><p style="text-align:center;font-family:var(--serif);font-style:italic;color:var(--cream-dim);opacity:.7;margin-bottom:clamp(2rem,4vw,3rem)">Warum die Hexe der Archetyp ist, auf den wir gewartet haben</p></div>
+
+    <div class="essay-text">
+      <p class="reveal">Es gibt Worte, die tragen Brandnarben. &bdquo;Hexe&ldquo; ist eines davon. Sag es laut, und der Raum verändert sich. Etwas zieht sich zusammen &ndash; in den Gesichtern, in den Mägen, irgendwo zwischen Faszination, Abwehr und Belächeln. Kein anderer Begriff der westlichen Kulturgeschichte wurde so gründlich verbrannt und so hartnäckig wieder ausgegraben. Und kein Archetyp ist so dringend nötig wie dieser.</p>
+
+      <p class="reveal">Ich schreibe das als jemand, der mit dem Mond arbeitet, mit Träumen, mit Pflanzenwissen und mit der stillen Gewissheit, dass das, was wir &bdquo;Realität&ldquo; nennen, nur die Oberfläche ist. Ich arbeite als Jungian Witch. Das klingt, je nach Ohr, nach Provokation oder nach Heimkommen. Beides stimmt.</p>
+
+      <p class="reveal">Doch bevor wir die Hexe aus dem Scheiterhaufen der Geschichte holen, müssen wir dort beginnen, wo sie lebt: im kollektiven Unbewussten. C.G. Jung beschrieb Archetypen als vererbte Strukturen der Psyche &ndash; seelische Grundbausteine, die in Mythen, Märchen und Träumen auftauchen, weil etwas in uns sie wiedererkennt. Zwölf hat die Psychologie identifiziert, jeder mit einer Sehnsucht und einer Angst. Wir haben in dieser Kolumne schon den Narren getroffen, das Kind, den Helden. Und dann ist da die Hexe. Die in keiner der gängigen Listen auftaucht. Die nicht eingeladen wurde. Die trotzdem da ist.</p>
+
+      <p class="reveal">Das Wort verrät alles. &bdquo;Hexe&ldquo; kommt vom althochdeutschen &bdquo;Hagazussa&ldquo; &ndash; wörtlich: auf der Hecke sitzend. Die Hecke war in der bäuerlichen Kultur Europas die Grenzlinie zwischen dem Kultivierten und dem Wilden. Zwischen Dorf und Wald. Zwischen dem, was wir kontrollieren, und dem, was uns kontrolliert. Die Hexe sitzt genau auf dieser Grenze. Gehört zu keiner Seite ganz. Kennt beide.</p>
+
+      <p class="reveal">Und an dieser Hecke wuchs, was nirgendwo sonst wachsen konnte. Bilsenkraut, dessen Alkaloide Visionen auslösten und in der richtigen Dosierung Schmerzen löschten wie Wasser eine Kerze. Tollkirsche &ndash; Atropa belladonna &ndash;, benannt nach der griechischen Schicksalsgöttin, die den Lebensfaden durchtrennt: tödlich als Beere, heilend als Tinktur gegen Krämpfe und Asthma. Eisenhut, eine der giftigsten Pflanzen Europas, dessen Aconitinsalbe in winzigen Mengen Nervenschmerz betäubte. Beifuß für Träume und Mondzyklen. Schafgarbe für Wunden und Wahrheit. Stechapfel für den Übergang zwischen den Welten &ndash; Datura stramonium, die Pflanze, die den Geist öffnet und ihn verschlingen kann, wenn die Hand nicht weiß, was sie tut. Die Heckenapotheke war kein Kräuterregal. Sie war ein pharmazeutisches Manifest: Heilung und Gift wachsen am selben Stängel. Wer das eine beherrscht, kennt das andere. Wer beides kennt, hat aufgehört, die Welt in Gut und Böse zu teilen. Und wer das getan hat, lässt sich nicht kontrollieren.</p>
+
+      <p class="reveal">Genau das macht die Hexe gefährlich &ndash; nicht für Menschen, für Systeme. Für jede Ordnung, die davon lebt, dass Wissen in Zuständigkeiten zerfällt. Die Hexe war schamanisch Praktizierende mit Zugang zur geistigen Welt, zu Naturgeistern, zu einem Erfahrungswissen, das keine Universität lehrte. Wer die Heckenapotheke beherrschte &ndash; Salben, Räucherungen, Flugsalben aus Nachtschattengewächsen &ndash;, heilte nicht mit Rezepten, sondern mit Beziehung: zum Körper, zur Pflanze, zum Rhythmus der Erde.</p>
+
+      <p class="reveal">Wenn jeder Archetyp eine Sehnsucht und eine Angst bedient, dann lautet die Sehnsucht der Hexe: ganzheitliches Wissen. Zugang zu dem, was unter der Oberfläche liegt, ohne die Oberfläche zu verleugnen. Die Angst: Verfolgung. Sichtbar werden und dafür bestraft werden. In dieser Doppelstruktur liegt ihre transformative Kraft. Wer sich der Hexe stellt, stellt sich dem ältesten Konflikt der westlichen Psyche: dem Verbot, Intuition und Wissen gleichzeitig zu besitzen. Kopf oder Bauch &ndash; das System verlangt eine Wahl. Die Hexe verweigert sie. Kein anderer Archetyp tut das. Die Weise wählt den Kopf. Die Rebellin wählt den Bruch. Die Magierin wählt die Transformation. Die Hexe nimmt alles &ndash; Wissen, Wildnis, Heilung, Gift &ndash; und webt es zusammen. Sie ist kein einzelner Archetyp. Sie ist eine Synthese.</p>
+
+      <p class="reveal">In meiner Praxis als Jungian Witch kommen Menschen nicht, weil sie krank sind. Sie kommen, weil sie funktionieren und trotzdem spüren, dass etwas fehlt. Sie haben therapiert, meditiert, optimiert &ndash; und stehen immer noch vor demselben blinden Fleck. Die Hexe arbeitet dort, wo Therapie aufhört und Religion nicht hinreicht: im Zwischenraum. Mit Traumdeutung, Kräuterwissen, Tarot &ndash; nicht als Orakel, sondern als Spiegel. Was dabei geschieht, ist weder esoterischer Kitsch noch klinische Behandlung. Es ist Begegnung mit dem, was Jung den Schatten nannte: die verdrängten, abgelehnten Anteile, die im Unbewussten warten. Menschen lernen dort, dass ihre Intuition kein Defekt ist, sondern ein Organ, das sie verkümmern ließen. Dass Wut Richtung hat. Dass Trauer ein Kompass sein kann. Dass die Wildnis in ihnen kein Problem ist, das gelöst werden muss, sondern ein Territorium, das betreten werden will. Das zu begleiten, ist nicht anmaßend. Es ist die älteste Form der Fürsorge, die es gibt.</p>
+
+      <p class="reveal">Wer Yoga praktiziert, kennt Pratyahara &ndash; den Rückzug der Sinne nach innen. Die Hexe tut das Gegenteil: radikale Öffnung der Sinne nach außen. Zum Wald. Zur Pflanze. Zum Mond. Zum Geruch von Erde nach Regen, der mehr über den Zustand der Welt erzählt als jede Nachrichtensendung. Und doch braucht auch die Hexenarbeit Tapas &ndash; jenes innere Feuer der Disziplin, das Patanjali als eines der Niyamas beschrieb. Kräuterwissen erfordert Geduld. Ritualarbeit erfordert Konsequenz. Schattenarbeit erfordert die Bereitschaft, nicht wegzulaufen, wenn es wehtut. Pratyahara nach innen, Hexenarbeit nach außen. Das sind keine Gegensätze. Das sind zwei Hände desselben Körpers. Zusammen greifen sie, was keine allein halten kann.</p>
+
+      <p class="reveal">Die Scheiterhaufen haben dieses Wissen fast ausgelöscht &ndash; nicht durch eine gezielte Kampagne gegen Heilkundige, sondern durch eine massenhafte Verschwörungstheorie, angetrieben von Panik, Folter und dem Bedürfnis, im Unerklärlichen einen Schuldigen zu finden. Was verloren ging, war ein Paradigma: Heilung als Beziehung zur Erde, nicht als Transaktion. In den alten Feuernächten wurde dieses Wissen einst gefeiert &ndash; als wilder Polterabend vor der Götterhochzeit, die Vereinigung von Blumengöttin und Sonnengott. Die Kirche überlagerte diese Daten mit Heiligengedenktagen. Aus Astralreisen wurden Besen. Aus Ekstase wurde Teufelsanbetung. Doch die Energie, die in diesen Nächten freigesetzt wurde, ist nie verschwunden &ndash; sie wartet im Jahreskreis, in den Übergängen zwischen den Zeiten, dort, wo die Hexe am sichtbarsten tanzt.</p>
+
+      <p class="reveal">Und jetzt kommt sie zurück. Seit den 2010er-Jahren beobachtet die Kulturwissenschaft eine massive Rückkehr der Hexenfigur &ndash; bei Millennials, bei Frauen, bei queeren Menschen. WitchTok hat Millionen Follower. Tarot-Decks verkaufen sich wie Yogamatten. Das ist kein Trend. Das ist kollektive Schattenintegration. Eine Generation, aufgewachsen in einer durchoptimierten Welt, sucht nach dem, was sich nicht quantifizieren lässt: Intuition, Verbindung, Mysterium. Für queere Menschen kommt die Identifikation mit der Gestalt hinzu, die immer schon zwischen den Kategorien stand &ndash; und genau dadurch eine Kraft besaß, die das Zentrum nie entwickeln konnte.</p>
+
+      <p class="reveal">Astrologisch ist das kein Zufall. Drei Zeichen finden immer wieder den Weg zur Hexe: Skorpion, Zwilling, Fische &ndash; Transformation, Dualität, Durchlässigkeit. Plutos Transit durch den Wassermann seit 2024 verstärkt den Impuls: alte Machtstrukturen brechen auf, kollektives Wissen wird demokratisiert, und alles, was jahrhundertelang im Verborgenen lag, drängt ins Licht.</p>
+
+      <p class="reveal">Die spirituelle Welt hat sich zu lange zurückgezogen, während patriarchale Strukturen sich politisch und kulturell ein letztes Mal aufbäumen. Andere Archetypen der spirituellen Praxis &ndash; die Priesterin, die Weise, die Mondgärtnerin &ndash; arbeiten in Zyklen: Neumond, Vollmond, Jahreskreisfeste. Die Hexe kennt diese Zyklen, ehrt sie, nutzt sie. Aber sie ist die Einzige, die auch außerhalb von ihnen handelt, wenn die Zeiten es verlangen. Die nicht auf den nächsten günstigen Mond wartet, wenn jetzt gehandelt werden muss. Die Hexe muss sichtbar werden. Nicht als Akt der Rebellion &ndash; als Akt der Verantwortung. Wer die eigene Kraft lebt und es wagt, das auch zu zeigen, verschiebt etwas. Nicht in den Köpfen der Überzeugten. In den Köpfen der Zögernden.</p>
+
+      <p class="reveal">Die Hecke ist überall. Sie verläuft zwischen dem, was du zeigst, und dem, was du weißt. Zwischen dem Leben, das du führst, und dem, das in dir wartet. Du musst nur aufhören, so zu tun, als wärst du nicht längst auf ihr angekommen.</p>
+
+      <div class="essay-poem reveal">
+        &hellip;Sie löste heimlich den strengen Zopf um Mitternacht &ndash;<br><br>
+        Eine stille Krone aus zerzausten Ideen auf ihrem Kopf.<br>
+        Kein Applaus, kein Like &ndash; nur ihr Spiegel als Mitwisser,<br>
+        während sie barfuß durch die Küche tanzt,<br>
+        frei von der Schwerkraft der Rollenbilder.<br><br>
+        Sie speichert diesen Moment im Inkognito-Modus ihres Herzens &ndash;<br>
+        ein kleiner Sieg, der am nächsten Morgen mit ihrem Kaffee trinkt.
+      </div>
+
+      <p class="essay-credit reveal">Dieser Text erschien als Kolumne in <em>Yoga Aktuell</em>. Autor*in: Mika Schöberl.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 200 120"><circle class="star-dot" cx="30" cy="60" r="2.2" style="--sp-d:2.4s;--sp-del:.1s"/><circle class="star-dot" cx="100" cy="15" r="2.8" style="--sp-d:3s;--sp-del:0s"/><circle class="star-dot" cx="170" cy="60" r="2.2" style="--sp-d:2.7s;--sp-del:.6s"/><circle class="star-dot" cx="100" cy="105" r="2" style="--sp-d:3.3s;--sp-del:.4s"/>
+<path class="star-path" d="M30 60 L100 15 L170 60 L100 105 Z"/></svg></div></div>
+
+<!-- ═══ BLOCK 6: PERSÖNLICHKEITSTEST ═══ -->
+<section class="session-section session-test" id="test">
+  <div class="session-inner">
+    <div class="reveal"><div class="label label-center">Hausaufgabe</div><h2 style="text-align:center">Dein<br><em>Persönlichkeitsprofil.</em></h2></div>
+
+    <div class="test-wrap">
+      <!-- TEST INTRO -->
+      <div id="testIntro" class="test-intro reveal">
+        <p style="max-width:480px;margin:0 auto 1.5rem;text-align:center">Dieser Test ist Teil unserer gemeinsamen Arbeit. Du füllst ihn aus, nachdem wir uns begegnet sind &mdash; als eine Art Spiegelung von einer anderen Seite her. 115 Sätze. Kein Richtig oder Falsch. Am Ende erhältst du eine Chiffre, die du mir innerhalb von drei Tagen nach unserer Session übermittelst.</p>
+        <p style="text-align:center;font-size:clamp(.78rem,.95vw,.85rem);color:var(--cream-dim);opacity:.6;margin-bottom:0">Bewerte jede Aussage danach, wie sehr sie auf dich zutrifft:<br><span style="color:var(--gold)">0</span> = trifft gar nicht zu &middot; <span style="color:var(--gold)">3</span> = teilweise &middot; <span style="color:var(--gold)">6</span> = trifft voll zu</p>
+        <button class="btn-start-test" onclick="startTest()">Beginnen</button>
+      </div>
+
+      <!-- QUESTIONNAIRE -->
+      <div id="testQuestionnaire" class="hidden">
+        <div class="test-progress">
+          <div class="test-progress-bar"><div class="test-progress-fill" id="tProgressFill"></div></div>
+          <div class="test-progress-text" id="tProgressText">1 / 115</div>
+        </div>
+        <div class="test-question" id="tQuestionWrap">
+          <div class="test-q-num" id="tQNumber"></div>
+          <div class="test-q-text" id="tQText"></div>
+          <div class="test-scale" id="tScaleButtons"></div>
+          <div class="test-scale-labels"><span>trifft nicht zu</span><span>trifft voll zu</span></div>
+          <div class="test-nav">
+            <button class="test-nav-btn" id="tBtnPrev" onclick="tPrev()">Zurück</button>
+            <button class="test-nav-btn" id="tBtnSkip" onclick="tSkip()" style="font-size:.72rem;opacity:.4">Überspringen</button>
+            <button class="test-nav-btn primary" id="tBtnNext" onclick="tNext()">Weiter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div id="testResult" class="test-result hidden">
+        <h3>Dein Profil</h3>
+        <p class="test-result-sub">Eine Momentaufnahme &mdash; kein Urteil.</p>
+        <div class="test-nickname">
+          <div class="test-nickname-label">Dein Erkennungsname (optional)</div>
+          <input type="text" class="test-nickname-input" id="tNickname" placeholder="z.B. Mondfarn" maxlength="30">
+        </div>
+        <div class="test-profile-grid" id="tProfileGrid"></div>
+        <div class="test-chiffre">
+          <div class="test-chiffre-label">Ergebnis-Chiffre</div>
+          <div class="test-chiffre-value" id="tChiffre"></div>
+        </div>
+        <button class="btn-copy" id="tBtnCopy" onclick="tCopy()">Ergebnis kopieren</button>
+        <p class="test-result-note">Sende diese Chiffre zusammen mit deinem Erkennungsnamen innerhalb von drei Tagen nach unserer Session an deine Begleiterin.<br>Sie dient als Grundlage für eure weitere gemeinsame Arbeit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION -->
+<div class="sep-constellation"><div class="constellation-line reveal">
+<svg viewBox="0 0 240 120"><circle class="star-dot" cx="20" cy="80" r="2" style="--sp-d:3s;--sp-del:.3s"/><circle class="star-dot" cx="75" cy="25" r="2.5" style="--sp-d:2.5s;--sp-del:0s"/><circle class="star-dot" cx="130" cy="90" r="2.2" style="--sp-d:3.4s;--sp-del:.7s"/><circle class="star-dot" cx="185" cy="40" r="2.8" style="--sp-d:2.2s;--sp-del:1s"/><circle class="star-dot" cx="225" cy="70" r="2" style="--sp-d:2.8s;--sp-del:.5s"/>
+<path class="star-path" d="M20 80 L75 25 L130 90 L185 40 L225 70"/></svg></div></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <img class="contact-crane reveal" loading="lazy" src="../img/origami-schwan.png" alt="" style="width:clamp(260px,40vw,420px);height:auto;margin:0 auto clamp(1rem,2vw,1.5rem);display:block;opacity:.8;filter:drop-shadow(0 0 30px rgba(201,169,110,.25));animation:kontaktCraneFloat 3.5s ease-in-out infinite">
+    <img class="contact-dove reveal reveal-delay-1" loading="lazy" src="../img/brieftaube.png" alt="Schreib mir eine Nachricht" style="width:clamp(220px,35vw,340px);height:auto;margin:0 auto clamp(1.5rem,3vw,2.5rem);display:block;opacity:.75;filter:grayscale(10%) contrast(1.05) brightness(.9);border-radius:8px;box-shadow:0 0 40px rgba(201,169,110,.1)">
+    <div class="reveal reveal-delay-2"><div class="label" style="justify-content:center">Kontakt</div><h2>Schreib mir<br><em>eine Nachricht.</em></h2></div>
+    <p class="contact-body reveal reveal-delay-1">Keine langen Formulare. Kein Fragebogen. Schreib einfach &mdash; was dich bewegt, was du suchst, oder nur: dass du da bist. Ich antworte persönlich.</p>
+    <a href="mailto:kontakt@funkenfangen.com" class="mail-link reveal reveal-delay-2">kontakt@funkenfangen.com</a>
+    <div class="contact-links reveal reveal-delay-2">
+      <a href="https://wa.me/491759023137" target="_blank" rel="noopener" class="btn-whatsapp" aria-label="WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://www.instagram.com/funkenfangen?igsh=eHlqb2pjdjhoaTho&utm_source=qr" target="_blank" rel="noopener" class="btn-instagram" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        <span>@funkenfangen</span>
+      </a>
+    </div>
+    <p class="contact-note reveal reveal-delay-3">Antwort in der Regel innerhalb von 48 Stunden &nbsp;&middot;&nbsp; München &nbsp;&middot;&nbsp; auch online möglich</p>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="legal" id="legal">
+  <div class="legal-inner">
+    <div class="legal-tabs">
+      <button class="legal-tab active" onclick="showTab(this,'impressum')">Impressum</button>
+      <button class="legal-tab" onclick="showTab(this,'datenschutz')">Datenschutz</button>
+    </div>
+    <div class="legal-content active" id="tab-impressum">
+      <h2>Impressum</h2>
+      <h3>Angaben gemäß § 5 TMG</h3><p>Mika Schöberl<br>Grasmückenweg 7b<br>80937 München<br>Deutschland</p>
+      <h3>Kontakt</h3><p>E-Mail: <a href="mailto:kontakt@funkenfangen.com">kontakt@funkenfangen.com</a><br>Tel.: +49 151 10616206</p>
+      <h3>Urheberrecht</h3><p>Die durch den Seitenbetreiber erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung.</p>
+      <h3>Haftungsausschluss</h3><p>Für externe Links übernehmen wir keine Haftung. Bei Bekanntwerden von Rechtsverletzungen werden wir entsprechende Inhalte umgehend entfernen.</p>
+      <h3>Verbraucherstreitbeilegung</h3><p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      <h3>Redaktionell verantwortlich</h3><p>Mika Schöberl &middot; Grasmückenweg 7b &middot; 80937 München</p>
+    </div>
+    <div class="legal-content" id="tab-datenschutz">
+      <h2>Datenschutzerklärung</h2>
+      <h3>1. Allgemeines</h3><p>Diese Website wird bei Netlify gehostet (Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA). Beim Besuch werden technische Daten automatisch erfasst (Browser, Betriebssystem, IP-Adresse, Uhrzeit). Diese Daten werden zur fehlerfreien Bereitstellung der Website benötigt.</p>
+      <h3>2. Verantwortliche Stelle</h3><p>Mika Schöberl<br>Grasmückenweg 7b &middot; 80937 München<br>E-Mail: <a href="mailto:kontakt@funkenfangen.com">kontakt@funkenfangen.com</a></p>
+      <h3>3. Kontaktaufnahme per E-Mail</h3><p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+      <h3>4. Keine Cookies / kein Tracking</h3><p>Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es wird kein Nutzerverhalten ausgewertet.</p>
+      <h3>5. Ihre Rechte</h3><p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer gespeicherten Daten. Beschwerden richten Sie an den Bayerischen Landesbeauftragten für den Datenschutz (BayLfD), Wagmüllerstraße 18, 80538 München.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Munich <span>Witchcraft</span></div>
+    <div class="footer-slogan">Alles Wesentliche wächst still.</div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Munich Witchcraft &middot; München<br><a href="#legal" onclick="showTab(document.querySelector('.legal-tab'),'impressum')">Impressum</a> &nbsp;&middot;&nbsp; <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutz</a></p>
+</footer>
+
+<script>
+/* === REVEAL ON SCROLL === */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!window.IntersectionObserver){els.forEach(function(e){e.classList.add('visible')});return}
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){obs.observe(e)});
+})();
+
+/* === NAV SCROLL === */
+(function(){
+  var nav=document.getElementById('mainNav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+})();
+
+/* === STARFIELD === */
+(function(){
+  var bg=document.getElementById("starBg");
+  if(!bg)return;
+  var count=window.innerWidth<769?35:70;
+  for(var i=0;i<count;i++){
+    var s=document.createElement("div");
+    var isBright=Math.random()<0.15;
+    s.className=isBright?"star-bg bright":"star-bg";
+    var size=isBright?(2+Math.random()*2).toFixed(1):(0.8+Math.random()*2.2).toFixed(1);
+    var dur=(2+Math.random()*5).toFixed(1);
+    var del=(Math.random()*10).toFixed(1);
+    var lo=isBright?(0.3+Math.random()*0.2).toFixed(2):(0.1+Math.random()*0.15).toFixed(2);
+    var hi=isBright?(0.7+Math.random()*0.3).toFixed(2):(0.4+Math.random()*0.4).toFixed(2);
+    s.style.cssText="left:"+Math.random()*100+"%;top:"+Math.random()*100+"%;width:"+size+"px;height:"+size+"px;--tw-d:"+dur+"s;--tw-del:"+del+"s;--tw-lo:"+lo+";--tw-hi:"+hi;
+    bg.appendChild(s);
+  }
+})();
+
+/* === MOON ARC TRAJECTORY === */
+(function(){
+  var moon=document.getElementById("moon");
+  if(!moon)return;
+  var ticking=false;
+  window.addEventListener("scroll",function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var scrollH=Math.max(document.documentElement.scrollHeight-window.innerHeight,1);
+        var pct=Math.min(window.scrollY/scrollH,1);
+        var posY=3+pct*79;
+        var arcOffset=Math.sin(pct*Math.PI)*14;
+        var posX=4+arcOffset;
+        var opa=.75-pct*0.3;
+        moon.style.top=posY+"vh";
+        moon.style.right=posX+"vw";
+        moon.style.opacity=opa.toFixed(2);
+        ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
+})();
+
+/* === ISAR RIVER SCROLL === */
+(function(){
+  var isar=document.getElementById("isar");
+  if(!isar)return;
+  var heroSec=document.getElementById("ankommen");
+  var ticking=false;
+  window.addEventListener("scroll",function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var heroTop=heroSec?heroSec.getBoundingClientRect().bottom:0;
+        var vh=window.innerHeight;
+        var fadeIn=Math.max(0,Math.min(1,(vh-heroTop)/vh));
+        var scrollH=Math.max(document.documentElement.scrollHeight-vh,1);
+        var pct=Math.min(window.scrollY/scrollH,1);
+        var fadeOut=pct>0.85?Math.max(0,(0.95-pct)/0.1):1;
+        var appear=fadeIn*fadeOut;
+        isar.classList.toggle("visible",appear>0.01);
+        isar.style.opacity=appear.toFixed(2);
+        ticking=false;
+      });
+      ticking=true;
+    }
+  },{passive:true});
+})();
+
+/* === HERO LIGHTNING === */
+(function(){
+  var ltLayer=document.getElementById("heroLightning2");
+  if(!ltLayer)return;
+  function makeBolt(x1,y1,x2,y2,segs){
+    var pts=[[x1,y1]];
+    for(var i=1;i<segs;i++){var t=i/segs;pts.push([x1+(x2-x1)*t+(Math.random()-.5)*50,y1+(y2-y1)*t+(Math.random()-.5)*15])}
+    pts.push([x2,y2]);
+    var d="M"+pts[0][0]+" "+pts[0][1];
+    for(var j=1;j<pts.length;j++)d+=" L"+pts[j][0]+" "+pts[j][1];
+    return d;
+  }
+  var bolts=[
+    {x:5,w:140,h:260,dur:6,del:0},{x:20,w:120,h:240,dur:7,del:2.5},
+    {x:65,w:130,h:250,dur:5.5,del:1},{x:80,w:110,h:220,dur:7.5,del:4},
+    {x:40,w:150,h:280,dur:6.5,del:3.5},{x:92,w:100,h:200,dur:8,del:5.5}
+  ];
+  bolts.forEach(function(b,i){
+    var el=document.createElement("div");
+    el.className="lightning-bolt flash";
+    el.style.cssText="left:"+b.x+"%;top:0;width:"+b.w+"px;height:"+b.h+"px;--lt-dur:"+b.dur+"s;--lt-del:"+b.del+"s;position:absolute";
+    var path=makeBolt(b.w/2,0,b.w/2+(Math.random()-.5)*50,b.h,7);
+    var branch=makeBolt(b.w/2+(Math.random()-.5)*20,b.h*0.3,b.w/2+(Math.random()-.5)*60,b.h*0.65,4);
+    var branch2=makeBolt(b.w/2+(Math.random()-.5)*25,b.h*0.5,b.w/2+(Math.random()-.5)*70,b.h*0.85,3);
+    el.innerHTML='<svg viewBox="0 0 '+b.w+' '+b.h+'" fill="none"><defs><filter id="hg'+i+'"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="'+path+'" stroke="rgba(201,169,110,.7)" stroke-width="2.5" stroke-linecap="round" filter="url(#hg'+i+')"/><path d="'+path+'" stroke="rgba(232,226,212,.9)" stroke-width="1" stroke-linecap="round"/><path d="'+branch+'" stroke="rgba(201,169,110,.45)" stroke-width="1.2" stroke-linecap="round"/><path d="'+branch2+'" stroke="rgba(201,169,110,.3)" stroke-width=".8" stroke-linecap="round" filter="url(#hg'+i+')"/></svg>';
+    ltLayer.appendChild(el);
+  });
+})();
+
+/* === MOON PHASE NAVIGATOR === */
+(function(){
+  var allMoonLinks=document.querySelectorAll(".moon-phase[data-section]");
+  var sectionIds=["ankommen","ablauf","vorbereitung","werkzeuge","heckensitzende","test","contact"];
+  var lastActive=-1;
+
+  allMoonLinks.forEach(function(p){
+    p.addEventListener("click",function(e){
+      e.preventDefault();
+      var target=document.getElementById(this.getAttribute("data-section"));
+      if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+  });
+
+  function update(){
+    var activeIdx=0;
+    for(var i=sectionIds.length-1;i>=0;i--){
+      var el=document.getElementById(sectionIds[i]);
+      if(el && el.getBoundingClientRect().top<=window.innerHeight*0.4){
+        activeIdx=i;break;
+      }
+    }
+    if(activeIdx!==lastActive){
+      allMoonLinks.forEach(function(p){
+        var sec=p.getAttribute("data-section");
+        var idx=sectionIds.indexOf(sec);
+        p.classList.toggle("active",idx===activeIdx);
+      });
+      lastActive=activeIdx;
+    }
+  }
+
+  var ticking=false;
+  window.addEventListener("scroll",function(){
+    if(!ticking){requestAnimationFrame(function(){update();ticking=false});ticking=true}
+  },{passive:true});
+  update();
+})();
+
+/* === LEGAL TABS === */
+function showTab(btn,id){
+  document.querySelectorAll(".legal-tab").forEach(function(t){t.classList.remove("active")});
+  document.querySelectorAll(".legal-content").forEach(function(c){c.classList.remove("active")});
+  btn.classList.add("active");
+  document.getElementById("tab-"+id).classList.add("active");
+}
+
+/* === STORM CLOUD LIGHTNING === */
+(function(){
+  var cl=document.getElementById("stormCloudLightning");
+  if(!cl||window._perfLite)return;
+  function makeBolt(x1,y1,x2,y2,segs){
+    var pts=[[x1,y1]];
+    for(var i=1;i<segs;i++){var t=i/segs;pts.push([x1+(x2-x1)*t+(Math.random()-.5)*80,y1+(y2-y1)*t+(Math.random()-.5)*25])}
+    pts.push([x2,y2]);
+    var d="M"+pts[0][0]+" "+pts[0][1];
+    for(var j=1;j<pts.length;j++)d+=" L"+pts[j][0]+" "+pts[j][1];
+    return d;
+  }
+  var bolts=[{x:25,w:180,h:500,dur:5.5,del:0},{x:45,w:160,h:480,dur:6.5,del:2},{x:60,w:170,h:520,dur:5,del:4.5},{x:35,w:150,h:460,dur:7,del:7},{x:15,w:140,h:440,dur:6,del:3}];
+  bolts.forEach(function(b,i){
+    var el=document.createElement("div");
+    el.className="cloud-bolt flash";
+    el.style.cssText="left:"+b.x+"%;top:0;width:"+b.w+"px;height:"+b.h+"px;--lt-dur:"+b.dur+"s;--lt-del:"+b.del+"s;position:absolute";
+    var path=makeBolt(b.w/2,0,b.w/2+(Math.random()-.5)*60,b.h,8);
+    var branch=makeBolt(b.w/2+(Math.random()-.5)*30,b.h*0.25,b.w/2+(Math.random()-.5)*80,b.h*0.55,4);
+    el.innerHTML='<svg viewBox="0 0 '+b.w+' '+b.h+'" fill="none"><defs><filter id="scg'+i+'"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="'+path+'" stroke="rgba(201,169,110,.8)" stroke-width="2.8" stroke-linecap="round" filter="url(#scg'+i+')"/><path d="'+path+'" stroke="rgba(232,226,212,.95)" stroke-width="1.2" stroke-linecap="round"/><path d="'+branch+'" stroke="rgba(201,169,110,.5)" stroke-width="1.5" stroke-linecap="round" filter="url(#scg'+i+')"/></svg>';
+    cl.appendChild(el);
+  });
+})();
+
+/* === PERSÖNLICHKEITSTEST === */
+var tQuestions=["Wer sich auf das Gute konzentriert, statt am Schwierigen h\u00e4ngenzubleiben, lebt zufriedener.","Selbst in emotional aufgeladenen Momenten gelingt es mir, einen k\u00fchlen Kopf zu bewahren.","Ich f\u00fchle mich wohl, wenn ich in einem festen organisatorischen Rahmen arbeite.","Mir imponieren Menschen, die nach au\u00dfen hin etwas hermachen.","Eigenst\u00e4ndigkeit und Freiheit sind mir sehr wichtig.","Mein gr\u00f6\u00dftes Anliegen ist es, dass andere sich in meiner Gegenwart geborgen f\u00fchlen.","Ich plane gern voraus, damit mich nichts unvorbereitet trifft.","Braucht jemand Unterst\u00fctzung, setze ich mich mit voller Energie daf\u00fcr ein.","Ich will intensiv und mit allen Sinnen leben \u2014 selbst wenn das Leid einschlie\u00dft.","M\u00e4ngel und Schw\u00e4chen \u2014 bei mir wie bei anderen \u2014 auszuhalten f\u00e4llt mir schwer.","Anerkennung, Titel und beruflicher Aufstieg haben f\u00fcr mich gro\u00dfes Gewicht.","In Liebesbeziehungen z\u00e4hlen f\u00fcr mich vor allem gute Umgangsformen und Respekt.","Ich passe mich schnell an, wenn eine Situation neue Anforderungen stellt.","Ich setze mich aktiv f\u00fcr benachteiligte und ausgegrenzte Menschen ein.","Mein Leben kommt mir manchmal vor wie eine Auff\u00fchrung, der ich gleichzeitig zusehe und in der ich mitspiele.","F\u00fcr beruflichen Erfolg stelle ich notfalls Partnerschaft, Familie oder Freundschaften zur\u00fcck.","Ein schlechtes Gewissen begleitet mich h\u00e4ufig.","Ich halte viele Autorit\u00e4ten f\u00fcr wenig kompetent, scheue mich aber meist, offen dagegen vorzugehen.","Am liebsten lasse ich die Dinge auf mich zukommen \u2014 vieles kl\u00e4rt sich von selbst.","Zu wissen, wo mein Platz ist und wohin ich geh\u00f6re, ist mir ein Grundbed\u00fcrfnis.","Ich genie\u00dfe es, wenn alle Blicke auf mich gerichtet sind.","Meinen \u00c4rger schlucke ich oft herunter, statt ihn zu zeigen.","Das Gef\u00fchl, innerlich nie wirklich ganz angekommen zu sein, begleitet mich.","H\u00e4ufig sp\u00fcre ich intuitiv, was in anderen Menschen vorgeht, noch bevor sie es aussprechen.","Was ich anpacke, tue ich in der Regel mit gro\u00dfer Begeisterung.","Bevor ich jemanden an meinem Privatleben teilhaben lasse, muss ich die Person gut kennen.","Es ist mir wichtig, dass um mich herum immer etwas passiert.","Anderen etwas abzugeben f\u00e4llt mir leicht.","Ich habe eine Begabung daf\u00fcr, komplizierte Sachverhalte in anschauliche Bilder zu fassen.","Hin und wieder \u00fcberkommt mich eine diffuse, schwer greifbare Angst.","Wenn mich ein Projekt oder eine Beziehung langweilt oder nichts mehr bringt, lasse ich davon ab.","Auch bei Spielen ist mir das Gewinnen am wichtigsten.","Neue Gedanken und originelle Ideen begeistern mich.","Viele Menschen vertrauen mir spontan ihre Sorgen an.","Ich achte darauf, nicht unangenehm aufzufallen oder aus dem Rahmen zu fallen.","Ich nehme Stimmungen und Eindr\u00fccke besonders feinfuhlig wahr.","Bei widerspr\u00fcchlichen Standpunkten kann ich oft beiden Seiten etwas abgewinnen.","Irgendetwas an mir unterscheidet mich von den meisten anderen Menschen \u2014 das sp\u00fcre ich.","Wenn das Leben mir Schwierigkeiten beschert, mache ich das Beste daraus.","Gute Einf\u00e4lle und Vorhaben bleiben bei mir oft im Ideenstadium stecken, ohne verwirklicht zu werden.","Ich neige dazu, mich kleiner zu machen, als ich bin, statt meine F\u00e4higkeiten zu zeigen.","Viel Kontakt mit Menschen \u2014 auch wenn er sch\u00f6n ist \u2014 ersch\u00f6pft mich; danach brauche ich Zeit f\u00fcr mich allein.","Bemerke ich, dass ein Freund ein Problem hat, spreche ich es offen an.","Mir wird nachgesagt, in pers\u00f6nlichen Beziehungen besonders gef\u00fchlsbetont und dramatisch zu reagieren.","Sich wirkungsvoll zu pr\u00e4sentieren halte ich f\u00fcr wichtig.","Ich habe den Eindruck, dass andere meine tieferen Gef\u00fchle nicht wirklich verstehen.","Wenn mich etwas \u00e4rgert, sage ich es sofort \u2014 danach ist die Sache f\u00fcr mich erledigt.","Ein Gef\u00fchl, nirgendwo richtig angekommen oder beheimatet zu sein, ist mir vertraut.","Ich empfinde das Leben als st\u00e4ndigen Wettbewerb.","Bevor ich handle, denke ich alle m\u00f6glichen Szenarien gr\u00fcndlich durch.","Ich \u00fcbernehme gern die F\u00fchrung und gebe die Richtung vor.","Ich neige dazu, mich mit Selbstvorw\u00fcrfen und d\u00fcsteren Gedanken herunterzuziehen.","Manchmal h\u00f6re ich, dass es anstrengend sei, mit mir zusammenzuleben, weil ich so durchsetzungsstark bin.","Zuweilen ergreift mich ein tiefes Staunen und eine Dankbarkeit f\u00fcr das Geschenk des Lebens.","Gesundheit, Wohlbefinden und die pers\u00f6nliche Entwicklung meiner Freunde besch\u00e4ftigen mich sehr.","Spannungsgeladene Situationen halte ich nur schwer aus.","Manchmal beobachte ich mich gleichsam von au\u00dfen und bewerte mein eigenes Verhalten.","In einer Gruppe einfach mitzulaufen und dazuzugeh\u00f6ren gibt mir ein gutes Gef\u00fchl.","Anderen eine Bitte abzuschlagen f\u00e4llt mir nicht schwer.","Ich telefoniere ausgiebig und gern.","Es st\u00f6rt mich wenig, wenn die Mehrheit eine andere Meinung vertritt als ich.","Halte ich ein Gesetz f\u00fcr unsinnig, habe ich kein Problem damit, es zu missachten.","Man sagt mir nach, dass ich ein hohes Sprechtempo habe.","Gesch\u00e4ftliches Verhandeln und Handeln liegt mir.","Ich kann andere gut f\u00fcr eine Idee oder ein Vorhaben begeistern.","Meine F\u00e4higkeiten stetig weiterzuentwickeln \u2014 ob fachlich, k\u00f6rperlich oder kulturell \u2014 ist mir ein gro\u00dfes Anliegen.","F\u00fcr das, was ich f\u00fcr richtig halte, nehme ich auch pers\u00f6nliche Nachteile in Kauf.","Andere sind gern mit mir zusammen.","Beim Ordnen oder Vertiefen in Einzelheiten verliere ich manchmal jedes Zeitgef\u00fchl.","Begegnet mir jemand mit aufgesetzter St\u00e4rke, bringe ich das gern auf den Boden der Tatsachen.","Mein \u00c4u\u00dferes soll nat\u00fcrlich wirken und zugleich geschmackvoll und gepflegt sein.","Berufliche Themen nehmen in meinen Gespr\u00e4chen viel Raum ein.","Schlagfertige, geistreiche Wortduelle mit anderen machen mir Freude.","Organisieren und Strukturieren geh\u00f6rt zu meinen St\u00e4rken.","Fairness und Gerechtigkeit lagen mir schon immer besonders am Herzen.","In meinem Zuhause braucht jedes Ding einen festen Platz.","Meine Gef\u00fchle setzen in der konkreten Situation oft aus und kommen erst mit Verz\u00f6gerung hoch.","Im Stillen bin ich oft mein eigener sch\u00e4rfster Kritiker.","Getroffene Entscheidungen revidiere ich h\u00e4ufig kurz darauf, weil ich merke, dass ich doch etwas anderes m\u00f6chte.","Verspannungen \u2014 besonders in Nacken, Schultern oder Kiefer \u2014 sind mir vertraut.","In Buchhandlungen und Bibliotheken zu st\u00f6bern ist etwas, das ich sehr genie\u00dfe.","In meiner Vorstellung male ich mir oft aus, wie etwas Schlimmes geschehen k\u00f6nnte.","Sind Freunde in einer Notlage, wachse ich \u00fcber mich hinaus und traue mich an Dinge, die ich sonst nicht wagen w\u00fcrde.","Einen eigenen R\u00fcckzugsort zu haben \u2014 sei es ein Zimmer oder eine Ecke \u2014 brauche ich, wenn mir alles zu viel wird.","Andere sch\u00e4tzen mich als sportlich und ansprechend ein.","F\u00fcr die Gestaltung von R\u00e4umen habe ich ein gutes Auge.","Eine angenehme Arbeitsatmosph\u00e4re ist mir beruflich besonders wichtig.","Die pers\u00f6nlichen Sorgen und Bed\u00fcrfnisse anderer besch\u00e4ftigen mich oft.","Schon immer habe ich davon getr\u00e4umt, etwas Kreatives zu machen \u2014 Malen, Schreiben, Musik, Schauspiel.","Sachverhalte m\u00f6glichst n\u00fcchtern und unvoreingenommen zu betrachten, ist mir ein zentrales Anliegen.","Reisen und neue Orte entdecken begeistern mich.","In meinem Umfeld gelte ich als jemand, der kaum aufh\u00f6ren kann zu arbeiten.","Anderen zu helfen ist f\u00fcr mich etwas ganz Selbstverst\u00e4ndliches.","Mein Freundes- und Bekanntenkreis ist gro\u00df.","Meine Interessen sind vielf\u00e4ltig und breit gestreut.","Andere empfinden mich bisweilen als kritisch oder bewertend.","Mir liegt viel daran, \u00fcbergreifende Zusammenh\u00e4nge, Muster und Strukturen zu erkennen.","Bevor es zum offenen Streit kommt, gebe ich lieber nach.","Eine verletzende Bemerkung trifft mich tief und kann mich noch tagelang besch\u00e4ftigen.","Ich mache gern Pl\u00e4ne f\u00fcr die Zukunft, um m\u00f6glichst keine Gelegenheit zu vers\u00e4umen.","Zeit allein mit mir selbst genie\u00dfe ich sehr.","Von mir aus den ersten Schritt zu machen kommt selten vor.","Ich suche h\u00e4ufig die Auseinandersetzung, einfach um Klarheit zu schaffen.","Ich g\u00f6nne mir \u00f6fter Dinge, die eigentlich \u00fcber meinem Budget liegen.","Abzuschalten, loszulassen und einfach nur zu genie\u00dfen f\u00e4llt mir schwer.","Selbstzweifel plagen mich immer wieder.","Steht eine Aufgabe an, stelle ich meine Gef\u00fchle hintan.","Mein Partner, meine Familie und meine Freunde sind der Mittelpunkt meines Lebens.","Leerlauf und M\u00fc\u00dfiggang haben in meinem Alltag keinen Platz.","Auseinandersetzungen gehe ich nach M\u00f6glichkeit aus dem Weg.","In meinen Beziehungen bin ich eher die treibende, bestimmende Kraft.","Ob andere mich wirklich m\u00f6gen oder nur nett zu mir sind, weil ich nett zu ihnen bin \u2014 da bin ich mir oft unsicher.","K\u00f6nnte ich mich nicht regelm\u00e4\u00dfig zur\u00fcckziehen, h\u00e4tte ich Angst, mich selbst zu verlieren.","Meine inneren Empfindungen bringe ich gern in einer kreativen Form zum Ausdruck \u2014 ob Musik, bildende Kunst, Schreiben oder Darstellung.","Zeitdruck ist ein h\u00e4ufiger Begleiter meines Alltags."];
+
+var tQMap={1:[[7,false]],2:[[5,false]],3:[[6,false]],4:[[3,false]],5:[[5,false]],6:[[2,false]],7:[[6,false]],8:[[2,false]],9:[[4,false]],10:[[1,false]],11:[[3,false],[9,true]],12:[[1,false]],13:[[3,false]],14:[[2,false]],15:[[4,false]],16:[[3,false]],17:[[6,false]],18:[[6,false]],19:[[9,false]],20:[[6,false]],21:[[3,false]],22:[[9,false]],23:[[4,false]],24:[[2,false]],25:[[7,false]],26:[[5,false]],27:[[7,false]],28:[[9,false]],29:[[5,false]],30:[[6,false]],31:[[7,false]],32:[[8,false]],33:[[5,false]],34:[[2,false]],35:[[6,false]],36:[[4,false]],37:[[9,false]],38:[[4,false]],39:[[7,false]],40:[[9,false]],41:[[9,false]],42:[[5,false]],43:[[8,false]],44:[[4,false]],45:[[3,false]],46:[[4,false]],47:[[8,false]],48:[[4,false]],49:[[8,false]],50:[[6,false]],51:[[8,false]],52:[[4,false]],53:[[8,false]],54:[[7,false]],55:[[2,false]],56:[[6,false]],57:[[4,false]],58:[[9,false]],59:[[8,false],[9,true]],60:[[2,false]],61:[[8,false]],62:[[8,false]],63:[[7,false]],64:[[3,false]],65:[[2,false]],66:[[1,false]],67:[[1,false]],68:[[7,false]],69:[[1,false]],70:[[8,false]],71:[[3,false]],72:[[3,false]],73:[[7,false]],74:[[1,false]],75:[[1,false]],76:[[1,false]],77:[[5,false]],78:[[1,false]],79:[[4,false]],80:[[1,false]],81:[[5,false]],82:[[6,false]],83:[[6,false]],84:[[5,false]],85:[[3,false]],86:[[4,false]],87:[[2,false]],88:[[2,false]],89:[[4,false]],90:[[5,false]],91:[[7,false]],92:[[3,false]],93:[[2,false]],94:[[2,false]],95:[[7,false]],96:[[1,false]],97:[[5,false]],98:[[9,false]],99:[[4,false]],100:[[7,false]],101:[[5,false]],102:[[9,false]],103:[[8,false]],104:[[4,false]],105:[[1,false]],106:[[6,false]],107:[[3,false]],108:[[2,false]],109:[[3,false]],110:[[9,false]],111:[[8,false]],112:[[2,false]],113:[[5,false]],114:[[4,false]],115:[[1,false]]};
+
+var tNorm={0:[[0,25],[0,32],[0,20],[0,18],[0,35],[0,17],[0,31],[0,21],[0,30]],1:[[26,31],[33,37],[21,26],[19,25],[36,41],[18,24],[32,36],[22,27],[31,36]],2:[[32,37],[38,43],[27,31],[26,31],[42,46],[25,30],[37,41],[28,33],[37,41]],3:[[38,42],[44,48],[32,36],[32,38],[47,51],[31,37],[42,46],[34,39],[42,47]],4:[[43,48],[49,53],[37,41],[39,44],[52,56],[38,43],[47,50],[40,45],[48,52]],5:[[49,54],[54,59],[42,47],[45,51],[57,62],[44,50],[51,56],[46,52],[53,58]],6:[[55,60],[60,65],[48,52],[52,58],[63,67],[51,57],[57,61],[53,58],[59,63]],7:[[61,66],[66,71],[53,58],[59,64],[68,72],[58,64],[62,66],[59,64],[64,68]],8:[[67,72],[72,76],[59,63],[65,71],[73,77],[65,70],[67,71],[65,71],[69,74]],9:[[73,90],[77,90],[64,90],[72,90],[78,90],[71,90],[72,90],[72,90],[75,90]]};
+
+var tTypeLabels=['I','II','III','IV','V','VI','VII','VIII','IX'];
+var tAnswers=new Array(115).fill(null);
+var tCurQ=0;
+
+function startTest(){
+  document.getElementById('testIntro').classList.add('hidden');
+  document.getElementById('testQuestionnaire').classList.remove('hidden');
+  tShowQ(0);
+}
+
+function tShowQ(idx){
+  tCurQ=idx;
+  var wrap=document.getElementById('tQuestionWrap');
+  wrap.style.animation='none';wrap.offsetHeight;wrap.style.animation='fadeUp .3s ease';
+  document.getElementById('tQNumber').textContent=(idx+1)+' / 115';
+  document.getElementById('tQText').textContent=tQuestions[idx];
+  var pct=((idx+1)/115*100).toFixed(0);
+  document.getElementById('tProgressFill').style.width=pct+'%';
+  document.getElementById('tProgressText').textContent=(idx+1)+' / 115';
+  var sc=document.getElementById('tScaleButtons');sc.innerHTML='';
+  for(var v=0;v<=6;v++){
+    var b=document.createElement('button');
+    b.className='test-scale-btn'+(tAnswers[idx]===v?' selected':'');
+    b.textContent=v;b.onclick=(function(val){return function(){tSelect(val)}})(v);
+    sc.appendChild(b);
+  }
+  document.getElementById('tBtnPrev').disabled=idx===0;
+  document.getElementById('tBtnNext').textContent=idx===114?'Auswerten':'Weiter';
+}
+
+function tSelect(v){
+  tAnswers[tCurQ]=v;
+  document.querySelectorAll('.test-scale-btn').forEach(function(b,i){b.classList.toggle('selected',i===v)});
+  setTimeout(function(){if(tCurQ<114)tNext()},350);
+}
+
+function tNext(){if(tCurQ<114)tShowQ(tCurQ+1);else tEval()}
+function tPrev(){if(tCurQ>0)tShowQ(tCurQ-1)}
+function tSkip(){if(tCurQ<114)tShowQ(tCurQ+1)}
+
+function tEval(){
+  var unanswered=tAnswers.filter(function(a){return a===null}).length;
+  if(unanswered>10){if(!confirm('Du hast noch '+unanswered+' Fragen offen. Trotzdem auswerten?'))return}
+  var sums=[0,0,0,0,0,0,0,0,0];
+  for(var q=1;q<=115;q++){
+    var val=tAnswers[q-1];if(val===null)continue;
+    var maps=tQMap[q];
+    for(var m=0;m<maps.length;m++){var typ=maps[m][0],rev=maps[m][1];sums[typ-1]+=(rev?(6-val):val)}
+  }
+  var stValues=sums.map(function(raw,i){for(var st=9;st>=0;st--){if(raw>=tNorm[st][i][0])return st}return 0});
+  document.getElementById('testQuestionnaire').classList.add('hidden');
+  document.getElementById('testResult').classList.remove('hidden');
+  var grid=document.getElementById('tProfileGrid');grid.innerHTML='';
+  var maxST=Math.max.apply(null,stValues);
+  for(var i=0;i<9;i++){
+    var card=document.createElement('div');
+    card.className='test-profile-card'+(stValues[i]===maxST?' dominant':'');
+    card.innerHTML='<div class="p-num">'+stValues[i]+'</div><div class="p-bar"><div class="p-bar-fill" style="width:'+stValues[i]/9*100+'%"></div></div><div class="p-label">'+tTypeLabels[i]+'</div>';
+    grid.appendChild(card);
+  }
+  document.getElementById('tChiffre').textContent=stValues.join(' \u00b7 ');
+}
+
+function tCopy(){
+  var nick=document.getElementById('tNickname').value.trim()||'(kein Name)';
+  var chiffre=document.getElementById('tChiffre').textContent;
+  var text='munichwitchcraft Pers\u00f6nlichkeitsprofil\nName: '+nick+'\nChiffre: '+chiffre+'\n(I \u00b7 II \u00b7 III \u00b7 IV \u00b7 V \u00b7 VI \u00b7 VII \u00b7 VIII \u00b7 IX)';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      var btn=document.getElementById('tBtnCopy');btn.textContent='Kopiert \u2713';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent='Ergebnis kopieren';btn.classList.remove('copied')},2000);
+    });
+  } else {
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    var btn=document.getElementById('tBtnCopy');btn.textContent='Kopiert \u2713';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent='Ergebnis kopieren';btn.classList.remove('copied')},2000);
+  }
+}
+</script>
+</body>
+</html>
