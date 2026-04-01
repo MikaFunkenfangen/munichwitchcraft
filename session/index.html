@@ -414,8 +414,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#3a5a8a 0%,#5580b0 20%,#6a98c8 40%,#80b0d8 60%,#90c0e5 80%,#a0cef0 100%);transition:background 30s ease}
 .intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#253555 20%,#1a2540 40%,#121a30 60%,#0a1020 80%,#060810 100%);transition:background 30s ease}
 .intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#030306 25%,#040408 50%,#050510 75%,#030305 100%);transition:background 30s ease}
-.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 40s ease}
-.intro-scene.finale{background:radial-gradient(ellipse at 50% 50%,rgba(255,252,240,.6) 0%,rgba(240,200,100,.3) 30%,rgba(200,160,80,.15) 50%,transparent 70%),linear-gradient(180deg,#1a1028 0%,#5a2040 20%,#c45a3a 40%,#f0c060 60%,#e8b050 80%,#c08040 100%);transition:background 8s ease}
+.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 50s ease}
+.intro-scene.finale{background:radial-gradient(ellipse at 50% 60%,rgba(255,252,240,.7) 0%,rgba(240,210,120,.4) 25%,rgba(220,180,80,.2) 45%,transparent 65%),linear-gradient(180deg,#2d1832 0%,#8a3040 25%,#e8944a 50%,#f0c060 75%,#ffe080 100%);transition:background 6s ease}
 .intro-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
 .intro-star{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
 .intro-star.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4)}
@@ -476,7 +476,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 @keyframes particleDrift{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:.8}80%{opacity:.4}100%{opacity:0;transform:translate(var(--px,100px),var(--py,-80px)) scale(0)}}
 
 /* Central text display */
-.eye-text{position:fixed;bottom:clamp(6rem,12vh,10rem);left:50%;transform:translateX(-50%);text-align:center;width:90%;max-width:900px;z-index:10;pointer-events:none}
+.eye-text{position:fixed;top:60%;left:50%;transform:translateX(-50%);text-align:center;width:92%;max-width:900px;z-index:10;pointer-events:none}
+@media(max-width:768px){.eye-text{top:58%}}
 .eye-text-inner{opacity:0;transition:opacity 1s ease,transform 1s ease;transform:translateY(15px) scale(.95)}
 .eye-text-inner.active{opacity:1;transform:scale(1)}
 
@@ -512,7 +513,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .lyric-spotify:hover svg{fill:var(--gold)}
 
 /* Skip button */
-.lyric-skip{position:fixed;bottom:clamp(.8rem,1.5vw,1.2rem);right:2rem;z-index:9999;font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.12em;color:var(--cream-dim);opacity:.35;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:none;border:none;padding:.4rem .8rem}
+.lyric-skip{position:fixed;bottom:clamp(2.5rem,4vh,3.5rem);right:clamp(1rem,2vw,2rem);z-index:9999;font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.12em;color:var(--cream-dim);opacity:.4;text-decoration:none;transition:opacity .3s,color .3s;cursor:pointer;background:rgba(8,8,7,.4);border:none;padding:.4rem .8rem;border-radius:3px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .lyric-skip:hover{opacity:.9;color:var(--gold);border-color:rgba(201,169,110,.3)}
 
 /* Intro info overlay */
@@ -696,8 +697,9 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
       <p class="intro-info-line intro-info-1">Erkunde diese Seite. Nimm dir Zeit.</p>
       <p class="intro-info-line intro-info-2">F&uuml;lle deinen Seelenspiegel aus &mdash; notiere deine Chiffre.</p>
       <p class="intro-info-line intro-info-3">Sammle deine Fragen. Was bewegt dich? Was suchst du?</p>
-      <p class="intro-info-line intro-info-4">Bereite dich in den Tagen davor vor &mdash; komm zur Ruhe.</p>
-      <p class="intro-info-line intro-info-5">Der Besuch bei der Hexe erwartet dich.</p>
+      <p class="intro-info-line intro-info-4">&Uuml;bermittle Chiffre, Geburtsdatum, Geburtszeit und Geburtsort per E-Mail oder WhatsApp.</p>
+      <p class="intro-info-line intro-info-5">Bereite dich vor &mdash; komm zur Ruhe.</p>
+      <p class="intro-info-line intro-info-5" style="margin-top:.5rem">Der Besuch bei der Hexe erwartet dich.</p>
     </div>
   </div>
 </div>
@@ -1890,8 +1892,8 @@ function tCopy(){
         var cst=document.getElementById('introConstellations');
         if(cst&&cst.classList.contains('visible'))cst.classList.remove('visible');
       }
-      /* Sunset sky at 130s — after eclipse dissolves */
-      if(t>=130&&!introScene.classList.contains('sunset')){
+      /* Sunset sky at 122s — slow 50s transition */
+      if(t>=122&&!introScene.classList.contains('sunset')){
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
       }
       /* Ending sequence (after last lyric at 127.4s) */
@@ -1965,8 +1967,8 @@ function tCopy(){
         if(!introRunning)return;
         document.getElementById('introConstellations').classList.remove('visible');
       }});
-      /* Sunset at 130s */
-      allEvents.push({t:130000,fn:function(){
+      /* Sunset at 122s */
+      allEvents.push({t:122000,fn:function(){
         if(!introRunning)return;
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
       }});
