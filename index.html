@@ -118,10 +118,10 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .session-popup-cta{display:inline-block;font-family:var(--serif);font-size:clamp(.85rem,1.1vw,.95rem);font-weight:300;font-style:italic;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,.3);padding:.7rem 2rem;transition:all .4s;letter-spacing:.08em}
 .session-popup-cta:hover{background:rgba(201,169,110,.1);border-color:var(--gold)}
 /* Ghost Portal */
-.ghost-portal{position:fixed;inset:0;z-index:8500;display:flex;align-items:center;justify-content:center;background:rgba(8,8,7,.88);opacity:0;pointer-events:none;transition:opacity 2s ease;cursor:pointer}
+.ghost-portal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9500;opacity:0;pointer-events:none;transition:opacity 2s ease;cursor:pointer}
 .ghost-portal.visible{opacity:1;pointer-events:auto}
 .ghost-portal.fading{opacity:0;transition:opacity 2s ease}
-.ghost-portal-vortex{width:clamp(260px,45vw,420px);height:clamp(260px,45vw,420px);animation:ghostFloat 6s ease-in-out infinite}
+.ghost-portal-vortex{width:clamp(260px,45vw,420px);height:clamp(260px,45vw,420px);animation:ghostFloat 6s ease-in-out infinite;background:radial-gradient(circle,#080807 35%,rgba(8,8,7,.95) 50%,rgba(8,8,7,.8) 65%,transparent 80%);border-radius:50%}
 .ghost-portal-vortex svg{width:100%;height:100%;filter:drop-shadow(0 0 40px rgba(201,169,110,.3)) drop-shadow(0 0 80px rgba(201,169,110,.1))}
 @keyframes ghostFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-12px) scale(1.03)}}
 .ghost-portal-pw{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.5rem;z-index:2}
