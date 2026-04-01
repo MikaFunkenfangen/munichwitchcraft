@@ -110,8 +110,14 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .session-popup{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;background:rgba(8,8,7,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .5s}
 .session-popup.active{opacity:1;pointer-events:auto}
 .session-popup-inner{max-width:480px;text-align:center;padding:clamp(2rem,4vw,3rem);position:relative}
-.session-popup-close{position:absolute;top:-1rem;right:-1rem;font-size:1.5rem;color:var(--cream-dim);background:none;border:none;cursor:pointer;opacity:.4;transition:opacity .3s}
+.session-popup-close{position:absolute;top:.5rem;right:.8rem;font-size:1.8rem;color:var(--cream-dim);background:none;border:none;cursor:pointer;opacity:.6;transition:opacity .3s;z-index:2;padding:.5rem}
 .session-popup-close:hover{opacity:1}
+.session-popup-pw{display:flex;align-items:center;justify-content:center;gap:.5rem;margin:1.5rem 0 1rem}
+.session-popup-pw input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;color:var(--gold);padding:.4rem .8rem;width:clamp(140px,30vw,220px);text-align:center;outline:none;letter-spacing:.08em}
+.session-popup-pw input::placeholder{color:var(--cream-dim);opacity:.3}
+.session-popup-pw-btn{background:rgba(201,169,110,.08);border:1px solid var(--gold-dim);color:var(--gold);font-size:1.2rem;padding:.3rem .8rem;cursor:pointer;transition:all .3s;font-family:var(--serif)}
+.session-popup-pw-btn:hover{border-color:var(--gold);background:rgba(201,169,110,.15)}
+.session-popup-or{font-family:var(--serif);font-size:.8rem;font-style:italic;color:var(--cream-dim);opacity:.4;margin-bottom:.8rem}
 .session-popup-moon{font-size:clamp(2rem,4vw,3rem);color:var(--gold);margin-bottom:1rem;opacity:.6}
 .session-popup-title{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:300;font-style:italic;color:var(--white);margin-bottom:1.5rem}
 .session-popup-body{font-family:var(--sans);font-size:clamp(.9rem,1.1vw,.97rem);font-weight:300;line-height:2;color:var(--cream-dim);margin-bottom:2rem}
@@ -2065,12 +2071,17 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 
-<div class="session-popup" id="sessionPopup">
+<div class="session-popup" id="sessionPopup" onclick="if(event.target===this)this.classList.remove('active')">
   <div class="session-popup-inner">
     <button class="session-popup-close" onclick="document.getElementById('sessionPopup').classList.remove('active')">&times;</button>
     <p class="session-popup-moon">&#9790;</p>
     <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
-    <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.<br><br>Wenn du einen Termin vereinbart hast, erhältst du das Wort, das diese Schwelle öffnet.</p>
+    <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.</p>
+    <div class="session-popup-pw">
+      <input type="text" id="portalPwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+      <button class="session-popup-pw-btn" id="portalPwBtn">&rarr;</button>
+    </div>
+    <p class="session-popup-or">oder</p>
     <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
   </div>
 </div>
@@ -4189,6 +4200,23 @@ function showLetterPopup(){
   overlay.classList.add("show");
 }
 
+/* === SESSION PORTAL PASSWORD === */
+(function(){
+  var inp=document.getElementById('portalPwInput');
+  var btn=document.getElementById('portalPwBtn');
+  if(!inp||!btn)return;
+  function checkPw(){
+    if(inp.value.trim().toLowerCase()==='mwc'){
+      document.getElementById('sessionPopup').classList.remove('active');
+      window.open('session/','_blank');
+    } else {
+      inp.style.borderColor='rgba(180,60,60,.6)';
+      setTimeout(function(){inp.style.borderColor=''},600);
+    }
+  }
+  btn.addEventListener('click',checkPw);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')checkPw()});
+})();
 
 </script>
 
