@@ -441,7 +441,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 /* Gate brand, welcome, field, btn */
 .pw-gate-brand{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--gold);letter-spacing:.15em;margin-bottom:1rem;animation:brandPulse 3s ease-in-out infinite}
-.pw-gate-welcome{font-family:var(--serif);font-size:clamp(.9rem,1.3vw,1.1rem);font-weight:300;font-style:italic;color:var(--cream-dim);text-align:center;max-width:400px;line-height:1.9;margin-bottom:clamp(2rem,4vw,3rem);opacity:.6}
+.pw-gate-welcome{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:300;font-style:italic;color:var(--cream);text-align:center;max-width:420px;line-height:1.9;margin-bottom:clamp(2rem,4vw,3rem);opacity:.75}
 .pw-gate-field{position:relative;margin-bottom:1.5rem}
 .pw-gate-field input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;font-weight:300;color:var(--cream);padding:.6rem 1.2rem;width:clamp(200px,40vw,320px);text-align:center;outline:none;letter-spacing:.08em;transition:border-color .4s,box-shadow .4s}
 .pw-gate-field input::placeholder{color:var(--cream-dim);opacity:.4;font-style:italic}
@@ -477,6 +477,41 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .shooting-star.fly{animation:shootingStar 2.5s ease-out forwards}
 @keyframes shootingStar{0%{opacity:1;transform:translate(0,0)}5%{opacity:1}80%{opacity:.6}100%{opacity:0;transform:translate(70vw,40vh)}}
 .shooting-star::after{content:"";position:absolute;top:50%;right:100%;transform:translateY(-50%);width:150px;height:2px;background:linear-gradient(to left,rgba(255,255,255,.8),rgba(201,169,110,.4) 30%,transparent);border-radius:1px;filter:blur(.5px)}
+
+/* === RITUAL GATE STEPS === */
+.pw-step{display:none;animation:fadeUp .8s ease}
+.pw-step-active{display:block}
+
+/* Questions */
+.pw-question{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:clamp(1.5rem,3vw,2.5rem);text-shadow:0 0 25px rgba(8,8,7,.6)}
+.pw-question em{color:var(--gold)}
+
+/* Answer input */
+.pw-answer{font-family:var(--serif)!important;font-size:clamp(1.1rem,1.8vw,1.4rem)!important;color:var(--gold)!important;text-shadow:0 0 10px rgba(201,169,110,.3)}
+
+/* Quotes */
+.pw-quote-text{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.8;margin-bottom:1rem;text-shadow:0 0 20px rgba(8,8,7,.5)}
+.pw-quote-long{font-size:clamp(.9rem,1.4vw,1.15rem);line-height:1.9;margin-bottom:.5rem}
+.pw-quote-author{font-family:var(--sans);font-size:clamp(.75rem,1vw,.85rem);color:var(--gold-dim);letter-spacing:.1em;margin-bottom:.8rem}
+.pw-quote-sub{font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-style:italic;color:var(--gold);opacity:.7;margin-top:1rem}
+.pw-quote-skip{margin-top:1.5rem;opacity:.4;font-size:.7rem!important}
+
+/* Ready buttons */
+.pw-ready-btns{display:flex;justify-content:center;gap:clamp(2rem,4vw,3rem);margin-top:clamp(2rem,4vw,3rem)}
+.pw-ready-yes{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;font-style:italic;color:var(--gold);background:none;border:none;cursor:pointer;letter-spacing:.1em;transition:all .4s;text-shadow:0 0 15px rgba(201,169,110,.3)}
+.pw-ready-yes:hover{text-shadow:0 0 30px rgba(201,169,110,.6);transform:scale(1.05)}
+.pw-ready-no{font-family:var(--serif);font-size:clamp(.9rem,1.4vw,1.1rem);font-weight:300;font-style:italic;color:var(--cream-dim);background:none;border:none;cursor:pointer;opacity:.4;transition:all .3s}
+.pw-ready-no:hover{opacity:.7}
+
+/* Manifestation */
+.pw-manifest-cta{font-family:var(--sans);font-size:clamp(.7rem,.9vw,.8rem);font-weight:300;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(1.5rem,3vw,2rem);opacity:0;transition:opacity 2s}
+.pw-manifest-cta.show{opacity:.7}
+.pw-manifest{margin-bottom:clamp(1.5rem,3vw,2rem)}
+.pw-manifest-line{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--cream);line-height:2;opacity:0;transform:translateY(10px);transition:opacity 2s ease,transform 2s ease}
+.pw-manifest-line.show{opacity:.85;transform:translateY(0)}
+.pw-manifest-final{color:var(--gold);font-size:clamp(1.3rem,2.5vw,1.8rem)!important;text-shadow:0 0 20px rgba(201,169,110,.4)}
+.pw-speak-btn{opacity:0;transition:opacity 1.5s;margin-top:1rem}
+.pw-speak-btn.show{opacity:1}
 </style>
 </head>
 <body>
@@ -503,20 +538,82 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   <!-- Content -->
   <div class="pw-content">
     <div class="pw-gate-brand">Munich Witchcraft</div>
-    <p class="pw-gate-welcome">Du hast einen Termin vereinbart.<br>Der Moment r&uuml;ckt n&auml;her.<br>Gib nun das Passwort ein, das du erhalten hast.</p>
-    <div class="pw-gate-field">
-      <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
-    </div>
-    <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
 
-    <!-- Info text appears after eclipse -->
-    <div class="pw-info" id="pwInfo">
-      <p class="pw-info-line">Erkunde diese Seite. Nimm dir Zeit.</p>
-      <p class="pw-info-line pw-info-gold">F&uuml;lle deinen Seelenspiegel aus &mdash; notiere deine Chiffre.</p>
-      <p class="pw-info-line">Sammle deine Fragen. Was bewegt dich?</p>
-      <p class="pw-info-line pw-info-gold">&Uuml;bermittle Chiffre, Geburtsdatum, Geburtszeit und Geburtsort.</p>
-      <p class="pw-info-line">Bereite dich vor &mdash; komm zur Ruhe.</p>
-      <p class="pw-info-line pw-info-highlight">Der Besuch bei der Hexe erwartet dich.</p>
+    <!-- Step 0: Password -->
+    <div class="pw-step pw-step-active" id="pwStep0">
+      <p class="pw-gate-welcome">Du hast einen Termin vereinbart.<br>Der Moment r&uuml;ckt n&auml;her.<br>Gib nun das Passwort ein, das du erhalten hast.</p>
+      <div class="pw-gate-field">
+        <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+      </div>
+      <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
+      <div class="pw-info" id="pwInfo">
+        <p class="pw-info-line">Erkunde diese Seite. Nimm dir Zeit.</p>
+        <p class="pw-info-line pw-info-gold">F&uuml;lle deinen Seelenspiegel aus &mdash; notiere deine Chiffre.</p>
+        <p class="pw-info-line">Sammle deine Fragen. Was bewegt dich?</p>
+        <p class="pw-info-line pw-info-gold">&Uuml;bermittle Chiffre, Geburtsdatum, Geburtszeit und Geburtsort.</p>
+        <p class="pw-info-line">Bereite dich vor &mdash; komm zur Ruhe.</p>
+        <p class="pw-info-line pw-info-highlight">Der Besuch bei der Hexe erwartet dich.</p>
+      </div>
+    </div>
+
+    <!-- Step 1: Soul Question 1 -->
+    <div class="pw-step" id="pwStep1">
+      <p class="pw-question">Was in dir wartet darauf,<br><em>gesehen zu werden?</em></p>
+      <div class="pw-gate-field">
+        <input type="text" class="pw-answer" id="pwAnswer1" placeholder="Deine Antwort" autocomplete="off">
+      </div>
+      <button class="pw-gate-btn pw-next-btn" data-step="1">Weiter</button>
+    </div>
+
+    <!-- Quote 1 -->
+    <div class="pw-step" id="pwQuote1">
+      <p class="pw-quote-text">&bdquo;Die Scham ist nicht das Ende der W&uuml;rde &mdash;<br>sie ist ihre heimliche Geburtsstunde.&ldquo;</p>
+      <p class="pw-quote-author">&mdash; Mika Sch&ouml;berl</p>
+      <p class="pw-quote-sub">Hexen sind Geburtshelfer*innen.</p>
+      <button class="pw-gate-btn pw-quote-skip">Weiter</button>
+    </div>
+
+    <!-- Step 2: Soul Question 2 -->
+    <div class="pw-step" id="pwStep2">
+      <p class="pw-question">Wovon m&ouml;chtest du dich<br><em>befreien?</em></p>
+      <div class="pw-gate-field">
+        <input type="text" class="pw-answer" id="pwAnswer2" placeholder="Deine Antwort" autocomplete="off">
+      </div>
+      <button class="pw-gate-btn pw-next-btn" data-step="2">Weiter</button>
+    </div>
+
+    <!-- Quote 2 -->
+    <div class="pw-step" id="pwQuote2">
+      <p class="pw-quote-text">&bdquo;Wenn Du Dich verloren f&uuml;hlst,<br>frag die Zugv&ouml;gel:<br>Heimat tr&auml;gt man unter den Fl&uuml;geln.&ldquo;</p>
+      <p class="pw-quote-author">&mdash; Mika Sch&ouml;berl</p>
+      <button class="pw-gate-btn pw-quote-skip">Weiter</button>
+    </div>
+
+    <!-- Step 3: Ready? -->
+    <div class="pw-step" id="pwStep3">
+      <p class="pw-question">Bist du bereit?</p>
+      <div class="pw-ready-btns">
+        <button class="pw-ready-yes" id="pwReadyYes">Ja</button>
+        <button class="pw-ready-no" id="pwReadyNo">Noch nicht</button>
+      </div>
+    </div>
+
+    <!-- Quote 3 -->
+    <div class="pw-step" id="pwQuote3">
+      <p class="pw-quote-text pw-quote-long">&bdquo;Das Leben sprach: Sei dir bewusst &mdash;<br>ich z&auml;hl nicht Jahre, ich z&auml;hl Verlust.<br>Drum lieb, so laut du kannst &mdash;<br>solang das Herz dir pocht,<br>solang Gesang noch m&ouml;glich ist.<br>Verschieb nichts mehr aufs n&auml;chste Jahr &mdash;<br>denn niemand wei&szlig;, wie lang<br>&sbquo;f&uuml;r immer&lsquo; war.&ldquo;</p>
+      <p class="pw-quote-author">&mdash; Mika Sch&ouml;berl</p>
+      <button class="pw-gate-btn pw-quote-skip">Weiter</button>
+    </div>
+
+    <!-- Step 4: Manifestation -->
+    <div class="pw-step" id="pwStep4">
+      <p class="pw-manifest-cta">Sprich mit:</p>
+      <div class="pw-manifest">
+        <p class="pw-manifest-line" id="pwM1">Ich trete ein in das Auge des Sturms.</p>
+        <p class="pw-manifest-line" id="pwM2">Ich lasse los, was mich festhält.</p>
+        <p class="pw-manifest-line" id="pwM3">Ich öffne mich für das, was sich zeigen will.</p>
+      </div>
+      <button class="pw-gate-btn pw-speak-btn" id="pwSpeak">So sei es.</button>
     </div>
   </div>
 
@@ -1411,18 +1508,26 @@ function tCopy(){
     }
   });
 
-  /* Password check */
+  /* Show a specific step */
+  function showStep(n){
+    document.querySelectorAll('.pw-step').forEach(function(s){s.style.display='none'});
+    var step=document.getElementById(n);
+    if(step){
+      step.style.display='block';
+      step.style.animation='none';
+      step.offsetHeight;
+      step.style.animation='fadeUp .8s ease';
+      var inp=step.querySelector('input');
+      if(inp) setTimeout(function(){inp.focus()},500);
+    }
+  }
+
+  /* Password check — on success show step 1 */
   function checkPassword(){
     tryPlayAudio();
     if(pwInput.value.trim().toLowerCase()===PASSWORD){
       sessionStorage.setItem('mw-session-auth','1');
-      if(lightningInterval)clearInterval(lightningInterval);
-      gate.classList.add('supernova');
-      setTimeout(function(){
-        gate.classList.add('hidden');
-        setTimeout(function(){gate.style.display='none'},1500);
-        try{audio.pause()}catch(e){}
-      },2500);
+      showStep('pwStep1');
     } else {
       pwInput.classList.add('pw-error');
       pwInput.parentElement.classList.add('pw-shake');
@@ -1435,6 +1540,76 @@ function tCopy(){
 
   pwBtn.addEventListener('click',checkPassword);
   pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword()});
+
+  /* Next buttons for questions (accept any non-empty answer) */
+  document.querySelectorAll('.pw-next-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var step=btn.getAttribute('data-step');
+      var input=document.getElementById('pwAnswer'+step);
+      if(input && input.value.trim().length>0){
+        showStep('pwQuote'+step);
+        var quoteTimer=setTimeout(function(){showStep('pwStep'+(parseInt(step)+1))},6000);
+        var skipBtn=document.getElementById('pwQuote'+step).querySelector('.pw-quote-skip');
+        if(skipBtn) skipBtn.addEventListener('click',function(){
+          clearTimeout(quoteTimer);
+          showStep('pwStep'+(parseInt(step)+1));
+        });
+      }
+    });
+  });
+
+  /* Allow Enter key on answer inputs */
+  document.querySelectorAll('.pw-answer').forEach(function(inp){
+    inp.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){
+        var btn=inp.closest('.pw-step').querySelector('.pw-next-btn');
+        if(btn) btn.click();
+      }
+    });
+  });
+
+  /* Ready: Yes */
+  document.getElementById('pwReadyYes').addEventListener('click',function(){
+    showStep('pwQuote3');
+    var q3Timer=setTimeout(function(){showStep('pwStep4');startManifest()},8000);
+    var skipBtn3=document.getElementById('pwQuote3').querySelector('.pw-quote-skip');
+    if(skipBtn3) skipBtn3.addEventListener('click',function(){
+      clearTimeout(q3Timer);
+      showStep('pwStep4');
+      startManifest();
+    });
+  });
+
+  /* Ready: No — fade everything, stay on eclipse screen with music */
+  document.getElementById('pwReadyNo').addEventListener('click',function(){
+    document.querySelectorAll('.pw-step').forEach(function(s){s.style.display='none'});
+  });
+
+  /* Manifestation sequence */
+  function startManifest(){
+    var cta=document.querySelector('.pw-manifest-cta');
+    if(cta)setTimeout(function(){cta.classList.add('show')},500);
+    var lines=document.querySelectorAll('.pw-manifest-line');
+    lines.forEach(function(l,i){
+      setTimeout(function(){l.classList.add('show')},(i+1)*2500);
+    });
+    setTimeout(function(){
+      document.getElementById('pwSpeak').classList.add('show');
+    },lines.length*2500+2000);
+  }
+
+  /* Speak it — supernova + enter */
+  document.getElementById('pwSpeak').addEventListener('click',function(){
+    if(lightningInterval) clearInterval(lightningInterval);
+    setTimeout(function(){
+      gate.classList.add('supernova');
+      setTimeout(function(){
+        gate.classList.add('hidden');
+        setTimeout(function(){gate.style.display='none'},1500);
+        try{audio.pause()}catch(e){}
+      },2500);
+    },2000);
+  });
 })();
 </script>
 </body>
