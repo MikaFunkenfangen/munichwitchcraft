@@ -1835,10 +1835,6 @@ function tCopy(){
           showText(cfg.text,cfg.cls);
           document.getElementById('lyricBarText').textContent=cfg.bar;
 
-          /* Special: line 2 (34s) "breaking chains" — first lightning */
-          if(i===2){
-            flashLightning();
-          }
           /* Special: line 6 (79.2s) "before I rise, before I fall" — shooting star */
           if(i===6){
             var star=document.createElement('div');
@@ -1848,12 +1844,9 @@ function tCopy(){
             setTimeout(function(){star.classList.add('fly')},50);
             setTimeout(function(){if(star.parentNode)star.parentNode.removeChild(star)},2000);
           }
-          /* Special: line 3 (42.5s) "eye of the storm" — dramatic lightning barrage + particle burst */
-          if(i===3){
-            flashLightning();
-            if(!isPerfLite)spawnParticleBurst(25);
-            setTimeout(function(){if(introRunning)flashLightning()},800);
-            setTimeout(function(){if(introRunning)flashLightning()},1600);
+          /* Particle burst at "eye of the storm" (line 3, 42.5s) — but no lightning yet */
+          if(i===3&&!isPerfLite){
+            spawnParticleBurst(25);
           }
           break;
         }
@@ -1933,8 +1926,7 @@ function tCopy(){
             var cfg=lyricConfigs[idx];
             showText(cfg.text,cfg.cls);
             document.getElementById('lyricBarText').textContent=cfg.bar;
-            if(idx===2)flashLightning();
-            if(idx===3){flashLightning();setTimeout(function(){if(introRunning)flashLightning()},800);setTimeout(function(){if(introRunning)flashLightning()},1600);}
+            if(idx===3&&!isPerfLite)spawnParticleBurst(25);
             if(idx===6){var fstar=document.createElement('div');fstar.className='shooting-star';fstar.style.left='10%';fstar.style.top='15%';document.querySelector('.intro-scene').appendChild(fstar);setTimeout(function(){fstar.classList.add('fly')},50);setTimeout(function(){if(fstar.parentNode)fstar.parentNode.removeChild(fstar)},2000);}
           }});
         })(i);
