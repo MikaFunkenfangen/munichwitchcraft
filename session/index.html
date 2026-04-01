@@ -411,10 +411,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 /* === GENESIS INTRO — elements born one by one === */
 
 /* Intro container — no clip-path, full screen */
-.intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#4a6fa5 0%,#6b8fc2 25%,#a8c4d8 50%,#d4dfe8 75%,#e8ded0 100%);transition:background 20s ease}
-.intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#2a3a55 25%,#1a2540 50%,#0f1525 75%,#080810 100%)}
-.intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#040408 30%,#050510 60%,#030305 100%);transition:background 15s ease}
-.intro-scene.sunset{background:linear-gradient(180deg,#1a1028 0%,#2d1832 15%,#6b2842 30%,#c45a3a 45%,#e8944a 55%,#f0c060 65%,#d4a050 75%,#8a5030 85%,#3a1820 100%);transition:background 15s ease}
+.intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#3a5a8a 0%,#5580b0 20%,#6a98c8 40%,#80b0d8 60%,#90c0e5 80%,#a0cef0 100%);transition:background 25s ease}
+.intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#253555 20%,#1a2540 40%,#121a30 60%,#0a1020 80%,#060810 100%);transition:background 25s ease}
+.intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#030306 25%,#040408 50%,#050510 75%,#030305 100%);transition:background 20s ease}
+.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 20s ease}
 .intro-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
 .intro-star{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
 .intro-star.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4)}
@@ -582,17 +582,25 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
     <div class="intro-flash" id="introFlash"></div>
     <div class="intro-stars" id="introStars"></div>
     <div class="intro-constellations" id="introConstellations">
-      <svg class="intro-const" viewBox="0 0 200 150" style="top:10%;left:5%;width:15vw">
-        <circle cx="30" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="45" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="50" cy="90" r="2" fill="var(--gold)" opacity=".4"/><circle cx="120" cy="30" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="150" cy="80" r="2.2" fill="var(--gold)" opacity=".5"/>
-        <path d="M30 20 L80 45 L50 90 M80 45 L120 30 L150 80" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      <!-- Scorpius (Skorpion) — top left -->
+      <svg class="intro-const" viewBox="0 0 220 180" style="top:8%;left:3%;width:16vw">
+        <circle cx="20" cy="90" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="50" cy="80" r="2" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="75" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="110" cy="80" r="3" fill="var(--gold)" opacity=".8" filter="url(#stormGlow)"/><circle cx="140" cy="90" r="2" fill="var(--gold)" opacity=".5"/><circle cx="165" cy="105" r="2.2" fill="var(--gold)" opacity=".5"/><circle cx="185" cy="125" r="2" fill="var(--gold)" opacity=".4"/><circle cx="200" cy="150" r="1.8" fill="var(--gold)" opacity=".4"/><circle cx="195" cy="170" r="1.5" fill="var(--gold)" opacity=".3"/><circle cx="210" cy="160" r="1.5" fill="var(--gold)" opacity=".3"/>
+        <path d="M20 90 L50 80 L80 75 L110 80 L140 90 L165 105 L185 125 L200 150 M200 150 L195 170 M200 150 L210 160" fill="none" stroke="var(--gold)" stroke-width=".6" opacity=".18"/>
       </svg>
-      <svg class="intro-const" viewBox="0 0 180 120" style="top:15%;right:8%;width:12vw">
-        <circle cx="20" cy="60" r="2" fill="var(--gold)" opacity=".4"/><circle cx="70" cy="20" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="130" cy="40" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="160" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="90" cy="90" r="2.5" fill="var(--gold)" opacity=".5"/>
-        <path d="M20 60 L70 20 L130 40 L160 100 L90 90 L20 60" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".12"/>
+      <!-- Pisces (Fische) — top right -->
+      <svg class="intro-const" viewBox="0 0 200 160" style="top:12%;right:5%;width:14vw">
+        <circle cx="30" cy="40" r="2" fill="var(--gold)" opacity=".5"/><circle cx="50" cy="25" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="75" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="100" cy="30" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="100" cy="80" r="2" fill="var(--gold)" opacity=".4"/><circle cx="100" cy="120" r="2.5" fill="var(--gold)" opacity=".6"/><circle cx="125" cy="135" r="2" fill="var(--gold)" opacity=".5"/><circle cx="155" cy="140" r="2.2" fill="var(--gold)" opacity=".5"/><circle cx="175" cy="130" r="2" fill="var(--gold)" opacity=".4"/>
+        <path d="M30 40 L50 25 L75 20 L100 30 L100 80 L100 120 L125 135 L155 140 L175 130" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
       </svg>
-      <svg class="intro-const" viewBox="0 0 160 140" style="bottom:20%;left:12%;width:10vw">
-        <circle cx="80" cy="10" r="2" fill="var(--gold)" opacity=".5"/><circle cx="30" cy="70" r="2.2" fill="var(--gold)" opacity=".4"/><circle cx="130" cy="70" r="1.8" fill="var(--gold)" opacity=".5"/><circle cx="80" cy="130" r="2" fill="var(--gold)" opacity=".4"/>
-        <path d="M80 10 L30 70 L80 130 L130 70 Z" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".1"/>
+      <!-- Gemini (Zwilling) — bottom left -->
+      <svg class="intro-const" viewBox="0 0 160 200" style="bottom:15%;left:8%;width:11vw">
+        <circle cx="40" cy="15" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="120" cy="15" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="50" cy="50" r="2" fill="var(--gold)" opacity=".5"/><circle cx="110" cy="50" r="2" fill="var(--gold)" opacity=".5"/><circle cx="55" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="105" cy="100" r="2" fill="var(--gold)" opacity=".4"/><circle cx="45" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="115" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="40" cy="185" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="120" cy="185" r="2.2" fill="var(--gold)" opacity=".6"/>
+        <path d="M40 15 L50 50 L55 100 L45 150 L40 185 M120 15 L110 50 L105 100 L115 150 L120 185 M50 50 L110 50 M55 100 L105 100" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
+      </svg>
+      <!-- Orion — bottom right -->
+      <svg class="intro-const" viewBox="0 0 180 220" style="bottom:10%;right:6%;width:12vw">
+        <circle cx="60" cy="15" r="2" fill="var(--gold)" opacity=".5"/><circle cx="120" cy="20" r="2" fill="var(--gold)" opacity=".5"/><circle cx="45" cy="55" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="135" cy="60" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="70" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="90" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="110" cy="100" r="2.5" fill="var(--gold)" opacity=".7"/><circle cx="50" cy="145" r="2" fill="var(--gold)" opacity=".5"/><circle cx="130" cy="150" r="2" fill="var(--gold)" opacity=".5"/><circle cx="35" cy="200" r="2.2" fill="var(--gold)" opacity=".6"/><circle cx="145" cy="205" r="2.2" fill="var(--gold)" opacity=".6"/>
+        <path d="M60 15 L45 55 L50 145 L35 200 M120 20 L135 60 L130 150 L145 205 M70 100 L90 100 L110 100" fill="none" stroke="var(--gold)" stroke-width=".5" opacity=".15"/>
       </svg>
     </div>
     <!-- The Sun -->
@@ -1855,8 +1863,8 @@ function tCopy(){
         }
       }
 
-      /* Eclipse dissolution — moon starts slow journey away at 75s */
-      if(t>=75&&!introLogoMoon.classList.contains('clearing')){
+      /* Eclipse dissolution — moon starts slow journey away at 115s (after info text) */
+      if(t>=115&&!introLogoMoon.classList.contains('clearing')){
         introLogoMoon.classList.add('clearing');
       }
       /* Elements dissolve at 120s — clouds, isar, lightning */
@@ -1870,8 +1878,8 @@ function tCopy(){
         introIsarWrap.style.opacity='0';
         if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
       }
-      /* Sunset sky at 125s */
-      if(t>=125&&!introScene.classList.contains('sunset')){
+      /* Sunset sky at 130s — as eclipse dissolves */
+      if(t>=130&&!introScene.classList.contains('sunset')){
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
         document.getElementById('introConstellations').classList.remove('visible');
       }
@@ -1921,8 +1929,8 @@ function tCopy(){
           }});
         })(s);
       }
-      /* Eclipse dissolution at 75s */
-      allEvents.push({t:75000,fn:function(){
+      /* Eclipse dissolution at 115s */
+      allEvents.push({t:115000,fn:function(){
         if(!introRunning)return;
         introLogoMoon.classList.add('clearing');
       }});
@@ -1938,8 +1946,8 @@ function tCopy(){
         introIsarWrap.style.opacity='0';
         if(lightningInterval){clearInterval(lightningInterval);lightningInterval=null}
       }});
-      /* Sunset at 125s */
-      allEvents.push({t:125000,fn:function(){
+      /* Sunset at 130s */
+      allEvents.push({t:130000,fn:function(){
         if(!introRunning)return;
         introScene.classList.remove('eclipse-dark');introScene.classList.add('sunset');
         document.getElementById('introConstellations').classList.remove('visible');
