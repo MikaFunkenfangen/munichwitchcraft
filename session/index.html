@@ -1584,10 +1584,8 @@ function tCopy(){
       var input=document.getElementById('pwAnswer'+step);
       if(input && input.value.trim().length>0){
         showStep('pwQuote'+step);
-        var quoteTimer=setTimeout(function(){showStep('pwStep'+(parseInt(step)+1))},6000);
         var skipBtn=document.getElementById('pwQuote'+step).querySelector('.pw-quote-skip');
         if(skipBtn) skipBtn.addEventListener('click',function(){
-          clearTimeout(quoteTimer);
           showStep('pwStep'+(parseInt(step)+1));
         },{once:true});
       }
@@ -1607,10 +1605,8 @@ function tCopy(){
   /* Ready: Yes */
   document.getElementById('pwReadyYes').addEventListener('click',function(){
     showStep('pwQuote3');
-    var q3Timer=setTimeout(function(){showStep('pwStep4');startManifest()},8000);
     var skipBtn3=document.getElementById('pwQuote3').querySelector('.pw-quote-skip');
     if(skipBtn3) skipBtn3.addEventListener('click',function(){
-      clearTimeout(q3Timer);
       showStep('pwStep4');
       startManifest();
     },{once:true});
