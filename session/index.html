@@ -475,18 +475,20 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 @keyframes particleDrift{0%{opacity:0;transform:translate(0,0) scale(.5)}20%{opacity:.8}80%{opacity:.4}100%{opacity:0;transform:translate(var(--px,100px),var(--py,-80px)) scale(0)}}
 
 /* Central text display */
-.eye-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:900px;z-index:10;pointer-events:none}
-.eye-text-inner{opacity:0;transition:opacity .8s ease,transform .8s ease;transform:scale(.92)}
+.eye-text{position:fixed;bottom:clamp(6rem,12vh,10rem);left:50%;transform:translateX(-50%);text-align:center;width:90%;max-width:900px;z-index:10;pointer-events:none}
+.eye-text-inner{opacity:0;transition:opacity 1s ease,transform 1s ease;transform:translateY(15px) scale(.95)}
 .eye-text-inner.active{opacity:1;transform:scale(1)}
 
 /* Text style variants */
-.eye-text-inner.t-serif{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream)}
-.eye-text-inner.t-sans{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.25em;color:var(--cream-dim)}
+.eye-text-inner.active{opacity:1;transform:translateY(0) scale(1)}
+.eye-text-inner.t-serif{font-family:var(--serif);font-weight:300;font-style:italic;color:var(--cream);text-shadow:0 0 20px rgba(232,226,212,.3),0 0 40px rgba(8,8,7,.5)}
+.eye-text-inner.t-sans{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.25em;color:var(--cream);text-shadow:0 0 15px rgba(232,226,212,.25),0 0 30px rgba(8,8,7,.4)}
 .eye-text-inner.t-gold{color:var(--gold);text-shadow:0 0 40px rgba(201,169,110,.5),0 0 80px rgba(201,169,110,.2)}
-.eye-text-inner.t-glow{text-shadow:0 0 30px rgba(201,169,110,.6),0 0 60px rgba(201,169,110,.3),0 0 120px rgba(201,169,110,.1)}
-.eye-text-inner.t-huge{font-size:clamp(3rem,8vw,7rem)}
-.eye-text-inner.t-large{font-size:clamp(2rem,5vw,4rem)}
-.eye-text-inner.t-med{font-size:clamp(1.4rem,3vw,2.5rem)}
+.eye-text-inner.t-glow{text-shadow:0 0 30px rgba(201,169,110,.7),0 0 60px rgba(201,169,110,.4),0 0 120px rgba(201,169,110,.15);animation:lyricGlow 3s ease-in-out infinite}
+@keyframes lyricGlow{0%,100%{text-shadow:0 0 25px rgba(201,169,110,.5),0 0 50px rgba(201,169,110,.25)}50%{text-shadow:0 0 40px rgba(201,169,110,.8),0 0 80px rgba(201,169,110,.4),0 0 150px rgba(201,169,110,.15)}}
+.eye-text-inner.t-huge{font-size:clamp(2.5rem,7vw,5.5rem)}
+.eye-text-inner.t-large{font-size:clamp(1.8rem,4.5vw,3.5rem)}
+.eye-text-inner.t-med{font-size:clamp(1.3rem,3vw,2.2rem)}
 
 /* Step cards */
 .eye-text-inner.t-card{display:flex;flex-direction:column;align-items:center;gap:.8rem}
@@ -1599,16 +1601,16 @@ function tCopy(){
 
     /* Lyric display configs: text, CSS classes, bar text */
     var lyricConfigs=[
-      {text:'City pulls, beating heart',cls:'t-serif t-large',bar:'City pulls, beating heart'},
-      {text:'casting spells, work of art',cls:'t-sans t-med',bar:'casting spells, work of art'},
-      {text:'breaking chains, shattering norms',cls:'t-serif t-large t-gold',bar:'breaking chains, shattering norms'},
-      {text:'I am the magic, eye of the storm',cls:'t-serif t-huge t-glow',bar:'I am the magic, eye of the storm'},
+      {text:'City pulls, beating heart',cls:'t-serif t-large t-glow',bar:'City pulls, beating heart'},
+      {text:'casting spells, work of art',cls:'t-sans t-large',bar:'casting spells, work of art'},
+      {text:'breaking chains, shattering norms',cls:'t-serif t-large t-gold t-glow',bar:'breaking chains, shattering norms'},
+      {text:'I am the magic,<br><em>eye of the storm</em>',cls:'t-serif t-huge t-gold t-glow',bar:'I am the magic, eye of the storm'},
       {text:'Waking the witch\u2026',cls:'t-serif t-huge t-gold t-glow',bar:'Waking the witch'},
-      {text:'Rise before the tide',cls:'t-sans t-med',bar:'Rise before the tide'},
-      {text:'before I rise, before I fall',cls:'t-serif t-large',bar:'before I rise, before I fall'},
-      {text:'Flowers blooming, change my name',cls:'t-serif t-large t-gold',bar:'Flowers blooming, change my name'},
-      {text:'the witch remains, yet not the same',cls:'t-sans t-med',bar:'the witch remains, yet not the same'},
-      {text:'The magic courses through each vein',cls:'t-serif t-large',bar:'The magic courses through each vein'},
+      {text:'Rise before the tide',cls:'t-serif t-large t-glow',bar:'Rise before the tide'},
+      {text:'before I rise,<br><em>before I fall</em>',cls:'t-serif t-large t-glow',bar:'before I rise, before I fall'},
+      {text:'Flowers blooming,<br><em>change my name</em>',cls:'t-serif t-large t-gold t-glow',bar:'Flowers blooming, change my name'},
+      {text:'the witch remains,<br><em>yet not the same</em>',cls:'t-serif t-large t-glow',bar:'the witch remains, yet not the same'},
+      {text:'The magic courses<br><em>through each vein</em>',cls:'t-serif t-large t-gold t-glow',bar:'The magic courses through each vein'},
       {text:'waking the witch\u2026',cls:'t-serif t-huge t-gold t-glow',bar:'waking the witch\u2026'}
     ];
 
