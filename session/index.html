@@ -414,7 +414,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .intro-scene{position:fixed;inset:0;z-index:9998;overflow:hidden;background:linear-gradient(180deg,#3a5a8a 0%,#5580b0 20%,#6a98c8 40%,#80b0d8 60%,#90c0e5 80%,#a0cef0 100%);transition:background 30s ease}
 .intro-scene.dimming{background:linear-gradient(180deg,#1a2a45 0%,#253555 20%,#1a2540 40%,#121a30 60%,#0a1020 80%,#060810 100%);transition:background 30s ease}
 .intro-scene.eclipse-dark{background:linear-gradient(180deg,#020204 0%,#030306 25%,#040408 50%,#050510 75%,#030305 100%);transition:background 30s ease}
-.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 30s ease}
+.intro-scene.sunset{background:linear-gradient(180deg,#0a0818 0%,#1a1028 10%,#2d1832 20%,#5a2040 30%,#8a3040 40%,#c45a3a 50%,#e8944a 60%,#f0c060 70%,#e8b050 80%,#c08040 90%,#6a3020 100%);transition:background 40s ease}
+.intro-scene.finale{background:radial-gradient(ellipse at 50% 50%,rgba(255,252,240,.6) 0%,rgba(240,200,100,.3) 30%,rgba(200,160,80,.15) 50%,transparent 70%),linear-gradient(180deg,#1a1028 0%,#5a2040 20%,#c45a3a 40%,#f0c060 60%,#e8b050 80%,#c08040 100%);transition:background 8s ease}
 .intro-stars{position:absolute;inset:0;pointer-events:none;z-index:0}
 .intro-star{position:absolute;border-radius:50%;background:rgba(245,240,224,.7);animation:twinkle var(--tw-d,5s) ease-in-out var(--tw-del,0s) infinite}
 .intro-star.bright{background:rgba(255,252,240,.95);box-shadow:0 0 4px rgba(201,169,110,.4)}
@@ -499,8 +500,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .lyric-bar{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;flex-direction:column;align-items:center;padding:clamp(.8rem,1.5vw,1.2rem) 2rem;font-family:var(--serif);font-weight:300;color:var(--cream);pointer-events:none;transition:opacity .6s;gap:.3rem}
 .lyric-bar.hidden{opacity:0}
 .lyric-bar-text{text-align:center;font-size:clamp(1.1rem,2vw,1.5rem);font-style:italic;color:var(--cream);opacity:.65;text-shadow:0 0 25px rgba(8,8,7,.7),0 0 50px rgba(8,8,7,.4);transition:opacity .8s;letter-spacing:.06em}
-.lyric-bar-credit{font-family:var(--sans);font-size:clamp(.6rem,.8vw,.7rem);color:var(--cream-dim);opacity:.5;letter-spacing:.08em;pointer-events:auto}
-.lyric-bar-credit a{color:var(--gold-dim);text-decoration:none;transition:color .3s}
+.lyric-bar-credit{font-family:var(--sans);font-size:clamp(.7rem,.95vw,.82rem);color:var(--cream);opacity:.7;letter-spacing:.08em;pointer-events:auto}
+.lyric-bar-credit a{color:var(--gold);text-decoration:none;transition:color .3s;font-weight:400}
 .lyric-bar-credit a:hover{color:var(--gold)}
 
 /* Spotify link */
@@ -1105,7 +1106,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
       <!-- TEST INTRO -->
       <div id="testIntro" class="test-intro test-card reveal">
         <p style="max-width:480px;margin:0 auto 1.5rem;text-align:center">Dein Seelenspiegel &mdash; eine Spiegelung von einer anderen Seite her. Du füllst ihn vor unserer Begegnung aus. 115 Sätze. Kein Richtig oder Falsch. Am Ende erhältst du eine Chiffre, die du zunächst für dich behältst und mir am Ende unserer ersten Session mitteilst &mdash; zusammen mit deinen Geburtsdaten.</p>
-        <p style="text-align:center;font-size:clamp(.78rem,.95vw,.85rem);color:var(--cream-dim);opacity:.6;margin-bottom:0">Bewerte jede Aussage danach, wie sehr sie auf dich zutrifft:<br><span style="color:var(--gold)">0</span> = trifft gar nicht zu &middot; <span style="color:var(--gold)">3</span> = teilweise &middot; <span style="color:var(--gold)">6</span> = trifft voll zu</p>
+        <p style="text-align:center;font-size:clamp(.82rem,1vw,.9rem);color:#8a4558;margin-bottom:0">Bewerte jede Aussage danach, wie sehr sie auf dich zutrifft:<br><span style="color:#6a2535;font-weight:400">0</span> = trifft gar nicht zu &middot; <span style="color:#6a2535;font-weight:400">3</span> = teilweise &middot; <span style="color:#6a2535;font-weight:400">6</span> = trifft voll zu</p>
         <button class="btn-start-test" onclick="startTest()">Beginnen</button>
       </div>
 
@@ -1779,6 +1780,7 @@ function tCopy(){
       }
     },50000);
     /* 65s: Cloud + Isar + recurring lightning together */
+    /* 42s: Wolken kommen bei "storm" — Isar auch */
     setTimeout(function(){
       if(!introRunning)return;
       introIsarWrap.classList.add('visible');
@@ -1786,14 +1788,17 @@ function tCopy(){
       if(introCloud)introCloud.classList.add('entering');
       var c2=document.getElementById('introCloud2');
       var c3=document.getElementById('introCloud3');
-      if(c2)setTimeout(function(){c2.classList.add('entering')},2000);
-      if(c3)setTimeout(function(){c3.classList.add('entering')},5000);
-      /* Start recurring lightning every 5-8s */
+      if(c2)setTimeout(function(){c2.classList.add('entering')},3000);
+      if(c3)setTimeout(function(){c3.classList.add('entering')},6000);
+    },42000);
+    /* 52s: Blitze starten erst wenn Himmel dunkel + Wolken angekommen */
+    setTimeout(function(){
+      if(!introRunning)return;
       lightningInterval=setInterval(function(){
         if(!introRunning){clearInterval(lightningInterval);return}
         flashLightning();
       },5000+Math.random()*3000);
-    },65000);
+    },52000);
     /* 55s: Info text overlay appears with staggered lines */
     setTimeout(function(){
       if(!introRunning)return;
@@ -1895,9 +1900,13 @@ function tCopy(){
         showText('Dein Termin beginnt jetzt.','t-serif t-large t-gold');
         document.getElementById('lyricBarText').textContent='Was es nun zu tun gilt\u2026';
       }
-      if(t>=140&&endingStarted){
-        showText('<span style="display:flex;flex-direction:column;align-items:center;gap:.5rem">Dein Termin beginnt jetzt.<a class="lyric-spotify active" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener" style="pointer-events:auto"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:var(--gold-dim)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Waking the Witch \u00b7 Summerchild</a></span>','t-serif t-large t-gold');
-        endingStarted=999; /* prevent re-trigger */
+      if(t>=140&&endingStarted&&endingStarted!==999){
+        showText('<span style="display:flex;flex-direction:column;align-items:center;gap:1rem">Dein Termin beginnt jetzt.<a class="lyric-spotify active" href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener" style="pointer-events:auto;display:flex;align-items:center;gap:.5rem;font-size:clamp(.85rem,1.2vw,1rem);color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,110,.3);padding:.5rem 1.5rem;border-radius:30px;margin-top:.5rem"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:22px;height:22px;fill:var(--gold)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Waking the Witch &middot; Summerchild</a></span>','t-serif t-large t-gold');
+        endingStarted=999;
+      }
+      /* 148s: Helles Strahlen als Finale */
+      if(t>=148&&!introScene.classList.contains('finale')){
+        introScene.classList.add('finale');
       }
       if(t>=152){
         endIntro();
