@@ -1355,11 +1355,17 @@ function tCopy(){
   var audioStarted=false;
   function tryPlayAudio(){
     if(audioStarted)return;
+    audio.volume=0.5;
     try{audio.play().then(function(){audioStarted=true}).catch(function(){})}catch(e){}
   }
   pwInput.addEventListener('focus',tryPlayAudio);
   pwInput.addEventListener('click',tryPlayAudio);
   pwBtn.addEventListener('click',tryPlayAudio);
+  gate.addEventListener('click',tryPlayAudio);
+  gate.addEventListener('touchstart',tryPlayAudio,{passive:true});
+  /* Also try on any scroll/key */
+  document.addEventListener('keydown',tryPlayAudio,{once:true});
+  document.addEventListener('scroll',tryPlayAudio,{once:true,passive:true});
 
   /* Eclipse timeline — starts dark, stays dark until password */
   setTimeout(function(){pwSun.classList.add('visible')},2000);
