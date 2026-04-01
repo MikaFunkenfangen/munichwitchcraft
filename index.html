@@ -1389,6 +1389,21 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 
+<!-- SESSION PORTAL -->
+<div class="session-portal reveal">
+  <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
+    <svg class="session-portal-svg" viewBox="0 0 200 200">
+      <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,110,.12)" stroke-width=".6"/>
+      <circle cx="100" cy="100" r="42" fill="url(#portalGrad)"/>
+      <circle cx="100" cy="100" r="42" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1.5" filter="url(#portalGlow)"/>
+      <path d="M100 12 C118 42,128 62,122 82 S106 108,110 132 S122 162,100 188" fill="none" stroke="rgba(80,180,210,.3)" stroke-width="2.5" stroke-linecap="round" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <path d="M100 12 C82 42,72 62,78 82 S94 108,90 132 S78 162,100 188" fill="none" stroke="rgba(80,180,210,.2)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpinR 8s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,110,.07)" stroke-width=".5" stroke-dasharray="2 5" style="animation:vortexSpin 18s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,.05)" stroke-width=".4" stroke-dasharray="1.5 6" style="animation:vortexSpinR 25s linear infinite;transform-origin:center"/>
+    </svg>
+  </a>
+</div>
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
@@ -1817,6 +1832,21 @@ window.onerror=function(msg,src,line,col,err){
 </section>
 
 
+<!-- SESSION PORTAL -->
+<div class="session-portal reveal">
+  <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
+    <svg class="session-portal-svg" viewBox="0 0 200 200">
+      <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,110,.12)" stroke-width=".6"/>
+      <circle cx="100" cy="100" r="42" fill="url(#portalGrad)"/>
+      <circle cx="100" cy="100" r="42" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1.5" filter="url(#portalGlow)"/>
+      <path d="M100 12 C118 42,128 62,122 82 S106 108,110 132 S122 162,100 188" fill="none" stroke="rgba(80,180,210,.3)" stroke-width="2.5" stroke-linecap="round" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <path d="M100 12 C82 42,72 62,78 82 S94 108,90 132 S78 162,100 188" fill="none" stroke="rgba(80,180,210,.2)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpinR 8s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,110,.07)" stroke-width=".5" stroke-dasharray="2 5" style="animation:vortexSpin 18s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,.05)" stroke-width=".4" stroke-dasharray="1.5 6" style="animation:vortexSpinR 25s linear infinite;transform-origin:center"/>
+    </svg>
+  </a>
+</div>
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
@@ -2026,8 +2056,18 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 </section>
 
+<div class="session-popup" id="sessionPopup">
+  <div class="session-popup-inner">
+    <button class="session-popup-close" onclick="document.getElementById('sessionPopup').classList.remove('active')">&times;</button>
+    <p class="session-popup-moon">&#9790;</p>
+    <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
+    <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.<br><br>Wenn du einen Termin vereinbart hast, erhältst du das Wort, das diese Schwelle öffnet.</p>
+    <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
+  </div>
+</div>
+
 <!-- SESSION PORTAL -->
-<div class="session-portal reveal" id="sessionPortal">
+<div class="session-portal reveal">
   <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
     <svg class="session-portal-svg" viewBox="0 0 200 200">
       <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
@@ -2041,16 +2081,6 @@ window.onerror=function(msg,src,line,col,err){
     </svg>
   </a>
 </div>
-<div class="session-popup" id="sessionPopup">
-  <div class="session-popup-inner">
-    <button class="session-popup-close" onclick="document.getElementById('sessionPopup').classList.remove('active')">&times;</button>
-    <p class="session-popup-moon">&#9790;</p>
-    <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
-    <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.<br><br>Wenn du einen Termin vereinbart hast, erhältst du das Wort, das diese Schwelle öffnet.</p>
-    <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
-  </div>
-</div>
-
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
@@ -2270,6 +2300,21 @@ window.onerror=function(msg,src,line,col,err){
 </section>
 
 
+<!-- SESSION PORTAL -->
+<div class="session-portal reveal">
+  <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
+    <svg class="session-portal-svg" viewBox="0 0 200 200">
+      <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,110,.12)" stroke-width=".6"/>
+      <circle cx="100" cy="100" r="42" fill="url(#portalGrad)"/>
+      <circle cx="100" cy="100" r="42" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1.5" filter="url(#portalGlow)"/>
+      <path d="M100 12 C118 42,128 62,122 82 S106 108,110 132 S122 162,100 188" fill="none" stroke="rgba(80,180,210,.3)" stroke-width="2.5" stroke-linecap="round" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <path d="M100 12 C82 42,72 62,78 82 S94 108,90 132 S78 162,100 188" fill="none" stroke="rgba(80,180,210,.2)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpinR 8s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,110,.07)" stroke-width=".5" stroke-dasharray="2 5" style="animation:vortexSpin 18s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,.05)" stroke-width=".4" stroke-dasharray="1.5 6" style="animation:vortexSpinR 25s linear infinite;transform-origin:center"/>
+    </svg>
+  </a>
+</div>
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
@@ -2505,6 +2550,21 @@ window.onerror=function(msg,src,line,col,err){
 
   </div>
 </section>
+<!-- SESSION PORTAL -->
+<div class="session-portal reveal">
+  <a href="javascript:void(0)" class="session-portal-link" onclick="document.getElementById('sessionPopup').classList.add('active')">
+    <svg class="session-portal-svg" viewBox="0 0 200 200">
+      <defs><radialGradient id="portalGrad" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.1)"/><stop offset="60%" stop-color="rgba(8,8,7,.85)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient><filter id="portalGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(201,169,110,.12)" stroke-width=".6"/>
+      <circle cx="100" cy="100" r="42" fill="url(#portalGrad)"/>
+      <circle cx="100" cy="100" r="42" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1.5" filter="url(#portalGlow)"/>
+      <path d="M100 12 C118 42,128 62,122 82 S106 108,110 132 S122 162,100 188" fill="none" stroke="rgba(80,180,210,.3)" stroke-width="2.5" stroke-linecap="round" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/>
+      <path d="M100 12 C82 42,72 62,78 82 S94 108,90 132 S78 162,100 188" fill="none" stroke="rgba(80,180,210,.2)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpinR 8s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(201,169,110,.07)" stroke-width=".5" stroke-dasharray="2 5" style="animation:vortexSpin 18s linear infinite;transform-origin:center"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(201,169,110,.05)" stroke-width=".4" stroke-dasharray="1.5 6" style="animation:vortexSpinR 25s linear infinite;transform-origin:center"/>
+    </svg>
+  </a>
+</div>
 <!-- MOON PHASE NAVIGATOR -->
 <div class="moon-nav reveal">
   <div class="moon-nav-label">Folge dem Mond — er führt dich durch die Seite</div>
