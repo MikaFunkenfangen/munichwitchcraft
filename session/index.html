@@ -35,7 +35,8 @@
   --section-px:clamp(1rem,5vw,3.5rem);
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;overscroll-behavior-x:none}
-body{background:linear-gradient(180deg,var(--ink) 0%,var(--storm-blue) 25%,var(--storm-gray) 50%,var(--storm-green) 75%,#0d1816 100%);background-attachment:fixed;color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden;overscroll-behavior-x:none;-webkit-font-smoothing:antialiased;-webkit-overflow-scrolling:touch}
+.bg-fixed{position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,var(--ink) 0%,var(--storm-blue) 25%,var(--storm-gray) 50%,var(--storm-green) 75%,#0d1816 100%);pointer-events:none}
 
 /* === NAV === */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 var(--section-px);height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(8,8,7,.95) 0%,rgba(8,8,7,.6) 60%,transparent 100%);transition:background .4s}
@@ -172,7 +173,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .vortex-center h1 em{font-style:italic;color:var(--cream-dim)}
 
 /* === HERO === */
-.session-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 4rem) var(--section-px) 4rem;position:relative;z-index:2}
+.session-hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 4rem) var(--section-px) 4rem;position:relative;z-index:2;-webkit-transform:translateZ(0);transform:translateZ(0)}
 .session-hero .hero-bg{position:absolute;inset:0;pointer-events:none}
 .session-hero .hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 65% at 50% 52%,rgba(37,51,35,.7) 0%,transparent 70%)}
 .session-hero .hero-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 100% 100% at 50% 50%,transparent 40%,rgba(8,8,7,.7) 100%)}
@@ -204,7 +205,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
 /* === SECTIONS === */
-.session-section{padding:clamp(4rem,10vw,9rem) var(--section-px);position:relative;z-index:2;overflow:hidden}
+.session-section{padding:clamp(4rem,10vw,9rem) var(--section-px);position:relative;z-index:2;overflow:hidden;-webkit-transform:translateZ(0);transform:translateZ(0)}
 .session-inner{max-width:720px;margin:0 auto}
 .session-section h2{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:clamp(2rem,4vw,3rem);text-shadow:0 0 40px rgba(8,8,7,.9);animation:headingGlow 6s ease-in-out infinite}
 .session-section h2 em{font-style:italic;color:var(--cream-dim)}
@@ -314,7 +315,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .test-result-note{margin-top:2rem;font-family:var(--sans);font-weight:300;font-size:.78rem;color:#8a4558;line-height:1.7;max-width:360px;margin-left:auto;margin-right:auto}
 
 /* === CONTACT === */
-.contact{padding:clamp(4rem,8vw,8.5rem) var(--section-px);text-align:center;position:relative;z-index:2;overflow:hidden;background:linear-gradient(180deg,rgba(30,18,32,.45) 0%,rgba(35,20,35,.5) 100%)}
+.contact{padding:clamp(4rem,8vw,8.5rem) var(--section-px);text-align:center;position:relative;z-index:2;overflow:hidden;background:linear-gradient(180deg,rgba(30,18,32,.45) 0%,rgba(35,20,35,.5) 100%);-webkit-transform:translateZ(0);transform:translateZ(0)}
 .contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(37,51,35,.25) 0%,transparent 65%);pointer-events:none}
 .contact-portrait{width:clamp(200px,35vw,320px);height:clamp(200px,35vw,320px);border-radius:50%;object-fit:cover;object-position:center 20%;margin:0 auto clamp(2rem,4vw,3rem);display:block;opacity:.85;filter:grayscale(10%) contrast(1.05) brightness(.95);box-shadow:0 0 40px rgba(201,169,110,.12),0 0 80px rgba(8,8,7,.3);border:1px solid rgba(201,169,110,.15)}
 .contact-inner{max-width:580px;margin:0 auto;position:relative;z-index:1}
@@ -328,7 +329,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .contact-note{font-family:var(--sans);font-size:clamp(.72rem,.85vw,.78rem);font-weight:300;letter-spacing:.12em;color:var(--cream-dim);opacity:.5;margin-top:2rem}
 
 /* === LEGAL === */
-.legal{background:linear-gradient(180deg,rgba(35,20,35,.5) 0%,rgba(20,12,22,.85) 100%);position:relative;z-index:2;padding:clamp(3rem,6vw,6rem) var(--section-px)}
+.legal{background:linear-gradient(180deg,rgba(35,20,35,.5) 0%,rgba(20,12,22,.85) 100%);position:relative;z-index:2;padding:clamp(3rem,6vw,6rem) var(--section-px);-webkit-transform:translateZ(0);transform:translateZ(0)}
 .legal-inner{max-width:800px;margin:0 auto}
 .legal-tabs{display:flex;margin-bottom:3rem;border-bottom:1px solid rgba(201,169,110,.1);gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .legal-tab{font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);padding:.8rem 1.5rem .8rem 0;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .3s,border-color .3s;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
@@ -380,6 +381,10 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
   .moon-phase-desc{display:none}
   .isar svg{transform:scaleX(1.3)}
   .star-bg.bright{box-shadow:0 0 3px rgba(201,169,110,.3)!important}
+  .star-bg:nth-child(n+40){display:none}
+  .starfield-bg{-webkit-transform:translateZ(0);transform:translateZ(0)}
+  .moon{-webkit-transform:translateZ(0);transform:translateZ(0)}
+  .isar{-webkit-transform:translateZ(0);transform:translateZ(0)}
   .test-scale-btn{width:44px;height:44px;font-size:1rem}
   .test-profile-grid{gap:8px}
   .sep-constellation{height:clamp(100px,22vw,160px)}
@@ -532,6 +537,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 </style>
 </head>
 <body>
+<div class="bg-fixed"></div>
 
 <!-- PASSWORD GATE -->
 <div class="pw-gate" id="pwGate">
