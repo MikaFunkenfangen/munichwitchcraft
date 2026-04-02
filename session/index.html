@@ -1552,9 +1552,9 @@ function tCopy(){
     });
   },5000);
 
-  /* Spark particles on password input */
-  pwInput.addEventListener('input',function(){
-    var rect=pwInput.getBoundingClientRect();
+  /* Spark particles on all intro input fields */
+  function spawnInputSparks(el){
+    var rect=el.getBoundingClientRect();
     var cx=rect.left+rect.width*0.5+Math.random()*rect.width*0.4-rect.width*0.2;
     for(var j=0;j<8;j++){
       var spark=document.createElement('div');
@@ -1565,6 +1565,10 @@ function tCopy(){
       document.body.appendChild(spark);
       setTimeout(function(){if(spark.parentNode)spark.parentNode.removeChild(spark)},1500);
     }
+  }
+  pwInput.addEventListener('input',function(){spawnInputSparks(pwInput)});
+  document.querySelectorAll('.pw-answer').forEach(function(inp){
+    inp.addEventListener('input',function(){spawnInputSparks(inp)});
   });
 
   /* Show a specific step */
