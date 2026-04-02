@@ -3770,6 +3770,21 @@ function showTab(btn,id){
 (function(){
   var overlay=document.getElementById("introOverlay");
   if(!overlay)return;
+
+  /* Skip intro when arriving with a hash (e.g. from session page → #faq) */
+  if(window.location.hash){
+    overlay.classList.add("hidden");
+    var btnWrap=document.getElementById("introEnterWrap");
+    if(btnWrap)btnWrap.style.display="none";
+    var isar=document.getElementById("isar");
+    if(isar)isar.style.opacity="";
+    setTimeout(function(){
+      var target=document.querySelector(window.location.hash);
+      if(target)target.scrollIntoView({behavior:"smooth",block:"start"});
+    },300);
+    return;
+  }
+
   var shadow=document.getElementById("eclipseShadow");
   var textEl=document.getElementById("introText");
   var titleEl=document.getElementById("introTitle");
