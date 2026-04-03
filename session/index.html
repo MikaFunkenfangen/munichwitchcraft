@@ -482,6 +482,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 /* Credit */
 .pw-credit{position:relative;z-index:10;font-family:var(--sans);font-size:clamp(.7rem,.9vw,.8rem);color:var(--cream);opacity:.5;letter-spacing:.06em;white-space:nowrap;margin-top:auto;padding:1.5rem 0}
 .pw-credit a{color:var(--gold);text-decoration:none}
+.pw-skip-intro{display:none;position:fixed;bottom:clamp(2.5rem,4vh,3.5rem);right:clamp(1rem,3vw,2rem);z-index:10001;font-family:var(--sans);font-size:clamp(.65rem,.8vw,.75rem);font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);opacity:.35;cursor:pointer;background:none;border:none;padding:.5rem 1rem;transition:opacity .4s,color .4s;-webkit-tap-highlight-color:transparent}
+.pw-skip-intro:hover{opacity:.7;color:var(--gold)}
 
 /* === BRAND PULSE === */
 @keyframes brandPulse{0%,100%{text-shadow:0 0 10px rgba(201,169,110,.3),0 0 30px rgba(201,169,110,.1);opacity:.7}50%{text-shadow:0 0 20px rgba(201,169,110,.6),0 0 50px rgba(201,169,110,.3),0 0 80px rgba(201,169,110,.15);opacity:1}}
@@ -641,6 +643,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
   <!-- Spotify credit -->
   <div class="pw-credit">Musik: Summerchild (Mika Sch&ouml;berl) &middot; <a href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener">Spotify</a></div>
+  <button class="pw-skip-intro" id="pwSkipIntro">&uuml;berspringen &rarr;</button>
 </div>
 
 <audio id="introAudio" src="waking-the-witch.mp3" preload="auto" loop></audio>
@@ -1595,12 +1598,27 @@ function tCopy(){
     if(skyMap[n]) gate.classList.add(skyMap[n]);
   }
 
+  /* Skip intro button */
+  var skipIntroBtn=document.getElementById('pwSkipIntro');
+  function showSkipIntro(){if(skipIntroBtn)skipIntroBtn.style.display='block'}
+  if(skipIntroBtn) skipIntroBtn.addEventListener('click',function(){
+    if(lightningInterval) clearInterval(lightningInterval);
+    gate.classList.add('supernova');
+    setTimeout(function(){
+      window.scrollTo(0,0);
+      gate.classList.add('hidden');
+      setTimeout(function(){gate.style.display='none'},1500);
+      try{audio.pause()}catch(e){}
+    },2000);
+  });
+
   /* Password check — on success show step 1 */
   function checkPassword(){
     tryPlayAudio();
     if(pwInput.value.trim().toLowerCase()===PASSWORD){
       sessionStorage.setItem('mw-session-auth','1');
       showStep('pwStep1');
+      showSkipIntro();
     } else {
       pwInput.classList.add('pw-error');
       pwInput.parentElement.classList.add('pw-shake');
