@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8123"],
       "port": 8123
+    },
+    {
+      "name": "hexenwerk",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8124", "--directory", "/Users/thomasschoeberl/Documents/GitHub/hexenwerk"],
+      "port": 8124
     }
   ]
 }
