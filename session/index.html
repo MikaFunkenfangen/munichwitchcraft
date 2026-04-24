@@ -38,6 +38,7 @@
   --serif:"Cormorant Garamond",Georgia,serif;
   --sans:"Jost",sans-serif;
   --heading:"Hermissoul","CCSBjork","Cormorant Garamond",Georgia,serif;
+  --display:"Hermissoul","CCSBjork",Georgia,serif;
   --nav-h:64px;
   --section-px:clamp(1rem,5vw,3.5rem);
 }
@@ -52,7 +53,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .nav-logo-circle{display:block;width:36px;height:36px;border-radius:50%;overflow:hidden;-webkit-transform:translateZ(0);transform:translateZ(0)}
 .nav-logo-img{display:block;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
 .nav-logo:hover .nav-logo-img{opacity:1}
-.nav-logo-text{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.08em;transition:color .3s}
+.nav-logo-text{font-family:var(--display);font-size:1.2rem;font-weight:400;color:var(--cream-dim);letter-spacing:.05em;transition:color .3s}
+.brand{font-family:var(--display);font-weight:400;font-style:normal;letter-spacing:.02em;color:inherit}
 .nav-logo:hover .nav-logo-text{color:var(--gold)}
 
 /* === SHARED === */
@@ -467,7 +469,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .pw-content{position:relative;z-index:10;text-align:center;max-width:500px;padding:0 1.5rem;margin-top:clamp(180px,30vh,280px)}
 
 /* Gate brand, welcome, field, btn */
-.pw-gate-brand{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--gold);letter-spacing:.15em;margin-bottom:1rem;animation:brandPulse 3s ease-in-out infinite}
+.pw-gate-brand{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:400;color:var(--gold);letter-spacing:.06em;margin-bottom:1rem;animation:brandPulse 3s ease-in-out infinite}
 .pw-gate-welcome{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:300;font-style:italic;color:var(--cream);text-align:center;max-width:420px;line-height:1.9;margin-bottom:clamp(2rem,4vw,3rem);opacity:.75}
 .pw-gate-field{position:relative;margin-bottom:1.5rem}
 .pw-gate-field input{background:transparent;border:none;border-bottom:1px solid var(--gold-dim);font-family:var(--serif);font-size:clamp(1rem,1.5vw,1.2rem);font-style:italic;font-weight:300;color:var(--cream);padding:.6rem 1.2rem;width:clamp(200px,40vw,320px);text-align:center;outline:none;letter-spacing:.08em;transition:border-color .4s,box-shadow .4s}
@@ -1167,7 +1169,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
     <div class="footer-brand">Munich <span>Witchcraft</span></div>
     <div class="footer-slogan">Alles Wesentliche wächst still.</div>
   </div>
-  <p class="footer-copy">&copy; 2026 Munich Witchcraft &middot; München<br><a href="#legal" onclick="showTab(document.querySelector('.legal-tab'),'impressum')">Impressum</a> &nbsp;&middot;&nbsp; <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutz</a></p>
+  <p class="footer-copy">&copy; 2026 <span class="brand">Munich Witchcraft</span> &middot; München<br><a href="#legal" onclick="showTab(document.querySelector('.legal-tab'),'impressum')">Impressum</a> &nbsp;&middot;&nbsp; <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutz</a></p>
 </footer>
 
 <script>

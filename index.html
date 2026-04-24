@@ -68,7 +68,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .nav-logo-circle{display:block;width:36px;height:36px;border-radius:50%;overflow:hidden;-webkit-transform:translateZ(0);transform:translateZ(0)}
 .nav-logo-img{display:block;width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
 .nav-logo:hover .nav-logo-img{opacity:1}
-.nav-logo-text{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.08em;transition:color .3s}
+.nav-logo-text{font-family:var(--display);font-size:1.2rem;font-weight:400;color:var(--cream-dim);letter-spacing:.05em;transition:color .3s}
+.brand{font-family:var(--display);font-weight:400;font-style:normal;letter-spacing:.02em;color:inherit}
 .nav-logo:hover .nav-logo-text{color:var(--gold)}
 
 /* === SHARED === */
@@ -1789,7 +1790,7 @@ window.onerror=function(msg,src,line,col,err){
       <div class="label">Über mich</div>
       <div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" src="img/img_14.png" alt="" loading="lazy"><h2>Verwurzelt.<br><em>Aufmerksam. Ehrlich.</em></h2></div>
       <div class="about-bio-block">
-        <p>Ich bin Mika Schöberl — Buchautor*in, Kräuterpädagog*in, Theolog*in. Meine Arbeit verbindet Natur, Spiritualität, Psychologie und Kreativität. Für Munich Witchcraft bringe ich all das zusammen: symbolisches Denken, tiefes Zuhören und die stille Intelligenz der Natur — in einem Raum ohne Klischees.</p>
+        <p>Ich bin Mika Schöberl — Buchautor*in, Kräuterpädagog*in, Theolog*in. Meine Arbeit verbindet Natur, Spiritualität, Psychologie und Kreativität. Für <span class="brand">Munich Witchcraft</span> bringe ich all das zusammen: symbolisches Denken, tiefes Zuhören und die stille Intelligenz der Natur — in einem Raum ohne Klischees.</p>
         <p class="about-bio-closing">Meine Haltung ist klar: Ich gebe dir keine Antworten, die nicht schon in dir sind. Ich helfe dir nur, den Weg dorthin zu finden.</p>
         <p class="about-bio-link">Mehr über mich auf <a href="https://funkenfangen.de/ueber-mich/" target="_blank" rel="noopener">funkenfangen.de</a></p>
       </div>
@@ -2901,7 +2902,7 @@ window.onerror=function(msg,src,line,col,err){
     <div class="footer-brand">Munich <span>Witchcraft</span></div>
     <div class="footer-slogan">Alles Wesentliche wächst still.</div>
   </div>
-  <p class="footer-copy">© 2026 Munich Witchcraft · München<br><a href="#legal" onclick="showTab(document.querySelector('.legal-tab'),'impressum')">Impressum</a> &nbsp;·&nbsp; <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutz</a></p>
+  <p class="footer-copy">© 2026 <span class="brand">Munich Witchcraft</span> · München<br><a href="#legal" onclick="showTab(document.querySelector('.legal-tab'),'impressum')">Impressum</a> &nbsp;·&nbsp; <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutz</a></p>
 </footer>
 
 <canvas class="firefly-canvas" id="fireflyCanvas"></canvas>
