@@ -794,25 +794,19 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .tarot-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(201,169,110,.04) 0%,transparent 40%,transparent 60%,rgba(201,169,110,.04) 100%);pointer-events:none}
 .tarot-card svg{width:100%;height:100%;opacity:.7}
 .tarot-fan.fanned .tarot-card{opacity:1}
-.tarot-card .card-face{position:absolute;inset:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.tarot-card .card-symbol{font-size:clamp(2rem,4vw,3.5rem);color:var(--gold);margin-bottom:.8rem;text-shadow:0 0 15px rgba(201,169,110,.7),0 0 40px rgba(201,169,110,.3);animation:glyphPulse 5s ease-in-out infinite}
-.tarot-card .card-title{font-family:var(--serif);font-size:clamp(.65rem,1vw,.8rem);font-style:italic;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.8;text-shadow:0 0 8px rgba(201,169,110,.4)}
-.tarot-card .card-numeral{position:absolute;bottom:10px;font-family:var(--serif);font-size:clamp(.65rem,.9vw,.75rem);color:var(--gold);opacity:.5;letter-spacing:.2em}
-.tarot-card .card-corner-tl,.tarot-card .card-corner-br{position:absolute;width:20px;height:20px;border-color:rgba(201,169,110,.2);border-style:solid}
+.tarot-card .card-image{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:cover;border-radius:5px;display:block;box-shadow:inset 0 0 0 1px rgba(201,169,110,.18),0 2px 12px rgba(8,8,7,.5)}
+.tarot-card .card-corner-tl,.tarot-card .card-corner-br{position:absolute;width:20px;height:20px;border-color:rgba(201,169,110,.45);border-style:solid;z-index:2;pointer-events:none;filter:drop-shadow(0 0 6px rgba(201,169,110,.4))}
 .tarot-card .card-corner-tl{top:8px;left:8px;border-width:1px 0 0 1px}
 .tarot-card .card-corner-br{bottom:8px;right:8px;border-width:0 1px 1px 0}
 
 @media(max-width:768px){
   .tarot-fan{height:clamp(200px,55vw,280px)}
   .tarot-card{width:clamp(70px,19vw,100px);height:clamp(118px,32vw,168px)}
-  .tarot-card .card-symbol{font-size:clamp(1.4rem,5vw,2rem);text-shadow:0 0 10px rgba(201,169,110,.6)}
-  .tarot-card .card-title{font-size:clamp(.65rem,2.5vw,.75rem)}
-  .tarot-card .card-numeral{font-size:clamp(.65rem,2vw,.7rem)}
   .tarot-card .card-corner-tl,.tarot-card .card-corner-br{width:12px;height:12px}
   .tarot-card .card-corner-tl{top:5px;left:5px}
   .tarot-card .card-corner-br{bottom:5px;right:5px}
   .tarot-card::before{inset:4px}
-  .tarot-card .card-face{inset:8px}
+  .tarot-card .card-image{inset:4px;width:calc(100% - 8px);height:calc(100% - 8px)}
 }
 
 /* === MÜNCHEN FOLKLORE INTERLUDE === */
@@ -1615,43 +1609,23 @@ window.onerror=function(msg,src,line,col,err){
   <div class="tarot-fan" id="tarotFan">
     <div class="tarot-card" style="--fan-i:0">
       <div class="card-corner-tl"></div><div class="card-corner-br"></div>
-      <div class="card-face">
-        <div class="card-symbol">☽</div>
-        <div class="card-title">Die Mondpriesterin</div>
-        <div class="card-numeral">II</div>
-      </div>
+      <img class="card-image" src="img/tarot/high-priestess.jpg" alt="Die Hohepriesterin (II) — Rider-Waite-Smith Tarot" loading="lazy" decoding="async">
     </div>
     <div class="tarot-card" style="--fan-i:1">
       <div class="card-corner-tl"></div><div class="card-corner-br"></div>
-      <div class="card-face">
-        <div class="card-symbol">⚶</div>
-        <div class="card-title">Der Stern</div>
-        <div class="card-numeral">XVII</div>
-      </div>
+      <img class="card-image" src="img/tarot/star.jpg" alt="Der Stern (XVII) — Rider-Waite-Smith Tarot" loading="lazy" decoding="async">
     </div>
     <div class="tarot-card" style="--fan-i:2">
       <div class="card-corner-tl"></div><div class="card-corner-br"></div>
-      <div class="card-face">
-        <div class="card-symbol">◯</div>
-        <div class="card-title">Das Rad</div>
-        <div class="card-numeral">X</div>
-      </div>
+      <img class="card-image" src="img/tarot/wheel-of-fortune.jpg" alt="Das Rad des Schicksals (X) — Rider-Waite-Smith Tarot" loading="lazy" decoding="async">
     </div>
     <div class="tarot-card" style="--fan-i:3">
       <div class="card-corner-tl"></div><div class="card-corner-br"></div>
-      <div class="card-face">
-        <div class="card-symbol">⌁</div>
-        <div class="card-title">Die Kraft</div>
-        <div class="card-numeral">VIII</div>
-      </div>
+      <img class="card-image" src="img/tarot/strength.jpg" alt="Die Kraft (VIII) — Rider-Waite-Smith Tarot" loading="lazy" decoding="async">
     </div>
     <div class="tarot-card" style="--fan-i:4">
       <div class="card-corner-tl"></div><div class="card-corner-br"></div>
-      <div class="card-face">
-        <div class="card-symbol">✦</div>
-        <div class="card-title">Die Welt</div>
-        <div class="card-numeral">XXI</div>
-      </div>
+      <img class="card-image" src="img/tarot/world.jpg" alt="Die Welt (XXI) — Rider-Waite-Smith Tarot" loading="lazy" decoding="async">
     </div>
   </div>
 
