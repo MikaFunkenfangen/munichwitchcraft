@@ -1159,13 +1159,13 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .perf-lite .btn-press-glow{animation:none!important;opacity:.5}
 
 /* === SEELENSPIEGEL — Emotional CTA Section === */
-.seelenspiegel{position:relative;z-index:2;padding:clamp(4rem,10vw,8rem) var(--section-px);text-align:center;overflow:hidden;background:rgba(90,30,45,.45)}
+.seelenspiegel{position:relative;z-index:2;padding:clamp(4rem,10vw,8rem) var(--section-px);text-align:center;overflow:hidden;background:linear-gradient(180deg,rgba(90,30,45,.55) 0%,rgba(70,22,38,.5) 60%,rgba(50,16,30,.55) 100%)}
 .seelenspiegel::before{content:none}
 .seelenspiegel-border{display:none}
-.seelenspiegel-banner{position:relative;width:calc(100% + 2 * var(--section-px));margin-left:calc(-1 * var(--section-px));margin-bottom:0;overflow:visible}
-.seelenspiegel-banner-img{width:100%;height:clamp(250px,45vw,420px);object-fit:cover;object-position:center 30%;display:block;position:sticky;top:var(--nav-h)}
-.seelenspiegel-banner-overlay{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(2rem,5vw,4rem) var(--section-px);margin-top:clamp(-3rem,-6vw,-5rem);background:rgba(90,30,45,.45)}
-.seelenspiegel-kicker{font-family:var(--sans);font-size:clamp(.7rem,.9vw,.8rem);font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.9;margin-bottom:.5rem;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.seelenspiegel-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 55% at 50% 30%,rgba(201,169,110,.10) 0%,rgba(201,169,110,.04) 35%,transparent 70%)}
+.seelenspiegel-header{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;margin-bottom:clamp(2rem,4vw,3rem)}
+.seelenspiegel-kicker{font-family:var(--sans);font-size:clamp(.7rem,.9vw,.8rem);font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.9;margin-bottom:clamp(1rem,2vw,1.4rem);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.seelenspiegel-kicker::after{content:"";display:block;width:48px;height:1px;background:rgba(201,169,110,.4);margin:clamp(.8rem,1.5vw,1.1rem) auto 0}
 .seelenspiegel h2{font-family:var(--heading);font-size:clamp(2.8rem,7vw,5rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.2;margin:0;text-shadow:0 3px 15px rgba(0,0,0,.7),0 0 40px rgba(201,169,110,.15)}
 .seelenspiegel h2 em{font-style:italic;color:var(--gold);text-shadow:0 3px 15px rgba(0,0,0,.7),0 0 30px rgba(201,169,110,.3),0 0 60px rgba(201,169,110,.15)}
 .seelenspiegel-body{font-family:var(--serif);font-size:clamp(1.1rem,1.8vw,1.3rem);font-weight:300;line-height:1.9;color:var(--cream);max-width:650px;margin:0 auto clamp(2rem,4vw,3rem);text-shadow:0 0 20px rgba(8,8,7,.4)}
@@ -1178,7 +1178,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .seelenspiegel .btn-book:hover{background:linear-gradient(135deg,rgba(201,169,110,.25),rgba(201,169,110,.15));border-color:rgba(201,169,110,.8);color:var(--white);box-shadow:0 0 50px rgba(201,169,110,.2)}
 .seelenspiegel-closing{font-family:var(--serif);font-size:clamp(.85rem,1.1vw,.95rem);font-style:italic;color:var(--gold);margin-top:clamp(1.5rem,3vw,2rem);opacity:.7}
 .perf-lite .seelenspiegel::before{background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,169,110,.05) 0%,transparent 60%)}
-@media(max-width:600px){.seelenspiegel-ways{gap:1.2rem}.seelenspiegel-way{min-width:80px}.seelenspiegel-banner-img{height:clamp(180px,50vw,280px)}}
+@media(max-width:600px){.seelenspiegel-ways{gap:1.2rem}.seelenspiegel-way{min-width:80px}}
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 </style>
@@ -2017,13 +2017,10 @@ window.onerror=function(msg,src,line,col,err){
 
 <!-- SEELENSPIEGEL — Emotional CTA -->
 <section class="seelenspiegel" data-reveal>
-  <div class="seelenspiegel-border"></div>
-  <div class="seelenspiegel-banner">
-    <img src="img/img_17.jpg" alt="Mika Schöberl" class="seelenspiegel-banner-img" loading="lazy" decoding="async">
-    <div class="seelenspiegel-banner-overlay">
-      <div class="seelenspiegel-kicker">Wenn das Herz schmerzt</div>
-      <h2><em>Liebeskummer?</em></h2>
-    </div>
+  <div class="seelenspiegel-glow" aria-hidden="true"></div>
+  <div class="seelenspiegel-header reveal">
+    <div class="seelenspiegel-kicker">Wenn das Herz schmerzt</div>
+    <h2><em>Liebeskummer?</em></h2>
   </div>
   <p class="seelenspiegel-body">
     Liebeskummer, Trennungsschmerz, eine Entscheidung, die sich anfühlt wie eine Sackgasse — du musst das nicht allein durchstehen. Ich sage dir, was du eigentlich schon weißt, aber nicht hören willst. Ich helfe dir, die rosarote Brille abzunehmen, die Masken fallen zu lassen und das Verdrängte anzuschauen — ohne Urteil, aber ohne Ausrede. Aus Schmerz wird Klarheit. Aus Klarheit wird Kraft.
