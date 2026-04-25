@@ -270,11 +270,16 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .offerings-head{max-width:1160px;margin:0 auto;padding:clamp(4rem,8vw,7.5rem) var(--section-px) clamp(2rem,5vw,4.5rem)}
 .offerings-head h2{font-family:var(--heading);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:300;color:var(--white);line-height:1.1}
 .offerings-head h2 em{font-style:italic;color:var(--cream-dim)}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.cards{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"tarot spirit" "essay1 essay1" "essay2 essay2";gap:3px}
 .card-col{display:flex;flex-direction:column}
+.card-col-tarot{grid-area:tarot}
+.card-col-spirit{grid-area:spirit}
 .card-col .card{flex:1}
-.card-col .tarot-essay{margin:0;padding:0 clamp(1rem,2vw,1.5rem)}
-@media(max-width:768px){.cards{grid-template-columns:1fr}}
+.card-col>.tarot-essay-toggle{padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,2vw,1.5rem)}
+#essayContent{grid-area:essay1}
+#spiritEssayContent{grid-area:essay2}
+.cards>.tarot-essay-fullspan{max-width:820px;width:100%;margin:0 auto;padding:0 var(--section-px);box-sizing:border-box}
+@media(max-width:768px){.cards{grid-template-columns:1fr;grid-template-areas:"tarot" "essay1" "spirit" "essay2"}.cards>.tarot-essay-fullspan{padding:0 clamp(1rem,4vw,2rem)}}
 .card{background:rgba(30,42,28,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:clamp(2.5rem,5vw,4.5rem) clamp(1.5rem,4vw,4rem) clamp(3rem,5vw,5rem);position:relative;overflow:hidden;transition:background .5s}
 .card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 90%,rgba(201,169,110,.04) 0%,transparent 65%);pointer-events:none;opacity:0;transition:opacity .5s}
 .card:hover{background:var(--moss2)}
@@ -705,12 +710,11 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .btn-magic:hover .btn-magic-arrow{transform:translateY(3px)}
 
 /* --- Btn-magic: Zuklappen-Buttons via parent sections --- */
-.card-col:first-child .tarot-essay .btn-magic{background:linear-gradient(135deg,rgba(20,42,28,.9),rgba(35,55,35,.85));border-color:rgba(201,169,110,.3)}
-.card-col:first-child .tarot-essay .btn-magic:hover{background:linear-gradient(135deg,rgba(26,52,34,.95),rgba(42,65,42,.9));border-color:rgba(201,169,110,.55)}
-.card-col:last-child .tarot-essay .btn-magic{background:linear-gradient(135deg,rgba(22,26,45,.9),rgba(35,38,60,.85));border-color:rgba(140,130,200,.3)}
-.card-col:last-child .tarot-essay .btn-magic:hover{background:linear-gradient(135deg,rgba(28,32,55,.95),rgba(42,45,72,.9));border-color:rgba(160,150,210,.55)}
-.card-col:last-child .tarot-essay .btn-magic:hover{color:rgba(180,175,220,.95)}
-.card-col:last-child .tarot-essay .btn-magic .btn-magic-star{text-shadow:0 0 12px rgba(140,130,200,.7),0 0 30px rgba(120,110,180,.3)}
+.tarot-essay-toggle--tarot .btn-magic,#essayContent .btn-magic{background:linear-gradient(135deg,rgba(20,42,28,.9),rgba(35,55,35,.85));border-color:rgba(201,169,110,.3)}
+.tarot-essay-toggle--tarot .btn-magic:hover,#essayContent .btn-magic:hover{background:linear-gradient(135deg,rgba(26,52,34,.95),rgba(42,65,42,.9));border-color:rgba(201,169,110,.55)}
+.tarot-essay-toggle--spirit .btn-magic,#spiritEssayContent .btn-magic{background:linear-gradient(135deg,rgba(22,26,45,.9),rgba(35,38,60,.85));border-color:rgba(140,130,200,.3)}
+.tarot-essay-toggle--spirit .btn-magic:hover,#spiritEssayContent .btn-magic:hover{background:linear-gradient(135deg,rgba(28,32,55,.95),rgba(42,45,72,.9));border-color:rgba(160,150,210,.55);color:rgba(180,175,220,.95)}
+.tarot-essay-toggle--spirit .btn-magic .btn-magic-star,#spiritEssayContent .btn-magic .btn-magic-star{text-shadow:0 0 12px rgba(140,130,200,.7),0 0 30px rgba(120,110,180,.3)}
 .about .tarot-essay .btn-magic,.about .tarot-essay-toggle .btn-magic{background:linear-gradient(135deg,rgba(35,30,25,.9),rgba(50,42,35,.85));border-color:rgba(201,169,110,.25)}
 .about .tarot-essay .btn-magic:hover,.about .tarot-essay-toggle .btn-magic:hover{background:linear-gradient(135deg,rgba(45,38,30,.95),rgba(58,50,42,.9));border-color:rgba(201,169,110,.5)}
 .manifest .btn-magic{background:linear-gradient(135deg,rgba(15,15,12,.92),rgba(28,28,22,.88));border-color:rgba(201,169,110,.35)}
@@ -1658,7 +1662,7 @@ window.onerror=function(msg,src,line,col,err){
   </div>
 
   <div class="cards">
-    <div class="card-col">
+    <div class="card-col card-col-tarot">
     <div class="card card-tarot reveal">
       <div class="card-num">01</div>
       <h3>Kartenlegen<br><em>&amp; Tarot</em></h3>
@@ -1674,14 +1678,14 @@ window.onerror=function(msg,src,line,col,err){
       <a href="#contact" class="btn-book">Jetzt buchen <span class="book-arrow">→</span></a>
     </div>
 
-    <!-- Tarot Essay — expandable deep-dive -->
-    <div class="tarot-essay">
-      <div class="tarot-essay-toggle">
-        <button class="btn-magic" id="essayToggle" onclick="toggleEssay()">
-          <span class="btn-magic-star">✦</span> <span id="essayToggleText">Die Philosophie hinter den Karten</span> <span class="btn-magic-arrow">↓</span> <span class="btn-magic-star">✦</span>
-        </button>
-      </div>
-      <div class="tarot-essay-content" id="essayContent">
+    <!-- Tarot Essay — toggle stays in column, content spans full grid width below -->
+    <div class="tarot-essay-toggle tarot-essay-toggle--tarot">
+      <button class="btn-magic" id="essayToggle" onclick="toggleEssay()">
+        <span class="btn-magic-star">✦</span> <span id="essayToggleText">Die Philosophie hinter den Karten</span> <span class="btn-magic-arrow">↓</span> <span class="btn-magic-star">✦</span>
+      </button>
+    </div>
+    </div>
+    <div class="tarot-essay-content tarot-essay-fullspan" id="essayContent">
         <p class="tarot-essay-intro">Seit Jahrhunderten übt das Tarot de Marseille eine fast magnetische Anziehungskraft auf den menschlichen Geist aus. Hinter den starren Blicken seiner Figuren und der scheinbar naiven Farbsymbolik verbirgt sich eine weitaus tiefere Dimension — ein sorgsam konstruierter Träger für die philosophischen Lehren der Renaissance.</p>
 
         <div class="essay-section">
@@ -1728,10 +1732,8 @@ window.onerror=function(msg,src,line,col,err){
           </button>
         </div>
       </div>
-    </div>
-    </div>
 
-    <div class="card-col">
+    <div class="card-col card-col-spirit">
     <div class="card card-spirit reveal reveal-delay-1">
       <div class="fog-layer"></div>
       <div class="card-num">02</div>
@@ -1748,14 +1750,14 @@ window.onerror=function(msg,src,line,col,err){
       <a href="#contact" class="btn-book">Jetzt buchen <span class="book-arrow">→</span></a>
     </div>
 
-    <!-- Spirit Essay — expandable deep-dive -->
-    <div class="tarot-essay">
-      <div class="tarot-essay-toggle">
-        <button class="btn-magic" id="spiritEssayToggle" onclick="toggleSpiritEssay()">
-          <span class="btn-magic-star">✦</span> <span id="spiritEssayText">Über diesen Ansatz</span> <span class="btn-magic-arrow">↓</span> <span class="btn-magic-star">✦</span>
-        </button>
-      </div>
-      <div class="tarot-essay-content" id="spiritEssayContent">
+    <!-- Spirit Essay — toggle stays in column, content spans full grid width below -->
+    <div class="tarot-essay-toggle tarot-essay-toggle--spirit">
+      <button class="btn-magic" id="spiritEssayToggle" onclick="toggleSpiritEssay()">
+        <span class="btn-magic-star">✦</span> <span id="spiritEssayText">Über diesen Ansatz</span> <span class="btn-magic-arrow">↓</span> <span class="btn-magic-star">✦</span>
+      </button>
+    </div>
+    </div>
+    <div class="tarot-essay-content tarot-essay-fullspan" id="spiritEssayContent">
 
         <div class="essay-section">
           <h4>Wahrnehmung schulen. <em>Sich selbst führen lernen.</em></h4>
@@ -1780,7 +1782,6 @@ window.onerror=function(msg,src,line,col,err){
           </button>
         </div>
       </div>
-    </div>
 
   </div>
 </section>
@@ -3427,8 +3428,8 @@ function toggleEssay(){
   text.textContent=isOpen?"Zuklappen":"Die Philosophie hinter den Karten";
   arrow.style.transform=isOpen?"rotate(180deg)":"";
   if(!isOpen){
-    var essay=document.querySelector(".tarot-essay");
-    if(essay){setTimeout(function(){essay.scrollIntoView({behavior:"smooth",block:"start"})},200)}
+    var anchor=document.getElementById("essayToggle");
+    if(anchor){setTimeout(function(){anchor.scrollIntoView({behavior:"smooth",block:"center"})},200)}
   }
 }
 
@@ -3441,8 +3442,8 @@ function toggleSpiritEssay(){
   text.textContent=isOpen?"Zuklappen":"Über diesen Ansatz";
   arrow.style.transform=isOpen?"rotate(180deg)":"";
   if(!isOpen){
-    var essays=document.querySelectorAll(".tarot-essay");
-    if(essays[1]){setTimeout(function(){essays[1].scrollIntoView({behavior:"smooth",block:"start"})},200)}
+    var anchor=document.getElementById("spiritEssayToggle");
+    if(anchor){setTimeout(function(){anchor.scrollIntoView({behavior:"smooth",block:"center"})},200)}
   }
 }
 
