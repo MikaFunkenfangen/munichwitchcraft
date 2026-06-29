@@ -108,6 +108,10 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pm-event .price-box{margin:.5rem 0 1.8rem}
 .pm-event .price-main{font-size:2rem}
 .pm-cta-row{display:flex;justify-content:center}
+.pm-event-note{font-family:var(--sans);font-size:clamp(.76rem,.95vw,.85rem);font-weight:300;line-height:1.6;color:var(--cream-dim);opacity:.8;margin-top:1.3rem;text-align:center;max-width:420px;margin-left:auto;margin-right:auto}
+/* Elegante Inhalts-Links (Summerchild, hexenwerk) */
+.step-d a,.pm-intro a,.pm-closer a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,.4);padding-bottom:1px;transition:color .3s,border-color .3s}
+.step-d a:hover,.pm-intro a:hover,.pm-closer a:hover{color:var(--white);border-color:var(--white)}
 .pm-stations-head{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
 .pm-stations-head .label{justify-content:center;margin-bottom:0}
 .pm-steps{max-width:920px;margin:0 auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));text-align:left}
@@ -255,8 +259,9 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
       </ul>
       <div class="price-box"><span class="price-main">35 &euro;</span><span class="price-label">inkl. vegetarischem Essen, Getränken &amp; Material</span></div>
       <div class="pm-cta-row">
-        <a href="{{ANMELDUNG_LINK}}" class="btn-book">Platz sichern <span class="book-arrow">&rarr;</span></a>
+        <a href="mailto:funkenfangen@mikaschoeberl.com" class="btn-book" id="pmReserve">Platz sichern <span class="book-arrow">&rarr;</span></a>
       </div>
+      <p class="pm-event-note">Es öffnet sich eine vorbereitete E-Mail &mdash; du füllst nur die Lücken aus. Freund:innen sind herzlich willkommen, ebenfalls mit Anmeldung. Jede Anmeldung bestätige ich persönlich.</p>
     </div>
 
     <!-- ▸ WAS DICH ERWARTET — Elemente eines Treffens -->
@@ -346,6 +351,25 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
       form.parentNode.replaceChild(msg,form);
     });
   });
+})();
+
+// === PLATZ SICHERN — vorausgefüllte Reservierungs-E-Mail ===
+(function(){
+  var a=document.getElementById('pmReserve');
+  if(!a)return;
+  var subject='Reservierungsanfrage – Practical Magic';
+  var body=[
+    'Hallo Mika,','',
+    'ich möchte gern einen Platz bei Practical Magic reservieren.','',
+    'Termin: Buck Moon, 31. Juli 2026',
+    'Mein Name: ',
+    'Anzahl Personen: ',
+    'Ich bringe mit (Freund:in): ',
+    'Telefon (optional): ',
+    'Mein Wort an dich (optional): ','',
+    'Herzliche Grüße'
+  ].join('\r\n');
+  a.setAttribute('href','mailto:funkenfangen@mikaschoeberl.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body));
 })();
 </script>
 
