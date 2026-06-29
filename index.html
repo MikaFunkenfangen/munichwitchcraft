@@ -1186,6 +1186,8 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .nl-btn:hover{background:var(--white);border-color:var(--white)}
 .nl-consent{font-family:var(--sans);font-size:.72rem;font-weight:300;line-height:1.6;color:var(--cream-dim);opacity:.7;margin:.9rem auto 0;text-align:center;max-width:440px}
 .nl-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.nl-success{font-family:var(--serif);font-size:clamp(1.02rem,1.5vw,1.18rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);max-width:440px;margin:0 auto;padding:1.2rem 0;text-align:center}
+.nl-success strong{color:var(--gold);font-style:normal;font-weight:400}
 /* Practical Magic newsletter teaser band */
 .pm-teaser{position:relative;z-index:2;padding:clamp(3.5rem,7vw,6rem) var(--section-px);text-align:center;background:linear-gradient(180deg,rgba(20,28,22,.35) 0%,rgba(15,18,35,.4) 100%);border-top:1px solid rgba(201,169,110,.08);border-bottom:1px solid rgba(201,169,110,.08)}
 .pm-teaser-inner{max-width:640px;margin:0 auto}
@@ -4362,6 +4364,26 @@ function showLetterPopup(){
   }
   btn.addEventListener('click',checkPw);
   inp.addEventListener('keydown',function(e){if(e.key==='Enter')checkPw()});
+})();
+
+// === NEWSLETTER (Brevo) — AJAX-Absenden + Inline-Dank ===
+(function(){
+  document.querySelectorAll('form.nl-form').forEach(function(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var email=form.querySelector('input[name="EMAIL"]');
+      if(!email||!email.value||(email.checkValidity&&!email.checkValidity())){if(email&&email.reportValidity)email.reportValidity();return;}
+      var data=new URLSearchParams();
+      data.append('EMAIL',email.value);
+      data.append('email_address_check','');
+      data.append('locale','de');
+      fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()}).catch(function(){});
+      var msg=document.createElement('p');
+      msg.className='nl-success';
+      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt &mdash; bitte best&auml;tige darin deine Anmeldung, dann erh&auml;ltst du dein <strong>Zugangswort</strong>.';
+      form.parentNode.replaceChild(msg,form);
+    });
+  });
 })();
 
 </script>
