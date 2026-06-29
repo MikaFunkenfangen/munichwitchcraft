@@ -287,6 +287,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
     <!-- ▸ ORT-GALERIE (horizontal scrollbar / wischbar) -->
     <div class="pm-gallery-wrap reveal">
       <div class="label label-center">Der Ort</div>
+      <div class="pm-gallery-stage">
+      <button class="pm-gallery-nav prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5 8 12 15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="pm-gallery" id="pmGallery">
         <figure class="pm-slide"><img src="../img/practical-magic/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-13.jpg" alt="Schwarze Katze auf einer Gartenbank bei Kerzenschein und Lichterkette" loading="lazy" decoding="async"><figcaption>Die Hexenkatze</figcaption></figure>
@@ -302,7 +304,9 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
         <figure class="pm-slide"><img src="../img/practical-magic/pm-04.jpg" alt="Blühende Sträucher vor den erleuchteten Fenstern in der Dämmerung" loading="lazy" decoding="async"><figcaption>Dämmerung am Haus</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-09.jpg" alt="Klanginstrumente: Handpan, Klangschalen und Harfe" loading="lazy" decoding="async"><figcaption>Klang: Handpan, Schalen &amp; Harfe</figcaption></figure>
       </div>
-      <div class="pm-gallery-hint">&lsaquo; wischen / ziehen &rsaquo;</div>
+      <button class="pm-gallery-nav next" type="button" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 16 12 9 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="pm-gallery-hint">Wischen oder die Pfeile nutzen</div>
     </div>
 
     <!-- ▸ NÄCHSTER TERMIN — leicht austauschbarer Datenblock (Datum / Anlass / Mondphase / Beitrag) -->
@@ -458,6 +462,23 @@ function showTab(btn,id){
   audio.addEventListener('ended',setOff);
   // Wiederkehrende Besucher (Gate übersprungen): Auto-Play versuchen; blockiert der Browser, lädt der Button zum Start ein.
   if(sessionStorage.getItem('mw-pm-auth')==='1'){ play(); }
+})();
+
+// === GALERIE-PFEILE (blättern) ===
+(function(){
+  var gal=document.getElementById('pmGallery');
+  if(!gal)return;
+  var stage=gal.closest('.pm-gallery-stage');
+  if(!stage)return;
+  function go(dir){
+    var slide=gal.querySelector('.pm-slide');
+    var step=slide?slide.getBoundingClientRect().width+14:gal.clientWidth*0.85;
+    gal.scrollBy({left:dir*step,behavior:'auto'});
+  }
+  var prev=stage.querySelector('.pm-gallery-nav.prev');
+  var next=stage.querySelector('.pm-gallery-nav.next');
+  if(prev)prev.addEventListener('click',function(){go(-1);});
+  if(next)next.addEventListener('click',function(){go(1);});
 })();
 
 // === NEWSLETTER (Brevo) — AJAX-Absenden + Inline-Dank ===
