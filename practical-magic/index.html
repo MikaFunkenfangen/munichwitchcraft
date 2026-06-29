@@ -125,7 +125,14 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pm-slide{flex:0 0 auto;scroll-snap-align:center;width:clamp(255px,76vw,430px);position:relative;border-radius:5px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.4);margin:0}
 .pm-slide img{display:block;width:100%;height:clamp(330px,64vw,500px);object-fit:cover}
 .pm-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem 1.1rem .95rem;font-family:var(--serif);font-style:italic;font-size:clamp(.86rem,1.1vw,1rem);line-height:1.4;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.82),rgba(8,8,7,.25) 60%,transparent);text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.pm-gallery-hint{text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);opacity:.45;margin-top:.9rem}
+.pm-gallery-hint{text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);opacity:.55;margin-top:.9rem}
+.pm-gallery-stage{position:relative}
+.pm-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:clamp(42px,8vw,54px);height:clamp(42px,8vw,54px);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,15,20,.8);border:1.5px solid var(--gold);color:var(--gold);cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background .3s,color .3s,box-shadow .3s;-webkit-tap-highlight-color:transparent;animation:pmNavPulse 2.4s ease-in-out infinite}
+.pm-gallery-nav.prev{left:clamp(.2rem,1.5vw,1rem)}
+.pm-gallery-nav.next{right:clamp(.2rem,1.5vw,1rem)}
+.pm-gallery-nav svg{width:46%;height:46%;display:block}
+.pm-gallery-nav:hover{background:var(--gold);color:var(--ink)}
+@keyframes pmNavPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 0 rgba(201,169,110,0)}50%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 8px rgba(201,169,110,.22)}}
 .pm-newsletter{max-width:560px;margin:0 auto;padding-top:clamp(2.5rem,5vw,4rem);border-top:1px solid rgba(201,169,110,.1)}
 .pm-newsletter .label{justify-content:center;margin-bottom:1.2rem}
 .pm-news-lead{font-family:var(--sans);font-size:clamp(.88rem,1vw,.98rem);font-weight:300;line-height:1.9;color:var(--cream-dim);margin-bottom:2rem}
