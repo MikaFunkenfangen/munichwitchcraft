@@ -113,6 +113,15 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pm-steps{max-width:920px;margin:0 auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));text-align:left}
 .pm-steps .step-n{font-size:clamp(2.4rem,4vw,3.4rem)}
 .pm-closer{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--cream);max-width:600px;margin:clamp(3rem,6vw,4.5rem) auto clamp(3rem,6vw,4.5rem);text-shadow:0 0 30px rgba(8,8,7,.8)}
+/* === ORT-GALERIE === */
+.pm-gallery-wrap{margin:clamp(2.5rem,5vw,4rem) 0 clamp(2.5rem,5vw,4rem)}
+.pm-gallery-wrap .label{justify-content:center;margin-bottom:clamp(1.2rem,3vw,2rem)}
+.pm-gallery{display:flex;gap:clamp(.8rem,2vw,1.3rem);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:.4rem clamp(.6rem,3vw,1.4rem);scrollbar-width:none}
+.pm-gallery::-webkit-scrollbar{display:none}
+.pm-slide{flex:0 0 auto;scroll-snap-align:center;width:clamp(255px,76vw,430px);position:relative;border-radius:5px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.4);margin:0}
+.pm-slide img{display:block;width:100%;height:clamp(330px,64vw,500px);object-fit:cover}
+.pm-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem 1.1rem .95rem;font-family:var(--serif);font-style:italic;font-size:clamp(.86rem,1.1vw,1rem);line-height:1.4;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.82),rgba(8,8,7,.25) 60%,transparent);text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.pm-gallery-hint{text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);opacity:.45;margin-top:.9rem}
 .pm-newsletter{max-width:560px;margin:0 auto;padding-top:clamp(2.5rem,5vw,4rem);border-top:1px solid rgba(201,169,110,.1)}
 .pm-newsletter .label{justify-content:center;margin-bottom:1.2rem}
 .pm-news-lead{font-family:var(--sans);font-size:clamp(.88rem,1vw,.98rem);font-weight:300;line-height:1.9;color:var(--cream-dim);margin-bottom:2rem}
@@ -217,6 +226,23 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 
     <p class="pm-intro reveal">Wir begegnen uns draußen, zu allen Jahreszeiten. Am Feuer besprechen wir den Mond und den Lauf des Jahres, tauschen Wissen und Erfahrung, lernen die Grundlagen der Hexenkunst und schärfen die Sinne. Es gibt Musik, Kunst, Poesie und Meditation &mdash; und Raum für das Ganze, nicht nur für einzelne Teile. Kein Kurs, kein Workshop: ein gemütliches Treffen unter neugierigen Menschen.</p>
 
+    <!-- ▸ ORT-GALERIE (horizontal scrollbar / wischbar) -->
+    <div class="pm-gallery-wrap reveal">
+      <div class="label label-center">Der Ort</div>
+      <div class="pm-gallery" id="pmGallery">
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-02.jpg" alt="Blühende Hortensien und Ringelblumen vor der Veranda" loading="lazy" decoding="async"><figcaption>Hortensien vor der Veranda</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-03.jpg" alt="Rote Rosen vor dem Haus in der Abenddämmerung" loading="lazy" decoding="async"><figcaption>Rosen in der Abenddämmerung</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-04.jpg" alt="Blühende Sträucher vor den erleuchteten Fenstern in der Dämmerung" loading="lazy" decoding="async"><figcaption>Dämmerung am Haus</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-05.jpg" alt="Gemütliche Sitzecke im Garten mit Strohballen, Sesseln und Laternen" loading="lazy" decoding="async"><figcaption>Sitzecke im Garten</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-06.jpg" alt="Wohnzimmer mit Kamin, Bücherwand und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Am Kamin</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-07.jpg" alt="Heller Raum mit Kunst, Kristallen und Pflanzen" loading="lazy" decoding="async"><figcaption>Raum für Kunst &amp; Kristalle</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-08.jpg" alt="Kunstecke mit Bildergalerie, floraler Tapete und barockem Stuhl" loading="lazy" decoding="async"><figcaption>Eine Ecke für die Kunst</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-09.jpg" alt="Klanginstrumente: Handpan, Klangschalen und Harfe" loading="lazy" decoding="async"><figcaption>Klang: Handpan, Schalen &amp; Harfe</figcaption></figure>
+      </div>
+      <div class="pm-gallery-hint">&lsaquo; wischen / ziehen &rsaquo;</div>
+    </div>
+
     <!-- ▸ NÄCHSTER TERMIN — leicht austauschbarer Datenblock (Datum / Anlass / Mondphase / Beitrag) -->
     <div class="pm-event reveal">
       <div class="pm-event-eyebrow">Der nächste Termin</div>
@@ -241,7 +267,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
       <div class="step reveal reveal-delay-2"><div class="step-n">3</div><div class="step-t">Hexenwissen teilen</div><p class="step-d">Wir tauschen Wissen und Erfahrung, lernen die Grundlagen der Hexenkunst und das alte Kräuterwissen &mdash; und jede:r nimmt etwas Selbstangesetztes mit nach Hause.</p></div>
       <div class="step reveal"><div class="step-n">4</div><div class="step-t">Musik, Kunst &amp; Poesie</div><p class="step-d">Live-Musik am Flügel, Gedichte, ein Bild &mdash; wir schärfen die Sinne. Meine eigene Musik findest du als <a href="https://open.spotify.com/intl-de/artist/2ptdAWeYGiNLPKbbXTsnYX" target="_blank" rel="noopener">Summerchild</a>.</p></div>
       <div class="step reveal reveal-delay-1"><div class="step-n">5</div><div class="step-t">Meditation &amp; Ganzheit</div><p class="step-d">Eine geführte Reise nach innen, zur Ruhe &mdash; zum Ganzen, nicht nur zu einzelnen Teilen. Am Feuer gehen wir gemeinsam dorthin.</p></div>
-      <div class="step reveal reveal-delay-2"><div class="step-n">6</div><div class="step-t">Aus der Hexenforschung</div><p class="step-d">Neueste Einblicke aus meiner Arbeit zur Geschichte und Forschung rund um Hexen &mdash; mehr dazu auf <!-- TODO: hexenwerk-URL einsetzen -->hexenwerk, meiner Seite zur Hexenforschung.</p></div>
+      <div class="step reveal reveal-delay-2"><div class="step-n">6</div><div class="step-t">Aus der Hexenforschung</div><p class="step-d">Neueste Einblicke aus meiner Arbeit zur Geschichte und Forschung rund um Hexen &mdash; mehr dazu auf <a href="https://mikaschoeberl.com" target="_blank" rel="noopener">hexenwerk</a>, meiner Seite zur Hexenforschung.</p></div>
     </div>
 
     <p class="pm-closer reveal">Practical Magic ist kein Kurs. Es ist ein Treffen &mdash; und zwischen den Treffen der Newsletter, der dich auf dem Laufenden hält. Du gehst nicht mit einer Theorie nach Hause, sondern mit einem Abend, der nachklingt.</p>
