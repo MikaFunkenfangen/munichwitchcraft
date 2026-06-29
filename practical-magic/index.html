@@ -152,8 +152,17 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .legal-content a{color:var(--gold);text-decoration:none}
 
 /* === PASSWORD GATE === */
-.pw-gate{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;background:linear-gradient(180deg,#0a1020 0%,#070a12 55%,#040406 100%);transition:opacity 1s ease}
+.pw-gate{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:clamp(1.5rem,4vh,3rem) 1.25rem clamp(3rem,8vh,5.5rem);background:linear-gradient(180deg,#0a1020 0%,#070a12 55%,#040406 100%);transition:opacity 1s ease}
 .pw-gate.hidden{opacity:0;pointer-events:none}
+.pw-gate-inner{margin-top:auto;display:flex;flex-direction:column;align-items:center;width:100%;max-width:480px}
+.pw-gate-foot{margin-top:auto;padding-top:clamp(2.5rem,7vh,4.5rem);display:flex;gap:1.2rem;align-items:center;justify-content:center;flex-wrap:wrap}
+.pw-gate-foot a{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;opacity:.65;transition:color .3s,opacity .3s}
+.pw-gate-foot a:hover{color:var(--gold);opacity:1}
+.pw-gate-foot .sep{color:var(--gold-dim);opacity:.5}
+.pw-gate-step{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:1.1rem;opacity:.7}
+.pw-gate-divider{display:flex;align-items:center;gap:1rem;width:100%;max-width:300px;margin:clamp(2rem,4.5vh,3rem) auto clamp(1.8rem,4vh,2.6rem)}
+.pw-gate-divider::before,.pw-gate-divider::after{content:"";flex:1;height:1px;background:rgba(201,169,110,.18)}
+.pw-gate-divider span{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--cream-dim);opacity:.8}
 .pw-moon{width:clamp(70px,12vmin,110px);height:clamp(70px,12vmin,110px);flex:0 0 auto;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18);margin-bottom:clamp(1.8rem,4vw,2.8rem);animation:moonFloat 7s ease-in-out infinite,moonGlow 5s ease-in-out infinite}
 @keyframes moonFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes moonGlow{0%,100%{box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18)}50%{box-shadow:0 0 78px rgba(201,169,110,.55),0 0 150px rgba(201,169,110,.3)}}
@@ -185,9 +194,10 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .nl-success{font-family:var(--serif);font-size:clamp(1.02rem,1.5vw,1.18rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);max-width:440px;margin:0 auto;padding:1rem 0;text-align:center}
 .nl-success strong{color:var(--gold);font-style:normal;font-weight:400}
 /* Newsletter on the gate screen */
-.pw-gate-nl{margin-top:clamp(1.8rem,4vw,2.6rem);max-width:480px;width:100%}
-.pw-gate-nl-lead{font-family:var(--serif);font-size:clamp(.98rem,1.5vw,1.12rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.7;margin-bottom:1.2rem;opacity:.85}
-.pw-gate-nl-lead em{color:var(--gold);font-style:italic}
+.pw-gate-nl{margin-top:0;max-width:460px;width:100%;border:1px solid rgba(201,169,110,.25);border-radius:6px;background:rgba(201,169,110,.045);padding:clamp(1.4rem,3.5vw,2rem) clamp(1.2rem,3.2vw,1.8rem)}
+.pw-gate-nl-head{font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:400;font-style:italic;color:var(--gold);margin-bottom:.5rem}
+.pw-gate-nl-lead{font-family:var(--sans);font-size:clamp(.9rem,1.2vw,1rem);font-weight:300;color:var(--cream);line-height:1.7;margin-bottom:1.3rem;opacity:.9}
+.pw-gate-nl-lead em{color:var(--gold);font-style:normal}
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 </style>
@@ -196,25 +206,39 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 
 <!-- PASSWORD GATE -->
 <div class="pw-gate" id="pwGate">
-  <div class="pw-moon"></div>
-  <div class="pw-gate-brand">Munich Witchcraft</div>
-  <div class="pw-gate-sub">Practical Magic</div>
-  <p class="pw-gate-welcome">Ein Treffen im Hexengarten &mdash; und ein Newsletter von Munich Witchcraft.<br>Gib das Passwort ein, das du erhalten hast.</p>
-  <div class="pw-gate-field">
-    <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+  <div class="pw-gate-inner">
+    <div class="pw-moon"></div>
+    <div class="pw-gate-brand">Munich Witchcraft</div>
+    <div class="pw-gate-sub">Practical Magic</div>
+    <p class="pw-gate-welcome">Ein Treffen im Hexengarten &mdash; und ein Newsletter von Munich Witchcraft.</p>
+
+    <p class="pw-gate-step">Du hast schon ein Passwort?</p>
+    <div class="pw-gate-field">
+      <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
+    </div>
+    <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
+
+    <div class="pw-gate-divider"><span>oder</span></div>
+
+    <div class="pw-gate-nl">
+      <p class="pw-gate-nl-head">Noch nicht dabei?</p>
+      <p class="pw-gate-nl-lead">Du bist noch nicht angemeldet und hast noch kein Passwort? Abonniere den <em>Practical-Magic-Newsletter</em> &mdash; dein Zugangswort kommt anschlie&szlig;end per Best&auml;tigungs-Mail.</p>
+      <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
+        <div class="nl-row">
+          <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
+          <button class="nl-btn" type="submit">Abonnieren</button>
+        </div>
+        <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="locale" value="de">
+        <p class="nl-consent">Mit dem Abonnieren erh&auml;ltst du Hinweise zu den n&auml;chsten Abenden und dein Zugangswort. Abmeldung jederzeit. Mehr in der <a href="../#legal" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a>.</p>
+      </form>
+    </div>
   </div>
-  <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
-  <div class="pw-gate-nl">
-    <p class="pw-gate-nl-lead">Noch kein Passwort? Abonniere den <em>Practical-Magic</em>-Newsletter &mdash; du erh&auml;ltst dein Zugangswort per Best&auml;tigungs-Mail.</p>
-    <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
-      <div class="nl-row">
-        <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
-        <button class="nl-btn" type="submit">Abonnieren</button>
-      </div>
-      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <input type="hidden" name="locale" value="de">
-      <p class="nl-consent">Mit dem Abonnieren erh&auml;ltst du Hinweise zu den n&auml;chsten Abenden und dein Zugangswort. Abmeldung jederzeit. Mehr in der <a href="../#legal">Datenschutzerkl&auml;rung</a>.</p>
-    </form>
+
+  <div class="pw-gate-foot">
+    <a href="../#legal" target="_blank" rel="noopener">Impressum</a>
+    <span class="sep">&middot;</span>
+    <a href="../#legal" target="_blank" rel="noopener">Datenschutz</a>
   </div>
 </div>
 
