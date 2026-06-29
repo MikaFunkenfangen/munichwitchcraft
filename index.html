@@ -157,11 +157,14 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .moon-phase:hover .moon-phase-name,.moon-phase.active .moon-phase-name{opacity:1;color:var(--gold)}
 .moon-phase-desc{font-family:var(--serif);font-size:clamp(.58rem,.75vw,.66rem);font-style:italic;color:rgba(201,169,110,.4);opacity:1;transition:opacity .4s;text-align:center;white-space:nowrap;margin-top:-2px}
 .moon-phase:hover .moon-phase-desc,.moon-phase.active .moon-phase-desc{opacity:.6}
+.moon-phase[href="practical-magic/"] .moon-phase-desc{font-size:clamp(.74rem,1.05vw,.92rem);font-weight:400;color:var(--gold);opacity:.92;letter-spacing:.02em;margin-top:2px}
+.moon-phase[href="practical-magic/"]:hover .moon-phase-desc,.moon-phase[href="practical-magic/"].active .moon-phase-desc{opacity:1}
 .moon-nav-line{width:clamp(200px,50vw,500px);height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,.12),transparent);margin-top:.5rem}
 @media(max-width:768px){
   .moon-phases-row{gap:.3rem;justify-content:center}
   .moon-phase{padding:6px}
   .moon-phase-desc{display:none}
+  .moon-phase[href="practical-magic/"] .moon-phase-desc{display:block;font-size:.72rem;white-space:normal}
   .moon-mini-row{gap:.35rem;padding:0 .5rem}
   .moon-mini svg{width:20px;height:20px}
 }
