@@ -1176,40 +1176,6 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 
-/* === PRACTICAL MAGIC === */
-.pm{padding:clamp(4rem,8vw,7.5rem) var(--section-px);position:relative;z-index:2;background:linear-gradient(180deg,rgba(15,18,35,.4) 0%,rgba(20,28,22,.45) 50%,rgba(15,18,35,.3) 100%);overflow:hidden}
-.pm-inner{max-width:1000px;margin:0 auto;position:relative;text-align:center}
-.pm-eyebrow{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.06em;color:var(--cream-dim);margin:-1.5rem 0 1.5rem;opacity:.8}
-.pm h2{font-family:var(--heading);font-size:clamp(2.4rem,6vw,4.4rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:clamp(2rem,4vw,3rem);text-shadow:0 0 40px rgba(8,8,7,.9),0 0 80px rgba(8,8,7,.5);animation:headingGlow 6s ease-in-out infinite}
-.pm h2 em{font-style:italic;color:var(--cream-dim)}
-.pm-hero{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);font-weight:300;line-height:1.7;color:var(--cream);max-width:640px;margin:0 auto clamp(2rem,4vw,3rem);text-shadow:0 0 30px rgba(8,8,7,.8)}
-.pm-intro{font-family:var(--sans);font-size:clamp(.92rem,1.1vw,1.02rem);font-weight:300;line-height:1.95;color:var(--cream-dim);max-width:680px;margin:0 auto clamp(3rem,6vw,4.5rem);text-align:left;text-shadow:0 0 20px rgba(8,8,7,.7)}
-/* Termin-Karte */
-.pm-event{background:rgba(20,42,28,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(201,169,110,.18);border-radius:4px;padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3.5vw,3rem);max-width:560px;margin:0 auto clamp(3.5rem,7vw,5.5rem);text-align:center;box-shadow:0 6px 30px rgba(0,0,0,.25)}
-.pm-event-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
-.pm-event-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.2;margin-bottom:1.8rem;text-shadow:0 0 25px rgba(8,8,7,.8)}
-.pm-event-meta{list-style:none;padding:0;margin:0 auto 1.8rem;max-width:420px;text-align:left}
-.pm-event-meta li{font-family:var(--sans);font-size:clamp(.85rem,1vw,.95rem);font-weight:300;line-height:1.6;color:var(--cream);padding:.55rem 0;border-bottom:1px solid rgba(201,169,110,.08);display:flex;gap:1rem}
-.pm-event-meta li:last-child{border-bottom:none}
-.pm-event-meta li span{flex:0 0 5.5rem;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);padding-top:.2rem}
-.pm-event .price-box{margin:.5rem 0 1.8rem}
-.pm-event .price-main{font-size:2rem}
-.pm-cta-row{display:flex;justify-content:center}
-/* Stationen */
-.pm-stations-head{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.pm-stations-head .label{justify-content:center;margin-bottom:0}
-.pm-steps{max-width:920px;margin:0 auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));text-align:left}
-.pm-steps .step-n{font-size:clamp(2.4rem,4vw,3.4rem)}
-/* Abschluss */
-.pm-closer{font-family:var(--serif);font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--cream);max-width:600px;margin:clamp(3rem,6vw,4.5rem) auto clamp(3rem,6vw,4.5rem);text-shadow:0 0 30px rgba(8,8,7,.8)}
-/* Newsletter */
-.pm-newsletter{max-width:560px;margin:0 auto;padding-top:clamp(2.5rem,5vw,4rem);border-top:1px solid rgba(201,169,110,.1)}
-.pm-newsletter .label{justify-content:center;margin-bottom:1.2rem}
-.pm-news-lead{font-family:var(--sans);font-size:clamp(.88rem,1vw,.98rem);font-weight:300;line-height:1.9;color:var(--cream-dim);margin-bottom:2rem}
-.pm-news-placeholder{min-height:60px;border:1px dashed rgba(201,169,110,.3);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:1.2rem;margin-bottom:1.4rem;font-family:var(--sans);font-size:.75rem;letter-spacing:.12em;color:var(--gold-dim)}
-.pm-news-consent{font-family:var(--sans);font-size:clamp(.72rem,.85vw,.8rem);font-weight:300;line-height:1.7;color:var(--cream-dim);opacity:.75;text-align:left}
-.pm-news-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
-@media(max-width:768px){.pm-intro,.pm-news-consent{text-align:left}.pm-event-meta li span{flex:0 0 4.5rem}}
 </style>
 <script>
 window.onerror=function(msg,src,line,col,err){
@@ -1506,10 +1472,10 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="#practicalmagic" data-section="practicalmagic">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="rgba(201,169,110,.22)" stroke-width="1.5"/><circle cx="24" cy="24" r="17" fill="rgba(236,220,194,.92)" stroke="rgba(201,169,110,.55)" stroke-width="1"/></svg>
+    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
       <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Buck Moon</span>
+      <span class="moon-phase-desc">Lammas</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -1868,10 +1834,10 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="#practicalmagic" data-section="practicalmagic">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="rgba(201,169,110,.22)" stroke-width="1.5"/><circle cx="24" cy="24" r="17" fill="rgba(236,220,194,.92)" stroke="rgba(201,169,110,.55)" stroke-width="1"/></svg>
+    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
       <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Buck Moon</span>
+      <span class="moon-phase-desc">Lammas</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -2103,10 +2069,10 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="#practicalmagic" data-section="practicalmagic">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="rgba(201,169,110,.22)" stroke-width="1.5"/><circle cx="24" cy="24" r="17" fill="rgba(236,220,194,.92)" stroke="rgba(201,169,110,.55)" stroke-width="1"/></svg>
+    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
       <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Buck Moon</span>
+      <span class="moon-phase-desc">Lammas</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -2336,10 +2302,10 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="#practicalmagic" data-section="practicalmagic">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="rgba(201,169,110,.22)" stroke-width="1.5"/><circle cx="24" cy="24" r="17" fill="rgba(236,220,194,.92)" stroke="rgba(201,169,110,.55)" stroke-width="1"/></svg>
+    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
       <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Buck Moon</span>
+      <span class="moon-phase-desc">Lammas</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -2739,10 +2705,10 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="#practicalmagic" data-section="practicalmagic">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="rgba(201,169,110,.22)" stroke-width="1.5"/><circle cx="24" cy="24" r="17" fill="rgba(236,220,194,.92)" stroke="rgba(201,169,110,.55)" stroke-width="1"/></svg>
+    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
       <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Buck Moon</span>
+      <span class="moon-phase-desc">Lammas</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -2781,62 +2747,6 @@ window.onerror=function(msg,src,line,col,err){
 <hr class="sep">
 
 <!-- KOOPERATIONEN -->
-
-
-<!-- ═══ PRACTICAL MAGIC ═══ -->
-<section class="pm" id="practicalmagic">
-  <div class="pm-inner">
-
-    <div class="reveal">
-      <div class="label label-center">Practical Magic</div>
-      <p class="pm-eyebrow">Eine Abendreihe von Munich Witchcraft</p>
-      <h2>Practical<br><em>Magic.</em></h2>
-    </div>
-
-    <p class="pm-hero reveal">Ein Abend im Garten, am Feuer, beim Flügel. Wir lesen den Mond, ziehen eine Karte, setzen Kräuter an und lassen den Abend ausklingen, solange die Glut hält.</p>
-
-    <p class="pm-intro reveal">Die alten Erntefeste begannen nie mit Arbeit, sondern mit dem Niederlegen der Last. Practical Magic ist kein Kurs und kein Workshop im üblichen Sinn &mdash; es ist ein Abend, an dem das, womit ich sonst in Einzelsitzungen arbeite, für einen Kreis von Menschen offensteht: der Mond als Spiegel, die Karte als Frage, die Pflanze als Begleiterin durch die Jahreszeit.</p>
-
-    <!-- ▸ NÄCHSTER TERMIN — leicht austauschbarer Datenblock (Datum / Anlass / Mondphase / Beitrag) -->
-    <div class="pm-event reveal">
-      <div class="pm-event-eyebrow">Der nächste Termin</div>
-      <h3 class="pm-event-title">Buck Moon, an der Schwelle zu Lammas</h3>
-      <ul class="pm-event-meta">
-        <li><span>Datum</span> Freitag, 31. Juli 2026</li>
-        <li><span>Zeit</span> 19:30 bis etwa 22:00 Uhr</li>
-        <li><span>Ort</span> Im Garten &mdash; genaue Adresse nach der Anmeldung</li>
-        <li><span>Kreis</span> höchstens zwölf Menschen &middot; Anmeldung verbindlich</li>
-      </ul>
-      <div class="price-box"><span class="price-main">35 &euro;</span><span class="price-label">inkl. vegetarischem Essen, Getränken &amp; Material</span></div>
-      <div class="pm-cta-row">
-        <a href="{{ANMELDUNG_LINK}}" class="btn-book">Platz sichern <span class="book-arrow">&rarr;</span></a>
-      </div>
-    </div>
-
-    <!-- ▸ DIE SECHS STATIONEN — pro Termin variierbar -->
-    <div class="pm-stations-head reveal"><div class="label label-center">Die sechs Stationen des Abends</div></div>
-    <div class="steps pm-steps">
-      <div class="step reveal"><div class="step-n">1</div><div class="step-t">Ankommen &mdash; im Jahreszeitenzyklus</div><p class="step-d">Live-Musik am Flügel, ein kühles Getränk, der Garten in der Dämmerung. Lammas &mdash; von altenglisch <em>hlāfmæsse</em>, „Brotmesse“ &mdash; war der Tag, an dem das erste Korn zu Brot wurde und die Gemeinschaft sich um den Tisch versammelte. Wir fangen genauso an: ankommen, atmen, da sein.</p></div>
-      <div class="step reveal reveal-delay-1"><div class="step-n">2</div><div class="step-t">Der Mond als Spiegel &mdash; Buck Moon, Löwe und Wassermann</div><p class="step-d">Kein Orakel, keine Vorhersage. Der Juli-Vollmond heißt im englischen Brauchtum <em>Buck Moon</em> &mdash; der Mond, in dem den Hirschen das neue Geweih wächst. Er steht in der Achse zwischen Löwe und Wassermann: zwischen dem strahlenden Ich und dem Wir der Gemeinschaft. Wir schauen uns an, was diese Spannung erzählt &mdash; als Bild für die eigene Frage, nicht als Schicksal am Himmel.</p></div>
-      <div class="step reveal reveal-delay-2"><div class="step-n">3</div><div class="step-t">Eine Karte ziehen &mdash; der Spiegel in der Hand</div><p class="step-d">Jede:r zieht eine Karte. Nicht, um die Zukunft zu lesen, sondern sich selbst. Das Tarot ist im Renaissance-Italien als Spiel entstanden und erst später zum Spiegel der Seele geworden. Eine gezogene Karte sagt nichts über morgen. Sie stellt eine Frage an heute.</p></div>
-      <div class="step reveal"><div class="step-n">4</div><div class="step-t">Meditation &mdash; ein sicherer Ort</div><p class="step-d">Eine geführte Reise zu dem Ort in dir, der unversehrt geblieben ist. Die Psychologie nennt ihn den <em>sicheren Ort</em>, und sie weiß, dass man ihn nicht erfinden, nur wiederfinden muss. Am Feuer, der ältesten Versammlung der Menschheit, gehen wir gemeinsam dorthin.</p></div>
-      <div class="step reveal reveal-delay-1"><div class="step-n">5</div><div class="step-t">Sommerkräuter für den Herbst &mdash; Salbei, Rosmarin, Lavendel</div><p class="step-d">Du füllst dein eigenes Glas und nimmst den Sommer mit nach Hause. Salbei (<em>salvare</em> &mdash; „heilen“), Rosmarin als Kraut der Erinnerung, Lavendel für den ruhigen Schlaf: drei Pflanzen, die ihre Kraft im Trocknen bewahren. Genau das taten die Kräuterfrauen am Hochsommer &mdash; ernten, wenn die Sonne im Zenit steht, und einlagern für die dunkle Zeit. Im Oktober, wenn die Tage kurz werden, riechst du diesen Abend wieder.</p></div>
-      <div class="step reveal reveal-delay-2"><div class="step-n">6</div><div class="step-t">Tisch und Feuer &mdash; Gemeinschaft</div><p class="step-d">Vegetarisches Essen, kühle Getränke, ein offener Ausklang. Lammas ist ein Fest des Teilens &mdash; das erste Brot gehörte allen. Wer gehen will, geht. Wer bleiben will, bleibt, solange die Glut hält.</p></div>
-    </div>
-
-    <p class="pm-closer reveal">Practical Magic ist kein Kurs. Es ist ein Abend. Du gehst nicht mit einer Theorie nach Hause, sondern mit einem Glas, das nach Sommer riecht.</p>
-
-    <!-- ▸ NEWSLETTER (sekundärer, sanfter CTA) -->
-    <div class="pm-newsletter reveal">
-      <div class="label label-center">Diesmal nicht dabei?</div>
-      <p class="pm-news-lead">Bleib auf dem Laufenden &mdash; Hinweise zu den nächsten Abenden und hin und wieder ein Gedanke zum Mond, zur Jahreszeit oder zu dem, was im Garten gerade wächst.</p>
-      <!-- {{BREVO_FORMULAR}} : Brevo-HTML-Snippet oder iframe hier einsetzen — Double-Opt-In zwingend aktiviert, EU-Hosting -->
-      <div class="pm-news-placeholder">{{BREVO_FORMULAR}}</div>
-      <p class="pm-news-consent">Ich möchte den Practical-Magic-Newsletter von Munich Witchcraft erhalten &mdash; Hinweise zu den nächsten Abenden und hin und wieder einen Gedanken zum Mond, zur Jahreszeit oder zu dem, was im Garten gerade wächst. Ich bin damit einverstanden, dass meine E-Mail-Adresse zu diesem Zweck gespeichert wird, und kann mich jederzeit abmelden. Mehr dazu in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerklärung</a>.</p>
-    </div>
-
-  </div>
-</section>
 
 
 <!-- CONTACT -->
@@ -3469,7 +3379,7 @@ function toggleManifestGallery(){
 // === MOON PHASE NAVIGATOR ===
 (function(){
   var allMoonLinks=document.querySelectorAll(".moon-phase[data-section],.moon-mini[data-section]");
-  var sectionIds=["home","intro","offerings","about","process","books","manifest","faq","practicalmagic","contact"];
+  var sectionIds=["home","intro","offerings","about","process","books","manifest","faq","contact"];
   var lastActive=-1;
 
   // Smooth scroll on click for all moon nav links
