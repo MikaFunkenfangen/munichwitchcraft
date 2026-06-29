@@ -428,7 +428,8 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 }
 
 /* === VALUES === */
-.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:3px;margin-top:2.5rem}
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:2.5rem}
+@media(max-width:560px){.values{grid-template-columns:1fr}}
 .val{padding:clamp(1.5rem,3vw,2.5rem);border:1px solid rgba(201,169,110,.06);transition:background .4s}
 .val:hover{background:rgba(37,51,35,.3)}
 .val-glyph{font-family:var(--serif);font-size:1.8rem;color:var(--gold);opacity:1;display:block;margin-bottom:1rem;text-shadow:0 0 15px rgba(201,169,110,.7),0 0 40px rgba(201,169,110,.3);animation:glyphPulse 6s ease-in-out infinite}
