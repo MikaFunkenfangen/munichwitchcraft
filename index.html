@@ -1176,6 +1176,29 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 
+/* === NEWSLETTER FORM (reusable) === */
+.nl-form{max-width:480px;margin:0 auto;width:100%}
+.nl-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
+.nl-input{flex:1 1 240px;min-width:0;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.25);color:var(--cream);font-family:var(--sans);font-size:.95rem;font-weight:300;padding:.85rem 1.1rem;border-radius:2px;outline:none;transition:border-color .3s}
+.nl-input::placeholder{color:var(--cream-dim);opacity:.5}
+.nl-input:focus{border-color:var(--gold);box-shadow:0 2px 18px rgba(201,169,110,.12)}
+.nl-btn{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);border:1px solid var(--gold);padding:.85rem 1.8rem;border-radius:2px;cursor:pointer;transition:all .3s;white-space:nowrap}
+.nl-btn:hover{background:var(--white);border-color:var(--white)}
+.nl-consent{font-family:var(--sans);font-size:.72rem;font-weight:300;line-height:1.6;color:var(--cream-dim);opacity:.7;margin:.9rem auto 0;text-align:center;max-width:440px}
+.nl-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+/* Practical Magic newsletter teaser band */
+.pm-teaser{position:relative;z-index:2;padding:clamp(3.5rem,7vw,6rem) var(--section-px);text-align:center;background:linear-gradient(180deg,rgba(20,28,22,.35) 0%,rgba(15,18,35,.4) 100%);border-top:1px solid rgba(201,169,110,.08);border-bottom:1px solid rgba(201,169,110,.08)}
+.pm-teaser-inner{max-width:640px;margin:0 auto}
+.pm-teaser .label{justify-content:center;margin-bottom:1.4rem}
+.pm-teaser h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px rgba(8,8,7,.9);animation:headingGlow 6s ease-in-out infinite}
+.pm-teaser h2 em{font-style:italic;color:var(--cream-dim)}
+.pm-teaser-text{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:300;line-height:1.7;color:var(--cream);max-width:540px;margin:0 auto clamp(2rem,4vw,2.8rem);opacity:.9}
+/* Newsletter inside contact + footer */
+.contact-nl{max-width:480px;margin:clamp(2.5rem,5vw,3.5rem) auto 0;padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(201,169,110,.1)}
+.contact-nl-label{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
+.footer-nl{max-width:420px;margin:0 auto clamp(1.5rem,3vw,2.2rem)}
+.footer-nl-label{font-family:var(--serif);font-size:clamp(.95rem,1.3vw,1.1rem);font-weight:300;font-style:italic;color:var(--cream-dim);margin-bottom:1rem;opacity:.85}
+
 </style>
 <script>
 window.onerror=function(msg,src,line,col,err){
@@ -2749,6 +2772,25 @@ window.onerror=function(msg,src,line,col,err){
 <!-- KOOPERATIONEN -->
 
 
+<!-- ═══ PRACTICAL MAGIC — NEWSLETTER-TEASER (öffentlich) ═══ -->
+<section class="pm-teaser" id="practicalmagic-teaser">
+  <div class="pm-teaser-inner reveal">
+    <div class="label label-center">Practical Magic</div>
+    <h2>Ein Kreis,<br><em>kein Schaufenster.</em></h2>
+    <p class="pm-teaser-text">Practical Magic ist eine Abendreihe &mdash; Garten, Feuer, Mond, Karte und Kräuter, an den Schwellen des Jahreskreises. Der Kreis ist klein und der Zugang geschützt. Abonniere den Newsletter und erhalte dein Zugangswort sowie Hinweise zu den nächsten Abenden.</p>
+    <form class="nl-form" action="{{BREVO_FORM_ACTION}}" method="POST" target="_blank" novalidate>
+      <div class="nl-row">
+        <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
+        <button class="nl-btn" type="submit">Abonnieren</button>
+      </div>
+      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="locale" value="de">
+      <p class="nl-consent">Du erh&auml;ltst den Practical-Magic-Newsletter und dein Zugangswort per Best&auml;tigungs-Mail. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
+    </form>
+  </div>
+</section>
+
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
@@ -2767,6 +2809,18 @@ window.onerror=function(msg,src,line,col,err){
       </a>
     </div>
     <p class="contact-note reveal reveal-delay-3">Antwort in der Regel innerhalb von 48 Stunden &nbsp;·&nbsp; München &nbsp;·&nbsp; auch online möglich</p>
+    <div class="contact-nl reveal">
+      <div class="contact-nl-label">Practical-Magic-Newsletter</div>
+      <form class="nl-form" action="{{BREVO_FORM_ACTION}}" method="POST" target="_blank" novalidate>
+        <div class="nl-row">
+          <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
+          <button class="nl-btn" type="submit">Abonnieren</button>
+        </div>
+        <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="locale" value="de">
+        <p class="nl-consent">Hinweise zu den Practical-Magic-Abenden &amp; dein Zugangswort per Best&auml;tigungs-Mail. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -2801,6 +2855,17 @@ window.onerror=function(msg,src,line,col,err){
 
 <!-- FOOTER -->
 <footer>
+  <div class="footer-nl">
+    <div class="footer-nl-label">Practical Magic &mdash; bleib auf dem Laufenden</div>
+    <form class="nl-form" action="{{BREVO_FORM_ACTION}}" method="POST" target="_blank" novalidate>
+      <div class="nl-row">
+        <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
+        <button class="nl-btn" type="submit">Abonnieren</button>
+      </div>
+      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="locale" value="de">
+    </form>
+  </div>
   <div>
     <div class="footer-brand">Munich <span>Witchcraft</span></div>
     <div class="footer-slogan">Alles Wesentliche wächst still.</div>
