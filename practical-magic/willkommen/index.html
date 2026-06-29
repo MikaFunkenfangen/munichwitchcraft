@@ -23,8 +23,9 @@
 }
 html,body{min-height:100%}
 body{background:linear-gradient(180deg,#0a1020 0%,#070a12 55%,#040406 100%);color:var(--cream);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;overflow-x:hidden}
-.wk-moon{width:clamp(80px,14vmin,120px);height:clamp(80px,14vmin,120px);border-radius:50%;background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 60px rgba(201,169,110,.4),0 0 130px rgba(201,169,110,.2);margin-bottom:clamp(1.8rem,4vw,2.6rem);animation:moonFloat 9s ease-in-out infinite}
-@keyframes moonFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.wk-moon{width:clamp(80px,14vmin,120px);height:clamp(80px,14vmin,120px);flex:0 0 auto;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 60px rgba(201,169,110,.4),0 0 130px rgba(201,169,110,.2);margin-bottom:clamp(1.8rem,4vw,2.6rem);animation:moonFloat 7s ease-in-out infinite,moonGlow 5s ease-in-out infinite}
+@keyframes moonFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 60px rgba(201,169,110,.4),0 0 130px rgba(201,169,110,.2)}50%{box-shadow:0 0 88px rgba(201,169,110,.58),0 0 170px rgba(201,169,110,.32)}}
 .wk-brand{font-family:var(--display);font-size:clamp(1.3rem,3vw,1.9rem);color:var(--gold);letter-spacing:.06em;margin-bottom:.5rem}
 .wk-sub{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:clamp(1.8rem,4vw,2.6rem);opacity:.7}
 .wk-title{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:300;font-style:italic;color:var(--white);line-height:1.3;margin-bottom:1.2rem}
