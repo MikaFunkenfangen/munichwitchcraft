@@ -114,6 +114,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pm-eyebrow{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.06em;color:var(--cream-dim);margin:-1.5rem 0 1.5rem;opacity:.8}
 .pm h2{font-family:var(--heading);font-size:clamp(2.4rem,6vw,4.4rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:clamp(2rem,4vw,3rem);text-shadow:0 0 40px rgba(8,8,7,.9),0 0 80px rgba(8,8,7,.5);animation:headingGlow 6s ease-in-out infinite}
 .pm h2 em{font-style:italic;color:var(--cream-dim)}
+.pm-eyebrow-lockup{margin:-1rem 0 clamp(2rem,4vw,3rem);font-style:normal;letter-spacing:.08em}
+.pm-wm{font-family:var(--display);font-weight:400;color:var(--gold);letter-spacing:.02em}
 .pm-hero{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.55rem);font-weight:300;line-height:1.7;color:var(--cream);max-width:640px;margin:0 auto clamp(2rem,4vw,3rem);text-shadow:0 0 30px rgba(8,8,7,.8)}
 .pm-intro{font-family:var(--sans);font-size:clamp(.92rem,1.1vw,1.02rem);font-weight:300;line-height:1.95;color:var(--cream-dim);max-width:680px;margin:0 auto clamp(3rem,6vw,4.5rem);text-align:left;text-shadow:0 0 20px rgba(8,8,7,.7)}
 .pm-event{background:rgba(20,42,28,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(201,169,110,.18);border-radius:4px;padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3.5vw,3rem);max-width:560px;margin:0 auto clamp(3.5rem,7vw,5.5rem);text-align:center;box-shadow:0 6px 30px rgba(0,0,0,.25)}
@@ -260,7 +262,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
   <div class="pw-gate-inner">
     <div class="pw-moon"></div>
     <div class="pw-gate-brand">Practical Magic</div>
-    <div class="pw-gate-sub">Munich Witchcraft</div>
+    <div class="pw-gate-sub">Das Treffen by Munich Witchcraft</div>
     <p class="pw-gate-welcome">Sch&ouml;n, dass du da bist. Tritt ein in den Kreis und schau dich in Ruhe um.</p>
 
     <button class="pw-gate-btn" id="pwEnter">Eintreten</button>
@@ -307,12 +309,11 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
     <div class="pm-top-moon" aria-hidden="true"></div>
 
     <div class="reveal">
-      <div class="label label-center">Practical Magic</div>
-      <p class="pm-eyebrow">by Munich Witchcraft</p>
       <h2>Practical<br><em>Magic.</em></h2>
+      <p class="pm-eyebrow pm-eyebrow-lockup">Das Treffen by Munich Witchcraft</p>
     </div>
 
-    <p class="pm-hero reveal">Practical Magic ist zweierlei: ein Treffen und ein Newsletter von Munich Witchcraft. Zu den Terminen im Jahr, die kosmisch etwas bedeuten, lade ich einen kleinen Kreis zu mir ein: in meinen Hexengarten, ans Feuer, unter den Mond.</p>
+    <p class="pm-hero reveal"><span class="pm-wm">Practical Magic</span> ist zweierlei: ein Treffen und ein Newsletter von Munich Witchcraft. Zu den Terminen im Jahr, die kosmisch etwas bedeuten, lade ich einen kleinen Kreis zu mir ein: in meinen Hexengarten, ans Feuer, unter den Mond.</p>
 
     <p class="pm-intro reveal">Wir begegnen uns draußen, zu allen Jahreszeiten und bei fast jedem Wetter, denn in der Natur sind wir ohnehin zu Hause. Am Feuer lesen wir den Mond und den Lauf des Jahres, teilen Wissen und Erfahrung und lernen die Grundlagen der Hexenkunst. Wir entdecken die Magie im Alltag, weiten die Sinne und spüren wieder, dass alles zusammengehört. Dazu Musik, Kunst, Poesie und Meditation, viel Raum, ganz Mensch zu sein, und Zeit, in der die Seele zur Ruhe kommt. Mein Hexengarten ist ein geschützter Raum auf Augenhöhe, an dem wir die patriarchalen Muster des Alltags für eine Weile hinter uns lassen. Ich öffne ihn achtsam und respektvoll für Begegnung und Gemeinschaft, für alle, die so kommen, wie sie sind.</p>
 
@@ -374,7 +375,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
     <!-- ▸ NEWSLETTER (sekundärer, sanfter CTA) -->
     <div class="pm-newsletter reveal">
       <div class="label label-center">Der Practical-Magic-Newsletter</div>
-      <p class="pm-news-lead">Practical Magic ist auch ein Newsletter: regelmäßig spannende Themen rund um Hexenkunst, Mond und Jahreskreis, hin und wieder ein Gedanke zu dem, was im Hexengarten gerade wächst, und eine Erinnerung, sobald das nächste Treffen geplant ist. Ganz ohne Verpflichtung, Abmeldung jederzeit.</p>
+      <p class="pm-news-lead"><span class="pm-wm">Practical Magic</span> ist auch ein Newsletter: regelmäßig spannende Themen rund um Hexenkunst, Mond und Jahreskreis, hin und wieder ein Gedanke zu dem, was im Hexengarten gerade wächst, und eine Erinnerung, sobald das nächste Treffen geplant ist. Ganz ohne Verpflichtung, Abmeldung jederzeit.</p>
       <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
         <div class="nl-row">
           <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
@@ -599,7 +600,7 @@ function showTab(btn,id){
       fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()}).catch(function(){});
       var msg=document.createElement('p');
       msg.className='nl-success';
-      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt. Bitte best&auml;tige darin deine Anmeldung, dann bist du <strong>dabei</strong>.';
+      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt. Bitte best&auml;tige darin deine Anmeldung, dann bist du <strong>dabei</strong>. Schau bitte auch im Spam-Ordner nach, falls sie nicht gleich auftaucht.';
       form.parentNode.replaceChild(msg,form);
     });
   });
