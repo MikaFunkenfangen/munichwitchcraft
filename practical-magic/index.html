@@ -93,6 +93,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 /* === PRACTICAL MAGIC === */
 .pm{padding:clamp(5rem,9vw,8.5rem) var(--section-px) clamp(4rem,8vw,7rem);position:relative;z-index:2;overflow:hidden}
 .pm-inner{max-width:1000px;margin:0 auto;position:relative;text-align:center}
+.pm-top-moon{width:clamp(74px,12vmin,112px);height:clamp(74px,12vmin,112px);flex:0 0 auto;aspect-ratio:1/1;border-radius:50%;margin:0 auto clamp(1.6rem,4vw,2.6rem);background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18);animation:moonFloat 7s ease-in-out infinite,moonGlow 5s ease-in-out infinite}
 .pm-eyebrow{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.06em;color:var(--cream-dim);margin:-1.5rem 0 1.5rem;opacity:.8}
 .pm h2{font-family:var(--heading);font-size:clamp(2.4rem,6vw,4.4rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:clamp(2rem,4vw,3rem);text-shadow:0 0 40px rgba(8,8,7,.9),0 0 80px rgba(8,8,7,.5);animation:headingGlow 6s ease-in-out infinite}
 .pm h2 em{font-style:italic;color:var(--cream-dim)}
@@ -274,6 +275,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 <section class="pm" id="practicalmagic">
   <div class="pm-inner">
 
+    <div class="pm-top-moon" aria-hidden="true"></div>
+
     <div class="reveal">
       <div class="label label-center">Practical Magic</div>
       <p class="pm-eyebrow">by Munich Witchcraft</p>
@@ -290,10 +293,10 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
       <div class="pm-gallery-stage">
       <button class="pm-gallery-nav prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5 8 12 15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="pm-gallery" id="pmGallery">
-        <figure class="pm-slide"><img src="../img/practical-magic/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-13.jpg" alt="Schwarze Katze auf einer Gartenbank bei Kerzenschein und Lichterkette" loading="lazy" decoding="async"><figcaption>Die Hexenkatze</figcaption></figure>
-        <figure class="pm-slide"><img src="../img/practical-magic/pm-02.jpg" alt="Blühende Hortensien und Ringelblumen vor der Veranda" loading="lazy" decoding="async"><figcaption>Hortensien vor der Veranda</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-11.jpg" alt="Loderndes Feuer in einer Feuerschale im Garten bei Nacht" loading="lazy" decoding="async"><figcaption>Feuer im Garten</figcaption></figure>
+        <figure class="pm-slide"><img src="../img/practical-magic/pm-02.jpg" alt="Blühende Hortensien und Ringelblumen vor der Veranda" loading="lazy" decoding="async"><figcaption>Hortensien vor der Veranda</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-07.jpg" alt="Heller Raum mit Kunst, Kristallen und Pflanzen" loading="lazy" decoding="async"><figcaption>Raum für Kunst &amp; Kristalle</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-10.jpg" alt="Rote Mohnblüten im Garten in der Abenddämmerung, dahinter das Haus" loading="lazy" decoding="async"><figcaption>Mohn in der Dämmerung</figcaption></figure>
         <figure class="pm-slide"><img src="../img/practical-magic/pm-06.jpg" alt="Wohnzimmer mit Kamin, Bücherwand und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Am Kamin</figcaption></figure>
@@ -437,9 +440,10 @@ function showTab(btn,id){
   var inp=document.getElementById('pwInput');
   var btn=document.getElementById('pwBtn');
   if(!gate)return;
-  function unlock(){gate.classList.add('hidden');document.body.style.overflow='';setTimeout(function(){gate.style.display='none'},1100);}
-  if(sessionStorage.getItem('mw-pm-auth')==='1'){gate.style.display='none';document.body.style.overflow='';}
-  else{document.body.style.overflow='hidden';if(inp)setTimeout(function(){inp.focus()},300);}
+  if('scrollRestoration' in history){history.scrollRestoration='manual';}
+  function unlock(){gate.classList.add('hidden');document.body.style.overflow='';window.scrollTo(0,0);setTimeout(function(){gate.style.display='none'},1100);}
+  if(sessionStorage.getItem('mw-pm-auth')==='1'){gate.style.display='none';document.body.style.overflow='';window.scrollTo(0,0);}
+  else{document.body.style.overflow='hidden';window.scrollTo(0,0);if(inp)setTimeout(function(){inp.focus()},300);}
   function check(){
     if(inp.value.trim().toLowerCase()===PASSWORD){sessionStorage.setItem('mw-pm-auth','1');unlock();if(window.pmStartMusic){window.pmStartMusic();}}
     else{inp.classList.add('pw-error');setTimeout(function(){inp.classList.remove('pw-error')},600);inp.select();}
