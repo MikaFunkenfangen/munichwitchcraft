@@ -186,6 +186,8 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 @keyframes pwShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .pw-gate-btn{background:rgba(201,169,110,.08);border:1px solid var(--gold);font-family:var(--serif);font-size:clamp(.85rem,1.2vw,1rem);font-weight:400;font-style:italic;letter-spacing:.15em;color:var(--gold);padding:clamp(.7rem,1.2vw,.9rem) clamp(2rem,4vw,3rem);cursor:pointer;transition:all .4s;text-shadow:0 0 10px rgba(201,169,110,.2)}
 .pw-gate-btn:hover{color:var(--white);border-color:var(--white);background:rgba(201,169,110,.15);box-shadow:0 0 25px rgba(201,169,110,.2)}
+.pw-gate-skip{display:inline-block;margin-top:1rem;background:none;border:none;cursor:pointer;font-family:var(--serif);font-style:italic;font-size:clamp(.85rem,1.1vw,.98rem);color:var(--cream-dim);opacity:.75;text-decoration:underline;text-underline-offset:3px;transition:color .3s,opacity .3s;-webkit-tap-highlight-color:transparent}
+.pw-gate-skip:hover{color:var(--gold);opacity:1}
 .pw-gate-hint{font-family:var(--sans);font-size:.72rem;font-weight:300;letter-spacing:.04em;color:var(--cream-dim);opacity:.55;margin-top:clamp(1.8rem,4vw,2.6rem);max-width:340px;text-align:center;line-height:1.7}
 .pw-gate-hint a{color:var(--gold);text-decoration:none}
 
@@ -235,6 +237,7 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
       <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
     </div>
     <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
+    <div><button class="pw-gate-skip" id="pwSkip" type="button">oder ohne Passwort eintreten</button></div>
 
     <div class="pw-gate-divider"><span>oder</span></div>
 
@@ -449,6 +452,8 @@ function showTab(btn,id){
     else{inp.classList.add('pw-error');setTimeout(function(){inp.classList.remove('pw-error')},600);inp.select();}
   }
   if(btn)btn.addEventListener('click',check);
+  var skip=document.getElementById('pwSkip');
+  if(skip)skip.addEventListener('click',function(){sessionStorage.setItem('mw-pm-auth','1');unlock();if(window.pmStartMusic){window.pmStartMusic();}});
   if(inp)inp.addEventListener('keydown',function(e){if(e.key==='Enter')check()});
 })();
 
