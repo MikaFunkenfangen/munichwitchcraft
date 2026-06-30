@@ -471,9 +471,13 @@ function showTab(btn,id){
   var stage=gal.closest('.pm-gallery-stage');
   if(!stage)return;
   function go(dir){
-    var slide=gal.querySelector('.pm-slide');
-    var step=slide?slide.getBoundingClientRect().width+14:gal.clientWidth*0.85;
-    gal.scrollBy({left:dir*step,behavior:'auto'});
+    var slides=gal.querySelectorAll('.pm-slide');
+    if(!slides.length)return;
+    var center=gal.scrollLeft+gal.clientWidth/2, cur=0, best=Infinity;
+    slides.forEach(function(s,i){var c=s.offsetLeft+s.offsetWidth/2, d=Math.abs(c-center); if(d<best){best=d;cur=i;}});
+    var target=Math.max(0,Math.min(slides.length-1,cur+dir));
+    var el=slides[target];
+    gal.scrollTo({left:el.offsetLeft-(gal.clientWidth-el.offsetWidth)/2,behavior:'auto'});
   }
   var prev=stage.querySelector('.pm-gallery-nav.prev');
   var next=stage.querySelector('.pm-gallery-nav.next');
