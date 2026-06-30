@@ -190,10 +190,10 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pw-gate-divider{display:flex;align-items:center;gap:1rem;width:100%;max-width:300px;margin:clamp(2rem,4.5vh,3rem) auto clamp(1.8rem,4vh,2.6rem)}
 .pw-gate-divider::before,.pw-gate-divider::after{content:"";flex:1;height:1px;background:rgba(201,169,110,.18)}
 .pw-gate-divider span{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--cream-dim);opacity:.8}
-.pw-moon{width:clamp(70px,12vmin,110px);height:clamp(70px,12vmin,110px);flex:0 0 auto;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18);margin-bottom:clamp(1.8rem,4vw,2.8rem);animation:moonFloat 7s ease-in-out infinite,moonGlow 5s ease-in-out infinite}
+.pw-moon{width:clamp(70px,12vmin,110px);height:clamp(70px,12vmin,110px);flex:0 0 auto;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 38% 38%,#f4ecd8 0%,#d9c79e 45%,#b89b6a 100%);box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18);margin-bottom:clamp(1.8rem,4vw,2.8rem);animation:pwMoonFloat 8s ease-in-out infinite,moonGlow 5s ease-in-out infinite}
 @keyframes moonFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes moonGlow{0%,100%{box-shadow:0 0 50px rgba(201,169,110,.35),0 0 110px rgba(201,169,110,.18)}50%{box-shadow:0 0 78px rgba(201,169,110,.55),0 0 150px rgba(201,169,110,.3)}}
-.pw-gate-brand{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:400;color:var(--gold);letter-spacing:.02em;line-height:1.05;margin-bottom:.5rem;animation:brandPulse 4s ease-in-out infinite}
+.pw-gate-brand{font-family:var(--display);font-size:clamp(2rem,5vw,3rem);font-weight:400;color:var(--gold);letter-spacing:.02em;line-height:1.05;margin-bottom:.5rem;animation:brandPulse 4s ease-in-out infinite,pwFluoro 5.5s ease-in-out infinite}
 @keyframes brandPulse{0%,100%{opacity:.85}50%{opacity:1}}
 .pw-gate-sub{font-family:var(--display);font-size:clamp(1rem,1.9vw,1.35rem);font-weight:400;letter-spacing:.04em;color:var(--cream-dim);margin-bottom:clamp(1.6rem,3.5vw,2.4rem);opacity:.85}
 .pw-gate-welcome{font-family:var(--serif);font-size:clamp(1.05rem,1.6vw,1.25rem);font-weight:300;font-style:italic;color:var(--cream);text-align:center;max-width:440px;line-height:1.9;margin-bottom:clamp(2rem,4vw,3rem);opacity:.8}
@@ -252,13 +252,49 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .moon-phase-name{font-family:var(--sans);font-size:clamp(.72rem,1vw,.88rem);font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:all .5s;text-align:center}
 .moon-phase:hover .moon-phase-name,.moon-phase.active .moon-phase-name{opacity:1;color:var(--gold)}
 .moon-nav .moon-phase-desc{display:none}
-@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+/* ── Portal: Sternbilder, schwebende Partikel, Fluoreszenz ── */
+.pw-gate-inner,.pw-gate-foot{position:relative;z-index:2}
+.pw-sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.pw-sky::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.5px 1.5px at 12% 16%,rgba(232,226,212,.75),transparent),radial-gradient(1px 1px at 78% 11%,rgba(232,226,212,.5),transparent),radial-gradient(1.3px 1.3px at 64% 27%,rgba(232,226,212,.55),transparent),radial-gradient(1px 1px at 31% 34%,rgba(232,226,212,.45),transparent),radial-gradient(1.2px 1.2px at 88% 42%,rgba(232,226,212,.5),transparent),radial-gradient(1px 1px at 17% 58%,rgba(232,226,212,.4),transparent),radial-gradient(1.3px 1.3px at 50% 68%,rgba(232,226,212,.45),transparent),radial-gradient(1px 1px at 83% 74%,rgba(232,226,212,.4),transparent),radial-gradient(1px 1px at 41% 86%,rgba(232,226,212,.38),transparent),radial-gradient(1.2px 1.2px at 26% 78%,rgba(232,226,212,.4),transparent);background-repeat:no-repeat;animation:pwTwinkle 6.5s ease-in-out infinite}
+@keyframes pwTwinkle{0%,100%{opacity:.55}50%{opacity:.95}}
+.pw-constellations{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.pw-constellations .pw-cline{stroke:rgba(201,169,110,.3);stroke-width:1;fill:none;vector-effect:non-scaling-stroke}
+.pw-constellations .pw-cstar{fill:rgba(232,226,212,.9);animation:pwStarTw 4.5s ease-in-out infinite}
+@keyframes pwStarTw{0%,100%{opacity:.45}50%{opacity:1}}
+.pw-particles{position:absolute;inset:0}
+.pw-particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(247,242,228,.95),rgba(201,169,110,.55) 45%,transparent 70%);opacity:0;will-change:transform,opacity;animation:pwFloat linear infinite}
+@keyframes pwFloat{0%{transform:translateY(24px) translateX(0) scale(.85);opacity:0}15%{opacity:var(--pw-o,.7)}50%{opacity:calc(var(--pw-o,.7) * .35);transform:translateY(-55px) translateX(calc(var(--pw-sx,12px) * .5)) scale(1)}85%{opacity:var(--pw-o,.7)}100%{transform:translateY(-135px) translateX(var(--pw-sx,12px)) scale(.9);opacity:0}}
+@keyframes pwFluoro{0%,100%{text-shadow:0 0 14px rgba(201,169,110,.35),0 0 34px rgba(201,169,110,.16)}50%{text-shadow:0 0 22px rgba(201,169,110,.6),0 0 58px rgba(201,169,110,.4),0 0 92px rgba(201,169,110,.22)}}
+@keyframes pwMoonFloat{0%,100%{transform:translateY(0) translateX(0)}25%{transform:translateY(-9px) translateX(3px)}50%{transform:translateY(-16px) translateX(0)}75%{transform:translateY(-9px) translateX(-3px)}}
+.pw-sound{z-index:10001}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}.pw-particles{display:none}}
 </style>
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
+<!-- WILLKOMMENS-PORTAL -->
 <div class="pw-gate" id="pwGate">
+  <div class="pw-sky" aria-hidden="true">
+    <svg class="pw-constellations" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+      <path class="pw-cline" d="M110 150 L200 95 L290 165 L380 100 L470 170"/>
+      <circle class="pw-cstar" cx="110" cy="150" r="3.4" style="animation-delay:0s"/>
+      <circle class="pw-cstar" cx="200" cy="95" r="4" style="animation-delay:.6s"/>
+      <circle class="pw-cstar" cx="290" cy="165" r="3" style="animation-delay:1.2s"/>
+      <circle class="pw-cstar" cx="380" cy="100" r="3.6" style="animation-delay:.3s"/>
+      <circle class="pw-cstar" cx="470" cy="170" r="3" style="animation-delay:1.8s"/>
+      <path class="pw-cline" d="M815 250 L890 205 L905 300 L815 250 M905 300 L955 395"/>
+      <circle class="pw-cstar" cx="815" cy="250" r="3.6" style="animation-delay:.9s"/>
+      <circle class="pw-cstar" cx="890" cy="205" r="3" style="animation-delay:1.5s"/>
+      <circle class="pw-cstar" cx="905" cy="300" r="3.4" style="animation-delay:.2s"/>
+      <circle class="pw-cstar" cx="955" cy="395" r="2.6" style="animation-delay:2.1s"/>
+      <path class="pw-cline" d="M180 760 L255 815 L340 775 L300 685"/>
+      <circle class="pw-cstar" cx="180" cy="760" r="3" style="animation-delay:1.1s"/>
+      <circle class="pw-cstar" cx="255" cy="815" r="3.4" style="animation-delay:.5s"/>
+      <circle class="pw-cstar" cx="340" cy="775" r="2.8" style="animation-delay:1.7s"/>
+      <circle class="pw-cstar" cx="300" cy="685" r="3" style="animation-delay:.8s"/>
+    </svg>
+    <div class="pw-particles" id="pwParticles"></div>
+  </div>
   <div class="pw-gate-inner">
     <div class="pw-moon"></div>
     <div class="pw-gate-brand">Practical Magic</div>
@@ -513,6 +549,19 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
   </svg>
 </button>
 
+<!-- ▸ PORTAL-MUSIK: Moonbow (Vintage-Lautsprecher, nur auf dem Willkommens-Portal) -->
+<audio id="pwAudio" src="../audio/moonbow.mp3" preload="auto" loop></audio>
+<button class="pm-sound pw-sound off" id="pwSound" type="button" aria-label="Musik an oder aus" aria-pressed="false" title="Moonbow an/aus">
+  <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <rect x="13" y="6" width="22" height="36" rx="3.5" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="24" cy="29" r="7.5" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="24" cy="29" r="2.4" fill="currentColor"/>
+    <circle cx="24" cy="13.5" r="2.8" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="24" cy="13.5" r="1" fill="currentColor"/>
+    <line class="pm-sound-slash" x1="9" y1="40" x2="39" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</button>
+
 <script>
 // === LEGAL TABS (Impressum / Datenschutz) ===
 function showTab(btn,id){
@@ -543,7 +592,7 @@ function showTab(btn,id){
   if(!gate)return;
   if('scrollRestoration' in history){history.scrollRestoration='manual';}
   function unlock(){gate.classList.add('hidden');document.body.style.overflow='';window.scrollTo(0,0);setTimeout(function(){gate.style.display='none'},1100);}
-  function enter(){sessionStorage.setItem('mw-pm-auth','1');unlock();if(window.pmStartMusic){window.pmStartMusic();}}
+  function enter(){sessionStorage.setItem('mw-pm-auth','1');unlock();if(window.pwExitPortal){window.pwExitPortal();}if(window.pmStartMusic){window.pmStartMusic();}}
   if(sessionStorage.getItem('mw-pm-auth')==='1'){gate.style.display='none';document.body.style.overflow='';window.scrollTo(0,0);}
   else{document.body.style.overflow='hidden';window.scrollTo(0,0);}
   if(btn)btn.addEventListener('click',enter);
@@ -563,6 +612,47 @@ function showTab(btn,id){
   audio.addEventListener('ended',setOff);
   // Wiederkehrende Besucher (Gate übersprungen): Auto-Play versuchen; blockiert der Browser, lädt der Button zum Start ein.
   if(sessionStorage.getItem('mw-pm-auth')==='1'){ play(); }
+})();
+
+// === PORTAL-MUSIK: Moonbow (Vintage-Lautsprecher, nur auf dem Willkommens-Portal) ===
+(function(){
+  var audio=document.getElementById('pwAudio');
+  var btn=document.getElementById('pwSound');
+  if(!audio||!btn)return;
+  // Wiederkehrende Besucher sehen kein Portal -> kein Moonbow-Lautsprecher
+  if(sessionStorage.getItem('mw-pm-auth')==='1'){btn.style.display='none';return;}
+  function setPlaying(){btn.classList.add('playing');btn.classList.remove('off');btn.setAttribute('aria-pressed','true');}
+  function setOff(){btn.classList.remove('playing');btn.classList.add('off');btn.setAttribute('aria-pressed','false');}
+  function play(){var p=audio.play();if(p&&p.then){p.then(setPlaying).catch(function(){setOff();});}else{setPlaying();}}
+  function stop(){audio.pause();setOff();}
+  btn.addEventListener('click',function(){ if(audio.paused){ play(); } else { stop(); } });
+  // Beim Eintreten: Moonbow ausblenden und Lautsprecher entfernen (drinnen übernimmt die Seitenmusik)
+  window.pwExitPortal=function(){ audio.pause(); btn.style.display='none'; };
+  // Sanfter Versuch, beim Öffnen des Portals zu starten; blockiert der Browser, lädt der pulsierende Lautsprecher zum Start ein.
+  play();
+})();
+
+// === PORTAL-PARTIKEL (leichtes Flirren) ===
+(function(){
+  var host=document.getElementById('pwParticles');
+  if(!host)return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var n=document.documentElement.classList.contains('perf-lite')?7:18;
+  for(var i=0;i<n;i++){
+    var p=document.createElement('span');
+    p.className='pw-particle';
+    var size=(1.5+(i*7%5)*0.9).toFixed(1);            // 1.5 .. ~5px, variiert
+    var left=((i*53+11)%100);                          // verteilt über die Breite
+    var startBottom=((i*31+7)%70);                      // verschiedene Starthöhen
+    var dur=(11+(i*13%9)).toFixed(1);                   // 11 .. 19s
+    var delay=(-(i*17%14)).toFixed(1);                  // negative Delays -> sofort verteilt
+    var sway=((i%2?1:-1)*(8+(i*5%16)));                 // seitliches Driften
+    var op=(0.45+(i*9%5)*0.1).toFixed(2);              // 0.45 .. ~0.85
+    p.style.cssText='left:'+left+'%;bottom:'+startBottom+'%;width:'+size+'px;height:'+size+'px;'+
+      'animation-duration:'+dur+'s;animation-delay:'+delay+'s;'+
+      '--pw-sx:'+sway+'px;--pw-o:'+op;
+    host.appendChild(p);
+  }
 })();
 
 // === GALERIE-PFEILE (blättern) ===
