@@ -219,6 +219,20 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
 .pm-sound .pm-sound-slash{opacity:0;transition:opacity .3s}
 .pm-sound.off .pm-sound-slash{opacity:1}
 
+/* ── Mondmenü (Navigation zurück zu allen Inhalten) ── */
+.moon-nav{position:relative;z-index:2;padding:clamp(2.5rem,5vw,4rem) clamp(1.2rem,5vw,3rem);display:flex;flex-direction:column;align-items:center;gap:clamp(.6rem,1.2vw,1rem);border-top:1px solid rgba(201,169,110,.1)}
+.moon-nav-label{font-family:var(--serif);font-size:clamp(.95rem,1.4vw,1.15rem);font-weight:300;font-style:italic;letter-spacing:.08em;color:var(--cream);opacity:.75;margin-bottom:clamp(.5rem,1vw,.8rem);text-shadow:0 0 20px rgba(8,8,7,.6);text-align:center;max-width:90%;margin-left:auto;margin-right:auto}
+.moon-phases-row{display:flex;align-items:center;justify-content:center;gap:clamp(.4rem,1vw,.8rem) clamp(.6rem,1.5vw,1.2rem);flex-wrap:wrap;max-width:700px;margin:0 auto;padding:clamp(.5rem,1vw,.8rem)}
+.moon-phase{display:flex;flex-direction:column;align-items:center;gap:clamp(4px,.8vw,8px);cursor:pointer;padding:clamp(8px,1.2vw,14px);border-radius:20px;transition:all .5s ease;text-decoration:none;-webkit-tap-highlight-color:transparent;position:relative}
+.moon-phase:hover{background:rgba(201,169,110,.07);transform:translateY(-3px)}
+.moon-phase.active{background:rgba(201,169,110,.1)}
+.moon-phase.active::after{content:"";position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(201,169,110,.8)}
+.moon-phase svg{width:clamp(30px,5vw,42px);height:clamp(30px,5vw,42px);filter:drop-shadow(0 0 6px rgba(201,169,110,.15));transition:all .5s ease}
+.moon-phase:hover svg{filter:drop-shadow(0 0 14px rgba(201,169,110,.5));transform:scale(1.12)}
+.moon-phase.active svg{filter:drop-shadow(0 0 22px rgba(201,169,110,.7));transform:scale(1.2)}
+.moon-phase-name{font-family:var(--sans);font-size:clamp(.72rem,1vw,.88rem);font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:all .5s;text-align:center}
+.moon-phase:hover .moon-phase-name,.moon-phase.active .moon-phase-name{opacity:1;color:var(--gold)}
+.moon-nav .moon-phase-desc{display:none}
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 </style>
 </head>
@@ -363,6 +377,79 @@ nav.scrolled{background:rgba(8,8,7,.97);backdrop-filter:blur(12px);-webkit-backd
   </div>
 </section>
 </main>
+
+<!-- ═══ MONDMENÜ: zurück zu allen Inhalten ═══ -->
+<nav class="moon-nav reveal" aria-label="Seitennavigation">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="stormEclipse" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(201,169,110,.15)"/><stop offset="60%" stop-color="rgba(8,8,7,.9)"/><stop offset="100%" stop-color="rgba(8,8,7,1)"/></radialGradient></defs></svg>
+  <div class="moon-nav-label">Folge dem Mond, er führt dich durch die Seite</div>
+  <div class="moon-phases-row">
+    <a class="moon-phase" href="../#home">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/></svg>
+      <span class="moon-phase-name">Start</span>
+      <span class="moon-phase-desc">Neumond</span>
+    </a>
+    <a class="moon-phase" href="../#intro">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A7 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Philosophie</span>
+      <span class="moon-phase-desc">Zunehmende Sichel</span>
+    </a>
+    <a class="moon-phase" href="../#offerings">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A0 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Angebote</span>
+      <span class="moon-phase-desc">Erstes Viertel</span>
+    </a>
+    <a class="moon-phase" href="../#about">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A-7 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Über mich</span>
+      <span class="moon-phase-desc">Zunehmender Mond</span>
+    </a>
+    <a class="moon-phase" href="../#process">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="rgba(232,226,212,.8)" stroke="rgba(201,169,110,.3)" stroke-width="1"/></svg>
+      <span class="moon-phase-name">Ablauf</span>
+      <span class="moon-phase-desc">Vollmond</span>
+    </a>
+    <a class="moon-phase" href="../#books">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 1 24 42 A-7 18 0 0 0 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Bücher</span>
+      <span class="moon-phase-desc">Zunehmender Mond</span>
+    </a>
+    <a class="moon-phase" href="../#manifest">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A-7 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Hexenkunst</span>
+      <span class="moon-phase-desc">Abnehmender Mond</span>
+    </a>
+    <a class="moon-phase" href="../#faq">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A0 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">FAQ</span>
+      <span class="moon-phase-desc">Letztes Viertel</span>
+    </a>
+    <a class="moon-phase active" href="#" aria-current="page">
+      <svg viewBox="0 0 48 48"><path d="M24 44 C24 36 23 28 24 19" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.2" stroke-linecap="round"/><path d="M24 34 C20 33 17 30 16 26" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><path d="M24 30 C28 29 31 26 32 22" fill="none" stroke="rgba(201,169,110,.4)" stroke-width="1" stroke-linecap="round"/><g fill="rgba(201,169,110,.55)"><ellipse cx="24" cy="8" rx="2" ry="2.6"/><ellipse cx="21" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="27" cy="11.5" rx="1.7" ry="2.3"/><ellipse cx="22" cy="15" rx="1.7" ry="2.2"/><ellipse cx="26" cy="15" rx="1.7" ry="2.2"/><ellipse cx="24" cy="18" rx="1.5" ry="2"/></g></svg>
+      <span class="moon-phase-name">Practical Magic</span>
+      <span class="moon-phase-desc">Das Treffen</span>
+    </a>
+    <a class="moon-phase" href="../#practicalmagic-teaser">
+      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
+      <span class="moon-phase-name">Newsletter</span>
+      <span class="moon-phase-desc">Flügelpost</span>
+    </a>
+    <a class="moon-phase" href="../session/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
+      <span class="moon-phase-name">Session</span>
+      <span class="moon-phase-desc">Sturm</span>
+    </a>
+    <a class="moon-phase" href="../#contact">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A7 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
+      <span class="moon-phase-name">Kontakt</span>
+      <span class="moon-phase-desc">Abnehmende Sichel</span>
+    </a>
+    <a class="moon-phase" href="https://funkenfangen.de" target="_blank" rel="noopener">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.35)" stroke-width="1"/><circle cx="24" cy="24" r="10" fill="rgba(201,169,110,.6)"/><line x1="24" y1="2" x2="24" y2="12" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="24" y1="36" x2="24" y2="46" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="2" y1="24" x2="12" y2="24" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="36" y1="24" x2="46" y2="24" stroke="rgba(201,169,110,.5)" stroke-width="1.5"/><line x1="8.4" y1="8.4" x2="15.5" y2="15.5" stroke="rgba(201,169,110,.4)" stroke-width="1"/><line x1="32.5" y1="32.5" x2="39.6" y2="39.6" stroke="rgba(201,169,110,.4)" stroke-width="1"/><line x1="39.6" y1="8.4" x2="32.5" y2="15.5" stroke="rgba(201,169,110,.4)" stroke-width="1"/><line x1="15.5" y1="32.5" x2="8.4" y2="39.6" stroke="rgba(201,169,110,.4)" stroke-width="1"/></svg>
+      <span class="moon-phase-name">Funkenfangen</span>
+      <span class="moon-phase-desc">Stern</span>
+    </a>
+  </div>
+</nav>
 
 <!-- ═══ IMPRESSUM / DATENSCHUTZ ═══ -->
 <section class="legal" id="legal">
