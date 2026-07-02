@@ -1239,6 +1239,25 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 .pm-gallery-nav:hover{background:var(--gold);color:var(--ink)}
 @keyframes pmNavPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 0 rgba(201,169,110,0)}50%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 8px rgba(201,169,110,.22)}}
 
+/* === NEWSLETTER-POPUP (verträumt, selten) === */
+.nlpop-overlay{position:fixed;inset:0;z-index:850;display:flex;align-items:center;justify-content:center;padding:1.25rem;background:rgba(8,10,16,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .8s ease}
+.nlpop-overlay.show{opacity:1;pointer-events:auto}
+.nlpop-card{position:relative;width:100%;max-width:440px;text-align:center;padding:clamp(2.2rem,5vw,3.2rem) clamp(1.5rem,4vw,2.4rem) clamp(1.8rem,4vw,2.4rem);border-radius:14px;border:1px solid rgba(201,169,110,.32);background:radial-gradient(120% 80% at 50% 0%,rgba(30,40,64,.9),rgba(12,16,26,.95) 70%);box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 60px rgba(201,169,110,.08),inset 0 0 40px rgba(201,169,110,.05);overflow:hidden;transform:translateY(26px) scale(.96);opacity:0;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s ease;transition-delay:.15s}
+.nlpop-overlay.show .nlpop-card{transform:translateY(0) scale(1);opacity:1}
+.nlpop-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.4px 1.4px at 18% 22%,rgba(232,226,212,.5),transparent),radial-gradient(1px 1px at 74% 16%,rgba(232,226,212,.4),transparent),radial-gradient(1.2px 1.2px at 60% 30%,rgba(232,226,212,.35),transparent),radial-gradient(1px 1px at 30% 80%,rgba(232,226,212,.3),transparent),radial-gradient(1px 1px at 86% 70%,rgba(232,226,212,.3),transparent);background-repeat:no-repeat;pointer-events:none;opacity:.7;animation:nlTwinkle 6.5s ease-in-out infinite}
+@keyframes nlTwinkle{0%,100%{opacity:.5}50%{opacity:.9}}
+.nlpop-close{position:absolute;top:.4rem;right:.7rem;font-size:1.7rem;line-height:1;color:var(--cream-dim);background:none;border:none;cursor:pointer;opacity:.55;transition:opacity .3s;padding:.5rem;z-index:3}
+.nlpop-close:hover{opacity:1}
+.nlpop-crane{position:relative;width:clamp(80px,17vw,108px);margin:0 auto clamp(1rem,2.5vw,1.4rem);animation:nlCraneFloat 6s ease-in-out infinite;filter:drop-shadow(0 7px 16px rgba(201,169,110,.3))}
+.nlpop-crane svg{display:block;width:100%;height:auto}
+@keyframes nlCraneFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.nlpop-eyebrow{position:relative;font-family:var(--display);font-size:clamp(1.1rem,2.2vw,1.45rem);color:var(--gold);letter-spacing:.02em;line-height:1.05;margin-bottom:.4rem;text-shadow:0 0 18px rgba(201,169,110,.35)}
+.nlpop-title{position:relative;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2rem);color:var(--white);line-height:1.2;margin-bottom:1rem}
+.nlpop-text{position:relative;font-family:var(--sans);font-weight:300;font-size:clamp(.9rem,1.1vw,.98rem);line-height:1.85;color:var(--cream-dim);margin-bottom:1.6rem}
+.nlpop-card .nl-form{position:relative}
+.nlpop-consent{font-family:var(--sans);font-size:.68rem;font-weight:300;line-height:1.6;color:var(--cream-dim);opacity:.65;margin:1.1rem auto 0;max-width:360px}
+.nlpop-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+@media(prefers-reduced-motion:reduce){.nlpop-crane{animation:none}.nlpop-card::before{animation:none}}
 </style>
 <script>
 window.onerror=function(msg,src,line,col,err){
@@ -2849,7 +2868,7 @@ window.onerror=function(msg,src,line,col,err){
   <div class="pm-teaser-inner reveal">
     <div class="label label-center">Practical Magic</div>
     <h2>Ein Treffen.<br><em>Ein Newsletter.</em></h2>
-    <p class="pm-teaser-text">Practical Magic by Munich Witchcraft: ein gemütliches Treffen in meinem Hexengarten zu den Terminen im Jahr, die kosmisch etwas bedeuten &mdash; Natur, Feuer, Mond, Hexenwissen, Musik &amp; Meditation. Und ein Newsletter dazwischen. Abonniere ihn und erhalte dein Zugangswort sowie die Einladungen zu den nächsten Treffen. Freund:innen sind herzlich willkommen &mdash; ebenfalls mit Anmeldung; jede Anmeldung bestätige ich persönlich.</p>
+    <p class="pm-teaser-text">Practical Magic by Munich Witchcraft: ein gemütliches Treffen in meinem Hexengarten zu den Terminen im Jahr, die kosmisch etwas bedeuten. Natur, Feuer, Mond, Hexenwissen, Musik und Meditation. Und ein Newsletter dazwischen. Abonniere ihn und erhalte die Einladungen zu den nächsten Treffen. Freund:innen sind herzlich willkommen, ebenfalls mit Anmeldung; jede Anmeldung bestätige ich persönlich.</p>
     <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
       <div class="nl-row">
         <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
@@ -2857,7 +2876,7 @@ window.onerror=function(msg,src,line,col,err){
       </div>
       <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="hidden" name="locale" value="de">
-      <p class="nl-consent">Du erh&auml;ltst den Practical-Magic-Newsletter und dein Zugangswort per Best&auml;tigungs-Mail. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
+      <p class="nl-consent">Du erh&auml;ltst den Practical-Magic-Newsletter mit den Einladungen zu den n&auml;chsten Treffen. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
     </form>
   </div>
 </section>
@@ -4194,6 +4213,34 @@ function closeLetterPopup(e,navigate){
 </script>
 
 
+<!-- NEWSLETTER POPUP (Papierkranich) -->
+<div class="nlpop-overlay" id="nlPopOverlay" onclick="closeNlPopup()" role="dialog" aria-modal="true" aria-labelledby="nlPopTitle">
+  <div class="nlpop-card" onclick="event.stopPropagation()">
+    <button class="nlpop-close" onclick="closeNlPopup()" aria-label="Schlie&szlig;en">&times;</button>
+    <div class="nlpop-crane">
+      <svg viewBox="0 0 140 122" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M70 64 L44 112 L96 84 Z" fill="rgba(201,169,110,.16)" stroke="rgba(201,169,110,.75)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M70 64 L94 12 L116 54 Z" fill="rgba(201,169,110,.09)" stroke="rgba(201,169,110,.75)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M70 64 L96 84 L116 54 Z" fill="rgba(201,169,110,.06)" stroke="rgba(201,169,110,.5)" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M70 64 L38 54 L14 44 L28 48 M14 44 L22 38" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M70 64 L132 50 L120 42" fill="none" stroke="rgba(201,169,110,.7)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="nlpop-eyebrow">Practical Magic</div>
+    <h3 class="nlpop-title" id="nlPopTitle">Bleib in Verbindung</h3>
+    <p class="nlpop-text">Der Newsletter bringt dir hin und wieder einen Gedanken zum Mond und zum Jahreskreis, und eine Einladung, sobald das n&auml;chste Treffen im Hexengarten geplant ist. Ganz ohne Verpflichtung.</p>
+    <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
+      <div class="nl-row">
+        <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
+        <button class="nl-btn" type="submit">Abonnieren</button>
+      </div>
+      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="locale" value="de">
+      <p class="nlpop-consent">Du bekommst Hinweise zu den n&auml;chsten Treffen und hin und wieder einen Impuls. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
+    </form>
+  </div>
+</div>
+
 <!-- LIEBESKUMMER POPUP -->
 <div class="herz-overlay" id="herzOverlay" onclick="closeHerzPopup()">
   <div class="herz-card" onclick="event.stopPropagation()">
@@ -4344,6 +4391,43 @@ function closeHerzPopup(navigate){
   }
 }
 
+// === NEWSLETTER POPUP (Papierkranich) — sanft & selten ===
+function closeNlPopup(){
+  var ov=document.getElementById("nlPopOverlay");
+  if(!ov)return;
+  ov.classList.remove("show");
+  try{localStorage.setItem("mw-nl-popup",String(Date.now()));}catch(e){}
+}
+(function(){
+  var ov=document.getElementById("nlPopOverlay");
+  if(!ov)return;
+  var GAP=45*24*60*60*1000; // höchstens einmal alle 45 Tage
+  try{
+    var last=parseInt(localStorage.getItem("mw-nl-popup")||"0",10);
+    if(last&&(Date.now()-last)<GAP)return;
+  }catch(e){}
+  var done=false;
+  function otherPopupOpen(){
+    return ["letterOverlay","herzOverlay","planetOverlay","sessionPopup"].some(function(id){
+      var el=document.getElementById(id);
+      return el&&(el.classList.contains("show")||el.classList.contains("active"));
+    });
+  }
+  function introVisible(){
+    var iv=document.getElementById("introOverlay");
+    return iv&&!iv.classList.contains("hidden");
+  }
+  function tryShow(){
+    if(done)return;
+    if(introVisible()||otherPopupOpen()){setTimeout(tryShow,20000);return;}
+    done=true;
+    ov.classList.add("show");
+    try{localStorage.setItem("mw-nl-popup",String(Date.now()));}catch(e){}
+  }
+  // erst nach etwas Verweildauer, eingebettet in den Rhythmus der anderen Popups
+  setTimeout(tryShow,150000); // ~2,5 Min
+})();
+
 // === UNIFIED POPUP CONTROLLER ===
 (function(){
   var popupStep=parseInt(sessionStorage.getItem("popupStep")||"0",10);
@@ -4448,7 +4532,7 @@ function showLetterPopup(){
       fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()}).catch(function(){});
       var msg=document.createElement('p');
       msg.className='nl-success';
-      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt &mdash; bitte best&auml;tige darin deine Anmeldung, dann erh&auml;ltst du dein <strong>Zugangswort</strong>.';
+      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt. Bitte best&auml;tige darin deine Anmeldung, dann bist du <strong>dabei</strong>. Schau bitte auch im Spam-Ordner nach, falls sie nicht gleich auftaucht.';
       form.parentNode.replaceChild(msg,form);
     });
   });
