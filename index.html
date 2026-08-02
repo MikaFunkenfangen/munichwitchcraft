@@ -30,8 +30,8 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="Munich Witchcraft">
 <meta property="og:url" content="https://munichwitchcraft.com/">
-<meta property="og:image" content="https://munichwitchcraft.com/img/practical-magic/og-home.jpg">
-<meta property="og:image:secure_url" content="https://munichwitchcraft.com/img/practical-magic/og-home.jpg">
+<meta property="og:image" content="https://munichwitchcraft.com/img/og-home.jpg">
+<meta property="og:image:secure_url" content="https://munichwitchcraft.com/img/og-home.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Munich Witchcraft">
 <meta name="twitter:description" content="Kartenlegen, Spirituelle Beratung & Naturarbeit in München.">
-<meta name="twitter:image" content="https://munichwitchcraft.com/img/practical-magic/og-home.jpg">
+<meta name="twitter:image" content="https://munichwitchcraft.com/img/og-home.jpg">
 <meta name="theme-color" content="#080807">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -166,14 +166,11 @@ hr.sep{border:none;border-top:1px solid rgba(201,169,110,.08);margin:0 var(--sec
 .moon-phase:hover .moon-phase-name,.moon-phase.active .moon-phase-name{opacity:1;color:var(--gold)}
 .moon-phase-desc{font-family:var(--serif);font-size:clamp(.58rem,.75vw,.66rem);font-style:italic;color:rgba(201,169,110,.4);opacity:1;transition:opacity .4s;text-align:center;white-space:nowrap;margin-top:-2px;display:none}
 .moon-phase:hover .moon-phase-desc,.moon-phase.active .moon-phase-desc{opacity:.6}
-.moon-phase[href="practical-magic/"] .moon-phase-desc{display:block;font-size:clamp(.74rem,1.05vw,.92rem);font-weight:400;color:var(--gold);opacity:.92;letter-spacing:.02em;margin-top:2px}
-.moon-phase[href="practical-magic/"]:hover .moon-phase-desc,.moon-phase[href="practical-magic/"].active .moon-phase-desc{opacity:1}
 .moon-nav-line{width:clamp(200px,50vw,500px);height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,.12),transparent);margin-top:.5rem}
 @media(max-width:768px){
   .moon-phases-row{gap:.3rem;justify-content:center}
   .moon-phase{padding:6px}
   .moon-phase-desc{display:none}
-  .moon-phase[href="practical-magic/"] .moon-phase-desc{display:block;font-size:.72rem;white-space:normal}
   .moon-mini-row{gap:.35rem;padding:0 .5rem}
   .moon-mini svg{width:20px;height:20px}
 }
@@ -1197,47 +1194,6 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 
-/* === NEWSLETTER FORM (reusable) === */
-.nl-form{max-width:480px;margin:0 auto;width:100%}
-.nl-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
-.nl-input{flex:1 1 240px;min-width:0;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.25);color:var(--cream);font-family:var(--sans);font-size:.95rem;font-weight:300;padding:.85rem 1.1rem;border-radius:2px;outline:none;transition:border-color .3s}
-.nl-input::placeholder{color:var(--cream-dim);opacity:.5}
-.nl-input:focus{border-color:var(--gold);box-shadow:0 2px 18px rgba(201,169,110,.12)}
-.nl-btn{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--gold);border:1px solid var(--gold);padding:.85rem 1.8rem;border-radius:2px;cursor:pointer;transition:all .3s;white-space:nowrap}
-.nl-btn:hover{background:var(--white);border-color:var(--white)}
-.nl-consent{font-family:var(--sans);font-size:.72rem;font-weight:300;line-height:1.6;color:var(--cream-dim);opacity:.7;margin:clamp(1.4rem,3vw,2rem) auto 0;text-align:center;max-width:440px}
-.nl-consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
-.nl-success{font-family:var(--serif);font-size:clamp(1.02rem,1.5vw,1.18rem);font-weight:300;font-style:italic;line-height:1.7;color:var(--cream);max-width:440px;margin:0 auto;padding:1.2rem 0;text-align:center}
-.nl-success strong{color:var(--gold);font-style:normal;font-weight:400}
-/* Practical Magic newsletter teaser band */
-.pm-teaser{position:relative;z-index:2;padding:clamp(3.5rem,7vw,6rem) var(--section-px);text-align:center;background:linear-gradient(180deg,rgba(20,28,22,.35) 0%,rgba(15,18,35,.4) 100%);border-top:1px solid rgba(201,169,110,.08);border-bottom:1px solid rgba(201,169,110,.08)}
-.pm-teaser-inner{max-width:640px;margin:0 auto}
-.pm-teaser .label{justify-content:center;margin-bottom:1.4rem}
-.pm-teaser h2{font-family:var(--heading);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1.4rem;text-shadow:0 0 40px rgba(8,8,7,.9);animation:headingGlow 6s ease-in-out infinite}
-.pm-teaser h2 em{font-style:italic;color:var(--cream-dim)}
-.pm-teaser-text{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:300;line-height:1.7;color:var(--cream);max-width:540px;margin:0 auto clamp(2rem,4vw,2.8rem);opacity:.9}
-/* Newsletter inside contact + footer */
-.contact-nl{max-width:480px;margin:clamp(2.5rem,5vw,3.5rem) auto 0;padding-top:clamp(2rem,4vw,3rem);border-top:1px solid rgba(201,169,110,.1)}
-.contact-nl-label{font-family:var(--sans);font-size:.7rem;font-weight:300;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}
-.footer-nl{max-width:420px;margin:0 auto clamp(1.5rem,3vw,2.2rem)}
-.footer-nl-label{font-family:var(--serif);font-size:clamp(.95rem,1.3vw,1.1rem);font-weight:300;font-style:italic;color:var(--cream-dim);margin-bottom:1rem;opacity:.85}
-
-/* ── Galerie wie auf der Practical-Magic-Seite (exakt) ── */
-.pm-gallery-wrap{margin:clamp(2.5rem,5vw,4rem) 0 clamp(2.5rem,5vw,4rem)}
-.pm-gallery-wrap .label{justify-content:center;margin-bottom:clamp(1.2rem,3vw,2rem)}
-.pm-gallery{display:flex;gap:clamp(.8rem,2vw,1.3rem);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:.4rem clamp(.6rem,3vw,1.4rem);scrollbar-width:none}
-.pm-gallery::-webkit-scrollbar{display:none}
-.pm-slide{flex:0 0 auto;scroll-snap-align:center;width:clamp(255px,76vw,430px);position:relative;border-radius:5px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.4);margin:0}
-.pm-slide img{display:block;width:100%;height:clamp(330px,64vw,500px);object-fit:cover}
-.pm-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem 1.1rem .95rem;font-family:var(--serif);font-style:italic;font-size:clamp(.86rem,1.1vw,1rem);line-height:1.4;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.82),rgba(8,8,7,.25) 60%,transparent);text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.pm-gallery-hint{text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);opacity:.55;margin-top:.9rem}
-.pm-gallery-stage{position:relative}
-.pm-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:clamp(42px,8vw,54px);height:clamp(42px,8vw,54px);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,15,20,.8);border:1.5px solid var(--gold);color:var(--gold);cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background .3s,color .3s,box-shadow .3s;-webkit-tap-highlight-color:transparent;animation:pmNavPulse 2.4s ease-in-out infinite}
-.pm-gallery-nav.prev{left:clamp(.2rem,1.5vw,1rem)}
-.pm-gallery-nav.next{right:clamp(.2rem,1.5vw,1rem)}
-.pm-gallery-nav svg{width:46%;height:46%;display:block}
-.pm-gallery-nav:hover{background:var(--gold);color:var(--ink)}
-@keyframes pmNavPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 0 rgba(201,169,110,0)}50%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 8px rgba(201,169,110,.22)}}
 
 </style>
 <script>
@@ -1535,17 +1491,6 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 48 48"><path d="M24 6 C24 6 16 14 16 24 C16 30 19 36 24 36 C29 36 32 30 32 24 C32 18 28 16 26 11 C25 15 23 16 22 19 C21 16 22 11 24 6 Z" fill="rgba(201,169,110,.5)" stroke="rgba(201,169,110,.75)" stroke-width="1" stroke-linejoin="round"/><path d="M24 17 C24 17 20 22 20 27 C20 31 22 34 24 34 C26 34 28 31 28 27 C28 23 26 21 24 17 Z" fill="rgba(247,242,228,.9)"/></svg>
-      <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Das Treffen</span>
-    </a>
-
-    <a class="moon-phase" href="#practicalmagic-teaser" data-section="practicalmagic-teaser">
-      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
-      <span class="moon-phase-name">Newsletter</span>
-      <span class="moon-phase-desc">Flügelpost</span>
-    </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
       <span class="moon-phase-name">Session</span>
@@ -1585,32 +1530,6 @@ window.onerror=function(msg,src,line,col,err){
   <div class="folklore-leaves" id="folkLeaves"></div>
 
   <p class="folklore-text">Und vielleicht ist es kein Zufall, dass diese Arbeit in München geschieht. Zwischen <em>Isarwasser</em>, alten Gärten und den stillen Hügeln der Voralpen liegt eine Landschaft, die seit jeher Raum für solche Formen der Aufmerksamkeit bietet.</p>
-
-  <!-- GALLERY -->
-  <div class="pm-gallery-wrap reveal">
-    <div class="label" style="justify-content:center">Der Ort</div>
-    <div class="pm-gallery-stage">
-      <button class="pm-gallery-nav prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5 8 12 15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="pm-gallery" id="pmGallery">
-        <figure class="pm-slide"><img src="img/practical-magic/pm-13.jpg" alt="Schwarze Katze auf einer Gartenbank bei Kerzenschein und Lichterkette" loading="lazy" decoding="async"><figcaption>Die Hexenkatze</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-11.jpg" alt="Loderndes Feuer in einer Feuerschale im Garten bei Nacht" loading="lazy" decoding="async"><figcaption>Feuer im Garten</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-02.jpg" alt="Blühende Hortensien und Ringelblumen vor der Veranda" loading="lazy" decoding="async"><figcaption>Hortensien vor der Veranda</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-07.jpg" alt="Heller Raum mit Kunst, Kristallen und Pflanzen" loading="lazy" decoding="async"><figcaption>Raum für Kunst &amp; Kristalle</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-10.jpg" alt="Rote Mohnblüten im Garten in der Abenddämmerung, dahinter das Haus" loading="lazy" decoding="async"><figcaption>Mohn in der Dämmerung</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-06.jpg" alt="Wohnzimmer mit Kamin, Bücherwand und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Am Kamin</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-05.jpg" alt="Gemütliche Sitzecke im Garten mit Strohballen, Sesseln und Laternen" loading="lazy" decoding="async"><figcaption>Sitzecke im Garten</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-14.jpg" alt="Überdachte Veranda am Abend mit Lichterketten, Strohballen, Lavendelbündeln und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Veranda im Lichterschein</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-12.jpg" alt="Der nächtliche Garten mit warm beleuchteten Wegen und Abendrot am Horizont" loading="lazy" decoding="async"><figcaption>Der Garten bei Nacht</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-03.jpg" alt="Rote Rosen vor dem Haus in der Abenddämmerung" loading="lazy" decoding="async"><figcaption>Rosen in der Abenddämmerung</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-08.jpg" alt="Kunstecke mit Bildergalerie, floraler Tapete und barockem Stuhl" loading="lazy" decoding="async"><figcaption>Eine Ecke für die Kunst</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-04.jpg" alt="Blühende Sträucher vor den erleuchteten Fenstern in der Dämmerung" loading="lazy" decoding="async"><figcaption>Dämmerung am Haus</figcaption></figure>
-        <figure class="pm-slide"><img src="img/practical-magic/pm-09.jpg" alt="Klanginstrumente: Handpan, Klangschalen und Harfe" loading="lazy" decoding="async"><figcaption>Klang: Handpan, Schalen &amp; Harfe</figcaption></figure>
-      </div>
-      <button class="pm-gallery-nav next" type="button" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 16 12 9 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-    <div class="pm-gallery-hint">Wischen oder die Pfeile nutzen</div>
-  </div>
 </section>
 <section id="offerings">
   <div class="offerings-head reveal"><div class="label">Angebote</div><div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" src="img/img_r06.png" alt="" loading="lazy"><h2>Zwei Wege.<br><em>Ein Gespräch.</em></h2></div></div>
@@ -1905,17 +1824,6 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 48 48"><path d="M24 6 C24 6 16 14 16 24 C16 30 19 36 24 36 C29 36 32 30 32 24 C32 18 28 16 26 11 C25 15 23 16 22 19 C21 16 22 11 24 6 Z" fill="rgba(201,169,110,.5)" stroke="rgba(201,169,110,.75)" stroke-width="1" stroke-linejoin="round"/><path d="M24 17 C24 17 20 22 20 27 C20 31 22 34 24 34 C26 34 28 31 28 27 C28 23 26 21 24 17 Z" fill="rgba(247,242,228,.9)"/></svg>
-      <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Das Treffen</span>
-    </a>
-
-    <a class="moon-phase" href="#practicalmagic-teaser" data-section="practicalmagic-teaser">
-      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
-      <span class="moon-phase-name">Newsletter</span>
-      <span class="moon-phase-desc">Flügelpost</span>
-    </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
       <span class="moon-phase-name">Session</span>
@@ -2146,17 +2054,6 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 48 48"><path d="M24 6 C24 6 16 14 16 24 C16 30 19 36 24 36 C29 36 32 30 32 24 C32 18 28 16 26 11 C25 15 23 16 22 19 C21 16 22 11 24 6 Z" fill="rgba(201,169,110,.5)" stroke="rgba(201,169,110,.75)" stroke-width="1" stroke-linejoin="round"/><path d="M24 17 C24 17 20 22 20 27 C20 31 22 34 24 34 C26 34 28 31 28 27 C28 23 26 21 24 17 Z" fill="rgba(247,242,228,.9)"/></svg>
-      <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Das Treffen</span>
-    </a>
-
-    <a class="moon-phase" href="#practicalmagic-teaser" data-section="practicalmagic-teaser">
-      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
-      <span class="moon-phase-name">Newsletter</span>
-      <span class="moon-phase-desc">Flügelpost</span>
-    </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
       <span class="moon-phase-name">Session</span>
@@ -2384,17 +2281,6 @@ window.onerror=function(msg,src,line,col,err){
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.25)" stroke-width="1"/><circle cx="24" cy="24" r="17" fill="rgba(30,42,28,.9)"/><path d="M24 6 A18 18 0 0 0 24 42 A0 18 0 0 1 24 6" fill="rgba(232,226,212,.75)"/></svg>
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
-    </a>
-    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 48 48"><path d="M24 6 C24 6 16 14 16 24 C16 30 19 36 24 36 C29 36 32 30 32 24 C32 18 28 16 26 11 C25 15 23 16 22 19 C21 16 22 11 24 6 Z" fill="rgba(201,169,110,.5)" stroke="rgba(201,169,110,.75)" stroke-width="1" stroke-linejoin="round"/><path d="M24 17 C24 17 20 22 20 27 C20 31 22 34 24 34 C26 34 28 31 28 27 C28 23 26 21 24 17 Z" fill="rgba(247,242,228,.9)"/></svg>
-      <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Das Treffen</span>
-    </a>
-
-    <a class="moon-phase" href="#practicalmagic-teaser" data-section="practicalmagic-teaser">
-      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
-      <span class="moon-phase-name">Newsletter</span>
-      <span class="moon-phase-desc">Flügelpost</span>
     </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
@@ -2794,17 +2680,6 @@ window.onerror=function(msg,src,line,col,err){
       <span class="moon-phase-name">FAQ</span>
       <span class="moon-phase-desc">Letztes Viertel</span>
     </a>
-    <a class="moon-phase" href="practical-magic/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 48 48"><path d="M24 6 C24 6 16 14 16 24 C16 30 19 36 24 36 C29 36 32 30 32 24 C32 18 28 16 26 11 C25 15 23 16 22 19 C21 16 22 11 24 6 Z" fill="rgba(201,169,110,.5)" stroke="rgba(201,169,110,.75)" stroke-width="1" stroke-linejoin="round"/><path d="M24 17 C24 17 20 22 20 27 C20 31 22 34 24 34 C26 34 28 31 28 27 C28 23 26 21 24 17 Z" fill="rgba(247,242,228,.9)"/></svg>
-      <span class="moon-phase-name">Practical Magic</span>
-      <span class="moon-phase-desc">Das Treffen</span>
-    </a>
-
-    <a class="moon-phase" href="#practicalmagic-teaser" data-section="practicalmagic-teaser">
-      <svg viewBox="0 0 48 48"><path d="M43 6 L5 22 L20 27 L25 42 L29 28 Z" fill="rgba(201,169,110,.45)" stroke="rgba(201,169,110,.65)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M43 6 L20 27" fill="none" stroke="rgba(201,169,110,.85)" stroke-width="1" stroke-linecap="round"/></svg>
-      <span class="moon-phase-name">Newsletter</span>
-      <span class="moon-phase-desc">Flügelpost</span>
-    </a>
     <a class="moon-phase" href="session/" target="_blank" rel="noopener">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5"/><circle cx="24" cy="24" r="10" fill="url(#stormEclipse)"/><circle cx="24" cy="24" r="10" fill="none" stroke="rgba(201,169,110,.5)" stroke-width=".8"/><circle cx="24" cy="24" r="11.5" fill="none" stroke="rgba(201,169,110,.15)" stroke-width="1.5"/><path d="M24 6 C28 12,30 16,28 20 S20 26,22 32 S28 38,24 42" fill="none" stroke="rgba(80,180,210,.35)" stroke-width="1.8" stroke-linecap="round" style="animation:vortexSpin 8s linear infinite;transform-origin:center"/><path d="M24 6 C20 12,18 16,20 20 S28 26,26 32 S20 38,24 42" fill="none" stroke="rgba(80,180,210,.25)" stroke-width="1.2" stroke-linecap="round" style="animation:vortexSpinR 6s linear infinite;transform-origin:center"/><circle cx="24" cy="24" r="15" fill="none" stroke="rgba(201,169,110,.2)" stroke-width=".5" stroke-dasharray="1.5 3" style="animation:vortexSpin 10s linear infinite;transform-origin:center"/></svg>
       <span class="moon-phase-name">Session</span>
@@ -2840,28 +2715,6 @@ window.onerror=function(msg,src,line,col,err){
 
 
 <hr class="sep">
-
-<!-- KOOPERATIONEN -->
-
-
-<!-- ═══ PRACTICAL MAGIC — NEWSLETTER-TEASER (öffentlich) ═══ -->
-<section class="pm-teaser" id="practicalmagic-teaser">
-  <div class="pm-teaser-inner reveal">
-    <div class="label label-center">Practical Magic</div>
-    <h2>Ein Treffen.<br><em>Ein Newsletter.</em></h2>
-    <p class="pm-teaser-text">Practical Magic by Munich Witchcraft: ein gemütliches Treffen in meinem Hexengarten zu den Terminen im Jahr, die kosmisch etwas bedeuten. Natur, Feuer, Mond, Hexenwissen, Musik und Meditation. Und ein Newsletter dazwischen. Abonniere ihn und erhalte die Einladungen zu den nächsten Treffen. Freund:innen sind herzlich willkommen, ebenfalls mit Anmeldung; jede Anmeldung bestätige ich persönlich.</p>
-    <form class="nl-form" action="https://16ab0f75.sibforms.com/serve/MUIFAFTjZCLbY2Pt89XV9IiKvN1_NZBeaZfT-HYdFxD-S_Z-gA37Xy73iV0Mu4L9JqbM3cW4aHDRRn2kY6i0_iUodgzpHqhBUMkkhZJ1626t0uCpcNezvjLqweqqIzIuyQJg3aPjfCDi5JkNnHMLcz0utZ53PBz6835GnKISAnCee-6axydy_LwWIavolWopft9rC9I9qBUBdv1erw==" method="POST" target="_blank" novalidate>
-      <div class="nl-row">
-        <input class="nl-input" type="email" name="EMAIL" placeholder="Deine E-Mail" required autocomplete="email">
-        <button class="nl-btn" type="submit">Abonnieren</button>
-      </div>
-      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <input type="hidden" name="locale" value="de">
-      <p class="nl-consent">Du erh&auml;ltst den Practical-Magic-Newsletter mit den Einladungen zu den n&auml;chsten Treffen. Abmeldung jederzeit. Mehr in der <a href="#legal" onclick="showTab(document.querySelectorAll('.legal-tab')[1],'datenschutz')">Datenschutzerkl&auml;rung</a>.</p>
-    </form>
-  </div>
-</section>
-
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -2905,10 +2758,8 @@ window.onerror=function(msg,src,line,col,err){
       <h3>1. Allgemeines</h3><p>Diese Website wird bei Netlify gehostet (Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, CA 94104, USA). Beim Besuch werden technische Daten automatisch erfasst (Browser, Betriebssystem, IP-Adresse, Uhrzeit). Diese Daten werden zur fehlerfreien Bereitstellung der Website benötigt.</p>
       <h3>2. Verantwortliche Stelle</h3><p>Mika Maria Schöberl<br>Grasmückenweg 7b · 80937 München<br>E-Mail: <a href="mailto:kontakt@funkenfangen.com">kontakt@funkenfangen.com</a></p>
       <h3>3. Kontaktaufnahme per E-Mail</h3><p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
-      <h3>4. Keine Tracking-Cookies / keine Analyse</h3><p>Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es wird kein Nutzerverhalten ausgewertet. Für den optionalen Newsletter wird ein Drittanbieter (Brevo) eingesetzt &mdash; siehe Punkt 5.</p>
-      <!-- ▸▸▸ {{DATENSCHUTZ_BREVO}} — ENTWURF, juristisch noch nicht geprüft. Vor Veröffentlichung des Newsletters von Mika prüfen/freigeben lassen. ◂◂◂ -->
-      <h3>5. Newsletter-Versand über Brevo</h3><p>Für den Versand unseres Practical-Magic-Newsletters nutzen wir den Dienst Brevo (Sendinblue GmbH, Köpenicker Straße 126, 10179 Berlin). Wenn Sie sich zum Newsletter anmelden, werden die im Anmeldeformular eingegebenen Daten (insbesondere Ihre E-Mail-Adresse) an Brevo übermittelt und dort gespeichert. Die Anmeldung erfolgt im Double-Opt-In-Verfahren: Nach der Eintragung erhalten Sie eine E-Mail mit der Bitte, die Anmeldung zu bestätigen. Erst danach werden Sie in den Verteiler aufgenommen. Wir speichern den Zeitpunkt der Anmeldung und der Bestätigung, um die Einwilligung nachweisen zu können. Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO. Sie können sich jederzeit über den Abmeldelink in jeder Newsletter-E-Mail wieder austragen; damit erlischt Ihre Einwilligung. Mit Brevo besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO. Weitere Informationen: <a href="https://www.brevo.com/de/datenschutz-uebersicht/" target="_blank" rel="noopener">brevo.com/de/datenschutz-uebersicht</a>.</p>
-      <h3>6. Ihre Rechte</h3><p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer gespeicherten Daten. Beschwerden richten Sie an den Bayerischen Landesbeauftragten für den Datenschutz (BayLfD), Wagmüllerstraße 18, 80538 München.</p>
+      <h3>4. Keine Tracking-Cookies / keine Analyse</h3><p>Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es wird kein Nutzerverhalten ausgewertet.</p>
+      <h3>5. Ihre Rechte</h3><p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer gespeicherten Daten. Beschwerden richten Sie an den Bayerischen Landesbeauftragten für den Datenschutz (BayLfD), Wagmüllerstraße 18, 80538 München.</p>
     </div>
   </div>
 </section>
@@ -3424,27 +3275,6 @@ function toggleGallery(){
   arrow.style.transform=isOpen?"rotate(180deg)":"";
 }
 
-// === GALERIE-PFEILE (blättern) — wie auf der Practical-Magic-Seite ===
-(function(){
-  var gal=document.getElementById("pmGallery");
-  if(!gal)return;
-  var stage=gal.closest(".pm-gallery-stage");
-  if(!stage)return;
-  function go(dir){
-    var slides=gal.querySelectorAll(".pm-slide");
-    if(!slides.length)return;
-    var center=gal.scrollLeft+gal.clientWidth/2, cur=0, best=Infinity;
-    slides.forEach(function(s,i){var c=s.offsetLeft+s.offsetWidth/2, d=Math.abs(c-center); if(d<best){best=d;cur=i;}});
-    var target=Math.max(0,Math.min(slides.length-1,cur+dir));
-    var el=slides[target];
-    gal.scrollTo({left:el.offsetLeft-(gal.clientWidth-el.offsetWidth)/2,behavior:"auto"});
-  }
-  var prev=stage.querySelector(".pm-gallery-nav.prev");
-  var next=stage.querySelector(".pm-gallery-nav.next");
-  if(prev)prev.addEventListener("click",function(){go(-1);});
-  if(next)next.addEventListener("click",function(){go(1);});
-})();
-
 // === ABOUT GALLERY TOGGLE ===
 function toggleAboutGallery(){
   var more=document.getElementById("aboutGalleryMore");
@@ -3514,7 +3344,7 @@ function toggleManifestGallery(){
 // === MOON PHASE NAVIGATOR ===
 (function(){
   var allMoonLinks=document.querySelectorAll(".moon-phase[data-section],.moon-mini[data-section]");
-  var sectionIds=["home","intro","offerings","about","process","books","manifest","faq","practicalmagic-teaser","contact"];
+  var sectionIds=["home","intro","offerings","about","process","books","manifest","faq","contact"];
   var lastActive=-1;
 
   // Smooth scroll on click for all moon nav links
@@ -4432,26 +4262,6 @@ function showLetterPopup(){
   }
   btn.addEventListener('click',checkPw);
   inp.addEventListener('keydown',function(e){if(e.key==='Enter')checkPw()});
-})();
-
-// === NEWSLETTER (Brevo) — AJAX-Absenden + Inline-Dank ===
-(function(){
-  document.querySelectorAll('form.nl-form').forEach(function(form){
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      var email=form.querySelector('input[name="EMAIL"]');
-      if(!email||!email.value||(email.checkValidity&&!email.checkValidity())){if(email&&email.reportValidity)email.reportValidity();return;}
-      var data=new URLSearchParams();
-      data.append('EMAIL',email.value);
-      data.append('email_address_check','');
-      data.append('locale','de');
-      fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:data.toString()}).catch(function(){});
-      var msg=document.createElement('p');
-      msg.className='nl-success';
-      msg.innerHTML='Fast geschafft. Wir haben dir eine E-Mail geschickt. Bitte best&auml;tige darin deine Anmeldung, dann bist du <strong>dabei</strong>. Schau bitte auch im Spam-Ordner nach, falls sie nicht gleich auftaucht.';
-      form.parentNode.replaceChild(msg,form);
-    });
-  });
 })();
 
 </script>
