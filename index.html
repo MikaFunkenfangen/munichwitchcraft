@@ -1194,6 +1194,22 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
 @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
 
+/* ── Galerie "Der Ort" (Folklore-Interlude) ── */
+.pm-gallery-wrap{margin:clamp(2.5rem,5vw,4rem) 0 clamp(2.5rem,5vw,4rem)}
+.pm-gallery-wrap .label{justify-content:center;margin-bottom:clamp(1.2rem,3vw,2rem)}
+.pm-gallery{display:flex;gap:clamp(.8rem,2vw,1.3rem);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:.4rem clamp(.6rem,3vw,1.4rem);scrollbar-width:none}
+.pm-gallery::-webkit-scrollbar{display:none}
+.pm-slide{flex:0 0 auto;scroll-snap-align:center;width:clamp(255px,76vw,430px);position:relative;border-radius:5px;overflow:hidden;box-shadow:0 10px 34px rgba(0,0,0,.4);margin:0}
+.pm-slide img{display:block;width:100%;height:clamp(330px,64vw,500px);object-fit:cover}
+.pm-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.8rem 1.1rem .95rem;font-family:var(--serif);font-style:italic;font-size:clamp(.86rem,1.1vw,1rem);line-height:1.4;color:var(--cream);background:linear-gradient(to top,rgba(8,8,7,.82),rgba(8,8,7,.25) 60%,transparent);text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.pm-gallery-hint{text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);opacity:.55;margin-top:.9rem}
+.pm-gallery-stage{position:relative}
+.pm-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:clamp(42px,8vw,54px);height:clamp(42px,8vw,54px);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(10,15,20,.8);border:1.5px solid var(--gold);color:var(--gold);cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:background .3s,color .3s,box-shadow .3s;-webkit-tap-highlight-color:transparent;animation:pmNavPulse 2.4s ease-in-out infinite}
+.pm-gallery-nav.prev{left:clamp(.2rem,1.5vw,1rem)}
+.pm-gallery-nav.next{right:clamp(.2rem,1.5vw,1rem)}
+.pm-gallery-nav svg{width:46%;height:46%;display:block}
+.pm-gallery-nav:hover{background:var(--gold);color:var(--ink)}
+@keyframes pmNavPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 0 rgba(201,169,110,0)}50%{box-shadow:0 4px 18px rgba(0,0,0,.55),0 0 0 8px rgba(201,169,110,.22)}}
 
 </style>
 <script>
@@ -1530,6 +1546,32 @@ window.onerror=function(msg,src,line,col,err){
   <div class="folklore-leaves" id="folkLeaves"></div>
 
   <p class="folklore-text">Und vielleicht ist es kein Zufall, dass diese Arbeit in München geschieht. Zwischen <em>Isarwasser</em>, alten Gärten und den stillen Hügeln der Voralpen liegt eine Landschaft, die seit jeher Raum für solche Formen der Aufmerksamkeit bietet.</p>
+
+  <!-- GALLERY -->
+  <div class="pm-gallery-wrap reveal">
+    <div class="label" style="justify-content:center">Der Ort</div>
+    <div class="pm-gallery-stage">
+      <button class="pm-gallery-nav prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5 8 12 15 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="pm-gallery" id="pmGallery">
+        <figure class="pm-slide"><img src="img/ort/pm-13.jpg" alt="Schwarze Katze auf einer Gartenbank bei Kerzenschein und Lichterkette" loading="lazy" decoding="async"><figcaption>Die Hexenkatze</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-01.jpg" alt="Das blaue Haus, vom sommerlichen Hexengarten aus gesehen" loading="lazy" decoding="async"><figcaption>Das blaue Haus im Sommergarten</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-11.jpg" alt="Loderndes Feuer in einer Feuerschale im Garten bei Nacht" loading="lazy" decoding="async"><figcaption>Feuer im Garten</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-02.jpg" alt="Blühende Hortensien und Ringelblumen vor der Veranda" loading="lazy" decoding="async"><figcaption>Hortensien vor der Veranda</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-07.jpg" alt="Heller Raum mit Kunst, Kristallen und Pflanzen" loading="lazy" decoding="async"><figcaption>Raum für Kunst &amp; Kristalle</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-10.jpg" alt="Rote Mohnblüten im Garten in der Abenddämmerung, dahinter das Haus" loading="lazy" decoding="async"><figcaption>Mohn in der Dämmerung</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-06.jpg" alt="Wohnzimmer mit Kamin, Bücherwand und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Am Kamin</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-05.jpg" alt="Gemütliche Sitzecke im Garten mit Strohballen, Sesseln und Laternen" loading="lazy" decoding="async"><figcaption>Sitzecke im Garten</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-14.jpg" alt="Überdachte Veranda am Abend mit Lichterketten, Strohballen, Lavendelbündeln und gemütlichen Sesseln" loading="lazy" decoding="async"><figcaption>Veranda im Lichterschein</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-12.jpg" alt="Der nächtliche Garten mit warm beleuchteten Wegen und Abendrot am Horizont" loading="lazy" decoding="async"><figcaption>Der Garten bei Nacht</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-03.jpg" alt="Rote Rosen vor dem Haus in der Abenddämmerung" loading="lazy" decoding="async"><figcaption>Rosen in der Abenddämmerung</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-08.jpg" alt="Kunstecke mit Bildergalerie, floraler Tapete und barockem Stuhl" loading="lazy" decoding="async"><figcaption>Eine Ecke für die Kunst</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-04.jpg" alt="Blühende Sträucher vor den erleuchteten Fenstern in der Dämmerung" loading="lazy" decoding="async"><figcaption>Dämmerung am Haus</figcaption></figure>
+        <figure class="pm-slide"><img src="img/ort/pm-09.jpg" alt="Klanginstrumente: Handpan, Klangschalen und Harfe" loading="lazy" decoding="async"><figcaption>Klang: Handpan, Schalen &amp; Harfe</figcaption></figure>
+      </div>
+      <button class="pm-gallery-nav next" type="button" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 16 12 9 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="pm-gallery-hint">Wischen oder die Pfeile nutzen</div>
+  </div>
 </section>
 <section id="offerings">
   <div class="offerings-head reveal"><div class="label">Angebote</div><div class="about-portrait-wrap" style="justify-content:center"><img class="portrait-circle" src="img/img_r06.png" alt="" loading="lazy"><h2>Zwei Wege.<br><em>Ein Gespräch.</em></h2></div></div>
@@ -3274,6 +3316,27 @@ function toggleGallery(){
   text.textContent=isOpen?"Weniger zeigen":"Mehr entdecken";
   arrow.style.transform=isOpen?"rotate(180deg)":"";
 }
+
+// === GALERIE-PFEILE "Der Ort" (blättern) ===
+(function(){
+  var gal=document.getElementById("pmGallery");
+  if(!gal)return;
+  var stage=gal.closest(".pm-gallery-stage");
+  if(!stage)return;
+  function go(dir){
+    var slides=gal.querySelectorAll(".pm-slide");
+    if(!slides.length)return;
+    var center=gal.scrollLeft+gal.clientWidth/2, cur=0, best=Infinity;
+    slides.forEach(function(s,i){var c=s.offsetLeft+s.offsetWidth/2, d=Math.abs(c-center); if(d<best){best=d;cur=i;}});
+    var target=Math.max(0,Math.min(slides.length-1,cur+dir));
+    var el=slides[target];
+    gal.scrollTo({left:el.offsetLeft-(gal.clientWidth-el.offsetWidth)/2,behavior:"auto"});
+  }
+  var prev=stage.querySelector(".pm-gallery-nav.prev");
+  var next=stage.querySelector(".pm-gallery-nav.next");
+  if(prev)prev.addEventListener("click",function(){go(-1);});
+  if(next)next.addEventListener("click",function(){go(1);});
+})();
 
 // === ABOUT GALLERY TOGGLE ===
 function toggleAboutGallery(){
