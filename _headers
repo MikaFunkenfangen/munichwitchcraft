@@ -1,0 +1,12 @@
+# Netlify: Kopfzeilen für alle Auslieferungen
+#
+# Die Seite soll aus den Suchergebnissen verschwinden. X-Robots-Tag wirkt auch
+# auf Dateien, die kein <meta> tragen können — Bilder, Audio, PDF.
+#
+# Bewusst KEIN "Disallow" in einer robots.txt: das würde das Einlesen verbieten,
+# die Suchmaschine bekäme das noindex nie zu sehen, und die Adresse könnte ohne
+# Textauszug weiter in den Ergebnissen stehen. Einlesen erlauben, Aufnehmen
+# verbieten — das ist der Weg, der die Seite wirklich austrägt.
+
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex

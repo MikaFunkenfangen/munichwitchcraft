@@ -23,6 +23,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <meta name="description" content="Munich Witchcraft — Kartenlegen, Spirituelle Beratung & Naturarbeit in München. Alles Wesentliche wächst wild.">
 <meta property="og:title" content="Munich Witchcraft — Kartenlegen & Spirituelle Beratung">
 <meta property="og:description" content="Kartenlegen, Spirituelle Beratung & Naturarbeit in München. Alles Wesentliche wächst wild.">
@@ -2018,8 +2020,7 @@ window.onerror=function(msg,src,line,col,err){
     <p class="session-popup-title">Dieser Ort ist nicht für alle.</p>
     <p class="session-popup-body">Was sich hinter dem Sturm verbirgt, öffnet sich nur denen, die den Weg bereits begonnen haben.</p>
     <div class="session-popup-pw">
-      <input type="text" id="portalPwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
-      <button class="session-popup-pw-btn" id="portalPwBtn">&rarr;</button>
+      <a href="session/" target="_blank" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Eintreten</a>
     </div>
     <p class="session-popup-or">oder</p>
     <a href="#contact" class="session-popup-cta" onclick="document.getElementById('sessionPopup').classList.remove('active')">Termin anfragen</a>
@@ -4310,23 +4311,9 @@ function showLetterPopup(){
   overlay.classList.add("show");
 }
 
-/* === SESSION PORTAL PASSWORD === */
-(function(){
-  var inp=document.getElementById('portalPwInput');
-  var btn=document.getElementById('portalPwBtn');
-  if(!inp||!btn)return;
-  function checkPw(){
-    if(inp.value.trim().toLowerCase()==='mwc'){
-      document.getElementById('sessionPopup').classList.remove('active');
-      window.open('session/','_blank');
-    } else {
-      inp.style.borderColor='rgba(180,60,60,.6)';
-      setTimeout(function(){inp.style.borderColor=''},600);
-    }
-  }
-  btn.addEventListener('click',checkPw);
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter')checkPw()});
-})();
+/* Die frühere Passwortabfrage für den Session-Bereich ist entfallen —
+   die Schwelle vor der Website fragt bereits. Der Verweis im Popup führt
+   nun unmittelbar zu session/. */
 
 </script>
 

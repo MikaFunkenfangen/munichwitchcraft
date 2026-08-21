@@ -164,25 +164,40 @@
 
   function zeige(sofort){
     build();
+    if (!gate) return;
     if (sofort) gate.style.transition = "none";
-    requestAnimationFrame(function(){
+
+    /* In einem verborgenen Tab feuert requestAnimationFrame erst beim
+       Zurückkehren — bis dahin kann die Schwelle längst geöffnet und entfernt
+       sein. Darum überall prüfen, ob sie noch steht, und zusätzlich einen
+       Zeitgeber mitlaufen lassen, damit sie auch ohne Bildwiederholung sichtbar wird. */
+    function einblenden(){
+      if (!gate) return;
       gate.classList.add("mwc-in");
-      if (sofort) requestAnimationFrame(function(){ gate.style.transition = ""; });
-      setTimeout(function(){ try { input.focus({preventScroll:true}); } catch(e){ input.focus(); } }, sofort ? 60 : 900);
-    });
+      if (sofort) requestAnimationFrame(function(){ if (gate) gate.style.transition = ""; });
+    }
+    requestAnimationFrame(einblenden);
+    setTimeout(einblenden, 30);
+
+    setTimeout(function(){
+      if (!input) return;
+      try { input.focus({preventScroll:true}); } catch(e){ input.focus(); }
+    }, sofort ? 60 : 900);
   }
 
   function sagen(text){
+    if (!gate || !note) return;
     note.textContent = text;
     note.classList.add("mwc-show");
     gate.classList.add("mwc-wrong");
-    setTimeout(function(){ gate.classList.remove("mwc-wrong"); }, 600);
+    setTimeout(function(){ if (gate) gate.classList.remove("mwc-wrong"); }, 600);
   }
 
   function pruefe(wert){
     var wort = String(wert || "").trim().toLowerCase();
     if (!wort) { sagen("Sag etwas."); return; }
     verify(wort).then(function(ok){
+      if (!gate) return;
       if (ok) oeffne();
       else {
         sagen("Das war es nicht. Hör noch einmal hin.");
@@ -216,6 +231,7 @@
   }
 
   function oeffne(){
+    if (!gate) return;
     try { sessionStorage.setItem(STORE_KEY, STORE_VAL); } catch (e) {}
     gate.classList.add("mwc-out");
     document.documentElement.classList.remove("mwc-locked");

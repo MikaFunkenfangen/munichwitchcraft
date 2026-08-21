@@ -13,7 +13,8 @@
 <script src="/gate.js" data-mode="immediate" data-base="/"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Im Auge des Sturms — Session mit Mika Maria Schöberl. Kartenlegen, Traumarbeit & spirituelle Begleitung.">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <meta name="theme-color" content="#080807">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -576,10 +577,7 @@ footer{border-top:1px solid rgba(201,169,110,.07);padding:clamp(2rem,4vw,3rem) v
 
     <!-- Step 0: Password -->
     <div class="pw-step pw-step-active" id="pwStep0">
-      <p class="pw-gate-welcome">Du hast einen Termin vereinbart.<br>Der Moment r&uuml;ckt n&auml;her.<br>Gib nun das Passwort ein, das du erhalten hast.</p>
-      <div class="pw-gate-field">
-        <input type="text" id="pwInput" placeholder="Passwort" autocomplete="off" spellcheck="false">
-      </div>
+      <p class="pw-gate-welcome">Du hast einen Termin vereinbart.<br>Der Moment r&uuml;ckt n&auml;her.</p>
       <button class="pw-gate-btn" id="pwBtn">Eintreten</button>
       <div class="pw-info" id="pwInfo">
         <p class="pw-info-line">Erkunde diese Seite. Nimm dir Zeit.</p>
@@ -1438,10 +1436,8 @@ function tCopy(){
 /* === PASSWORD GATE — ECLIPSE ON LOGIN PAGE === */
 (function(){
   var gate=document.getElementById('pwGate');
-  var pwInput=document.getElementById('pwInput');
   var pwBtn=document.getElementById('pwBtn');
   var audio=document.getElementById('introAudio');
-  var PASSWORD='mwc';
 
   /* Check sessionStorage — skip gate if already authenticated */
   if(sessionStorage.getItem('mw-session-auth')==='1'){
@@ -1476,8 +1472,6 @@ function tCopy(){
     audio.volume=0.5;
     try{audio.play().then(function(){audioStarted=true}).catch(function(){})}catch(e){}
   }
-  pwInput.addEventListener('focus',tryPlayAudio);
-  pwInput.addEventListener('click',tryPlayAudio);
   pwBtn.addEventListener('click',tryPlayAudio);
   gate.addEventListener('click',tryPlayAudio);
   gate.addEventListener('touchstart',tryPlayAudio,{passive:true});
@@ -1553,7 +1547,6 @@ function tCopy(){
       setTimeout(function(){if(spark.parentNode)spark.parentNode.removeChild(spark)},1500);
     }
   }
-  pwInput.addEventListener('input',function(){spawnInputSparks(pwInput)});
   document.querySelectorAll('.pw-answer').forEach(function(inp){
     inp.addEventListener('input',function(){spawnInputSparks(inp)});
   });
@@ -1590,25 +1583,16 @@ function tCopy(){
     },2000);
   });
 
-  /* Password check — on success show step 1 */
-  function checkPassword(){
+  /* Kein Passwort mehr — die Schwelle vor der Website hat bereits gefragt.
+     "Eintreten" fuehrt direkt zur ersten Frage. */
+  function eintreten(){
     tryPlayAudio();
-    if(pwInput.value.trim().toLowerCase()===PASSWORD){
-      sessionStorage.setItem('mw-session-auth','1');
-      showStep('pwStep1');
-      showSkipIntro();
-    } else {
-      pwInput.classList.add('pw-error');
-      pwInput.parentElement.classList.add('pw-shake');
-      setTimeout(function(){
-        pwInput.classList.remove('pw-error');
-        pwInput.parentElement.classList.remove('pw-shake');
-      },600);
-    }
+    sessionStorage.setItem('mw-session-auth','1');
+    showStep('pwStep1');
+    showSkipIntro();
   }
 
-  pwBtn.addEventListener('click',checkPassword);
-  pwInput.addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword()});
+  pwBtn.addEventListener('click',eintreten);
 
   /* Next buttons for questions (accept any non-empty answer) */
   document.querySelectorAll('.pw-next-btn').forEach(function(btn){
