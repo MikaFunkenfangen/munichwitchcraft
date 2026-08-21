@@ -10,3 +10,9 @@
 
 /*
   X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+
+# Die Schwelle darf nie veraltet ausgeliefert werden. Läuft eine alte Fassung
+# im Browser und stolpert sie, steht die Seite offen — darum bei jedem Aufruf
+# rückfragen, ob die Datei noch aktuell ist.
+/gate.js
+  Cache-Control: public, max-age=0, must-revalidate
