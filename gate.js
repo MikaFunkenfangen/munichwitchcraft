@@ -110,7 +110,7 @@
       '<div class="mwc-inner">' +
         MOON +
         '<h1>Die Schwelle</h1>' +
-        '<p class="mwc-sub">Hinter dieser Tür wird es still. Wer das Wort kennt, darf herein.</p>' +
+        '<p class="mwc-sub">Hinter dieser Tür wird es magisch. Wer das Wort kennt, darf herein.</p>' +
         '<form novalidate>' +
           '<div class="mwc-field">' +
             '<label for="mwcWort" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Losungswort</label>' +
