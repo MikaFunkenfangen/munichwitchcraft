@@ -3,3 +3,9 @@
 .Spotlight-V100
 .Trashes
 Thumbs.db
+
+# Lokale Werkzeug-Konfiguration (enthält Pfade dieses Rechners)
+.claude/
+
+# Schreibtests und Zwischendateien
+*.tmp
